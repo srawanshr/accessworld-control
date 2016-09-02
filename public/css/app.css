@@ -1,0 +1,17 @@
+.has-error .input-group-addon {
+    color: inherit;
+    background-color: inherit;
+    border-color: transparent;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.avatar {
+    cursor: pointer;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+}
