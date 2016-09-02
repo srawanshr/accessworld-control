@@ -34,10 +34,6 @@
 <body class="menubar-hoverable header-fixed menubar-pin ">
 @if (auth()->guest())
     @yield('guest')
-
-    <footer class="text-center">
-        &copy; Copyright {{ config('website.name') }} {{date('Y')}}
-    </footer>
 @else
     @include('partials.header')
     <!-- BEGIN BASE-->

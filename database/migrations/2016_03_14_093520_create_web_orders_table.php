@@ -25,7 +25,7 @@ class CreateWebOrdersTable extends Migration
             $table->float('traffic');
             $table->double('price', 15, 4);
             $table->float('discount')->default(0);
-            $table->tinyint('status')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->foreign('customer_id')
                 ->references('id')
                 ->on('customers')

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEsewaDepositsTable extends Migration
+class CreateEsewaPaymentsTable extends Migration
 {
     /**
      * Run the migrations.

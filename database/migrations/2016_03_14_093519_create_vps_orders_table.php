@@ -30,7 +30,7 @@ class CreateVpsOrdersTable extends Migration
             $table->float('discount')->default(0);
             $table->boolean('is_ssl_certified')->default(0);
             $table->boolean('is_managed')->default(0);
-            $table->tinyint('status')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->boolean('is_provisioned')->default(0);
             $table->foreign('operating_system_id')
                 ->references('id')

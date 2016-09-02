@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Login')
+
 @push('styles')
 <style type="text/css">
 
@@ -7,18 +9,16 @@
         background: rgb(255, 255, 255);
         background-size: 100% 100%;
         color: #313534;
-        background: url({{ asset('img/login-bg.jpg') }});
     }
 
-    .log-div {
-        box-shadow: 5px 5px 5px rgba(6, 104, 101, 0.62);;
-        background-color: #f9f9f9;
-        padding: 12px;
-        top: 50px;
+    body {
+        background-image: url({{ asset(config('paths.login-bg')) }});
+        background-attachment: fixed;
     }
 
     .logo {
         margin-top: 80px;
+        margin-bottom: 15px;
     }
 </style>
 @endpush
@@ -26,18 +26,17 @@
 @section('guest')
     <!-- BEGIN LOGIN SECTION -->
     <section class="section-account">
-        <div class="container">
-            <div class="row col-md-12 logo" align="center">
-                <img src="{{ asset(config('website.favicon')) }}" alt="logo">
-            </div>
-            <div class="row col-md-12" align="center">
-                <div class=" log-div col-sm-6 col-sm-offset-3 ">
+        <div class="row col-md-12 logo" align="center">
+            <img src="{{ asset(config('website.logo')) }}" alt="logo" width="100" height="100">
+        </div>
+        <div class="row col-md-12" align="center">
+            <div class="card col-sm-4 col-sm-offset-4 ">
+                <div class="card-body">
                     <br/>
                     <span class="text-lg text-bold text-primary">{{ config('website.name') }}</span>
                     <br/><br/>
                     @include('partials.errors')
-                    <form class="form" role="form" style="text-align:left;" method="POST" action="{{ url('/login') }}"
-                          autocomplete="off">
+                    <form class="form form-validate" role="form" style="text-align:left;" method="POST" action="{{ url('/login') }}" autocomplete="off" novalidate>
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <input type="text" class="form-control" id="login" name="login" required>
@@ -47,7 +46,7 @@
                             <input type="password" class="form-control" id="password" name="password" required>
                             <label for="password">Password</label>
                             <p class="help-block">
-                                <a href="{{ url('/password/reset') }}">Forgot?</a>
+                                <a href="{{ url('/password/reset') }}" target="_blank">Forgot?</a>
                             </p>
                         </div>
                         <br/>
@@ -70,6 +69,12 @@
         </div>
     </section>
     <!-- END LOGIN SECTION -->
+
+    <footer class="text-center">
+        <p>
+            Copyright {{ config('website.name') }} {{date('Y')}}
+        </p>
+    </footer>
 @stop
 
 @push('scripts')
