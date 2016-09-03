@@ -23,7 +23,7 @@ class UserActivationController extends Controller {
 
         $this->activateUser($user);
 
-        return redirect('')->with('success', trans('messages.activation.success'));
+        return redirect('')->with('success', trans('messages.activation_success'));
     }
 
     /**

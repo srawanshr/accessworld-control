@@ -1,6 +1,6 @@
-(function(){
+(function () {
     "use strict";
-    var readURL = function(input){
+    var readURL = function (input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -10,12 +10,18 @@
         }
     };
 
-    $('.avatar').click(function(){
+    $('.avatar').click(function () {
         $('.avatar-input').trigger('click');
     });
 
-    $(".avatar-input").change(function(){
+    $(".avatar-input").change(function () {
         readURL(this);
     });
 
-}())
+    $("button[type='reset']").on("click", function () {
+        var $avatar = $('.avatar');
+
+        $avatar.attr("src", $avatar.data("src"));
+    });
+
+}());

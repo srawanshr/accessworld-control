@@ -13,7 +13,7 @@
                 </li>
                 <li>
                     <a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
-                        <i class="fa fa-bars"></i>
+                        <i class="md md-menu"></i>
                     </a>
                 </li>
             </ul>
@@ -33,13 +33,13 @@
                         <li class="dropdown-header">Config</li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-fw fa-circle-o-notch"></i>
+                                <i class="md md-account-circle"></i>
                                 My profile
                             </a>
                         </li>
                         <li>
                             <a href="{{url('/logout')}}">
-                                <i class="fa fa-fw fa-power-off text-danger"></i>
+                                <i class="md md-settings-power text-danger"></i>
                                 Logout
                             </a>
                         </li>

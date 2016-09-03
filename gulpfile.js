@@ -12,16 +12,9 @@ require('laravel-elixir-vue');
  | file for our application, as well as publishing vendor resources.
  |
  */
+elixir.config.sourcemaps = false;
 
 elixir(function(mix) {
-    mix.styles(['bootstrap.css'], 'public/css/bootstrap.min.css')
-        .styles(['materialadmin.css'], 'public/css/materialadmin.min.css')
-        .styles(['/libs/DataTables/jquery.dataTables.css'], 'public/css/libs/DataTables/jquery.dataTables.min.css')
-        .styles(['/libs/DataTables/TableTools.css'], 'public/css/libs/DataTables/TableTools.min.css')
-        .styles(['/libs/DataTables/extensions/dataTables.colVis.css'], 'public/css/libs/DataTables/extensions/dataTables.colVis.min.css')
-        .styles(['/libs/DataTables/extensions/dataTables.tableTools.css'], 'public/css/libs/DataTables/extensions/dataTables.tableTools.min.css')
-        .styles(['/libs/toastr/toastr.css'], 'public/css/libs/toastr/toastr.min.css');
-
     mix.scripts(['App.js'], 'public/js/core/source/App.min.js')
         .scripts(['AppCard.js'], 'public/js/core/source/AppCard.min.js')
         .scripts(['AppForm.js'], 'public/js/core/source/AppForm.min.js')
@@ -30,5 +23,6 @@ elixir(function(mix) {
         .scripts(['AppToast.js'], 'public/js/core/source/AppToast.min.js')
         .scripts(['AppVendor.js'], 'public/js/core/source/AppVendor.min.js')
         .scripts(['AppBootBox.js'], 'public/js/core/source/AppBootBox.min.js')
-        .scripts(['toastr.js'], 'public/js/libs/toastr/toastr.min.js');
+        .scripts(['libs/toastr.js'], 'public/js/libs/toastr/toastr.min.js')
+        .scripts(['pages/form_checkbox_role.js'], 'public/js/pages/form_checkbox_role.min.js');
 });

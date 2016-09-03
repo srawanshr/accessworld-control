@@ -14,7 +14,7 @@ return [
 
     'image' => [
 
-        'User' => 'images/avatar/',
+        'User' => 'avatars',
 
     ],
 
@@ -45,10 +45,8 @@ return [
 
     'placeholder' => [
 
-        'default'        => 'img/placeholder.jpg',
-        'avatar'         => 'img/avatar.png',
-        'login-bg'       => 'img/login-bg.jpg',
-        'profile-banner' => 'profile-banner.jpg'
+        'default' => 'img/placeholder.jpg',
+        'avatar'  => 'img/avatar.png',
 
     ]
 ];

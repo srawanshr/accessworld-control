@@ -42,7 +42,8 @@ class ActivationCode extends Notification
     {
         return (new MailMessage)
                     ->line('Please activate your account by clicking the button below.')
+                    ->line('Username:'.$notifiable->username)
                     ->action('Activate', url('activate/'.$notifiable->activation_code))
-                    ->line('Thank you!');
+                    ->line('Please change your password. Thank you!');
     }
 }

@@ -15,13 +15,23 @@ function display($value, $dash = 'NA')
 
 /**
  * @param $width
+ * @param null $username
  * @return mixed
+ * @internal param $guard
  */
-function user_avatar($width)
+function user_avatar($width, $username = null)
 {
-    if ($image = auth()->user()->image)
+    if ($username)
     {
-        return asset($image->thumbnail($width, $width));
+        $user = \App\Models\User::whereUsername($username)->first();
+    } else
+    {
+        $user = auth()->user();
+    }
+
+    if ($image = $user->image)
+    {
+        return asset('storage/'.$image->path);
     } else
     {
         return asset(config('paths.placeholder.avatar'));

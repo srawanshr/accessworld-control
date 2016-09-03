@@ -18,18 +18,51 @@
 
             <!-- BEGIN DASHBOARD -->
             <li>
-                <a href="{{ url('') }}" >
-                    <div class="gui-icon"><i class="md md-home"></i></div>
+                <a href="{{ url('') }}">
+                    <div class="gui-icon">
+                        <i class="md md-home"></i>
+                    </div>
                     <span class="title">Home</span>
                 </a>
             </li><!--end /menu-li -->
             <!-- END DASHBOARD -->
 
+            <!-- BEGIN Users -->
+            <li class="gui-folder">
+                <a href="javascript:void(0);">
+                    <div class="gui-icon">
+                        <i class="md md-face-unlock"></i>
+                    </div>
+                    <span class="title">Users</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('user.index') }}">
+                            <span class="title">List</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('user.create') }}">
+                            <span class="title">Create</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('role.index') }}">
+                            <span class="title">Role</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END Users -->
+
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
         <div class="menubar-foot-panel">
             <small class="no-linebreak hidden-folded">
-                <span class="opacity-75">Copyright &copy; 2016</span> <strong><a href="https://www.accessworld.net">AccessWorld</a></strong>
+                <span class="opacity-75">Copyright &copy; 2016</span>
+                <strong>
+                    <a href="{{ config('website.url') }}">{{ config('website.title') }}</a>
+                </strong>
             </small>
         </div>
     </div><!--end .menubar-scroll-panel-->

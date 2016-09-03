@@ -23,6 +23,7 @@ class LoginController extends Controller {
     use AuthenticatesUsers
     {
         login as traitLogin;
+        username as traitUsername;
     }
 
     /**
@@ -33,9 +34,14 @@ class LoginController extends Controller {
     protected $redirectTo = '/';
 
     /**
-     * Create a new controller instance.
+     * The field used for authentication. Default 'username'
      *
-     * @return void
+     * @var string
+     */
+    protected $username = 'username';
+
+    /**
+     * Create a new controller instance.
      */
     public function __construct()
     {
@@ -52,7 +58,7 @@ class LoginController extends Controller {
         $request->merge([$field => $request->get('login')]);
         $this->username = $field;
 
-        $user = User::where($field, $request->get('login'))->first();
+        $user = User::where('email', $request->get('email'))->first();
 
         if ($user && $user->status == 0)
         {
@@ -60,5 +66,13 @@ class LoginController extends Controller {
         }
 
         return $this->traitLogin($request);
+    }
+
+    /**
+     * @return string
+     */
+    public function username()
+    {
+        return $this->username;
     }
 }

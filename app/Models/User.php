@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Bican\Roles\Traits\HasRoleAndPermission;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,7 +11,7 @@ use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 
 class User extends Authenticatable implements HasRoleAndPermissionContract {
 
-    use Notifiable, SoftDeletes, HasRoleAndPermission;
+    use Notifiable, SoftDeletes, HasRoleAndPermission, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,7 @@ class User extends Authenticatable implements HasRoleAndPermissionContract {
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'slug', 'first_name', 'last_name', 'phone', 'address'
+        'username', 'email', 'password', 'first_name', 'last_name', 'phone', 'address', 'activation_code'
     ];
 
     /**
@@ -46,7 +47,7 @@ class User extends Authenticatable implements HasRoleAndPermissionContract {
      */
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'username';
     }
 
     /**

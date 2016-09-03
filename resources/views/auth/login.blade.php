@@ -12,7 +12,7 @@
     }
 
     body {
-        background-image: url({{ asset(config('paths.login-bg')) }});
+        background-image: url({{ asset('img/login-bg.jpg') }});
         background-attachment: fixed;
     }
 

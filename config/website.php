@@ -13,7 +13,7 @@ return [
     |
     */
     'name'        => 'AccessWorld Control',
-    'title'       => 'Control',
+    'title'       => 'AccessWorld',
     'keywords'    => 'accessworld,control',
     'description' => 'AccessWorld Control Panel',
     'author'      => 'Kripal Shrestha, Rojer Maharjan, Srawan Shrestha',

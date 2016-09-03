@@ -15,7 +15,9 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('path')->nullable();
+            $table->string('name')->nullable();
+            $table->integer('size')->nullable();
+            $table->string('path');
             $table->integer('imageable_id')->unsigned();
             $table->string('imageable_type');
             $table->timestamps();
