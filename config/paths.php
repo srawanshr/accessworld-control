@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | These values determine the image upload location for various models.
-    | Paths should be finished with '/'
+    | Folder name only.
     |
     */
 

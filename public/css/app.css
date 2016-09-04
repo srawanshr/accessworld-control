@@ -8,10 +8,14 @@
     cursor: pointer;
 }
 
-.avatar {
+.preview {
     cursor: pointer;
 }
 
 input[type="file"] {
     margin-top: 10px;
+}
+
+.note-editor {
+    margin-top: 15px;
 }

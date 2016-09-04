@@ -5,9 +5,9 @@
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     @if(isset($user))
-                        <img src="{{ user_avatar(200, $user->slug) }}" data-src="{{ user_avatar(200, $user->slug) }}" class="avatar" alt="avatar" width="200" height="200">
+                        <img src="{{ user_avatar(200, $user->slug) }}" data-src="{{ user_avatar(200, $user->slug) }}" class="avatar" alt="preview" width="200" height="200">
                     @else
-                        <img src="{{ asset(config('paths.placeholder.avatar')) }}" data-src="{{ asset(config('paths.placeholder.avatar')) }}" class="avatar" alt="avatar" width="200" height="200">
+                        <img src="{{ asset(config('paths.placeholder.avatar')) }}" data-src="{{ asset(config('paths.placeholder.avatar')) }}" class="preview" alt="avatar" width="200" height="200">
                     @endif
                 </div>
             </div>
@@ -84,7 +84,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::file('image', ['class' => 'avatar-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
+                {{ Form::file('image', ['class' => 'image-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
                 {{ Form::label('image', 'Avatar') }}
             </div>
         </div>

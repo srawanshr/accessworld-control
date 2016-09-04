@@ -48,7 +48,7 @@
     <!-- END BASE -->
 @endif
 
-<!-- BEGIN JAVASCRIPT -->
+<!-- BEGIN CORE JAVASCRIPT -->
 <script src="{{ asset('js/libs/jquery/jquery-1.11.2.min.js') }}"></script>
 <script src="{{ asset('js/libs/jquery/jquery-migrate-1.2.1.min.js') }}"></script>
 <script src="{{ asset('js/libs/bootstrap/bootstrap.min.js') }}"></script>
@@ -64,7 +64,7 @@
 <script src="{{ asset('js/core/source/AppVendor.min.js') }}"></script>
 <script src="{{ asset('js/core/source/AppToast.min.js') }}"></script>
 <script src="{{ asset('js/core/source/AppBootBox.min.js') }}"></script>
-<!-- END JAVASCRIPT -->
+<!-- END CORE JAVASCRIPT -->
 
 <!-- START UTILITY SCRIPT -->
 @include('partials.script')

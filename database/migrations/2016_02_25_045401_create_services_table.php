@@ -3,8 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServicesTable extends Migration
-{
+class CreateServicesTable extends Migration {
+
     /**
      * Run the migrations.
      *
@@ -12,15 +12,18 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table)
+        {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('slug')->unique();
             $table->string('name')->unique();
-            $table->string('short_description');
-            $table->text('description');
+            $table->string('short_description')->nullable();
+            $table->text('description')->nullable();
             $table->integer('order');
-            $table->boolean('is_configurable')->default(0);
+            $table->string('view');
+            $table->boolean('is_featured')->default(0);
+            $table->boolean('is_published')->default(0);
             $table->timestamps();
         });
     }

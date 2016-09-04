@@ -40,34 +40,52 @@ Route::post('activate/email/{user}', 'Auth\UserActivationController@sendActivati
 */
 Route::get('', 'HomeController@index')->name('home');
 
-/*
-|--------------------------------------------------------------------------
-| Admin User CRUD Routes
-|--------------------------------------------------------------------------
-*/
-Route::group(['as' => 'user.', 'prefix' => 'user'], function ()
+Route::group(['middleware' => 'auth'], function ()
 {
-    Route::get('', 'UserController@index')->name('index');
-    Route::get('create', 'UserController@create')->name('create');
-    Route::post('', 'UserController@store')->name('store');
-    Route::get('{user}', 'UserController@show')->name('show');
-    Route::get('{user}/edit', 'UserController@edit')->name('edit');
-    Route::put('{user}', 'UserController@update')->name('update');
-    Route::delete('{user}', 'UserController@destroy')->name('destroy');
-});
+    /*
+    |--------------------------------------------------------------------------
+    | Admin User CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'user.', 'prefix' => 'user'], function ()
+    {
+        Route::get('', 'UserController@index')->name('index');
+        Route::get('create', 'UserController@create')->name('create');
+        Route::post('', 'UserController@store')->name('store');
+        Route::get('{user}', 'UserController@show')->name('show');
+        Route::get('{user}/edit', 'UserController@edit')->name('edit');
+        Route::put('{user}', 'UserController@update')->name('update');
+        Route::delete('{user}', 'UserController@destroy')->name('destroy');
+    });
 
-/*
-|--------------------------------------------------------------------------
-| Admin User CRUD Routes
-|--------------------------------------------------------------------------
-*/
-Route::group(['as' => 'role.', 'prefix' => 'role'], function ()
-{
-    Route::get('', 'RoleController@index')->name('index');
-    Route::get('create', 'RoleController@create')->name('create');
-    Route::post('', 'RoleController@store')->name('store');
-    Route::get('{role}', 'RoleController@show')->name('show');
-    Route::get('{role}/edit', 'RoleController@edit')->name('edit');
-    Route::put('{role}', 'RoleController@update')->name('update');
-    Route::delete('{role}', 'RoleController@destroy')->name('destroy');
+    /*
+    |--------------------------------------------------------------------------
+    | Role CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'role.', 'prefix' => 'role'], function ()
+    {
+        Route::get('', 'RoleController@index')->name('index');
+        Route::get('create', 'RoleController@create')->name('create');
+        Route::post('', 'RoleController@store')->name('store');
+        Route::get('{role}', 'RoleController@show')->name('show');
+        Route::get('{role}/edit', 'RoleController@edit')->name('edit');
+        Route::put('{role}', 'RoleController@update')->name('update');
+        Route::delete('{role}', 'RoleController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Service CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'service.', 'prefix' => 'service'], function ()
+    {
+        Route::get('', 'ServiceController@index')->name('index');
+        Route::get('create', 'ServiceController@create')->name('create');
+        Route::post('', 'ServiceController@store')->name('store');
+        Route::get('{service}/edit', 'ServiceController@edit')->name('edit');
+        Route::put('{service}', 'ServiceController@update')->name('update');
+        Route::delete('{service}', 'ServiceController@destroy')->name('destroy');
+    });
 });

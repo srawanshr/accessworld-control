@@ -4,24 +4,24 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('.avatar').attr('src', e.target.result);
+                $(".preview").attr("src", e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
     };
 
-    $('.avatar').click(function () {
-        $('.avatar-input').trigger('click');
+    $(".preview").click(function () {
+        $(".image-input").trigger("click");
     });
 
-    $(".avatar-input").change(function () {
+    $(".image-input").change(function () {
         readURL(this);
     });
 
     $("button[type='reset']").on("click", function () {
-        var $avatar = $('.avatar');
+        var $image = $(".preview");
 
-        $avatar.attr("src", $avatar.data("src"));
+        $image.attr("src", $image.data("src"));
     });
 
 }());

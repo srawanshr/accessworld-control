@@ -27,7 +27,7 @@
             </li><!--end /menu-li -->
             <!-- END DASHBOARD -->
 
-            <!-- BEGIN Users -->
+            <!-- BEGIN USERS -->
             <li class="gui-folder">
                 <a href="javascript:void(0);">
                     <div class="gui-icon">
@@ -53,7 +53,18 @@
                     </li>
                 </ul>
             </li>
-            <!-- END Users -->
+            <!-- END USERS -->
+
+            <!-- BEGIN SERVICES -->
+            <li>
+                <a href="{{ route('service.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Services</span>
+                </a>
+            </li>
+            <!-- END SERVICES -->
 
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
