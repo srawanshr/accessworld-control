@@ -40,15 +40,13 @@ Route::post('activate/email/{user}', 'Auth\UserActivationController@sendActivati
 */
 Route::get('', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function ()
-{
+Route::group(['middleware' => 'auth'], function () {
     /*
     |--------------------------------------------------------------------------
     | Admin User CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'user.', 'prefix' => 'user'], function ()
-    {
+    Route::group(['as' => 'user.', 'prefix' => 'user'], function () {
         Route::get('', 'UserController@index')->name('index');
         Route::get('create', 'UserController@create')->name('create');
         Route::post('', 'UserController@store')->name('store');
@@ -63,8 +61,7 @@ Route::group(['middleware' => 'auth'], function ()
     | Role CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'role.', 'prefix' => 'role'], function ()
-    {
+    Route::group(['as' => 'role.', 'prefix' => 'role'], function () {
         Route::get('', 'RoleController@index')->name('index');
         Route::get('create', 'RoleController@create')->name('create');
         Route::post('', 'RoleController@store')->name('store');
@@ -79,13 +76,21 @@ Route::group(['middleware' => 'auth'], function ()
     | Service CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'service.', 'prefix' => 'service'], function ()
-    {
+    Route::group(['as' => 'service.', 'prefix' => 'service'], function () {
         Route::get('', 'ServiceController@index')->name('index');
         Route::get('create', 'ServiceController@create')->name('create');
         Route::post('', 'ServiceController@store')->name('store');
         Route::get('{service}/edit', 'ServiceController@edit')->name('edit');
         Route::put('{service}', 'ServiceController@update')->name('update');
         Route::delete('{service}', 'ServiceController@destroy')->name('destroy');
+
+        Route::group(['as' => 'package.', 'prefix' => '{service}/package'], function () {
+            Route::get('', 'PackageController@index')->name('index');
+            Route::get('create', 'PackageController@index')->name('create');
+            Route::post('', 'PackageController@store')->name('store');
+            Route::get('{package}/edit', 'PackageController@edit')->name('edit');
+            Route::put('{package}', 'PackageController@update')->name('update');
+            Route::delete('{package}', 'PackageController@destroy')->name('destroy');
+        });
     });
 });
