@@ -123,7 +123,7 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
-    | Service CRUD Routes
+    | Testimonial CRUD Routes
     |--------------------------------------------------------------------------
     */
     Route::group(['as' => 'testimonial.', 'prefix' => 'testimonial'], function ()
@@ -134,5 +134,20 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{testimonial}/edit', 'TestimonialController@edit')->name('edit');
         Route::put('{testimonial}', 'TestimonialController@update')->name('update');
         Route::delete('{testimonial}', 'TestimonialController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Certificates CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'certificate.', 'prefix' => 'certificate'], function ()
+    {
+        Route::get('', 'CertificateController@index')->name('index');
+        Route::get('create', 'CertificateController@create')->name('create');
+        Route::post('', 'CertificateController@store')->name('store');
+        Route::get('{certificates}/edit', 'CertificateController@edit')->name('edit');
+        Route::put('{certificates}', 'CertificateController@update')->name('update');
+        Route::delete('{certificates}', 'CertificateController@destroy')->name('destroy');
     });
 });

@@ -77,6 +77,17 @@
             </li>
             <!-- END TESTIMONIALS -->
 
+            <!-- BEGIN CERTIFICATE -->
+            <li>
+                <a href="{{ route('certificate.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Certificate</span>
+                </a>
+            </li>
+            <!-- END CERTIFICATE -->
+
             <!-- BEGIN PAGES -->
             <li>
                 <a href="{{ route('page.index') }}">
