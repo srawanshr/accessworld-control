@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePage extends FormRequest {
-
+class UpdatePage extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -38,8 +38,7 @@ class StorePage extends FormRequest {
         $inputs = [
             'title'            => $this->get('title'),
             'meta_description' => $this->get('meta_description'),
-            'content'          => $this->get('content'),
-            'view'             => 'page.show'
+            'content'          => $this->get('content')
         ];
 
         if ($this->has('publish'))

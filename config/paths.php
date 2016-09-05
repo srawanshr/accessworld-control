@@ -15,6 +15,7 @@ return [
     'image' => [
 
         'User' => 'avatars',
+        'Page' => 'featured',
 
     ],
 
