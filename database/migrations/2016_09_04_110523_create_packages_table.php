@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVpsPackagesTable extends Migration
+class CreatePackagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +13,15 @@ class CreateVpsPackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('vps_packages', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('packages', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('service_id')->unsigned();
             $table->string('name');
-            $table->string('slug');
-            $table->string('description');
-            $table->float('cpu');
-            $table->float('ram');
-            $table->float('disk');
-            $table->float('traffic');
+            $table->string('slug')->unique();
             $table->float('price');
+            $table->text('description');
             $table->boolean('is_published')->default(0);
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -35,6 +33,6 @@ class CreateVpsPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('vps_packages');
+        Schema::dropIfExists('packages');
     }
 }

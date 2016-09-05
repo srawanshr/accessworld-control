@@ -79,4 +79,9 @@ class Service extends Model {
 
         parent::delete($options);
     }
+
+    public function packages()
+    {
+        return $this->hasMany('App\Models\Package');
+    }
 }
