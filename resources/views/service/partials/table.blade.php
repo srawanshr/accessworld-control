@@ -1,6 +1,6 @@
 <tr>
     <td>{{ $service->name }}</td>
-    <td class="text-center">{{ $service->is_active ? 'Yes' : 'No' }}</td>
+    <td class="text-center">{{ $service->is_published ? 'Yes' : 'No' }}</td>
     <td class="text-right">
         <a href="{{route('service.package.index', $service->slug)}}" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Packages">
             <i class="md md-wallet-giftcard"></i>

@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::group(['as' => 'package.', 'prefix' => '{service}/package'], function () {
             Route::get('', 'PackageController@index')->name('index');
-            Route::get('create', 'PackageController@index')->name('create');
+            Route::get('create', 'PackageController@create')->name('create');
             Route::post('', 'PackageController@store')->name('store');
             Route::get('{package}/edit', 'PackageController@edit')->name('edit');
             Route::put('{package}', 'PackageController@update')->name('update');
