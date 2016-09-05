@@ -14,7 +14,10 @@ require('laravel-elixir-vue');
  */
 elixir.config.sourcemaps = false;
 
-elixir(function(mix) {
+elixir(function (mix) {
+    mix.styles(['libs/summernote.css'], 'public/css/libs/summernote/summernote.min.css')
+        .styles(['libs/dropify.css'], 'public/css/libs/dropify/dropify.min.css');
+
     mix.scripts(['App.js'], 'public/js/core/source/App.min.js')
         .scripts(['AppCard.js'], 'public/js/core/source/AppCard.min.js')
         .scripts(['AppForm.js'], 'public/js/core/source/AppForm.min.js')

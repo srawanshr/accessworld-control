@@ -31,7 +31,7 @@ function user_avatar($width, $username = null)
 
     if ($image = $user->image)
     {
-        return asset($image->path);
+        return asset($image->thumbnail($width, $width));
     } else
     {
         return asset(config('paths.placeholder.avatar'));

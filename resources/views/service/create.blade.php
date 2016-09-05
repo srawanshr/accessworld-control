@@ -19,7 +19,7 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::open(['route' => 'service.store', 'class' => 'form form-validate floating-label', 'role' => 'form', 'files' => true, 'novalidate']) }}
+                {{ Form::open(['route' => 'service.store', 'class' => 'form form-validate', 'role' => 'form', 'files' => true, 'novalidate']) }}
                 @include('service.partials.form')
                 {{ Form::close() }}
             </div>

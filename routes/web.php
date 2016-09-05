@@ -87,6 +87,37 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{service}/edit', 'ServiceController@edit')->name('edit');
         Route::put('{service}', 'ServiceController@update')->name('update');
         Route::delete('{service}', 'ServiceController@destroy')->name('destroy');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Service Package CRUD Routes
+        |--------------------------------------------------------------------------
+        */
+        Route::group(['as' => 'package.', 'prefix' => '{service}/package'], function ()
+        {
+            Route::get('', 'PackageController@index')->name('index');
+            Route::get('create', 'PackageController@index')->name('create');
+            Route::post('', 'PackageController@store')->name('store');
+            Route::get('{package}/edit', 'PackageController@edit')->name('edit');
+            Route::put('{package}', 'PackageController@update')->name('update');
+            Route::delete('{package}', 'PackageController@destroy')->name('destroy');
+        });
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Page CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'page.', 'prefix' => 'page'], function ()
+    {
+        Route::get('', 'PageController@index')->name('index');
+        Route::get('create', 'PageController@create')->name('create');
+        Route::post('', 'PageController@store')->name('store');
+        Route::get('{page}', 'PageController@show')->name('show');
+        Route::get('{page}/edit', 'PageController@edit')->name('edit');
+        Route::put('{page}', 'PageController@update')->name('update');
+        Route::delete('{page}', 'PageController@destroy')->name('destroy');
     });
 
 

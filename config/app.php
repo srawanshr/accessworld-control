@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         Bican\Roles\RolesServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
 
         /*

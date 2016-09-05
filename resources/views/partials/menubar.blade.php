@@ -77,6 +77,17 @@
             </li>
             <!-- END TESTIMONIALS -->
 
+            <!-- BEGIN PAGES -->
+            <li>
+                <a href="{{ route('page.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-pages"></i>
+                    </div>
+                    <span class="title">Pages</span>
+                </a>
+            </li>
+            <!-- END PAGES -->
+
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
         <div class="menubar-foot-panel">
