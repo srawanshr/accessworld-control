@@ -142,7 +142,7 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
-    | Service CRUD Routes
+    | Testimonial CRUD Routes
     |--------------------------------------------------------------------------
     */
     Route::group(['as' => 'testimonial.', 'prefix' => 'testimonial'], function ()
@@ -153,5 +153,35 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{testimonial}/edit', 'TestimonialController@edit')->name('edit');
         Route::put('{testimonial}', 'TestimonialController@update')->name('update');
         Route::delete('{testimonial}', 'TestimonialController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Certificates CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'certificate.', 'prefix' => 'certificate'], function ()
+    {
+        Route::get('', 'CertificateController@index')->name('index');
+        Route::get('create', 'CertificateController@create')->name('create');
+        Route::post('', 'CertificateController@store')->name('store');
+        Route::get('{certificates}/edit', 'CertificateController@edit')->name('edit');
+        Route::put('{certificates}', 'CertificateController@update')->name('update');
+        Route::delete('{certificates}', 'CertificateController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Client CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'client.', 'prefix' => 'client'], function ()
+    {
+        Route::get('', 'ClientController@index')->name('index');
+        Route::get('create', 'ClientController@create')->name('create');
+        Route::post('', 'ClientController@store')->name('store');
+        Route::get('{client}/edit', 'ClientController@edit')->name('edit');
+        Route::put('{client}', 'ClientController@update')->name('update');
+        Route::delete('{client}', 'ClientController@destroy')->name('destroy');
     });
 });

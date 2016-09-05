@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use DB;
-use Datatables;
 use App\Http\Requests;
 use App\Models\Service;
 use Illuminate\Http\Request;
