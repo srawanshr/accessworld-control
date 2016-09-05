@@ -66,6 +66,17 @@
             </li>
             <!-- END SERVICES -->
 
+            <!-- BEGIN TESTIMONIALS -->
+            <li>
+                <a href="{{ route('testimonial.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Testiminial</span>
+                </a>
+            </li>
+            <!-- END TESTIMONIALS -->
+
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
         <div class="menubar-foot-panel">
