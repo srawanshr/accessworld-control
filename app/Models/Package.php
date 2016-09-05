@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Package extends Model
 {
-    protected $fillable = ['service_id', 'name', 'slug', 'description', 'price'];
+    protected $fillable = ['service_id', 'name', 'slug', 'description', 'is_published', 'price'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -16,24 +16,49 @@ class Package extends Model
         return $this->hasMany('App\Models\Component');
     }
 
-    public static function boot()
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
     {
-        parent::boot();
+        return 'slug';
+    }
 
-        // registering a callback to be executed upon the creation of an activity AR
-        static::creating(function ($package)
+    /**
+     * Set the title attribute and the slug.
+     *
+     * @param string $value
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+
+        if ( ! $this->exists)
         {
+            $this->setUniqueSlug($value, '');
+        }
+    }
 
-            // produce a slug based on the activity title
-            $slug = str_slug($package->name);
+    /**
+     * Recursive routine to set a unique slug.
+     *
+     * @param string $title
+     * @param mixed $extra
+     */
+    protected function setUniqueSlug($title, $extra)
+    {
+        $slug = str_slug($title . '-' . $extra);
 
-            // check to see if any other slugs exist that are the same & count them
-            $count = static::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
+        if (static::whereSlug($slug)->exists())
+        {
+            $this->setUniqueSlug($title, $extra + 1);
 
-            // if other slugs exist that are the same, append the count to the slug
-            $package->slug = $count ? "{$slug}-{$count}" : $slug;
+            return;
+        }
 
-        });
+        $this->attributes['slug'] = $slug;
     }
 
     public function service()

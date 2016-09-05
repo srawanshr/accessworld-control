@@ -19,7 +19,8 @@ class CreatePackagesTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->float('price');
-            $table->string('description');
+            $table->text('description');
+            $table->boolean('is_published')->default(0);
             $table->foreign('service_id')->references('id')->on('services')->onDelete('restrict');
             $table->timestamps();
         });
