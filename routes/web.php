@@ -150,4 +150,19 @@ Route::group(['middleware' => 'auth'], function ()
         Route::put('{certificates}', 'CertificateController@update')->name('update');
         Route::delete('{certificates}', 'CertificateController@destroy')->name('destroy');
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Client CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'client.', 'prefix' => 'client'], function ()
+    {
+        Route::get('', 'ClientController@index')->name('index');
+        Route::get('create', 'ClientController@create')->name('create');
+        Route::post('', 'ClientController@store')->name('store');
+        Route::get('{client}/edit', 'ClientController@edit')->name('edit');
+        Route::put('{client}', 'ClientController@update')->name('update');
+        Route::delete('{client}', 'ClientController@destroy')->name('destroy');
+    });
 });

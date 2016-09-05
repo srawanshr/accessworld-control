@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Certificate;
+use App\Models\Client;
 use App\Models\Menu;
 use App\Models\Page;
 use App\Models\User;
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
             'service'     => Service::class,
             'page'        => Page::class,
             'menu'        => Menu::class,
+            'client'      => Client::class,
             'certificate' => Certificate::class
         ]);
     }

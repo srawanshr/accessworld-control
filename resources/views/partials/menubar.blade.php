@@ -88,6 +88,17 @@
             </li>
             <!-- END CERTIFICATE -->
 
+            <!-- BEGIN CLIENT -->
+            <li>
+                <a href="{{ route('client.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Client</span>
+                </a>
+            </li>
+            <!-- END CLIENT -->
+
             <!-- BEGIN PAGES -->
             <li>
                 <a href="{{ route('page.index') }}">
