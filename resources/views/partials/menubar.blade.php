@@ -88,6 +88,17 @@
             </li>
             <!-- END PAGES -->
 
+            <!-- BEGIN STAFF -->
+            <li>
+                <a href="{{ route('staff.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-assignment-ind"></i>
+                    </div>
+                    <span class="title">Staff</span>
+                </a>
+            </li>
+            <!-- END STAFF -->
+
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
         <div class="menubar-foot-panel">

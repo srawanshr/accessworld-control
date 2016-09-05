@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/user/list', 'UserController@userList')->name('user.list')->middleware('auth:api');
+Route::get('/staff/list', 'StaffController@staffList')->name('staff.list')->middleware('auth:api');
