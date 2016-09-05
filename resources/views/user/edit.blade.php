@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-head">
                     <header>Edit user
-                        <span class="text-primary">{{ $user->name }}</span>
+                        <span class="text-primary">({{ $user->name }})</span>
                     </header>
                     <div class="tools">
                         <a class="btn btn-default btn-ink" onclick="history.go(-1);return false;">

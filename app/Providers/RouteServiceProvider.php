@@ -28,6 +28,8 @@ class RouteServiceProvider extends ServiceProvider {
         Route::model('user', 'App\Models\User');
 
         Route::model('service', 'App\Models\Service');
+
+        Route::model('page', 'App\Models\Page');
     }
 
     /**
