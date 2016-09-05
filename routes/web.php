@@ -119,4 +119,20 @@ Route::group(['middleware' => 'auth'], function ()
         Route::put('{page}', 'PageController@update')->name('update');
         Route::delete('{page}', 'PageController@destroy')->name('destroy');
     });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Service CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'testimonial.', 'prefix' => 'testimonial'], function ()
+    {
+        Route::get('', 'TestimonialController@index')->name('index');
+        Route::get('create', 'TestimonialController@create')->name('create');
+        Route::post('', 'TestimonialController@store')->name('store');
+        Route::get('{testimonial}/edit', 'TestimonialController@edit')->name('edit');
+        Route::put('{testimonial}', 'TestimonialController@update')->name('update');
+        Route::delete('{testimonial}', 'TestimonialController@destroy')->name('destroy');
+    });
 });

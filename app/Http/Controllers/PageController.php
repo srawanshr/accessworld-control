@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdatePage;
 use DB;
 use App\Models\Page;
 use App\Http\Requests;
@@ -47,5 +48,17 @@ class PageController extends Controller {
     public function edit(Page $page)
     {
         return view('page.edit', compact('page'));
+    }
+
+    public function update(UpdatePage $request, Page $page)
+    {
+        DB::transaction(function () use ($request, $page)
+        {
+            $page->update($request->pageFillData());
+
+            $this->uploadRequestImage($request, $page);
+        });
+
+        return redirect()->back()->withSuccess(trans('messages.update_success', ['entity' => 'Page']));
     }
 }

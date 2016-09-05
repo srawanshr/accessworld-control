@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Datatables;
 use App\Http\Requests;
 use App\Models\Service;
-use DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreService;
 use App\Http\Requests\UpdateService;
