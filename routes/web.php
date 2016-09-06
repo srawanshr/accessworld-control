@@ -12,7 +12,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 /*
  * Staff QR Code Image Route
  */
-Route::get('qrcode/{id}', [ 'as' => 'qrcode.show', 'uses' => 'StaffController@qr']);
+Route::get('qrcode/{id}', ['as' => 'qrcode.show', 'uses' => 'StaffController@qr']);
 
 /*
 |--------------------------------------------------------------------------
@@ -95,10 +95,10 @@ Route::group(['middleware' => 'auth'], function ()
     });
 
     /*
-        |--------------------------------------------------------------------------
-        | Service Package CRUD Routes
-        |--------------------------------------------------------------------------
-        */
+    |--------------------------------------------------------------------------
+    | Service Package CRUD Routes
+    |--------------------------------------------------------------------------
+    */
     Route::group(['as' => 'service.package.', 'prefix' => 'service/{service}/package'], function ()
     {
         Route::get('', 'PackageController@index')->name('index');
@@ -142,8 +142,6 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
     | Customer CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -159,7 +157,6 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
->>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
     | Testimonial CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -175,7 +172,36 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
-<<<<<<< HEAD
+    | Certificates CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'certificate.', 'prefix' => 'certificate'], function ()
+    {
+        Route::get('', 'CertificateController@index')->name('index');
+        Route::get('create', 'CertificateController@create')->name('create');
+        Route::post('', 'CertificateController@store')->name('store');
+        Route::get('{certificate}/edit', 'CertificateController@edit')->name('edit');
+        Route::put('{certificate}', 'CertificateController@update')->name('update');
+        Route::delete('{certificate}', 'CertificateController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Client CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'client.', 'prefix' => 'client'], function ()
+    {
+        Route::get('', 'ClientController@index')->name('index');
+        Route::get('create', 'ClientController@create')->name('create');
+        Route::post('', 'ClientController@store')->name('store');
+        Route::get('{client}/edit', 'ClientController@edit')->name('edit');
+        Route::put('{client}', 'ClientController@update')->name('update');
+        Route::delete('{client}', 'ClientController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Menu CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -191,48 +217,15 @@ Route::group(['middleware' => 'auth'], function ()
             Route::post('{menu}/subMenu', 'MenuController@storeSubMenu')->name('store');
             Route::delete('{menu}/subMenu/{subMenu}', 'MenuController@destroySubMenu')->name('destroy');
         });
-=======
-    | Certificates CRUD Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['as' => 'certificate.', 'prefix' => 'certificate'], function ()
-    {
-        Route::get('', 'CertificateController@index')->name('index');
-        Route::get('create', 'CertificateController@create')->name('create');
-        Route::post('', 'CertificateController@store')->name('store');
-<<<<<<< HEAD
-        Route::get('{certificate}/edit', 'CertificateController@edit')->name('edit');
-        Route::put('{certificate}', 'CertificateController@update')->name('update');
-        Route::delete('{certificate}', 'CertificateController@destroy')->name('destroy');
-=======
-        Route::get('{certificates}/edit', 'CertificateController@edit')->name('edit');
-        Route::put('{certificates}', 'CertificateController@update')->name('update');
-        Route::delete('{certificates}', 'CertificateController@destroy')->name('destroy');
->>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
->>>>>>> fd90bb2c9f40be23b4fefbb990b7af435192ced1
     });
 
     /*
     |--------------------------------------------------------------------------
-<<<<<<< HEAD
     | Component Routes
     |--------------------------------------------------------------------------
     */
     Route::group(['as' => 'component.', 'prefix' => 'component'], function ()
     {
         Route::get('{menu}/subMenuModal', 'ComponentController@subMenuModal')->name('subMenuModal');
-=======
-    | Client CRUD Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['as' => 'client.', 'prefix' => 'client'], function ()
-    {
-        Route::get('', 'ClientController@index')->name('index');
-        Route::get('create', 'ClientController@create')->name('create');
-        Route::post('', 'ClientController@store')->name('store');
-        Route::get('{client}/edit', 'ClientController@edit')->name('edit');
-        Route::put('{client}', 'ClientController@update')->name('update');
-        Route::delete('{client}', 'ClientController@destroy')->name('destroy');
->>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
     });
 });

@@ -29,7 +29,6 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        $customer = Customer->all();
 
         return view('testimonial.create', compact('customer'));
     }
