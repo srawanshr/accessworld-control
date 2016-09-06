@@ -10,6 +10,11 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout');
 
 /*
+ * Staff QR Code Image Route
+ */
+Route::get('qrcode/{id}', [ 'as' => 'qrcode.show', 'uses' => 'StaffController@qr']);
+
+/*
 |--------------------------------------------------------------------------
 | Password reset link request routes
 |--------------------------------------------------------------------------
@@ -118,6 +123,20 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{page}/edit', 'PageController@edit')->name('edit');
         Route::put('{page}', 'PageController@update')->name('update');
         Route::delete('{page}', 'PageController@destroy')->name('destroy');
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | Staff CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'staff.', 'prefix' => 'staff'], function ()
+    {
+        Route::get('', 'StaffController@index')->name('index');
+        Route::get('create', 'StaffController@create')->name('create');
+        Route::post('', 'StaffController@store')->name('store');
+        Route::get('{staff}/edit', 'StaffController@edit')->name('edit');
+        Route::put('{staff}', 'StaffController@update')->name('update');
+        Route::delete('{staff}', 'StaffController@destroy')->name('destroy');
     });
 
 
