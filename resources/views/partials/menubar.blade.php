@@ -27,6 +27,17 @@
             </li><!--end /menu-li -->
             <!-- END DASHBOARD -->
 
+            <!-- BEGIN CUSTOMER -->
+            <li>
+                <a href="{{ route('customer.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-account-child"></i>
+                    </div>
+                    <span class="title">Customer</span>
+                </a>
+            </li>
+            <!-- END CUSTOMER -->
+
             <!-- BEGIN USERS -->
             <li class="gui-folder">
                 <a href="javascript:void(0);">

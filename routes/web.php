@@ -124,6 +124,7 @@ Route::group(['middleware' => 'auth'], function ()
         Route::put('{page}', 'PageController@update')->name('update');
         Route::delete('{page}', 'PageController@destroy')->name('destroy');
     });
+
     /*
     |--------------------------------------------------------------------------
     | Staff CRUD Routes
@@ -139,6 +140,20 @@ Route::group(['middleware' => 'auth'], function ()
         Route::delete('{staff}', 'StaffController@destroy')->name('destroy');
     });
 
+    /*
+    |--------------------------------------------------------------------------
+    | Customer CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'customer.', 'prefix' => 'customer'], function ()
+    {
+        Route::get('', 'CustomerController@index')->name('index');
+        Route::get('create', 'CustomerController@create')->name('create');
+        Route::post('', 'CustomerController@store')->name('store');
+        Route::get('{customer}/edit', 'CustomerController@edit')->name('edit');
+        Route::put('{customer}', 'CustomerController@update')->name('update');
+        Route::delete('{customer}', 'CustomerController@destroy')->name('destroy');
+    });
 
     /*
     |--------------------------------------------------------------------------
