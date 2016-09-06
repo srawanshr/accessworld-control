@@ -27,4 +27,5 @@
 @stop
 
 @push('scripts')
+<script src="{{ asset('js/preview.js') }}"></script>
 @endpush

@@ -46,7 +46,9 @@ function user_avatar($width, $username = null)
  */
 function thumbnail($width, $entity = null)
 {
-    if ( ! is_null($entity)) if ($image = $entity->image) return asset($image->thumbnail($width, $width));
+    if ( ! is_null($entity))
+        if ($image = $entity->image)
+            return asset($image->thumbnail($width, $width));
 
     return asset(config('paths.placeholder.avatar'));
 }
