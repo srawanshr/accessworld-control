@@ -83,11 +83,7 @@
                     <div class="gui-icon">
                         <i class="md md-message"></i>
                     </div>
-<<<<<<< HEAD
                     <span class="title">Testimonials</span>
-=======
-                    <span class="title">Testimonial</span>
->>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
                 </a>
             </li>
             <!-- END TESTIMONIALS -->
@@ -125,7 +121,6 @@
             </li>
             <!-- END PAGES -->
 
-<<<<<<< HEAD
             <!-- BEGIN MENU -->
             <li>
                 <a href="{{ route('menu.index') }}">
@@ -136,7 +131,7 @@
                 </a>
             </li>
             <!-- END MENU -->
-=======
+
             <!-- BEGIN STAFF -->
             <li>
                 <a href="{{ route('staff.index') }}">
@@ -147,7 +142,6 @@
                 </a>
             </li>
             <!-- END STAFF -->
->>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
 
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
