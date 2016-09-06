@@ -22,6 +22,7 @@ class CreatePagesTable extends Migration {
             $table->text('content')->nullable();
             $table->string('view');
             $table->boolean('is_published')->default(0);
+            $table->boolean('is_primary')->default(0);
             $table->timestamps();
         });
     }

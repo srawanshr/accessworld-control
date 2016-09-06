@@ -11,7 +11,42 @@ class Menu extends Model
      *
      * @var array
      */
-    protected $fillable = [ 'name', 'slug', 'type', 'url', 'icon', 'order' ];
+    protected $fillable = [ 'slug', 'name', 'url', 'icon', 'order' ];
+
+    /**
+     * Set the name attribute and the slug.
+     *
+     * @param string $value
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+
+        if ( ! $this->exists)
+        {
+            $this->setUniqueSlug($value, '');
+        }
+    }
+
+    /**
+     * Recursive routine to set a unique slug.
+     *
+     * @param string $name
+     * @param mixed $extra
+     */
+    protected function setUniqueSlug($name, $extra)
+    {
+        $slug = str_slug($name . '-' . $extra);
+
+        if (static::whereSlug($slug)->exists())
+        {
+            $this->setUniqueSlug($name, $extra + 1);
+
+            return;
+        }
+
+        $this->attributes['slug'] = $slug;
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphOne
@@ -22,10 +57,10 @@ class Menu extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function subMenus()
     {
-        return $this->morphMany('App\Models\SubMenu', 'submenuable');
+        return $this->hasMany(SubMenu::class);
     }
 }

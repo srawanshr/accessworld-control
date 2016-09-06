@@ -123,7 +123,7 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
-    | Service CRUD Routes
+    | Testimonial CRUD Routes
     |--------------------------------------------------------------------------
     */
     Route::group(['as' => 'testimonial.', 'prefix' => 'testimonial'], function ()
@@ -134,5 +134,34 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{testimonial}/edit', 'TestimonialController@edit')->name('edit');
         Route::put('{testimonial}', 'TestimonialController@update')->name('update');
         Route::delete('{testimonial}', 'TestimonialController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Menu CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'menu.', 'prefix' => 'menu'], function ()
+    {
+        Route::get('', 'MenuController@index')->name('index');
+        Route::post('', 'MenuController@store')->name('store');
+        Route::put('', 'MenuController@update')->name('update');
+        Route::delete('{menu}', 'MenuController@destroy')->name('destroy');
+
+        Route::group(['as' => 'subMenu.'], function ()
+        {
+            Route::post('{menu}/subMenu', 'MenuController@storeSubMenu')->name('store');
+            Route::delete('{menu}/subMenu/{subMenu}', 'MenuController@destroySubMenu')->name('destroy');
+        });
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Component Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'component.', 'prefix' => 'component'], function ()
+    {
+        Route::get('{menu}/subMenuModal', 'ComponentController@subMenuModal')->name('subMenuModal');
     });
 });

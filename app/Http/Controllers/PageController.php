@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdatePage;
 use DB;
 use App\Models\Page;
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Requests\StorePage;
+use App\Http\Requests\UpdatePage;
 
 class PageController extends Controller {
 

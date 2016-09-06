@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\Http\Requests;
 use Bican\Roles\Models\Role;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreRole;
 use App\Http\Requests\UpdateRole;
 use Bican\Roles\Models\Permission;

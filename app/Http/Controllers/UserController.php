@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateUser;
-use App\Notifications\ActivationCode;
+use DB;
 use Form;
 use Datatables;
 use App\Models\User;
-use App\Models\Image;
-use App\Http\Requests;
-use App\Models\UserDetail;
 use Illuminate\Http\Request;
 use Bican\Roles\Models\Role;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\StoreUser;
+use App\Http\Requests\UpdateUser;
+use App\Notifications\ActivationCode;
 
 class UserController extends Controller {
 

@@ -70,9 +70,9 @@
             <li>
                 <a href="{{ route('testimonial.index') }}">
                     <div class="gui-icon">
-                        <i class="md md-layers"></i>
+                        <i class="md md-message"></i>
                     </div>
-                    <span class="title">Testiminial</span>
+                    <span class="title">Testimonials</span>
                 </a>
             </li>
             <!-- END TESTIMONIALS -->
@@ -87,6 +87,17 @@
                 </a>
             </li>
             <!-- END PAGES -->
+
+            <!-- BEGIN MENU -->
+            <li>
+                <a href="{{ route('menu.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-list"></i>
+                    </div>
+                    <span class="title">Menu</span>
+                </a>
+            </li>
+            <!-- END MENU -->
 
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
