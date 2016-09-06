@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateJobsTable extends Migration
 {
@@ -12,7 +12,9 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('jobs', function (Blueprint $table)
+        {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('queue');
             $table->longText('payload');
@@ -21,7 +23,7 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('reserved_at')->nullable();
             $table->unsignedInteger('available_at');
             $table->unsignedInteger('created_at');
-            $table->index(['queue', 'reserved', 'reserved_at']);
+            $table->index([ 'queue', 'reserved', 'reserved_at' ]);
         });
     }
 

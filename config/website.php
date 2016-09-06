@@ -20,6 +20,7 @@ return [
     'url'         => 'https://control.accessworld.net',
     'email'       => 'support@accessworld.net',
     'logo'        => '/img/logo.png',
-    'favicon'     => '/img/favicon.png'
+    'favicon'     => '/img/favicon.png',
+    'currency'    => 'Rs. '
 
 ];

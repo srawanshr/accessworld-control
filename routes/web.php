@@ -10,6 +10,11 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout');
 
 /*
+ * Staff QR Code Image Route
+ */
+Route::get('qrcode/{id}', [ 'as' => 'qrcode.show', 'uses' => 'StaffController@qr']);
+
+/*
 |--------------------------------------------------------------------------
 | Password reset link request routes
 |--------------------------------------------------------------------------
@@ -87,21 +92,21 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{service}/edit', 'ServiceController@edit')->name('edit');
         Route::put('{service}', 'ServiceController@update')->name('update');
         Route::delete('{service}', 'ServiceController@destroy')->name('destroy');
+    });
 
-        /*
+    /*
         |--------------------------------------------------------------------------
         | Service Package CRUD Routes
         |--------------------------------------------------------------------------
         */
-        Route::group(['as' => 'package.', 'prefix' => '{service}/package'], function ()
-        {
-            Route::get('', 'PackageController@index')->name('index');
-            Route::get('create', 'PackageController@index')->name('create');
-            Route::post('', 'PackageController@store')->name('store');
-            Route::get('{package}/edit', 'PackageController@edit')->name('edit');
-            Route::put('{package}', 'PackageController@update')->name('update');
-            Route::delete('{package}', 'PackageController@destroy')->name('destroy');
-        });
+    Route::group(['as' => 'service.package.', 'prefix' => 'service/{service}/package'], function ()
+    {
+        Route::get('', 'PackageController@index')->name('index');
+        Route::get('create', 'PackageController@create')->name('create');
+        Route::post('', 'PackageController@store')->name('store');
+        Route::get('{package}/edit', 'PackageController@edit')->name('edit');
+        Route::put('{package}', 'PackageController@update')->name('update');
+        Route::delete('{package}', 'PackageController@destroy')->name('destroy');
     });
 
     /*
@@ -120,9 +125,41 @@ Route::group(['middleware' => 'auth'], function ()
         Route::delete('{page}', 'PageController@destroy')->name('destroy');
     });
 
+    /*
+    |--------------------------------------------------------------------------
+    | Staff CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'staff.', 'prefix' => 'staff'], function ()
+    {
+        Route::get('', 'StaffController@index')->name('index');
+        Route::get('create', 'StaffController@create')->name('create');
+        Route::post('', 'StaffController@store')->name('store');
+        Route::get('{staff}/edit', 'StaffController@edit')->name('edit');
+        Route::put('{staff}', 'StaffController@update')->name('update');
+        Route::delete('{staff}', 'StaffController@destroy')->name('destroy');
+    });
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+    | Customer CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'customer.', 'prefix' => 'customer'], function ()
+    {
+        Route::get('', 'CustomerController@index')->name('index');
+        Route::get('create', 'CustomerController@create')->name('create');
+        Route::post('', 'CustomerController@store')->name('store');
+        Route::get('{customer}/edit', 'CustomerController@edit')->name('edit');
+        Route::put('{customer}', 'CustomerController@update')->name('update');
+        Route::delete('{customer}', 'CustomerController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+>>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
     | Testimonial CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -138,6 +175,7 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
     | Menu CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -153,15 +191,42 @@ Route::group(['middleware' => 'auth'], function ()
             Route::post('{menu}/subMenu', 'MenuController@storeSubMenu')->name('store');
             Route::delete('{menu}/subMenu/{subMenu}', 'MenuController@destroySubMenu')->name('destroy');
         });
+=======
+    | Certificates CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'certificate.', 'prefix' => 'certificate'], function ()
+    {
+        Route::get('', 'CertificateController@index')->name('index');
+        Route::get('create', 'CertificateController@create')->name('create');
+        Route::post('', 'CertificateController@store')->name('store');
+        Route::get('{certificates}/edit', 'CertificateController@edit')->name('edit');
+        Route::put('{certificates}', 'CertificateController@update')->name('update');
+        Route::delete('{certificates}', 'CertificateController@destroy')->name('destroy');
+>>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
     });
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
     | Component Routes
     |--------------------------------------------------------------------------
     */
     Route::group(['as' => 'component.', 'prefix' => 'component'], function ()
     {
         Route::get('{menu}/subMenuModal', 'ComponentController@subMenuModal')->name('subMenuModal');
+=======
+    | Client CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'client.', 'prefix' => 'client'], function ()
+    {
+        Route::get('', 'ClientController@index')->name('index');
+        Route::get('create', 'ClientController@create')->name('create');
+        Route::post('', 'ClientController@store')->name('store');
+        Route::get('{client}/edit', 'ClientController@edit')->name('edit');
+        Route::put('{client}', 'ClientController@update')->name('update');
+        Route::delete('{client}', 'ClientController@destroy')->name('destroy');
+>>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
     });
 });

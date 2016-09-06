@@ -7,8 +7,7 @@
  */
 function display($value, $dash = 'NA')
 {
-    if (empty($value))
-        return $dash;
+    if (empty( $value )) return $dash;
 
     return $value;
 }
@@ -24,7 +23,8 @@ function user_avatar($width, $username = null)
     if ($username)
     {
         $user = \App\Models\User::whereUsername($username)->first();
-    } else
+    }
+    else
     {
         $user = auth()->user();
     }
@@ -32,8 +32,23 @@ function user_avatar($width, $username = null)
     if ($image = $user->image)
     {
         return asset($image->thumbnail($width, $width));
-    } else
+    }
+    else
     {
         return asset(config('paths.placeholder.avatar'));
     }
+}
+
+/**
+ * @param $width
+ * @param $staff
+ * @return mixed
+ */
+function thumbnail($width, $entity = null)
+{
+    if ( ! is_null($entity))
+        if ($image = $entity->image)
+            return asset($image->thumbnail($width, $width));
+
+    return asset(config('paths.placeholder.avatar'));
 }

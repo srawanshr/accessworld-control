@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateInternalVpsTable extends Migration
 {
@@ -12,7 +12,8 @@ class CreateInternalVpsTable extends Migration
      */
     public function up()
     {
-        Schema::create('internal_vps', function (Blueprint $table) {
+        Schema::create('internal_vps', function (Blueprint $table)
+        {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
@@ -33,22 +34,10 @@ class CreateInternalVpsTable extends Migration
             $table->string('vdi_uuid');
             $table->string('server_id');
             $table->integer('term')->nullable();
-            $table->foreign('provisioned_by')
-                ->references('id')
-                ->on('users')
-                ->onDelete('restrict');
-            $table->foreign('operating_system_id')
-                ->references('id')
-                ->on('operating_systems')
-                ->onDelete('restrict');
-            $table->foreign('customer_id')
-                ->references('id')
-                ->on('customers')
-                ->onDelete('restrict');
-            $table->foreign('data_center_id')
-                ->references('id')
-                ->on('data_centers')
-                ->onDelete('restrict');
+            $table->foreign('provisioned_by')->references('id')->on('users')->onDelete('restrict');
+            $table->foreign('operating_system_id')->references('id')->on('operating_systems')->onDelete('restrict');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('restrict');
+            $table->foreign('data_center_id')->references('id')->on('data_centers')->onDelete('restrict');
             $table->softDeletes();
             $table->timestamps();
         });

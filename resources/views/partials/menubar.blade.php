@@ -27,6 +27,17 @@
             </li><!--end /menu-li -->
             <!-- END DASHBOARD -->
 
+            <!-- BEGIN CUSTOMER -->
+            <li>
+                <a href="{{ route('customer.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-account-child"></i>
+                    </div>
+                    <span class="title">Customer</span>
+                </a>
+            </li>
+            <!-- END CUSTOMER -->
+
             <!-- BEGIN USERS -->
             <li class="gui-folder">
                 <a href="javascript:void(0);">
@@ -72,10 +83,36 @@
                     <div class="gui-icon">
                         <i class="md md-message"></i>
                     </div>
+<<<<<<< HEAD
                     <span class="title">Testimonials</span>
+=======
+                    <span class="title">Testimonial</span>
+>>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
                 </a>
             </li>
             <!-- END TESTIMONIALS -->
+
+            <!-- BEGIN CERTIFICATE -->
+            <li>
+                <a href="{{ route('certificate.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Certificate</span>
+                </a>
+            </li>
+            <!-- END CERTIFICATE -->
+
+            <!-- BEGIN CLIENT -->
+            <li>
+                <a href="{{ route('client.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Client</span>
+                </a>
+            </li>
+            <!-- END CLIENT -->
 
             <!-- BEGIN PAGES -->
             <li>
@@ -88,6 +125,7 @@
             </li>
             <!-- END PAGES -->
 
+<<<<<<< HEAD
             <!-- BEGIN MENU -->
             <li>
                 <a href="{{ route('menu.index') }}">
@@ -98,6 +136,18 @@
                 </a>
             </li>
             <!-- END MENU -->
+=======
+            <!-- BEGIN STAFF -->
+            <li>
+                <a href="{{ route('staff.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-assignment-ind"></i>
+                    </div>
+                    <span class="title">Staff</span>
+                </a>
+            </li>
+            <!-- END STAFF -->
+>>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
 
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->

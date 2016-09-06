@@ -14,7 +14,25 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @include('testimonial.partials.table')
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Icon</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @if($testimonials->isEmpty())
+                                <tr>
+                                    <td class="text-center" colspan="5">No data available.</td>
+                                </tr>
+                            @else
+                                @each('testimonial.partials.table', $testimonial, 'testimonial')
+                            @endif
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
