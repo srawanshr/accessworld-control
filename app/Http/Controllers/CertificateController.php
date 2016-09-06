@@ -54,7 +54,7 @@ class CertificateController extends Controller
      */
     public function edit(Certificate $certificate)
     {
-        return view('admin.certificates.edit', compact('certificate'));
+        return view('certificate.edit', compact('certificate'));
     }
 
     /**

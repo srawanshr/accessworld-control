@@ -165,9 +165,9 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('', 'CertificateController@index')->name('index');
         Route::get('create', 'CertificateController@create')->name('create');
         Route::post('', 'CertificateController@store')->name('store');
-        Route::get('{certificates}/edit', 'CertificateController@edit')->name('edit');
-        Route::put('{certificates}', 'CertificateController@update')->name('update');
-        Route::delete('{certificates}', 'CertificateController@destroy')->name('destroy');
+        Route::get('{certificate}/edit', 'CertificateController@edit')->name('edit');
+        Route::put('{certificate}', 'CertificateController@update')->name('update');
+        Route::delete('{certificate}', 'CertificateController@destroy')->name('destroy');
     });
 
     /*

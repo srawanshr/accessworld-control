@@ -13,8 +13,10 @@
                 <div class="card-head">
                     <header>Edit a certificate</header>
                     <div class="tools">
-                        <a class="btn btn-default btn-ink" href="{{ route('admin.certificate.index') }}"><i
-                                    class="fa fa-arrow-left"></i> Back</a>
+                        <a class="btn btn-default btn-ink" href="{{ route('certificate.index') }}">
+                            <i class="md md-arrow-back"></i>
+                            Back
+                        </a>
                     </div>
                 </div>
                 {{ Form::model($certificate, [
