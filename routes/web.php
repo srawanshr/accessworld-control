@@ -124,6 +124,7 @@ Route::group(['middleware' => 'auth'], function ()
         Route::put('{page}', 'PageController@update')->name('update');
         Route::delete('{page}', 'PageController@destroy')->name('destroy');
     });
+
     /*
     |--------------------------------------------------------------------------
     | Staff CRUD Routes
@@ -139,9 +140,26 @@ Route::group(['middleware' => 'auth'], function ()
         Route::delete('{staff}', 'StaffController@destroy')->name('destroy');
     });
 
+    /*
+    |--------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+    | Customer CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'customer.', 'prefix' => 'customer'], function ()
+    {
+        Route::get('', 'CustomerController@index')->name('index');
+        Route::get('create', 'CustomerController@create')->name('create');
+        Route::post('', 'CustomerController@store')->name('store');
+        Route::get('{customer}/edit', 'CustomerController@edit')->name('edit');
+        Route::put('{customer}', 'CustomerController@update')->name('update');
+        Route::delete('{customer}', 'CustomerController@destroy')->name('destroy');
+    });
 
     /*
     |--------------------------------------------------------------------------
+>>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
     | Testimonial CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -157,6 +175,23 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
+    | Menu CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'menu.', 'prefix' => 'menu'], function ()
+    {
+        Route::get('', 'MenuController@index')->name('index');
+        Route::post('', 'MenuController@store')->name('store');
+        Route::put('', 'MenuController@update')->name('update');
+        Route::delete('{menu}', 'MenuController@destroy')->name('destroy');
+
+        Route::group(['as' => 'subMenu.'], function ()
+        {
+            Route::post('{menu}/subMenu', 'MenuController@storeSubMenu')->name('store');
+            Route::delete('{menu}/subMenu/{subMenu}', 'MenuController@destroySubMenu')->name('destroy');
+        });
+=======
     | Certificates CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -165,13 +200,28 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('', 'CertificateController@index')->name('index');
         Route::get('create', 'CertificateController@create')->name('create');
         Route::post('', 'CertificateController@store')->name('store');
+<<<<<<< HEAD
         Route::get('{certificate}/edit', 'CertificateController@edit')->name('edit');
         Route::put('{certificate}', 'CertificateController@update')->name('update');
         Route::delete('{certificate}', 'CertificateController@destroy')->name('destroy');
+=======
+        Route::get('{certificates}/edit', 'CertificateController@edit')->name('edit');
+        Route::put('{certificates}', 'CertificateController@update')->name('update');
+        Route::delete('{certificates}', 'CertificateController@destroy')->name('destroy');
+>>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
+>>>>>>> fd90bb2c9f40be23b4fefbb990b7af435192ced1
     });
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
+    | Component Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'component.', 'prefix' => 'component'], function ()
+    {
+        Route::get('{menu}/subMenuModal', 'ComponentController@subMenuModal')->name('subMenuModal');
+=======
     | Client CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -183,5 +233,6 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{client}/edit', 'ClientController@edit')->name('edit');
         Route::put('{client}', 'ClientController@update')->name('update');
         Route::delete('{client}', 'ClientController@destroy')->name('destroy');
+>>>>>>> d7611f90b8713afa982b9bd9d02a4345761ab7bd
     });
 });

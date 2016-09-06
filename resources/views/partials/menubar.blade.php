@@ -27,6 +27,17 @@
             </li><!--end /menu-li -->
             <!-- END DASHBOARD -->
 
+            <!-- BEGIN CUSTOMER -->
+            <li>
+                <a href="{{ route('customer.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-account-child"></i>
+                    </div>
+                    <span class="title">Customer</span>
+                </a>
+            </li>
+            <!-- END CUSTOMER -->
+
             <!-- BEGIN USERS -->
             <li class="gui-folder">
                 <a href="javascript:void(0);">
@@ -70,9 +81,9 @@
             <li>
                 <a href="{{ route('testimonial.index') }}">
                     <div class="gui-icon">
-                        <i class="md md-layers"></i>
+                        <i class="md md-message"></i>
                     </div>
-                    <span class="title">Testimonial</span>
+                    <span class="title">Testimonials</span>
                 </a>
             </li>
             <!-- END TESTIMONIALS -->
@@ -109,6 +120,17 @@
                 </a>
             </li>
             <!-- END PAGES -->
+
+            <!-- BEGIN MENU -->
+            <li>
+                <a href="{{ route('menu.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-list"></i>
+                    </div>
+                    <span class="title">Menu</span>
+                </a>
+            </li>
+            <!-- END MENU -->
 
             <!-- BEGIN STAFF -->
             <li>

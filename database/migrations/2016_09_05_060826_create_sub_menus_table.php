@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubMenusTable extends Migration
-{
+class CreateSubMenusTable extends Migration {
+
     /**
      * Run the migrations.
      *
@@ -13,16 +13,20 @@ class CreateSubMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_menus', function (Blueprint $table) {
+        Schema::create('sub_menus', function (Blueprint $table)
+        {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('submenuable_id')->unsigned();
-            $table->string('submenuable_type');
-            $table->integer('order');
+            $table->string('slug')->unique();
+            $table->integer('menu_id')->unsigned()->index();
             $table->string('name');
-            $table->string('slug');
             $table->text('url');
-            $table->string('icon');
+            $table->integer('order');
+            $table->string('icon')->nullable();
+            $table->foreign('menu_id')
+                ->references('id')
+                ->on('menus')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

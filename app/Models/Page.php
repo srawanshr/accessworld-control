@@ -70,6 +70,26 @@ class Page extends Model {
     }
 
     /**
+     * @param $query
+     * @param bool $type
+     * @return mixed
+     */
+    public function scopePublished($query, $type = true)
+    {
+        return $query->where('is_published', $type);
+    }
+
+    /**
+     * @param $query
+     * @param bool $type
+     * @return mixed
+     */
+    public function scopePrimary($query, $type = true)
+    {
+        return $query->where('is_primary', $type);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
     public function image()
