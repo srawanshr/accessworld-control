@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use DB;
 use App\Http\Requests;
 use App\Models\Testimonial;
@@ -29,6 +30,8 @@ class TestimonialController extends Controller
      */
     public function create()
     {
+        $customer = Customer::pluck('name', 'id');
+        dd($customer);
 
         return view('testimonial.create', compact('customer'));
     }
