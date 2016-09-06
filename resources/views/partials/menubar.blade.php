@@ -72,7 +72,7 @@
                     <div class="gui-icon">
                         <i class="md md-layers"></i>
                     </div>
-                    <span class="title">Testiminial</span>
+                    <span class="title">Testimonial</span>
                 </a>
             </li>
             <!-- END TESTIMONIALS -->

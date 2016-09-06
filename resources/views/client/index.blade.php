@@ -30,7 +30,7 @@
                                 <td class="text-center" colspan="5">No data available.</td>
                             </tr>
                         @else
-                            @each('client.partials.table', $client, 'client')
+                            @each('client.partials.table', $clients, 'client')
                         @endif
                         </tbody>
                     </table>

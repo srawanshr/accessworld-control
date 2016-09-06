@@ -1,6 +1,7 @@
 <tr>
-    <td>{{$key+1}}</td>
-    <td><img src="{{$client->image->thumbnail}}" class="img-circle width-1"></td>
+    {{ dd($client->id) }}
+    <td>{{$client->id}}</td>
+    <td><img src="{{ dd($client->image->thumbnail) }}" class="img-circle width-1"></td>
     <td>{{$client->name}}</td>
     <td class="text-right">
         <a href="{{route('admin.client.edit', $client->slug)}}" class="btn btn-icon-toggle"
