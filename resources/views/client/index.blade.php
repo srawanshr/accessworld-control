@@ -2,6 +2,9 @@
 
 @section('title', 'Clients')
 
+@push('styles')
+@endpush
+
 @section('content')
     <section>
         <div class="section-body">
@@ -21,6 +24,7 @@
                             <th>#</th>
                             <th>Logo</th>
                             <th>Name</th>
+                            <th>Website</th>
                             <th class="text-right">Actions</th>
                         </tr>
                         </thead>
@@ -39,3 +43,7 @@
         </div>
     </section>
 @stop
+
+
+@push('scripts')
+@endpush

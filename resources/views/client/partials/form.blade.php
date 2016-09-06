@@ -18,10 +18,10 @@
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="form-group">
-                        @if(isset($client) && $client->image)
-                            <img src="{{ asset($client->image->path) }}" data-src="{{ asset($client->image->path) }}" class="preview" height="150" width="150">
+                        @if(isset($client))
+                            <img src="{{ thumbnail(200, $client) }}" data-src="{{ thumbnail(200, $client) }}" class="preview" height="150" width="150">
                         @else
-                            <img src="{{ asset(config('paths.placeholder.default')) }}" data-src="{{ asset(config('paths.placeholder.default')) }}" class="preview" height="150" width="150">
+                            <img src="{{ thumbnail(200) }}" data-src="{{ thumbnail(200) }}" class="preview" height="150" width="150">
                         @endif
                     </div>
                 </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                {!! Form::file('image', ['class' => 'avatar-file', isset($client) ? '':'required', 'accept' => 'image/*', 'data-msg' => 'Please enter a value with a valid image. PNG, JPG or GIF']) !!}
+                {!! Form::file('image', ['class' => 'image-input', isset($client) ? '':'required', 'accept' => 'image/*', 'data-msg' => 'Please enter a value with a valid image. PNG, JPG or GIF']) !!}
                 <label>Image</label>
             </div>
         </div>

@@ -17,6 +17,7 @@ return [
         'User' => 'avatars',
         'Page' => 'featured',
         'Staff' => 'avatars',
+        'Client' => 'logos',
 
     ],
 
