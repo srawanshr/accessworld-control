@@ -44,9 +44,9 @@ function user_avatar($width, $username = null)
  * @param $staff
  * @return mixed
  */
-function staff_avatar($width, $staff)
+function thumbnail($width, $entity = null)
 {
-    if ($image = $staff->image) return asset($image->thumbnail($width, $width));
+    if ( ! is_null($entity)) if ($image = $entity->image) return asset($image->thumbnail($width, $width));
 
     return asset(config('paths.placeholder.avatar'));
 }

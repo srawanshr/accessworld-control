@@ -4,9 +4,9 @@
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     @if(isset($staff))
-                        <img src="{{ staff_avatar(200, $staff) }}" data-src="{{ staff_avatar(200, $staff) }}" class="preview" alt="avatar" width="200" height="200">
+                        <img src="{{ thumbnail(200, $staff) }}" data-src="{{ thumbnail(200, $staff) }}" class="preview" alt="avatar" width="200" height="200">
                     @else
-                        <img src="{{ asset(config('paths.placeholder.avatar')) }}" data-src="{{ asset(config('paths.placeholder.avatar')) }}" class="preview" alt="avatar" width="200" height="200">
+                        <img src="{{ thumbnail(200) }}" data-src="{{ thumbnail(200) }}" class="preview" alt="avatar" width="200" height="200">
                     @endif
                 </div>
             </div>
