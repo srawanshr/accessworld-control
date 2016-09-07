@@ -45,7 +45,7 @@ class CertificateController extends Controller
             $this->uploadRequestImage($request, $certificate);
         });
 
-        return redirect()->back()->with('success', 'Certificate created!');
+        return redirect()->route('certificate.index')->with('success', 'Certificate created!');
     }
 
     /**
@@ -72,7 +72,7 @@ class CertificateController extends Controller
             $this->uploadRequestImage($request, $certificate);
         });
 
-        return redirect()->back()->with('success', 'Certificate updated!');
+        return redirect()->route('certificate.index')->with('success', 'Certificate updated!');
     }
 
     /**

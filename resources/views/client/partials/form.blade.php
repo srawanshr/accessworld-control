@@ -1,4 +1,5 @@
 <div class="card-body">
+    @include('partials.errors')
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">

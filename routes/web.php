@@ -202,6 +202,21 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | Client CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'operatingSystem.', 'prefix' => 'operatingSystem'], function ()
+    {
+        Route::get('', 'OperatingSystemController@index')->name('index');
+        Route::get('create', 'OperatingSystemController@create')->name('create');
+        Route::post('', 'OperatingSystemController@store')->name('store');
+        Route::get('{operatingSystem}/edit', 'OperatingSystemController@edit')->name('edit');
+        Route::put('{operatingSystem}', 'OperatingSystemController@update')->name('update');
+        Route::delete('{operatingSystem}', 'OperatingSystemController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Menu CRUD Routes
     |--------------------------------------------------------------------------
     */
