@@ -2,15 +2,14 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="form-group">
-                {!! Form::select('customer_id', $customers, old('customer_id'), ['class'=>'form-control select2-list', 'data-placeholder' => 'Select a customer', 'required', 'multiple']) !!}
-                <label>Customer</label>
+                {{ Form::select('customer_id', $customer, old('customer_id'), ['class'=>'form-control select2-list', 'data-placeholder' => 'Select a customer', 'required', 'multiple']) }}
             </div>
         </div>
         <div class="col-sm-4">
             <div class="form-group">
                 <div class="checkbox checkbox-inline checkbox-styled">
                     <label>
-                        {!! Form::checkbox('is_published', 1, old('is_published')) !!}
+                        {{ Form::checkbox('is_published', 1, old('is_published')) }}
                         <span>Publish</span>
                     </label>
                 </div>
@@ -18,7 +17,7 @@
         </div>
         <div class="col-sm-12">
             <div class="form-group floating-label">
-                {!! Form::textarea('quote', old('quote'), ['class'=>'form-control', 'required', 'maxlength' => 300, 'rows'=>4]) !!}
+                {{ Form::textarea('quote', old('quote'), ['class'=>'form-control', 'required', 'maxlength' => 300, 'rows'=>4]) }}
                 <label>Quote</label>
             </div>
         </div>

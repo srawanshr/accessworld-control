@@ -15,15 +15,18 @@ class CreateCustomersTable extends Migration
         Schema::create('customers',function(Blueprint $table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('slug');
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->string('activation_code', 60)->nullable();
-            $table->tinyInteger('status')->default('0');
-            $table->boolean('is_logged')->default('0');
-            $table->boolean('is_admin')->default('0');
-            $table->boolean('is_subscribed')->default('0');
+            $table->string('country');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('company')->nullable();
+            $table->tinyInteger('status')->default(0);
+            $table->boolean('is_subscribed')->default(0);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

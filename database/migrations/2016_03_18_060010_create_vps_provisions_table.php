@@ -22,6 +22,11 @@ class CreateVpsProvisionsTable extends Migration
             $table->integer('operating_system_id')->unsigned();
             $table->integer('data_center_id')->unsigned();
             $table->string('virtual_machine');
+            $table->string('uuid');
+            $table->float('cpu');
+            $table->float('ram');
+            $table->float('disk');
+            $table->float('traffic');
             $table->boolean('is_managed')->default(0);
             $table->boolean('is_suspended')->default(0);
             $table->string('server_id');

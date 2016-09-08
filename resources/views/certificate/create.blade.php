@@ -19,9 +19,9 @@
                         </a>
                     </div>
                 </div>
-                {!! Form::open(['route' => 'certificate.store', 'class' => 'form form-validate', 'role' => 'form', 'novalidate', 'files'=>true]) !!}
+                {{ Form::open(['route' => 'certificate.store', 'class' => 'form form-validate', 'role' => 'form', 'novalidate', 'files'=>true]) }}
                     @include('certificate.partials.form')
-                {!! Form::close() !!}
+                {{ Form::close() }}
             </div><!--end .card -->
         </div>
     </section>

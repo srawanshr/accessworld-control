@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClient;
+use App\Http\Requests\UpdateClient;
 use App\Models\Client;
 use DB;
 use Illuminate\Http\Request;
@@ -38,19 +40,16 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClient $request)
     {
-        $inputs = $request->all();
-
-        $inputs['slug'] = str_slug($inputs['name']);
-
-        DB::transaction(function () use ($inputs, $request) {
-            $client = Client::create($inputs);
+        DB::transaction(function () use ($request)
+        {
+            $client = Client::create($request->data());
 
             $this->uploadRequestImage($request, $client);
         });
 
-        return redirect()->back()->with('success', 'Client added!');
+        return redirect()->route('client.index')->with('success', 'Client added!');
     }
 
     /**
@@ -71,17 +70,16 @@ class ClientController extends Controller
      * @param  client $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(UpdateClient $request, Client $client)
     {
-        $inputs = $request->all();
-
-        DB::transaction(function () use ($request, $inputs, $client) {
-            $client->update($inputs);
+        DB::transaction(function () use ($request, $client)
+        {
+            $client->update($request->data());
 
             $this->uploadRequestImage($request, $client);
         });
 
-        return redirect()->back()->with('success', 'Client updated!');
+        return redirect()->route('client.index')->with('success', 'Client updated!');
     }
 
     /**
@@ -92,10 +90,6 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        if (!$this->user->can('delete.cms')) return redirect()->route('errors', '401');
-
-        $client->delete();
-
         return redirect()->back()->with('success', 'Client deleted!');
     }
 }

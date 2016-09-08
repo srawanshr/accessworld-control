@@ -17,6 +17,7 @@ class CreateOperatingSystemsTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique();
             $table->string('name');
+            $table->float('price')->default(0);
             $table->boolean('is_active')->default(0);
             $table->timestamps();
         });

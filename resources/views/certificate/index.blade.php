@@ -34,7 +34,7 @@
                                 <td class="text-center" colspan="5">No data available.</td>
                             </tr>
                         @else
-                            @each('certificate.partials.table', $certificate, 'certificate')
+                            @each('certificate.partials.table', $certificates, 'certificate')
                         @endif
                         </tbody>
                     </table>

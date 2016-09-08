@@ -16,17 +16,16 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="dt_customer" class="table order-column hover" data-source="{{route('customer.list')}}">
+                    <table id="dt_customer" class="table order-column hover" data-source="{{ route('customer.list') }}" data-swftools="{{ asset('/js/libs/DataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf') }}">
                         <thead>
                         <tr>
-                            <th>
+                            <th class="text-center">
                                 <i class="md md-view-stream"></i>
                             </th>
                             <th>Avatar</th>
-                            <th>Username</th>
+                            <th>Name</th>
                             <th>Email</th>
-                            <th>Role</th>
-                            <th>Actions</th>
+                            <th class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
