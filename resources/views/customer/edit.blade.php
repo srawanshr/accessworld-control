@@ -1,14 +1,14 @@
 @extends('layout')
 
-@section('title', 'Users')
+@section('title', 'Customers')
 
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>Edit user
-                        <span class="text-primary">({{ $user->name }})</span>
+                    <header>Edit customer
+                        <span class="text-primary">({{ $customer->name }})</span>
                     </header>
                     <div class="tools">
                         <a class="btn btn-default btn-ink" onclick="history.go(-1);return false;">
@@ -17,15 +17,15 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::model($user, [
-                    'route' => ['user.update', $user->username],
+                {{ Form::model($customer, [
+                    'route' => ['customer.update', $customer->username],
                     'class' => 'form form-validate',
                     'method' => 'PUT',
                     'role' => 'form',
                     'files' => true,
                     'novalidate'
                 ]) }}
-                @include('user.partials.form')
+                @include('customer.partials.form')
                 {{ Form::close() }}
             </div>
         </div>

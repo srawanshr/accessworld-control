@@ -148,6 +148,7 @@ Route::group(['middleware' => 'auth'], function ()
     Route::group(['as' => 'customer.', 'prefix' => 'customer'], function ()
     {
         Route::get('', 'CustomerController@index')->name('index');
+        Route::get('{customer}', 'CustomerController@show')->name('show');
         Route::get('create', 'CustomerController@create')->name('create');
         Route::post('', 'CustomerController@store')->name('store');
         Route::get('{customer}/edit', 'CustomerController@edit')->name('edit');

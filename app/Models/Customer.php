@@ -21,7 +21,18 @@ class Customer extends Model
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'slug', 'is_admin'
+        'username',
+        'email',
+        'password',
+        'activation_code',
+        'country',
+        'first_name',
+        'last_name',
+        'phone',
+        'address',
+        'company',
+        'status',
+        'is_subscribed'
     ];
 
     /**
@@ -57,7 +68,7 @@ class Customer extends Model
      */
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'username';
     }
 
     /**
@@ -66,7 +77,7 @@ class Customer extends Model
      */
     public function getNameAttribute()
     {
-        return is_empty($this->detail->first_name) ? ucwords($this->username) : ucwords($this->detail->first_name) . ' ' . ucwords($this->detail->last_name);
+        return empty($this->detail->first_name) ? ucwords($this->username) : ucwords($this->detail->first_name) . ' ' . ucwords($this->detail->last_name);
     }
 
     /**
@@ -109,5 +120,53 @@ class Customer extends Model
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function vpsProvisions()
+    {
+        return $this->hasMany(VpsProvision::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function emailProvisions()
+    {
+        return $this->hasMany(EmailProvision::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function webProvisions()
+    {
+        return $this->hasMany(WebProvision::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function domainProvisions()
+    {
+        return $this->hasMany(DomainOrder::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sslProvisions()
+    {
+        return $this->hasMany(SslOrder::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function freeDns()
+    {
+        return $this->hasMany(FreeDns::class);
     }
 }

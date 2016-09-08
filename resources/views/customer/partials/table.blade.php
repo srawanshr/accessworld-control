@@ -1,21 +1,31 @@
 <script>
-    (function (namespace, $) {
+    (function(namespace, $) {
         "use strict";
 
-        var UserDataTable = function () {
+        var CustomerDatatable = function() {
+            // Create reference to this instance
             var o = this;
-            $(document).ready(function () {
+            // Initialize app when document is ready
+            $(document).ready(function() {
                 o.initialize();
             });
 
         };
-        var p = UserDataTable.prototype;
+        var p = CustomerDatatable.prototype;
 
-        p.initialize = function () {
+        // =========================================================================
+        // INIT
+        // =========================================================================
+
+        p.initialize = function() {
             this._initDataTables();
         };
 
-        p._initDataTables = function () {
+        // =========================================================================
+        // DATATABLES
+        // =========================================================================
+
+        p._initDataTables = function() {
             if (!$.isFunction($.fn.dataTable)) {
                 return;
             }
@@ -23,85 +33,67 @@
             this.createDatatable();
         };
 
-        p.createDatatable = function () {
-            var $dt_user = $('#dt_user');
-            var table = $dt_user.DataTable({
-                "dom": '<"clear">lfrtip',
+        p.createDatatable = function() {
+            var table = $('#dt_customer').DataTable({
+                "dom": 'T<"clear">lfrtip',
                 "processing": true,
                 "serverSide": true,
-                "ajax": $dt_user.data('source'),
-                "pageLength": "50",
+                "ajax": $('#dt_customer').data('source'),
                 "columns": [
                     {
-                        "class": 'details-control text-center',
+                        "class": 'details-control',
                         "orderable": false,
                         "data": null,
                         "defaultContent": '',
                         "searchable": false
                     },
-                    {
-                        "data": "avatar", "render": function (data, type, full) {
-                            return "<img src='" + data + "' class='img-circle width-1'>";
-                        }, "searchable": false, "class": "text-center", "orderable": false
-                    },
-                    {"data": "username"},
+                    {"data": "avatar", "render" :function(data,type,full){
+                        return "<img src='" + data + "' class='img-circle width-1'>";
+                    }, "searchable": false, "orderable": false},
+                    {"data": "name"},
                     {"data": "email"},
-                    {"data": "role", "class": "text-center"},
-                    {"data": "action", name: "action", "class": "text-right", "orderable": false, "searchable": false}
+                    {"data": "action", name: "action", "class":"text-right", "orderable": false, "searchable": false}
                 ],
-                "order": [[2, 'asc']],
-                "drawCallback": function (settings) {
+                "tableTools": {
+                    "sSwfPath": $('#dt_customer').data('swftools')
+                },
+                "order": [[1, 'asc']],
+                "language": {
+                    "lengthMenu": '_MENU_ entries per page',
+                    "search": '<i class="fa fa-search"></i>',
+                    "paginate": {
+                        "previous": '<i class="fa fa-angle-left"></i>',
+                        "next": '<i class="fa fa-angle-right"></i>'
+                    }
+                },
+                "drawCallback": function( settings ) {
                     $('[data-toggle="tooltip"]').tooltip();
                 }
             });
 
+            // =========================================================================
+            // DETAILS
+            // =========================================================================
+
             var o = this;
-            $dt_user.find('tbody').on('click', 'td.details-control', function () {
+            $('#dt_customer').find('tbody').on('click', 'td.details-control', function() {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr);
-
-                if (row.child.isShown()) {
-                    row.child.hide();
-                    tr.removeClass('shown');
-                }
-                else {
-                    row.child(o._formatDetails(row.data())).show();
-                    tr.addClass('shown');
-                }
+                $.ajax({
+                    "type": "get",
+                    "url": '{{ route('customer.details') }}',
+                    "data": {id: row.data().id},
+                    "success": function (response) {
+                        bootbox.alert(response)
+                    },
+                    "error": function () {
+                        bootbox.alert("<h3 class='text-center'>Error fetching data!</h3>");
+                    }
+                });
             });
         };
 
-        p._formatDetails = function (d) {
-            var status = d.status == 1 ? 'Active' : 'Inactive';
-            var first_name = d.first_name == null ? '-' : d.first_name;
-            var last_name = d.last_name == null ? '-' : d.last_name;
-            var address = d.address == null ? '-' : d.address;
-            var phone = d.phone == null ? '-' : d.phone;
-            return '<div class="card style-default-dark"><div class="card-body text-medium"><div class="row">' +
-                '<div class="col-sm-6">' +
-                '<div class="row">' +
-                '<div class="col-sm-6">First Name:</div>' +
-                '<div class="col-sm-6">' + first_name + '</div>' +
-                '<div class="col-sm-6">Address:</div>' +
-                '<div class="col-sm-6">' + address + '</div>' +
-                '<div class="col-sm-6">Status:</div>' +
-                '<div class="col-sm-6">' + status + '</div>' +
-                '</div>' +
-                '</div>' +
-                '<div class="col-sm-6">' +
-                '<div class="row">' +
-                '<div class="col-sm-6">Last Name:</div>' +
-                '<div class="col-sm-6">' + last_name + '</div>' +
-                '<div class="col-sm-6">Phone:</div>' +
-                '<div class="col-sm-6">' + phone + '</div>' +
-                '<div class="col-sm-6">Created:</div>' +
-                '<div class="col-sm-6">' + d.created_at + '</div>' +
-                '</div>' +
-                '</div>' +
-                '</div></div></div>';
-        };
-
-// =========================================================================
-        window.materialadmin.UserDataTable = new UserDataTable;
+        // =========================================================================
+        namespace.CustomerDatatable = new CustomerDatatable;
     }(this.materialadmin, jQuery)); // pass in (namespace, jQuery):
 </script>
