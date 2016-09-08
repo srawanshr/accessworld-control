@@ -121,6 +121,17 @@
             </li>
             <!-- END CLIENT -->
 
+            <!-- BEGIN DATACENTER -->
+            <li>
+                <a href="{{ route('dataCenter.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">DataCenter</span>
+                </a>
+            </li>
+            <!-- END DATACENTER -->
+
             <!-- BEGIN PAGES -->
             <li>
                 <a href="{{ route('page.index') }}">

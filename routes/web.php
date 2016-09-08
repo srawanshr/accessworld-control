@@ -217,6 +217,21 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | DataCenter CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'dataCenter.', 'prefix' => 'dataCenter'], function ()
+    {
+        Route::get('', 'DataCenterController@index')->name('index');
+        Route::get('create', 'DataCenterController@create')->name('create');
+        Route::post('', 'DataCenterController@store')->name('store');
+        Route::get('{dataCenter}/edit', 'DataCenterController@edit')->name('edit');
+        Route::put('{dataCenter}', 'DataCenterController@update')->name('update');
+        Route::delete('{dataCenter}', 'DataCenterController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Menu CRUD Routes
     |--------------------------------------------------------------------------
     */
