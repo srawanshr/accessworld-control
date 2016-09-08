@@ -57,8 +57,6 @@ class Certificate extends Model
      */
     public function delete(array $options = array())
     {
-        $this->image->delete();
-
         parent::delete($options);
     }
 }

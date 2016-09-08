@@ -68,6 +68,17 @@
 
             <!-- BEGIN SERVICES -->
             <li>
+                <a href="{{ route('operatingSystem.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Operating System</span>
+                </a>
+            </li>
+            <!-- END SERVICES -->
+
+            <!-- BEGIN SERVICES -->
+            <li>
                 <a href="{{ route('service.index') }}">
                     <div class="gui-icon">
                         <i class="md md-layers"></i>
@@ -109,6 +120,17 @@
                 </a>
             </li>
             <!-- END CLIENT -->
+
+            <!-- BEGIN DATACENTER -->
+            <li>
+                <a href="{{ route('dataCenter.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">DataCenter</span>
+                </a>
+            </li>
+            <!-- END DATACENTER -->
 
             <!-- BEGIN PAGES -->
             <li>

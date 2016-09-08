@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use DB;
 use App\Http\Requests;
 use App\Models\Testimonial;
@@ -29,7 +30,10 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        return view('testimonial.create');
+        $customer = Customer::pluck('name', 'id');
+        dd($customer);
+
+        return view('testimonial.create', compact('customer'));
     }
 
     /**
@@ -40,18 +44,14 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'quote' => 'required',
-        ]);
-
         DB::transaction(function () use ($request)
         {
-            Testimonial::create([
-                'quote'  => $request->get('quote'),
-            ]);
+            $testimonial = Testimonial::create($request->data());
+
+            $this->uploadRequestImage($request, $testimonial);
         });
 
-        return redirect()->back()->withSuccess('Testimonial created!');
+        return redirect()->route('testimonial.index')->withSuccess('Testimonial created!');
     }
 
     /**
@@ -76,18 +76,14 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        $this->validate($request, [
-            'quote' => 'required',
-        ]);
-
         DB::transaction(function () use ($request, $testimonial)
         {
-            $testimonial->update([
-                'quote'  => $request->get('quote'),
-            ]);
+            $testimonial->update($request->data());
+
+            $this->uploadRequestImage($request, $testimonial);
         });
 
-        return redirect()->back()->withSuccess('Testimonial updated!');
+        return redirect()->route('testimonial.index')->withSuccess('Testimonial updated!');
     }
 
     /**
@@ -100,10 +96,6 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        if (!$this->user->can('delete.cms')) return redirect()->route('errors', '401');
-
-        $testimonial->delete();
-
         return redirect()->back()->withSuccess('Testimonial deleted!');
     }
 }

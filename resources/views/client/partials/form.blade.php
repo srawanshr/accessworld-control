@@ -1,14 +1,15 @@
 <div class="card-body">
+    @include('partials.errors')
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                {!! Form::text('name', old('name'), ['class'=>'form-control', 'required']) !!}
+                {{ Form::text('name', old('name'), ['class'=>'form-control', 'required']) }}
                 <label>Name</label>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                {!! Form::text('website', old('website'), ['class'=>'form-control', 'required', 'data-rule-url' => true]) !!}
+                {{ Form::text('website', old('website'), ['class'=>'form-control', 'required', 'data-rule-url' => true]) }}
                 <label>Website</label>
             </div>
         </div>
@@ -29,7 +30,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                {!! Form::file('image', ['class' => 'image-input', isset($client) ? '':'required', 'accept' => 'image/*', 'data-msg' => 'Please enter a value with a valid image. PNG, JPG or GIF']) !!}
+                {{ Form::file('image', ['class' => 'image-input', isset($client) ? '':'required', 'accept' => 'image/*', 'data-msg' => 'Please enter a value with a valid image. PNG, JPG or GIF']) }}
                 <label>Image</label>
             </div>
         </div>
@@ -37,6 +38,7 @@
 </div><!--end .card-body -->
 <div class="card-actionbar">
     <div class="card-actionbar-row">
+        <button type="reset" class="btn btn-flat ink-reaction">Reset</button>
         <button type="submit" class="btn btn-flat btn-primary ink-reaction">Save</button>
     </div>
 </div>

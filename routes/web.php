@@ -181,9 +181,9 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('', 'CertificateController@index')->name('index');
         Route::get('create', 'CertificateController@create')->name('create');
         Route::post('', 'CertificateController@store')->name('store');
-        Route::get('{certificates}/edit', 'CertificateController@edit')->name('edit');
-        Route::put('{certificates}', 'CertificateController@update')->name('update');
-        Route::delete('{certificates}', 'CertificateController@destroy')->name('destroy');
+        Route::get('{certificate}/edit', 'CertificateController@edit')->name('edit');
+        Route::put('{certificate}', 'CertificateController@update')->name('update');
+        Route::delete('{certificate}', 'CertificateController@destroy')->name('destroy');
     });
 
     /*
@@ -199,6 +199,36 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{client}/edit', 'ClientController@edit')->name('edit');
         Route::put('{client}', 'ClientController@update')->name('update');
         Route::delete('{client}', 'ClientController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Client CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'operatingSystem.', 'prefix' => 'operatingSystem'], function ()
+    {
+        Route::get('', 'OperatingSystemController@index')->name('index');
+        Route::get('create', 'OperatingSystemController@create')->name('create');
+        Route::post('', 'OperatingSystemController@store')->name('store');
+        Route::get('{operatingSystem}/edit', 'OperatingSystemController@edit')->name('edit');
+        Route::put('{operatingSystem}', 'OperatingSystemController@update')->name('update');
+        Route::delete('{operatingSystem}', 'OperatingSystemController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | DataCenter CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'dataCenter.', 'prefix' => 'dataCenter'], function ()
+    {
+        Route::get('', 'DataCenterController@index')->name('index');
+        Route::get('create', 'DataCenterController@create')->name('create');
+        Route::post('', 'DataCenterController@store')->name('store');
+        Route::get('{dataCenter}/edit', 'DataCenterController@edit')->name('edit');
+        Route::put('{dataCenter}', 'DataCenterController@update')->name('update');
+        Route::delete('{dataCenter}', 'DataCenterController@destroy')->name('destroy');
     });
 
     /*

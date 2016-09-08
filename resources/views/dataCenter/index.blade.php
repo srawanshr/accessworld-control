@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Certificates')
+@section('title', 'Data Centers')
 
 @push('styles')
 @endpush
@@ -10,11 +10,10 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>List of certificates</header>
+                    <header>List of data centers</header>
                     <div class="tools">
-                        <a class="btn btn-default btn-ink" href="{{ route('certificate.create') }}">
-                            <i class="md md-add"></i>
-                            Add
+                        <a class="btn btn-default btn-ink" href="{{ route('dataCenter.create') }}">
+                            <i class="fa fa-plus"></i> Add
                         </a>
                     </div>
                 </div>
@@ -23,18 +22,19 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th class="text-right">Actions</th>
+                            <th>Name</th>
+                            <th>Slug</th>
+                            <th>Prefix</th>
+                            <th class="text-right" data-orderable="false">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @if($certificates->isEmpty())
+                        @if($dataCenters->isEmpty())
                             <tr>
                                 <td class="text-center" colspan="5">No data available.</td>
                             </tr>
                         @else
-                            @each('certificate.partials.table', $certificates, 'certificate')
+                            @each('dataCenter.partials.table', $dataCenters, 'dataCenter')
                         @endif
                         </tbody>
                     </table>
@@ -46,3 +46,4 @@
 
 @push('scripts')
 @endpush
+

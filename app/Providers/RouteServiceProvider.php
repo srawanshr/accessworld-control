@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Certificate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -32,6 +33,10 @@ class RouteServiceProvider extends ServiceProvider {
         Route::model('page', 'App\Models\Page');
 
         Route::model('package', 'App\Models\Package');
+
+        Route::model('client', 'App\Models\Client');
+
+        Route::model('certificate', Certificate::class);
     }
 
     /**

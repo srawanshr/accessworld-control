@@ -1,4 +1,21 @@
 <div class="card-body">
+    @include('partials.errors')
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                {{ Form::text('title',old('title'),['class'=>'form-control', 'required']) }}
+                <label>Title</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                {{ Form::textarea('description',old('description'),['class'=>'form-control', 'required']) }}
+                <label>Description</label>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-6">
             <div class="row">
@@ -13,24 +30,8 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                {!! Form::text('title',old('title'),['class'=>'form-control', 'required']) !!}
-                <label>Title</label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="form-group">
-                {!! Form::textarea('description',old('description'),['class'=>'form-control', 'required']) !!}
-                <label>Description</label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="form-group">
-                {!! Form::file('image', ['class' => 'avatar-file', 'accept' => 'image/jpeg, image/png, image/gif']) !!}
-                {!! Form::label('image', 'Image') !!}
+                {{ Form::file('image', ['class' => 'image-input', isset($certificate) ? '':'required', 'accept' => 'image/*', 'data-msg' => 'Please enter a value with a valid image. PNG, JPG or GIF']) }}
+                <label>Image</label>
             </div>
         </div>
     </div>
