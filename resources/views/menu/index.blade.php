@@ -139,22 +139,23 @@
         });
         $(".btn-delete").on("click", function () {
             var $button = $(this);
-            bootbox.confirm("Are you sure?", function () {
-                $.ajax({
-                    "type": "POST",
-                    "url": $button.data("url"),
-                    "data": {"_method": "DELETE"},
-                    "success": function (response) {
-                        if (response.Menu) {
-                            $button.closest(".panel").detach();
-                        } else {
-                            $button.closest(".dd-item").detach();
+            bootbox.confirm("Are you sure?", function (response) {
+                if(response)
+                    $.ajax({
+                        "type": "POST",
+                        "url": $button.data("url"),
+                        "data": {"_method": "DELETE"},
+                        "success": function (response) {
+                            if (response.Menu) {
+                                $button.closest(".panel").detach();
+                            } else {
+                                $button.closest(".dd-item").detach();
+                            }
+                        },
+                        "error": function () {
+                            bootbox.alert("Error deleting menu!");
                         }
-                    },
-                    "error": function () {
-                        bootbox.alert("Error deleting menu!");
-                    }
-                });
+                    });
             });
         });
     });
