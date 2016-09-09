@@ -77,7 +77,7 @@ class Customer extends Model
      */
     public function getNameAttribute()
     {
-        return empty($this->detail->first_name) ? ucwords($this->username) : ucwords($this->detail->first_name) . ' ' . ucwords($this->detail->last_name);
+        return empty($this->first_name) ? ucwords($this->username) : ucwords($this->first_name) . ' ' . ucwords($this->last_name);
     }
 
     /**
@@ -104,14 +104,6 @@ class Customer extends Model
         $this->status = true;
         $this->activation_code = null;
         $this->save();
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function detail()
-    {
-        return $this->hasOne(CustomerDetail::class);
     }
 
     /**

@@ -12,7 +12,7 @@ class Service extends Model {
      * @var array
      */
     protected $fillable = [
-        'slug', 'name', 'short_description', 'description', 'order', 'view', 'is_featured', 'is_published'
+        'slug', 'name', 'short_description', 'description', 'order', 'view', 'is_published'
     ];
 
     /**
@@ -21,7 +21,6 @@ class Service extends Model {
      * @var array
      */
     protected $casts = [
-        'is_featured'  => 'boolean',
         'is_published' => 'boolean'
     ];
 
@@ -68,20 +67,19 @@ class Service extends Model {
         return $this->belongsToMany('App\Models\Feature');
     }
 
+    public function packages()
+    {
+        return $this->hasMany('App\Models\Package');
+    }
+
     /**
      * @param array $options
-     * @return bool|null|void
-     * @throws \Exception
+     * @return bool|null
      */
     public function delete(array $options = array())
     {
         $this->image->delete();
 
-        parent::delete($options);
-    }
-
-    public function packages()
-    {
-        return $this->hasMany('App\Models\Package');
+        return parent::delete($options);
     }
 }

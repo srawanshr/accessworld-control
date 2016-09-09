@@ -18,19 +18,19 @@ class CreateVpsProvisionsTable extends Migration
             $table->string('name');
             $table->integer('customer_id')->unsigned();
             $table->integer('vps_order_id')->unsigned();
-            $table->integer('provisioned_by')->unsigned();
             $table->integer('operating_system_id')->unsigned();
             $table->integer('data_center_id')->unsigned();
+            $table->string('server_id');
             $table->string('virtual_machine');
             $table->string('uuid');
             $table->float('cpu');
             $table->float('ram');
             $table->float('disk');
             $table->float('traffic');
+            $table->string('password')->nullable();
             $table->boolean('is_managed')->default(0);
             $table->boolean('is_suspended')->default(0);
-            $table->string('server_id');
-            $table->string('password')->nullable();
+            $table->integer('provisioned_by')->unsigned();
             $table->foreign('customer_id')
                 ->references('id')
                 ->on('customers')

@@ -27,5 +27,8 @@ elixir(function (mix) {
         .scripts(['AppVendor.js'], 'public/js/core/source/AppVendor.min.js')
         .scripts(['AppBootBox.js'], 'public/js/core/source/AppBootBox.min.js')
         .scripts(['libs/toastr.js'], 'public/js/libs/toastr/toastr.min.js')
-        .scripts(['pages/form_checkbox_role.js'], 'public/js/pages/form_checkbox_role.min.js');
+        .scripts(['pages/form_checkbox_role.js'], 'public/js/pages/form_checkbox_role.min.js')
+        .scripts(['pages/dt_user.js'], 'public/js/pages/dt_user.min.js')
+        .scripts(['pages/dt_order.js'], 'public/js/pages/dt_order.min.js')
+        .scripts(['pages/form_order.js'], 'public/js/pages/form_order.min.js');
 });

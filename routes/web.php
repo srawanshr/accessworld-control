@@ -252,11 +252,27 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | Order CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'order.', 'prefix' => 'order'], function ()
+    {
+        Route::get('', 'OrderController@index')->name('index');
+        Route::get('create', 'OrderController@create')->name('create');
+        Route::post('', 'OrderController@store')->name('store');
+        Route::get('{order}/edit', 'OrderController@edit')->name('edit');
+        Route::put('{order}', 'OrderController@update')->name('update');
+        Route::delete('{order}', 'OrderController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Component Routes
     |--------------------------------------------------------------------------
     */
     Route::group(['as' => 'component.', 'prefix' => 'component'], function ()
     {
         Route::get('{menu}/subMenuModal', 'ComponentController@subMenuModal')->name('subMenuModal');
+        Route::get('order/form', 'ComponentController@orderForm')->name('order.form');
     });
 });
