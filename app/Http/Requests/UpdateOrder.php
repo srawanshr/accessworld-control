@@ -28,9 +28,10 @@ class UpdateOrder extends StoreOrder {
         $data = [
             'customer_id' => $this->input('customer_id'),
             'date'        => $this->input('date'),
-            'approved_by' => $this->get('approve') || $this->get('reject') ? auth()->id() : null,
-            'status'      => 0
         ];
+
+        if ($this->get('approve') || $this->get('reject'))
+            $data['approved_by'] = auth()->id();
 
         if ($this->get('approve'))
             $data['status'] = 1;
