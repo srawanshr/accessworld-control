@@ -66,7 +66,7 @@
         });
     };
 
-    p._formatDetails = function (d) {
+    p._formatDetails = function (d, row, tr) {
         var orderId = d.id;
         $.ajax({
             "type": "get",
