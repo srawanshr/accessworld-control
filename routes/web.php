@@ -233,6 +233,21 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | DataCenter CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'emailPackage.', 'prefix' => 'emailPackage'], function ()
+    {
+        Route::get('', 'EmailPackageController@index')->name('index');
+        Route::get('create', 'EmailPackageController@create')->name('create');
+        Route::post('', 'EmailPackageController@store')->name('store');
+        Route::get('{emailPackage}/edit', 'EmailPackageController@edit')->name('edit');
+        Route::put('{emailPackage}', 'EmailPackageController@update')->name('update');
+        Route::delete('{emailPackage}', 'EmailPackageController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Menu CRUD Routes
     |--------------------------------------------------------------------------
     */

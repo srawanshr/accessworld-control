@@ -1,7 +1,6 @@
 <tr>
     <td>{{$dataCenter->id}}</td>
     <td>{{$dataCenter->name}}</td>
-    <td>{{$dataCenter->slug}}</td>
     <td>{{$dataCenter->prefix}}</td>
     <td class="text-right">
          <a href="{{route('dataCenter.edit', $dataCenter->slug)}}" class="btn btn-icon-toggle"

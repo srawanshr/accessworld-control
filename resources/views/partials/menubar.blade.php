@@ -121,6 +121,17 @@
             </li>
             <!-- END CLIENT -->
 
+            <!-- BEGIN EMAIL PACKAGE -->
+            <li>
+                <a href="{{ route('emailPackage.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Email Package</span>
+                </a>
+            </li>
+            <!-- END EMAIL PACKAGE -->
+
             <!-- BEGIN DATACENTER -->
             <li>
                 <a href="{{ route('dataCenter.index') }}">
