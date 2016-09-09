@@ -23,7 +23,7 @@ class CreateEmailPackagesTable extends Migration
             $table->integer('domain');
             $table->float('discount_percent');
             $table->boolean('is_published')->default(0);
-            $table->boolean('is_active')->default(0);
+            $table->boolean('is_featured')->default(0);
             $table->timestamps();
         });
     }

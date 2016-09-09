@@ -22,9 +22,9 @@ class CreateWebPackagesTable extends Migration
             $table->float('traffic');
             $table->integer('domain');
             $table->float('discount_percent');
-            $table->float('misc_percent');
+            $table->float('price');
             $table->boolean('is_published')->default(0);
-            $table->boolean('is_active')->default(0);
+            $table->boolean('is_featured')->default(0);
             $table->timestamps();
         });
     }
