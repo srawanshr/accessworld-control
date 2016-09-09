@@ -27,13 +27,24 @@
             </li><!--end /menu-li -->
             <!-- END DASHBOARD -->
 
+            <!-- BEGIN ORDER -->
+            <li>
+                <a href="{{ route('order.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-markunread-mailbox"></i>
+                    </div>
+                    <span class="title">Orders</span>
+                </a>
+            </li>
+            <!-- END ORDER -->
+
             <!-- BEGIN CUSTOMER -->
             <li>
                 <a href="{{ route('customer.index') }}">
                     <div class="gui-icon">
-                        <i class="md md-account-child"></i>
+                        <i class="md md-people"></i>
                     </div>
-                    <span class="title">Customer</span>
+                    <span class="title">Customers</span>
                 </a>
             </li>
             <!-- END CUSTOMER -->
@@ -66,16 +77,16 @@
             </li>
             <!-- END USERS -->
 
-            <!-- BEGIN SERVICES -->
+            <!-- BEGIN STAFF -->
             <li>
-                <a href="{{ route('operatingSystem.index') }}">
+                <a href="{{ route('staff.index') }}">
                     <div class="gui-icon">
-                        <i class="md md-layers"></i>
+                        <i class="md md-assignment-ind"></i>
                     </div>
-                    <span class="title">Operating System</span>
+                    <span class="title">Staffs</span>
                 </a>
             </li>
-            <!-- END SERVICES -->
+            <!-- END STAFF -->
 
             <!-- BEGIN SERVICES -->
             <li>
@@ -103,9 +114,9 @@
             <li>
                 <a href="{{ route('certificate.index') }}">
                     <div class="gui-icon">
-                        <i class="md md-layers"></i>
+                        <i class="md md-verified-user"></i>
                     </div>
-                    <span class="title">Certificate</span>
+                    <span class="title">Certificates</span>
                 </a>
             </li>
             <!-- END CERTIFICATE -->
@@ -114,23 +125,56 @@
             <li>
                 <a href="{{ route('client.index') }}">
                     <div class="gui-icon">
-                        <i class="md md-layers"></i>
+                        <i class="md md-people-outline"></i>
                     </div>
-                    <span class="title">Client</span>
+                    <span class="title">Clients</span>
                 </a>
             </li>
             <!-- END CLIENT -->
+
+            <!-- BEGIN EMAIL PACKAGE -->
+            <li>
+                <a href="{{ route('emailPackage.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Email Package</span>
+                </a>
+            </li>
+            <!-- END EMAIL PACKAGE -->
+
+            <!-- BEGIN VPS PACKAGE -->
+            <li>
+                <a href="{{ route('vpsPackage.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Vps Package</span>
+                </a>
+            </li>
+            <!-- END VPS PACKAGE -->
 
             <!-- BEGIN DATACENTER -->
             <li>
                 <a href="{{ route('dataCenter.index') }}">
                     <div class="gui-icon">
-                        <i class="md md-layers"></i>
+                        <i class="md md-place"></i>
                     </div>
-                    <span class="title">DataCenter</span>
+                    <span class="title">Data Centers</span>
                 </a>
             </li>
-            <!-- END DATACENTER -->
+            <!-- END DATA CENTER -->
+
+            <!-- BEGIN OPERATING SYSTEM -->
+            <li>
+                <a href="{{ route('operatingSystem.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-computer"></i>
+                    </div>
+                    <span class="title">Operating Systems</span>
+                </a>
+            </li>
+            <!-- END OPERATING SYSTEM -->
 
             <!-- BEGIN PAGES -->
             <li>
@@ -153,17 +197,6 @@
                 </a>
             </li>
             <!-- END MENU -->
-
-            <!-- BEGIN STAFF -->
-            <li>
-                <a href="{{ route('staff.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-assignment-ind"></i>
-                    </div>
-                    <span class="title">Staff</span>
-                </a>
-            </li>
-            <!-- END STAFF -->
 
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->

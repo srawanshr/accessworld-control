@@ -19,11 +19,11 @@
                     <table id="os-datatable" class="table table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Active</th>
-                            <th class="text-right">Actions</th>
+                            <th width="5%">#</th>
+                            <th width="45%">Name</th>
+                            <th width="20%">Price</th>
+                            <th width="20%">Active</th>
+                            <th width="10%" class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,7 +32,7 @@
                                     <td class="text-center" colspan="5">No data available.</td>
                                 </tr>
                             @else
-                                @each('operatingsystem.partials.table', $operatingSystems, 'operatingSystem')
+                                @each('operatingSystem.partials.table', $operatingSystems, 'operatingSystem')
                             @endif
                         </tbody>
                     </table>

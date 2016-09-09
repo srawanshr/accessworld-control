@@ -22,10 +22,10 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th class="text-right">Actions</th>
+                            <th width="5%">#</th>
+                            <th width="10%">Image</th>
+                            <th width="70%">Title</th>
+                            <th width="15%" class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>

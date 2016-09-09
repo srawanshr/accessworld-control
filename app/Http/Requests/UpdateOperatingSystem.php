@@ -25,7 +25,8 @@ class UpdateOperatingSystem extends FormRequest
     {
         return [
             'name'  => 'required|unique:operating_systems,name,'.$this->operatingSystem->id,
-            'image' => 'image|max:2048'
+            'image' => 'image|max:2048',
+            'price' => 'required|min:0'
         ];
     }
 

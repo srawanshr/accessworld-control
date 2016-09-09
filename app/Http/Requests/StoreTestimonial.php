@@ -24,7 +24,7 @@ class StoreTestimonial extends FormRequest
     public function rules()
     {
         return [
-            'quote'       => 'required|unique:testimonials,title'
+            'quote' => 'required|unique:testimonials,title'
         ];
     }
 
@@ -34,11 +34,10 @@ class StoreTestimonial extends FormRequest
     public function data()
     {
         $inputs = [
-            'quote'       => trim($this->get('quote'))
+            'quote' => trim($this->get('quote'))
         ];
 
-        if ($this->has('is_published'))
-            $inputs['is_published'] = true;
+        if ($this->has('is_published')) $inputs['is_published'] = true;
 
         return $inputs;
     }

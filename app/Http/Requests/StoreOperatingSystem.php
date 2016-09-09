@@ -25,7 +25,8 @@ class StoreOperatingSystem extends FormRequest
     {
         return [
             'name'  => 'required|unique:operating_systems,name',
-            'image' => 'required|image|max:2048'
+            'image' => 'required|image|max:2048',
+            'price' => 'required|min:0'
         ];
     }
 

@@ -22,7 +22,6 @@ class CreateServicesTable extends Migration {
             $table->text('description')->nullable();
             $table->integer('order');
             $table->string('view');
-            $table->boolean('is_featured')->default(0);
             $table->boolean('is_published')->default(0);
             $table->timestamps();
         });

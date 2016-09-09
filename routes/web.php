@@ -233,6 +233,36 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | Email Package CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'emailPackage.', 'prefix' => 'emailPackage'], function ()
+    {
+        Route::get('', 'EmailPackageController@index')->name('index');
+        Route::get('create', 'EmailPackageController@create')->name('create');
+        Route::post('', 'EmailPackageController@store')->name('store');
+        Route::get('{emailPackage}/edit', 'EmailPackageController@edit')->name('edit');
+        Route::put('{emailPackage}', 'EmailPackageController@update')->name('update');
+        Route::delete('{emailPackage}', 'EmailPackageController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | VPS Package CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'vpsPackage.', 'prefix' => 'vpsPackage'], function ()
+    {
+        Route::get('', 'VpsPackageController@index')->name('index');
+        Route::get('create', 'VpsPackageController@create')->name('create');
+        Route::post('', 'VpsPackageController@store')->name('store');
+        Route::get('{vpsPackage}/edit', 'VpsPackageController@edit')->name('edit');
+        Route::put('{vpsPackage}', 'VpsPackageController@update')->name('update');
+        Route::delete('{vpsPackage}', 'VpsPackageController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Menu CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -252,11 +282,27 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | Order CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'order.', 'prefix' => 'order'], function ()
+    {
+        Route::get('', 'OrderController@index')->name('index');
+        Route::get('create', 'OrderController@create')->name('create');
+        Route::post('', 'OrderController@store')->name('store');
+        Route::get('{order}/edit', 'OrderController@edit')->name('edit');
+        Route::put('{order}', 'OrderController@update')->name('update');
+        Route::delete('{order}', 'OrderController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Component Routes
     |--------------------------------------------------------------------------
     */
     Route::group(['as' => 'component.', 'prefix' => 'component'], function ()
     {
         Route::get('{menu}/subMenuModal', 'ComponentController@subMenuModal')->name('subMenuModal');
+        Route::get('order/form', 'ComponentController@orderForm')->name('order.form');
     });
 });

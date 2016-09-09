@@ -69,4 +69,14 @@ class Image extends Model {
         if ( ! empty($this->path) && file_exists($this->path))
             unlink($this->path);
     }
+
+    /**
+     * @return bool|null
+     */
+    public function delete()
+    {
+        $this->deleteImage();
+
+        return parent::delete();
+    }
 }
