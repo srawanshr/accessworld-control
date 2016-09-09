@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEmailPackageRequest extends FormRequest
+class UpdateVpsPackage extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,12 @@ class StoreEmailPackageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        => 'required|unique:email_packages,name',
+            "name"        => "required|unique:vps_packages,name,".$this->vpsPackage->id,
             'description' => 'required',
-            'disk'        => 'required|min:1',
-            'traffic'     => 'required|min:1',
-            'domain'      => 'required|min:1',
+            "cpu"         => "required|min:1",
+            "ram"         => "required|min:1",
+            "traffic"     => "required|min:1",
+            "disk"        => "required|min:1",
             'price'       => 'required|min:0'
         ];
     }
@@ -39,12 +40,12 @@ class StoreEmailPackageRequest extends FormRequest
     public function data()
     {
         $inputs = [
-            'slug'        => str_slug(trim($this->get('name'))),
             'name'        => trim($this->get('name')),
             'description' => $this->get('description'),
-            'disk'        => $this->get('disk'),
+            'cpu'         => $this->get('cpu'),
+            'ram'         => $this->get('ram'),
             'traffic'     => $this->get('traffic'),
-            'domain'      => $this->get('domain'),
+            'disk'        => $this->get('disk'),
             'price'       => $this->get('price')
         ];
 

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEmailPackageRequest;
-use App\Http\Requests\UpdateEmailPackageRequest;
-use App\Models\EmailPackage;
+
+use App\Http\Requests\StoreEmailPackage;
+use App\Http\Requests\UpdateEmailPackage;
 use DB;
+use App\Models\EmailPackage;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -37,10 +38,10 @@ class EmailPackageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param EmailPackageRequest|StoreEmailPackageRequest $request
+     * @param StoreEmailPackage $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEmailPackageRequest $request)
+    public function store(StoreEmailPackage $request)
     {
         DB::transaction(function () use ($request)
         {
@@ -65,12 +66,11 @@ class EmailPackageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  EmailPackageRequest $request
-     * @param EmailPackage $package
+     * @param EmailPackage $emailPackage
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function update(UpdateEmailPackageRequest $request, EmailPackage $emailPackage)
+    public function update(UpdateEmailPackage $request, EmailPackage $emailPackage)
     {
         DB::transaction(function () use ($request, $emailPackage)
         {

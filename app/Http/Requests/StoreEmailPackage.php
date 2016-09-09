@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateEmailPackageRequest extends FormRequest
+class StoreEmailPackage extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class UpdateEmailPackageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        => 'required|unique:email_packages,name,'.$this->emailPackage->id,
+            'name'        => 'required|unique:email_packages,name',
             'description' => 'required',
             'disk'        => 'required|min:1',
             'traffic'     => 'required|min:1',
@@ -32,13 +32,14 @@ class UpdateEmailPackageRequest extends FormRequest
             'price'       => 'required|min:0'
         ];
     }
-    
+
     /**
      * @return array
      */
     public function data()
     {
         $inputs = [
+            'slug'        => str_slug(trim($this->get('name'))),
             'name'        => trim($this->get('name')),
             'description' => $this->get('description'),
             'disk'        => $this->get('disk'),
