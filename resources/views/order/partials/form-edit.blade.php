@@ -36,6 +36,20 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ Form::select('vps['.$vpsOrder->id.'][operating_system_id]',$operating_systems,old('vps.'.$vpsOrder->id.'.operating_system_id'),['id'=>'vps['.$vpsOrder->id.'][operating_system_id]','class'=>'form-control']) }}
+                            <label for="vps[{{$vpsOrder->id}}][operating_system_id]">Operating System</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ Form::select('vps['.$vpsOrder->id.'][data_center_id]',$data_centers,old('vps.'.$vpsOrder->id.'.data_center_id'),['id'=>'vps['.$vpsOrder->id.'][data_center_id]','class'=>'form-control']) }}
+                            <label for="vps[{{$vpsOrder->id}}][data_center_id]">Data Center</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                             <div class="input-group">
@@ -121,79 +135,79 @@
                     </div>
                 </div>
             @elseif(isset($webOrder)))
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <input type="text" name="web[{{$key}}][name]" id="web[{{$key}}][name]" class="form-control" value="{{old('web.'.$key.'.name') ?: $webOrder->name}}" required>
-                            <label for="web[{{$key}}][name]">Name</label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input type="number" name="web[{{$key}}][term]" id="web[{{$key}}][term]" class="form-control" min="1" value="{{old('web.'.$key.'.term') ?: $webOrder->term}}" required>
-                            <label for="web[{{$key}}][term]">Term (in months)</label>
-                        </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input type="text" name="web[{{$key}}][name]" id="web[{{$key}}][name]" class="form-control" value="{{old('web.'.$key.'.name') ?: $webOrder->name}}" required>
+                        <label for="web[{{$key}}][name]">Name</label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">{{ config('website.currency') }}</span>
-                                <div class="input-group-content">
-                                    <input type="number" name="web[{{$key}}][price]" class="form-control" id="web[{{$key}}][price]" min="0" step="any" value="{{old('web.'.$key.'.price') ?: $webOrder->price}}" required>
-                                    <label for="web[{{$key}}][price]">Price</label>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="number" name="web[{{$key}}][term]" id="web[{{$key}}][term]" class="form-control" min="1" value="{{old('web.'.$key.'.term') ?: $webOrder->term}}" required>
+                        <label for="web[{{$key}}][term]">Term (in months)</label>
                     </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">{{ config('website.currency') }}</span>
-                                <div class="input-group-content">
-                                    <input type="number" name="web[{{$key}}][discount]" class="form-control" id="web[{{$key}}][discount]" min="0" step="any" value="{{old('web.'.$key.'.discount') ?: $webOrder->discount}}">
-                                    <label for="web[{{$key}}][discount]">Discount</label>
-                                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">{{ config('website.currency') }}</span>
+                            <div class="input-group-content">
+                                <input type="number" name="web[{{$key}}][price]" class="form-control" id="web[{{$key}}][price]" min="0" step="any" value="{{old('web.'.$key.'.price') ?: $webOrder->price}}" required>
+                                <label for="web[{{$key}}][price]">Price</label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-content">
-                                    <input type="number" name="web[{{$key}}][domain]" id="web[{{$key}}][domain]" class="form-control" min="1" step="1" value="{{old('web.'.$key.'.domain') ?: $webOrder->domain}}">
-                                    <label for="web[{{$key}}][domain]">DOMAIN</label>
-                                </div>
-                                <span class="input-group-addon">#</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-content">
-                                    <input type="number" name="web[{{$key}}][disk]" id="web[{{$key}}][disk]" class="form-control" min="1" step="1" value="{{old('web.'.$key.'.disk') ?: $webOrder->disk}}">
-                                    <label for="web[{{$key}}][disk]">DISK/STORAGE</label>
-                                </div>
-                                <span class="input-group-addon">GB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-content">
-                                    <input type="number" name="web[{{$key}}][traffic]" id="web[{{$key}}][traffic]" class="form-control" min="1" step="1" value="{{old('web.'.$key.'.traffic') ?: $webOrder->traffic}}">
-                                    <label for="web[{{$key}}][traffic]">TRAFFIC/BANDWIDTH</label>
-                                </div>
-                                <span class="input-group-addon">GB</span>
+                <div class="col-md-3 col-sm-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">{{ config('website.currency') }}</span>
+                            <div class="input-group-content">
+                                <input type="number" name="web[{{$key}}][discount]" class="form-control" id="web[{{$key}}][discount]" min="0" step="any" value="{{old('web.'.$key.'.discount') ?: $webOrder->discount}}">
+                                <label for="web[{{$key}}][discount]">Discount</label>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-content">
+                                <input type="number" name="web[{{$key}}][domain]" id="web[{{$key}}][domain]" class="form-control" min="1" step="1" value="{{old('web.'.$key.'.domain') ?: $webOrder->domain}}">
+                                <label for="web[{{$key}}][domain]">DOMAIN</label>
+                            </div>
+                            <span class="input-group-addon">#</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-content">
+                                <input type="number" name="web[{{$key}}][disk]" id="web[{{$key}}][disk]" class="form-control" min="1" step="1" value="{{old('web.'.$key.'.disk') ?: $webOrder->disk}}">
+                                <label for="web[{{$key}}][disk]">DISK/STORAGE</label>
+                            </div>
+                            <span class="input-group-addon">GB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-content">
+                                <input type="number" name="web[{{$key}}][traffic]" id="web[{{$key}}][traffic]" class="form-control" min="1" step="1" value="{{old('web.'.$key.'.traffic') ?: $webOrder->traffic}}">
+                                <label for="web[{{$key}}][traffic]">TRAFFIC/BANDWIDTH</label>
+                            </div>
+                            <span class="input-group-addon">GB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @elseif(isset($emailOrder))
                 <div class="row">
                     <div class="col-md-8">

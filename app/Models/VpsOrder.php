@@ -12,7 +12,22 @@ class VpsOrder extends Model {
      * @var array
      */
     protected $fillable = [
-        'customer_id', 'order_id', 'name', 'term', 'cpu', 'ram', 'disk', 'traffic', 'price', 'discount', 'is_trial', 'is_managed', 'is_provisioned', 'additional_ip'
+        'customer_id',
+        'operating_system_id',
+        'data_center_id',
+        'order_id',
+        'name',
+        'term',
+        'cpu',
+        'ram',
+        'disk',
+        'traffic',
+        'price',
+        'discount',
+        'is_trial',
+        'is_managed',
+        'is_provisioned',
+        'additional_ip'
     ];
 
     /**

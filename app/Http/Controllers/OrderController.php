@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataCenter;
+use App\Models\OperatingSystem;
 use DB;
 use Datatables;
 use App\Models\Order;
@@ -30,7 +32,11 @@ class OrderController extends Controller {
 
         $customers = Customer::all()->pluck('name', 'id');
 
-        return view('order.create', compact('services', 'customers'));
+        $data_centers = DataCenter::pluck('name', 'id');
+
+        $operating_systems = OperatingSystem::active()->pluck('name', 'id');
+
+        return view('order.create', compact('services', 'customers', 'data_centers', 'operating_systems'));
     }
 
     /**
@@ -64,7 +70,11 @@ class OrderController extends Controller {
     {
         $customers = Customer::all()->pluck('name', 'id');
 
-        return view('order.edit', compact('order', 'customers'));
+        $data_centers = DataCenter::pluck('name', 'id');
+
+        $operating_systems = OperatingSystem::active()->pluck('name', 'id');
+
+        return view('order.edit', compact('order', 'customers', 'data_centers', 'operating_systems'));
     }
 
     public function update(UpdateOrder $request, Order $order)

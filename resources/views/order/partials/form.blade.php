@@ -39,6 +39,20 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ Form::select('vps['.$key.'][operating_system_id]',$operating_systems,old('vps.'.$key.'.operating_system_id'),['id'=>'vps['.$key.'][operating_system_id]','class'=>'form-control']) }}
+                            <label for="vps[{{$key}}][operating_system_id]">Operating System</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ Form::select('vps['.$key.'][data_center_id]',$data_centers,old('vps.'.$key.'.data_center_id'),['id'=>'vps['.$key.'][data_center_id]','class'=>'form-control']) }}
+                            <label for="vps[{{$key}}][data_center_id]">Data Center</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                             <div class="input-group">

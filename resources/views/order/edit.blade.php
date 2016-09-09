@@ -19,8 +19,11 @@
                             <i class="md md-save"></i>
                             Save
                         </button>
-                        <input type="submit" name="approve" class="btn btn-primary" value="Approve">
-                        <input type="submit" name="reject" class="btn btn-primary" value="Reject">
+                        @if($order->status == 2)
+                            <input type="submit" name="approve" class="btn btn-primary" value="Approve">
+                        @elseif($order->status == 1 || $order->status == 0)
+                            <input type="submit" name="reject" class="btn btn-primary" value="Reject">
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">

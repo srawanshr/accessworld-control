@@ -32,6 +32,8 @@ class StoreOrder extends FormRequest {
         if ($this->has('vps'))
         {
             $rules['vps.*.name'] = 'required';
+            $rules['vps.*.operating_system_id'] = 'required';
+            $rules['vps.*.data_center_id'] = 'required';
             $rules['vps.*.term'] = 'required_unless:vps.*.is_trial,1';
             $rules['vps.*.price'] = 'required_unless:vps.*.is_trial,1';
             $rules['vps.*.cpu'] = 'required';
@@ -86,17 +88,19 @@ class StoreOrder extends FormRequest {
             $is_trial = $this->input('vps.' . $id . '.trial');
 
             $data = [
-                'name'          => $this->input('vps.' . $key . '.name'),
-                'term'          => $term ? $is_trial ? null : $term : null,
-                'cpu'           => $this->input('vps.' . $key . '.cpu'),
-                'ram'           => $this->input('vps.' . $key . '.ram'),
-                'disk'          => $this->input('vps.' . $key . '.disk'),
-                'traffic'       => $this->input('vps.' . $key . '.traffic'),
-                'price'         => $this->input('vps.' . $key . '.price') ?: 0,
-                'discount'      => $this->input('vps.' . $key . '.discount') ?: 0,
-                'is_trial'      => $this->input('vps.' . $key . '.is_trial') ?: 0,
-                'is_managed'    => $this->input('vps.' . $key . '.is_managed') ?: 0,
-                'additional_ip' => $this->input('vps.' . $key . '.additional_ip') ?: 0,
+                'name'                => $this->input('vps.' . $key . '.name'),
+                'operating_system_id' => $this->input('vps.' . $key . '.operating_system_id'),
+                'data_center_id'      => $this->input('vps.' . $key . '.data_center_id'),
+                'term'                => $term ? $is_trial ? null : $term : null,
+                'cpu'                 => $this->input('vps.' . $key . '.cpu'),
+                'ram'                 => $this->input('vps.' . $key . '.ram'),
+                'disk'                => $this->input('vps.' . $key . '.disk'),
+                'traffic'             => $this->input('vps.' . $key . '.traffic'),
+                'price'               => $this->input('vps.' . $key . '.price') ?: 0,
+                'discount'            => $this->input('vps.' . $key . '.discount') ?: 0,
+                'is_trial'            => $this->input('vps.' . $key . '.is_trial') ?: 0,
+                'is_managed'          => $this->input('vps.' . $key . '.is_managed') ?: 0,
+                'additional_ip'       => $this->input('vps.' . $key . '.additional_ip') ?: 0,
             ];
 
             $order->vpsOrder()->create($data);
