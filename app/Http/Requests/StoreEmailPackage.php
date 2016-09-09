@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOperatingSystem extends FormRequest
+class StoreEmailPackage extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,12 @@ class StoreOperatingSystem extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required|unique:operating_systems,name',
-            'image' => 'required|image|max:2048',
-            'price' => 'required|min:0'
+            'name'        => 'required|unique:email_packages,name',
+            'description' => 'required',
+            'disk'        => 'required|min:1',
+            'traffic'     => 'required|min:1',
+            'domain'      => 'required|min:1',
+            'price'       => 'required|min:0'
         ];
     }
 
@@ -38,11 +41,15 @@ class StoreOperatingSystem extends FormRequest
         $inputs = [
             'slug'        => str_slug(trim($this->get('name'))),
             'name'        => trim($this->get('name')),
+            'description' => $this->get('description'),
+            'disk'        => $this->get('disk'),
+            'traffic'     => $this->get('traffic'),
+            'domain'      => $this->get('domain'),
             'price'       => $this->get('price')
         ];
 
-        if ($this->has('is_active'))
-            $inputs['is_active'] = true;
+        if ($this->has('is_published'))
+            $inputs['is_published'] = true;
 
         return $inputs;
     }

@@ -21,11 +21,10 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Slug</th>
-                            <th>Prefix</th>
-                            <th class="text-right" data-orderable="false">Actions</th>
+                            <th width="10%">#</th>
+                            <th width="50%">Name</th>
+                            <th width="30%">Prefix</th>
+                            <th width="10%" class="text-right" data-orderable="false">Actions</th>
                         </tr>
                         </thead>
                         <tbody>

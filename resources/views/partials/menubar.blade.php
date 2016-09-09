@@ -132,7 +132,29 @@
             </li>
             <!-- END CLIENT -->
 
-            <!-- BEGIN DATA CENTER -->
+            <!-- BEGIN EMAIL PACKAGE -->
+            <li>
+                <a href="{{ route('emailPackage.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Email Package</span>
+                </a>
+            </li>
+            <!-- END EMAIL PACKAGE -->
+
+            <!-- BEGIN VPS PACKAGE -->
+            <li>
+                <a href="{{ route('vpsPackage.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Vps Package</span>
+                </a>
+            </li>
+            <!-- END VPS PACKAGE -->
+
+            <!-- BEGIN DATACENTER -->
             <li>
                 <a href="{{ route('dataCenter.index') }}">
                     <div class="gui-icon">

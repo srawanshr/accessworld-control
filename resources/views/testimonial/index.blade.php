@@ -17,10 +17,10 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Icon</th>
-                            <th class="text-right">Actions</th>
+                            <th width="10%">#</th>
+                            <th width="60%">Name</th>
+                            <th width="20%">Icon</th>
+                            <th width="10%" class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>

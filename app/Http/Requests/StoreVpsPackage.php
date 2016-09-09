@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOperatingSystem extends FormRequest
+class StoreVpsPackage extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,13 @@ class StoreOperatingSystem extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required|unique:operating_systems,name',
-            'image' => 'required|image|max:2048',
-            'price' => 'required|min:0'
+            "name"        => "required|unique:vps_packages,name",
+            'description' => 'required',
+            "cpu"         => "required|min:1",
+            "ram"         => "required|min:1",
+            "traffic"     => "required|min:1",
+            "disk"        => "required|min:1",
+            'price'       => 'required|min:0'
         ];
     }
 
@@ -38,11 +42,16 @@ class StoreOperatingSystem extends FormRequest
         $inputs = [
             'slug'        => str_slug(trim($this->get('name'))),
             'name'        => trim($this->get('name')),
+            'description' => $this->get('description'),
+            'cpu'         => $this->get('cpu'),
+            'ram'         => $this->get('ram'),
+            'traffic'     => $this->get('traffic'),
+            'disk'        => $this->get('disk'),
             'price'       => $this->get('price')
         ];
 
-        if ($this->has('is_active'))
-            $inputs['is_active'] = true;
+        if ($this->has('is_published'))
+            $inputs['is_published'] = true;
 
         return $inputs;
     }
