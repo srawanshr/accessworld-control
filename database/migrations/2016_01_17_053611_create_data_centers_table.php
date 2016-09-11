@@ -19,6 +19,8 @@ class CreateDataCentersTable extends Migration
             $table->string('slug');
             $table->string('name');
             $table->string('prefix');
+            $table->float('price');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }

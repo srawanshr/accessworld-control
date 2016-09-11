@@ -28,7 +28,7 @@ class MenusTableSeeder extends Seeder {
             [
                 'slug'       => 'services',
                 'name'       => 'Services',
-                'url'        => '/services',
+                'url'        => '/page/services',
                 'order'      => 1,
                 'is_primary' => 1,
                 'created_at' => \Carbon\Carbon::now(),
@@ -37,7 +37,7 @@ class MenusTableSeeder extends Seeder {
             [
                 'slug'       => 'about',
                 'name'       => 'About',
-                'url'        => '/about',
+                'url'        => 'page/about',
                 'order'      => 2,
                 'is_primary' => 1,
                 'created_at' => \Carbon\Carbon::now(),
@@ -46,7 +46,7 @@ class MenusTableSeeder extends Seeder {
             [
                 'slug'       => 'contact',
                 'name'       => 'Contact',
-                'url'        => '/contact',
+                'url'        => 'page/contact',
                 'order'      => 3,
                 'is_primary' => 1,
                 'created_at' => \Carbon\Carbon::now(),
