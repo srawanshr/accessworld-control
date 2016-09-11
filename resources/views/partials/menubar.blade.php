@@ -154,6 +154,17 @@
             </li>
             <!-- END VPS PACKAGE -->
 
+            <!-- BEGIN WEB PACKAGE -->
+            <li>
+                <a href="{{ route('webPackage.index') }}">
+                    <div class="gui-icon">
+                        <i class="md md-layers"></i>
+                    </div>
+                    <span class="title">Web Package</span>
+                </a>
+            </li>
+            <!-- END WEB PACKAGE -->
+
             <!-- BEGIN DATACENTER -->
             <li>
                 <a href="{{ route('dataCenter.index') }}">

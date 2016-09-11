@@ -263,6 +263,21 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | WEB Package CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'webPackage.', 'prefix' => 'webPackage'], function ()
+    {
+        Route::get('', 'WebPackageController@index')->name('index');
+        Route::get('create', 'WebPackageController@create')->name('create');
+        Route::post('', 'WebPackageController@store')->name('store');
+        Route::get('{webPackage}/edit', 'WebPackageController@edit')->name('edit');
+        Route::put('{webPackage}', 'WebPackageController@update')->name('update');
+        Route::delete('{webPackage}', 'WebPackageController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Menu CRUD Routes
     |--------------------------------------------------------------------------
     */
