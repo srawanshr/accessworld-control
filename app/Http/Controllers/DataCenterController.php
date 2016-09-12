@@ -21,7 +21,7 @@ class DataCenterController extends Controller
     {
         $dataCenters = DataCenter::all();
 
-        return view('datacenter.index', compact('dataCenters'));
+        return view('dataCenter.index', compact('dataCenters'));
     }
 
     /**
@@ -31,7 +31,7 @@ class DataCenterController extends Controller
      */
     public function create()
     {
-        return view('datacenter.create');
+        return view('dataCenter.create');
     }
 
     /**
@@ -44,7 +44,9 @@ class DataCenterController extends Controller
     {
         DB::transaction(function () use ($request)
         {
-            DataCenter::create($request->data());
+            $dataCenter = DataCenter::create($request->data());
+
+            $this->uploadRequestImage($request, $dataCenter);
         });
 
         return redirect()->route('dataCenter.index')->withSuccess('Data center created!');
@@ -74,6 +76,8 @@ class DataCenterController extends Controller
         DB::transaction(function () use ($request, $dataCenter)
         {
             $dataCenter->update($request->data());
+
+            $this->uploadRequestImage($request, $dataCenter);
         });
 
         return redirect()->route('dataCenter.index')->withSuccess('Data center updated!');

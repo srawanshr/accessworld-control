@@ -24,7 +24,7 @@ class UpdateCertificate extends FormRequest
     public function rules()
     {
         return [
-            'title'       => 'required|unique:certificates,title,'.$this->certifacte->id,
+            'title'       => 'required|unique:certificates,title,'.$this->certificate->id,
             'description' => 'required',
             'image'       => 'image|max:2048'
         ];

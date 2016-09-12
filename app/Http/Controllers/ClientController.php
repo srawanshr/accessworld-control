@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Models\Client;
 use App\Http\Requests\StoreClient;
 use App\Http\Requests\UpdateClient;
-use App\Models\Client;
-use DB;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {

@@ -34,7 +34,8 @@ class UpdateTestimonial extends FormRequest
     public function data()
     {
         $inputs = [
-            'quote'       => trim($this->get('quote'))
+            'quote'       => trim($this->get('quote')),
+            'customer_id' => $this->get('customer_id')
         ];
 
         if ($this->has('is_published'))

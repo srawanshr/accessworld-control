@@ -1,6 +1,7 @@
 <tr>
     <td>{{ $emailPackage->id }}</td>
     <td>{{ $emailPackage->name }}</td>
+    <td>{{ ($emailPackage->is_published)? 'Yes' : 'No' }}</td>
     <td class="text-right">{{ $emailPackage->price }}</td>
     <td class="text-right">
         <a href="{{ route('emailPackage.edit', $emailPackage->slug) }}"

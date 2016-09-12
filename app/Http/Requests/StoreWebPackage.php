@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateVpsPackage extends FormRequest
+class StoreWebPackage extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,11 @@ class UpdateVpsPackage extends FormRequest
     public function rules()
     {
         return [
-            "name"        => "required|unique:vps_packages,name,".$this->vpsPackage->id,
+            "name"        => "required|unique:web_packages,name",
             'description' => 'required',
-            "cpu"         => "required|min:1",
-            "ram"         => "required|min:1",
-            "traffic"     => "required|min:1",
             "disk"        => "required|min:1",
+            "traffic"     => "required|min:1",
+            "domain"      => "required|min:1",
             'price'       => 'required|min:0'
         ];
     }
@@ -40,21 +39,16 @@ class UpdateVpsPackage extends FormRequest
     public function data()
     {
         $inputs = [
+            'slug'        => str_slug(trim($this->get('name'))),
             'name'        => trim($this->get('name')),
             'description' => $this->get('description'),
-            'cpu'         => $this->get('cpu'),
-            'ram'         => $this->get('ram'),
-            'traffic'     => $this->get('traffic'),
             'disk'        => $this->get('disk'),
+            'traffic'     => $this->get('traffic'),
+            'domain'      => $this->get('domain'),
             'price'       => $this->get('price')
         ];
 
-        if ($this->has('is_published'))
-        {
-            $inputs['is_published'] = true;
-        } else {
-            $inputs['is_published'] = false;
-        }
+        if ($this->has('is_published')) $inputs['is_published'] = true;
 
         return $inputs;
     }

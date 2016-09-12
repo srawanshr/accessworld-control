@@ -9,6 +9,7 @@
     </td>
     <td>{{$client->name}}</td>
     <td>{{$client->website}}</td>
+    <td>{{($client->is_published)? 'Yes' : 'No'}}</td>
     <td class="text-right">
         <a href="{{route('client.edit', $client->slug)}}" class="btn btn-icon-toggle"  data-toggle="tooltip" data-placement="top" data-original-title="Edit">
             <i class="md md-edit"></i>

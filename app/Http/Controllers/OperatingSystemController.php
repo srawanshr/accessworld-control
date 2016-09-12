@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Models\OperatingSystem;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreOperatingSystem;
 use App\Http\Requests\UpdateOperatingSystem;
 
+use Illuminate\Http\Request;
 use App\Http\Requests;
 
 class OperatingSystemController extends Controller

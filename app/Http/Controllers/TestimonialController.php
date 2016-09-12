@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTestimonial;
+use App\Http\Requests\UpdateTestimonial;
 use App\Models\Customer;
 use DB;
 use App\Http\Requests;
@@ -30,8 +32,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        $customer = Customer::pluck('name', 'id');
-        dd($customer);
+        $customer = Customer::pluck('username', 'id');
 
         return view('testimonial.create', compact('customer'));
     }
@@ -42,13 +43,11 @@ class TestimonialController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTestimonial $request)
     {
         DB::transaction(function () use ($request)
         {
-            $testimonial = Testimonial::create($request->data());
-
-            $this->uploadRequestImage($request, $testimonial);
+            Testimonial::create($request->data());
         });
 
         return redirect()->route('testimonial.index')->withSuccess('Testimonial created!');
@@ -74,13 +73,11 @@ class TestimonialController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(UpdateTestimonial $request, Testimonial $testimonial)
     {
         DB::transaction(function () use ($request, $testimonial)
         {
             $testimonial->update($request->data());
-
-            $this->uploadRequestImage($request, $testimonial);
         });
 
         return redirect()->route('testimonial.index')->withSuccess('Testimonial updated!');

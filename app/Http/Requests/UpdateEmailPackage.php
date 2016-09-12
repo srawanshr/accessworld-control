@@ -48,7 +48,11 @@ class UpdateEmailPackage extends FormRequest
         ];
 
         if ($this->has('is_published'))
+        {
             $inputs['is_published'] = true;
+        } else {
+            $inputs['is_published'] = false;
+        }
 
         return $inputs;
     }

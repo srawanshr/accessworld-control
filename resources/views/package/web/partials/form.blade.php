@@ -34,28 +34,26 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    {{ Form::number("cpu", old("cpu"), ['class'=>'form-control', 'required', 'min' => '1']) }}
-                    {{ Form::label("cpu", "CPU (in GB)") }}
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    {{ Form::number("ram", old("ram"), ['class'=>'form-control', 'required', 'step' => 'any']) }}
-                    {{ Form::label("ram", "RAM (in GB)") }}
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    {{ Form::number("traffic", old("traffic"), ['class'=>'form-control', 'required', 'step' => 'any']) }}
-                    {{ Form::label("traffic", "Traffic (in GB)") }}
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    {{ Form::number("disk", old("disk"), ['class'=>'form-control', 'required', 'step' => 'any']) }}
-                    {{ Form::label("disk", "Disk (in GB)") }}
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ Form::number("domain", old("domain"), ['class'=>'form-control domain-field priceable', 'required', 'min' => '1']) }}
+                            {{ Form::label("domain", "Domain") }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ Form::number("traffic", old("traffic"), ['class'=>'form-control traffic-field priceable', 'required', 'step' => 'any']) }}
+                            {{ Form::label("traffic", "Traffic (in GB)") }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ Form::number("disk", old("disk"), ['class'=>'form-control disk-field priceable', 'required', 'step' => 'any']) }}
+                            {{ Form::label("disk", "Disk (in GB)") }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

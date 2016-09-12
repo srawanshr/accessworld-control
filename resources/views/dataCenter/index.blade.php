@@ -22,8 +22,10 @@
                         <thead>
                         <tr>
                             <th width="10%">#</th>
-                            <th width="50%">Name</th>
-                            <th width="30%">Prefix</th>
+                            <th width="10%">Logo</th>
+                            <th width="40%">Name</th>
+                            <th width="15%">Price</th>
+                            <th width="15%">Prefix</th>
                             <th width="10%" class="text-right" data-orderable="false">Actions</th>
                         </tr>
                         </thead>

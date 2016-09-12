@@ -7,10 +7,20 @@
                 <label>Name</label>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="form-group">
                 {{ Form::text('website', old('website'), ['class'=>'form-control', 'required', 'data-rule-url' => true]) }}
                 <label>Website</label>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <div class="checkbox checkbox-styled">
+                    <label>
+                        {{ Form::checkbox("is_published", 1, old('is_published'), ['class' => 'form-control']) }}
+                        <span>Publish</span>
+                    </label>
+                </div>
             </div>
         </div>
     </div>

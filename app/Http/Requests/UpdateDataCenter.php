@@ -26,7 +26,9 @@ class UpdateDataCenter extends FormRequest
         return [
             'country' => 'required',
             'name'    => 'required',
-            'prefix'  => 'required'
+            'prefix'  => 'required',
+            'image'   => 'image|max:2048',
+            'price'   => 'required|min:0'
         ];
     }
 
@@ -36,10 +38,12 @@ class UpdateDataCenter extends FormRequest
     public function data()
     {
         $inputs = [
-            'name'   => trim($this->get('name')),
+            'name'    => trim($this->get('name')),
             'country' => $this->get('country'),
-            'prefix' => $this->get('prefix')
+            'prefix'  => $this->get('prefix'),
+            'price'   => $this->get('price')
         ];
+
         return $inputs;
     }
 }
