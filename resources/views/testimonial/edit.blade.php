@@ -19,7 +19,7 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::model($testimonial, ['route' => ['testimonial.update', $testimonial->id], 'class' => 'form form-validate floating-label', 'role' => 'form', 'method' => 'PUT', 'files' => true, 'novalidate']) }}
+                {{ Form::model($testimonial, ['route' => ['testimonial.update', $testimonial->id], 'class' => 'form form-validate floating-label', 'role' => 'form', 'method' => 'PUT', 'novalidate']) }}
                 @include('testimonial.partials.form')
                 {{ Form::close() }}
             </div><!--end .card -->

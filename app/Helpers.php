@@ -41,7 +41,7 @@ function user_avatar($width, $username = null)
 
 /**
  * @param $width
- * @param $staff
+ * @param null $entity
  * @return mixed
  */
 function thumbnail($width, $entity = null)

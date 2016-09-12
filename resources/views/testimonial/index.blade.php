@@ -17,9 +17,11 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th width="10%">#</th>
-                            <th width="60%">Name</th>
-                            <th width="20%">Icon</th>
+                            <th width="5%">#</th>
+                            <th width="10%">Logo</th>
+                            <th width="40%">Name</th>
+                            <th width="25%">Quote</th>
+                            <th width="10%">Published</th>
                             <th width="10%" class="text-right">Actions</th>
                         </tr>
                         </thead>
@@ -29,7 +31,7 @@
                                     <td class="text-center" colspan="5">No data available.</td>
                                 </tr>
                             @else
-                                @each('testimonial.partials.table', $testimonial, 'testimonial')
+                                @each('testimonial.partials.table', $testimonials, 'testimonial')
                             @endif
                         </tbody>
                     </table>

@@ -18,7 +18,7 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::open(['route' => 'testimonial.store', 'class' => 'form form-validate floating-label', 'role' => 'form', 'files' => true, 'novalidate']) }}
+                {{ Form::open(['route' => 'testimonial.store', 'class' => 'form form-validate floating-label', 'role' => 'form', 'novalidate']) }}
                     @include('testimonial.partials.form')
                 {{ Form::close() }}
             </div><!--end .card -->
