@@ -19,3 +19,7 @@ input[type="file"] {
 .note-editor {
     margin-top: 15px;
 }
+
+.dl-horizontal dt {
+    text-align: left;
+}

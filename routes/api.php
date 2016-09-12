@@ -13,10 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('user/list', 'UserController@userList')->name('user.list')->middleware('auth:api');
-Route::get('staff/list', 'StaffController@staffList')->name('staff.list')->middleware('auth:api');
-Route::get('customer/list', 'CustomerController@customerList')->name('customer.list')->middleware('auth:api');
-Route::get('customer/details', 'CustomerController@details')->name('customer.details')->middleware('auth:api');
+Route::post('user/list', 'UserController@userList')->name('user.list')->middleware('auth:api');
+Route::post('staff/list', 'StaffController@staffList')->name('staff.list')->middleware('auth:api');
+Route::post('customer/list', 'CustomerController@customerList')->name('customer.list')->middleware('auth:api');
 
 /*
 |--------------------------------------------------------------------------

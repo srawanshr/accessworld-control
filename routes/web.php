@@ -148,9 +148,9 @@ Route::group(['middleware' => 'auth'], function ()
     Route::group(['as' => 'customer.', 'prefix' => 'customer'], function ()
     {
         Route::get('', 'CustomerController@index')->name('index');
-        Route::get('{customer}', 'CustomerController@show')->name('show');
         Route::get('create', 'CustomerController@create')->name('create');
         Route::post('', 'CustomerController@store')->name('store');
+        Route::get('{customer}', 'CustomerController@show')->name('show');
         Route::get('{customer}/edit', 'CustomerController@edit')->name('edit');
         Route::put('{customer}', 'CustomerController@update')->name('update');
         Route::delete('{customer}', 'CustomerController@destroy')->name('destroy');
@@ -354,6 +354,7 @@ Route::group(['middleware' => 'auth'], function ()
     Route::group(['as' => 'component.', 'prefix' => 'component'], function ()
     {
         Route::get('{menu}/subMenuModal', 'ComponentController@subMenuModal')->name('subMenuModal');
+        Route::get('customer/details', 'CustomerController@details')->name('customer.details');
         Route::get('order/form', 'ComponentController@orderForm')->name('order.form');
         Route::post('order/details', 'OrderController@details')->name('order.details');
         Route::post('order/vps/details', 'VpsOrderController@details')->name('order.vps.details');

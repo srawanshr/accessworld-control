@@ -35,12 +35,9 @@
 
 @push('styles')
 <link href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/libs/DataTables/extensions/dataTables.colVis.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/libs/DataTables/extensions/dataTables.tableTools.min.css') }}" rel="stylesheet">
 @endpush
 
 @push('scripts')
 <script src="{{ asset('js/libs/DataTables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js') }}"></script>
 <script src="{{ asset('js/pages/dt_web_email_order.min.js') }}"></script>
 @endpush

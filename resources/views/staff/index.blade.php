@@ -47,5 +47,6 @@
 @push('scripts')
 <script src="{{ asset('js/libs/DataTables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js') }}"></script>
-@include('staff.partials.table')
+<script src="{{ asset('js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js') }}"></script>
+<script src="{{ asset('js/pages/dt_staff.min.js') }}"></script>
 @endpush

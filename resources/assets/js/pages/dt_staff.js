@@ -1,14 +1,14 @@
 (function (namespace, $) {
     "use strict";
 
-    var UserDataTable = function () {
+    var StaffDataTable = function () {
         var o = this;
         $(document).ready(function () {
             o.initialize();
         });
 
     };
-    var p = UserDataTable.prototype;
+    var p = StaffDataTable.prototype;
 
     p.initialize = function () {
         this._initDataTables();
@@ -19,18 +19,18 @@
             return;
         }
 
-        this.createDatatable();
+        this.createDataTable();
     };
 
-    p.createDatatable = function () {
-        var $dt_user = $('#dt_user');
-        var table = $dt_user.DataTable({
-            "dom": '<"clear">lfrtip',
+    p.createDataTable = function () {
+        var $dt_staff = $('#dt_staff');
+        var table = $dt_staff.DataTable({
+            "dom": "CT<'clear'>lfrtip",
             "processing": true,
             "serverSide": true,
             "ajax": {
                 "type": "POST",
-                "url": $dt_user.data('source')
+                "url": $dt_staff.data('source')
             },
             "pageLength": "50",
             "order": [],
@@ -51,18 +51,30 @@
                         return "<img src='" + data + "' class='img-circle width-1'>";
                     }
                 },
-                {"data": "username"},
+                {
+                    "data": "fname", "render": function (data, row, full) {
+                    return full.fname + ' ' + full.lname;
+                }
+                },
                 {"data": "email"},
-                {"data": "role", "class": "text-center"},
+                {"data": "qr", "class": "text-center"},
                 {"data": "action", name: "action", "class": "text-right", "orderable": false, "searchable": false}
             ],
-            "drawCallback": function () {
+            "drawCallback": function (settings) {
                 $('[data-toggle="tooltip"]').tooltip();
+            },
+            "colVis": {
+                "buttonText": "Columns",
+                "overlayFade": 0,
+                "align": "right"
+            },
+            "tableTools": {
+                "sSwfPath": sSwfPath
             }
         });
 
         var o = this;
-        $dt_user.find('tbody').on('click', 'td.details-control', function () {
+        $dt_staff.find('tbody').on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = table.row(tr);
 
@@ -79,8 +91,8 @@
 
     p._formatDetails = function (d) {
         var status = d.status == 1 ? 'Active' : 'Inactive';
-        var first_name = d.first_name == null ? '-' : d.first_name;
-        var last_name = d.last_name == null ? '-' : d.last_name;
+        var first_name = d.fname == null ? '-' : d.fname;
+        var last_name = d.lname == null ? '-' : d.lname;
         var address = d.address == null ? '-' : d.address;
         var phone = d.phone == null ? '-' : d.phone;
         return '<div class="card style-default-dark"><div class="card-body text-medium"><div class="row">' +
@@ -107,5 +119,6 @@
             '</div></div></div>';
     };
 
-    window.materialadmin.UserDataTable = new UserDataTable;
+// =========================================================================
+    window.materialadmin.StaffDataTable = new StaffDataTable;
 }(this.materialadmin, jQuery));

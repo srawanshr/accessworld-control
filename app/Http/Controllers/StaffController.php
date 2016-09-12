@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateStaff;
-use App\Models\Staff;
 use DB;
 use Form;
 use QRcode;
+use App\Models\Staff;
+use App\Http\Requests\CreateStaff;
 use Yajra\Datatables\Facades\Datatables;
 
-class StaffController extends Controller
-{
+class StaffController extends Controller {
+
     private $oldUrl = "https://www.accessworld.net/backend/cardinfo/index.php?checkid=";
 
     /**
@@ -28,7 +28,7 @@ class StaffController extends Controller
     {
         return Datatables::eloquent(Staff::with('image'))->addColumn('action', function ($staff)
         {
-            $buttons = Form::open([ 'route' => [ 'staff.destroy', $staff->id ], 'method' => 'DELETE' ]);
+            $buttons = Form::open(['route' => ['staff.destroy', $staff->id], 'method' => 'DELETE']);
             $buttons .= '<a href="' . route('staff.edit', $staff->id) . '" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>';
             $buttons .= '<button type="submit" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete" onClick="return confirm(\'Delete staff ' . $staff->display_name . '?\')"><i class="fa fa-trash-o"></i></button>';
             $buttons .= Form::close();
@@ -45,9 +45,9 @@ class StaffController extends Controller
                 </ul>
             </div>';
         })->addColumn('avatar', function ($staff)
-            {
-                return staff_avatar(50, $staff);
-            })->make(true);
+        {
+            return thumbnail(50, $staff);
+        })->make(true);
     }
 
     /**
@@ -55,7 +55,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        $companies = [ 'AWT' => 'AccessWorld', 'OMNI' => 'Omni' ];
+        $companies = ['AWT' => 'AccessWorld', 'OMNI' => 'Omni'];
 
         return view('staff.create', compact('companies'));
     }
@@ -83,7 +83,7 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        $companies = [ 'AWT' => 'AccessWorld', 'OMNI' => 'Omni' ];
+        $companies = ['AWT' => 'AccessWorld', 'OMNI' => 'Omni'];
 
         return view('staff.edit', compact('staff', 'companies'));
     }

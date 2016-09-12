@@ -16,14 +16,14 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::text('detail.first_name', old('detail.first_name'),['class' => 'form-control']) }}
-                        {{ Form::label('detail.first_name', 'First Name') }}
+                        {{ Form::text('first_name', old('first_name'),['class' => 'form-control']) }}
+                        {{ Form::label('first_name', 'First Name') }}
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::text('details.last_name', old('details.last_name'),['class' => 'form-control']) }}
-                        {{ Form::label('details.last_name', 'Last Name') }}
+                        {{ Form::text('last_name', old('last_name'),['class' => 'form-control']) }}
+                        {{ Form::label('last_name', 'Last Name') }}
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -44,8 +44,8 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::text('details.country', old('details.country'),['class' => 'form-control', 'id' => 'country-selector', 'data-source' => asset('data/countries.json'), 'required']) }}
-                {{ Form::label('details.country', 'Country') }}
+                {{ Form::text('country', old('country'),['class' => 'form-control', 'id' => 'country-selector', 'data-source' => asset('data/countries.json'), 'required']) }}
+                {{ Form::label('country', 'Country') }}
             </div>
         </div>
     </div>
@@ -66,32 +66,22 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::text('details.address', old('details.address'),['class' => 'form-control']) }}
-                {{ Form::label('details.address', 'Address') }}
+                {{ Form::text('address', old('address'),['class' => 'form-control']) }}
+                {{ Form::label('address', 'Address') }}
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::text('details.phone', old('details.phone'),['class' => 'form-control']) }}
-                {{ Form::label('details.phone', 'Phone') }}
+                {{ Form::text('phone', old('phone'),['class' => 'form-control']) }}
+                {{ Form::label('phone', 'Phone') }}
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::text('details.company', old('details.company'),['class' => 'form-control']) }}
-                {{ Form::label('details.company', 'Company') }}
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-                <div class="checkbox checkbox-inline checkbox-styled">
-                    <label>
-                        {!! Form::checkbox('is_admin', 1, old('is_admin')) !!}
-                        <span>Admin</span>
-                    </label>
-                </div>
+                {{ Form::text('company', old('company'),['class' => 'form-control']) }}
+                {{ Form::label('company', 'Company') }}
             </div>
         </div>
         <div class="col-sm-3">

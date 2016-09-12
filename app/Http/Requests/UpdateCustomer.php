@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomer extends FormRequest {
+class UpdateCustomer extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreCustomer extends FormRequest {
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,10 +24,10 @@ class StoreCustomer extends FormRequest {
     public function rules()
     {
         return [
-            'username'   => 'required|min:3|unique:customers,username',
-            'email'      => 'required|email|unique:customers,email',
-            'password'   => 'required|min:8|confirmed',
-            'avatar'     => 'image|between:1,2048',
+            'username'   => 'required|min:3|unique:customers,username,' . $this->customer->id,
+            'email'      => 'required|email|unique:customers,email,' . $this->customer->id,
+            'password'   => 'min:8|confirmed',
+            'image'      => 'image|between:1,2048',
             'first_name' => 'required',
             'last_name'  => 'required'
         ];
@@ -38,7 +38,7 @@ class StoreCustomer extends FormRequest {
      */
     public function data()
     {
-        $inputs = [
+        $data = [
             'email'           => trim($this->get('email')),
             'username'        => str_slug($this->get('username')),
             'password'        => bcrypt($this->get('password')),
@@ -47,10 +47,12 @@ class StoreCustomer extends FormRequest {
             'address'         => $this->has('address') ? trim($this->get('address')) : null,
             'phone'           => $this->has('phone') ? trim($this->get('phone')) : null,
             'country'         => $this->has('country') ? trim($this->get('country')) : null,
-            'company'         => $this->has('company') ? trim($this->get('company')) : null,
-            'activation_code' => str_random(60)
+            'company'         => $this->has('company') ? trim($this->get('company')) : null
         ];
 
-        return $inputs;
+        if ( ! empty($this->input('password')))
+            $data['password'] = bcrypt($this->input('password'));
+
+        return $data;
     }
 }

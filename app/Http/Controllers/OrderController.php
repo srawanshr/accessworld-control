@@ -75,7 +75,9 @@ class OrderController extends Controller {
      */
     public function details(Request $request)
     {
-        return view('order.partials.details');
+        $order = Order::find($request->get('id'));
+
+        return view('order.partials.details', compact('order'));
     }
 
     /**
@@ -120,7 +122,7 @@ class OrderController extends Controller {
                 return $item->approvedBy ? $item->approvedBy->name : $item->status;
             })->addColumn('action', function ($item) {
                 $button = '<a href="'.route('order.edit', $item->id).'" class="text-primary">Edit</a>';
-                $button .= '&nbsp;&nbsp;<a href="javascript:void(0);" class="text-primary item-delete" url="'.route('order.destroy', $item->id).'">Delete</a>';
+                $button .= '&nbsp;&nbsp;<a href="javascript:void(0);" class="text-primary item-delete" data-url="'.route('order.destroy', $item->id).'">Delete</a>';
 
                 return $button;
             })->make(true);

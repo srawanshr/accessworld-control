@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider {
         parent::boot();
 
         Route::model('user', 'App\Models\User');
+        Route::model('customer', 'App\Models\Customer');
         Route::model('service', 'App\Models\Service');
         Route::model('page', 'App\Models\Page');
         Route::model('package', 'App\Models\Package');

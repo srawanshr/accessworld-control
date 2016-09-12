@@ -16,16 +16,15 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="dt_customer" class="table order-column hover" data-source="{{ route('customer.list') }}" data-swftools="{{ asset('/js/libs/DataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf') }}">
+                    <table id="dt_customer" class="table order-column hover" data-source="{{ route('customer.list') }}" data-details-source="{{ route('component.customer.details') }}">
                         <thead>
                         <tr>
-                            <th class="text-center">
-                                <i class="md md-view-stream"></i>
-                            </th>
-                            <th>Avatar</th>
-                            <th>Name</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>Email</th>
-                            <th class="text-right">Actions</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -46,5 +45,6 @@
 @push('scripts')
 <script src="{{ asset('js/libs/DataTables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js') }}"></script>
-@include('customer.partials.table')
+<script src="{{ asset('js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js') }}"></script>
+<script src="{{ asset('js/pages/dt_customer.min.js') }}"></script>
 @endpush
