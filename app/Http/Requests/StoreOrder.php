@@ -52,7 +52,7 @@ class StoreOrder extends FormRequest {
             $rules['web.*.traffic'] = 'required';
         }
 
-        if ($this->has('web'))
+        if ($this->has('email'))
         {
             $rules['email.*.name'] = 'required';
             $rules['email.*.term'] = 'required';

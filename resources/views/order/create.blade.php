@@ -49,12 +49,6 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center">
-                <button type="button" id="add-service-order" class="btn btn-lg btn-primary ink-reaction" data-url="{{ route('component.order.form') }}">
-                    <i class="md md-add"></i>
-                    Add Service
-                </button>
-            </div>
             <br/>
             <div id="service-orders">
                 @if(old('vps'))
@@ -74,6 +68,12 @@
                 @endif
             </div>
             {{ Form::close() }}
+        </div>
+        <div class="text-center">
+            <button type="button" id="add-service-order" class="btn btn-lg btn-primary ink-reaction" data-url="{{ route('component.order.form') }}">
+                <i class="md md-add"></i>
+                Add Service
+            </button>
         </div>
     </section>
 

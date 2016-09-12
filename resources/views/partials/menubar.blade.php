@@ -28,13 +28,30 @@
             <!-- END DASHBOARD -->
 
             <!-- BEGIN ORDER -->
-            <li>
+            <li class="gui-folder">
                 <a href="{{ route('order.index') }}">
                     <div class="gui-icon">
                         <i class="md md-markunread-mailbox"></i>
                     </div>
                     <span class="title">Orders</span>
                 </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('order.vps.index') }}">
+                            <span class="title">VPS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('order.web.index') }}">
+                            <span class="title">Web</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('order.email.index') }}">
+                            <span class="title">Email</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <!-- END ORDER -->
 

@@ -289,10 +289,46 @@ Route::group(['middleware' => 'auth'], function ()
     {
         Route::get('', 'OrderController@index')->name('index');
         Route::get('create', 'OrderController@create')->name('create');
-        Route::post('', 'OrderController@store')->name('store');
         Route::get('{order}/edit', 'OrderController@edit')->name('edit');
+        Route::post('', 'OrderController@store')->name('store');
         Route::put('{order}', 'OrderController@update')->name('update');
         Route::delete('{order}', 'OrderController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | VPS Order CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'order.vps.', 'prefix' => 'order/vps'], function ()
+    {
+        Route::get('', 'VpsOrderController@index')->name('index');
+        Route::put('{vps_order}', 'VpsOrderController@update')->name('update');
+        Route::delete('{vps_order}', 'VpsOrderController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Web Order CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'order.web.', 'prefix' => 'order/web'], function ()
+    {
+        Route::get('', 'WebOrderController@index')->name('index');
+        Route::put('{web_order}', 'WebOrderController@update')->name('update');
+        Route::delete('{web_order}', 'WebOrderController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Email Order CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'order.email.', 'prefix' => 'order/email'], function ()
+    {
+        Route::get('', 'EmailOrderController@index')->name('index');
+        Route::put('{email_order}', 'EmailOrderController@update')->name('update');
+        Route::delete('{email_order}', 'EmailOrderController@destroy')->name('destroy');
     });
 
     /*
@@ -304,5 +340,9 @@ Route::group(['middleware' => 'auth'], function ()
     {
         Route::get('{menu}/subMenuModal', 'ComponentController@subMenuModal')->name('subMenuModal');
         Route::get('order/form', 'ComponentController@orderForm')->name('order.form');
+        Route::post('order/details', 'OrderController@details')->name('order.details');
+        Route::post('order/vps/details', 'VpsOrderController@details')->name('order.vps.details');
+        Route::post('order/web/details', 'WebOrderController@details')->name('order.web.details');
+        Route::post('order/email/details', 'EmailOrderController@details')->name('order.email.details');
     });
 });

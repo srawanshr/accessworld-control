@@ -1,7 +1,7 @@
 <div class="order">
     <div class="card">
         <div class="card-head">
-            <header>{{ $service->name }} {{ $key }}</header>
+            <header>{{ $service->name }} {{ ++$key }}</header>
             <div class="tools">
                 <div class="btn-group">
                     <a class="btn btn-icon-toggle btn-collapse">
@@ -41,13 +41,13 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            {{ Form::select('vps['.$key.'][operating_system_id]',$operating_systems,old('vps.'.$key.'.operating_system_id'),['id'=>'vps['.$key.'][operating_system_id]','class'=>'form-control']) }}
+                            {{ Form::select('vps['.$key.'][operating_system_id]',operating_systems(),old('vps.'.$key.'.operating_system_id'),['id'=>'vps['.$key.'][operating_system_id]','class'=>'form-control']) }}
                             <label for="vps[{{$key}}][operating_system_id]">Operating System</label>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            {{ Form::select('vps['.$key.'][data_center_id]',$data_centers,old('vps.'.$key.'.data_center_id'),['id'=>'vps['.$key.'][data_center_id]','class'=>'form-control']) }}
+                            {{ Form::select('vps['.$key.'][data_center_id]',data_centers(),old('vps.'.$key.'.data_center_id'),['id'=>'vps['.$key.'][data_center_id]','class'=>'form-control']) }}
                             <label for="vps[{{$key}}][data_center_id]">Data Center</label>
                         </div>
                     </div>

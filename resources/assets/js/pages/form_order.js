@@ -54,7 +54,7 @@
         $.ajax({
             "type": "GET",
             "url": $button.data("url"),
-            "data": {service_id: $("#service_id").val()},
+            "data": {service_id: $("#service_id").val(), key:$('.order').length},
             "success": function (response) {
                 $("#service-orders").append(response);
             }

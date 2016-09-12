@@ -7,16 +7,10 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">all orders</header>
-                    <div class="tools">
-                        <a class="btn btn-primary ink-reaction" href="{{ route('order.create') }}">
-                            <i class="md md-add"></i>
-                            Add
-                        </a>
-                    </div>
+                    <header class="text-capitalize">all email orders</header>
                 </div>
                 <div class="card-body">
-                    <table id="dt_order" class="table order-column hover" data-source="{{ route('order.list') }}" data-details-source="{{ route('component.order.details') }}">
+                    <table id="dt_web_email_order" class="table order-column hover" data-source="{{ route('order.email.list') }}" data-details-source="{{ route('component.order.email.details') }}">
                         <thead>
                         <tr>
                             <th>
@@ -24,9 +18,11 @@
                             </th>
                             <th>CUSTOMER</th>
                             <th>DATE</th>
+                            <th>DOMAIN</th>
+                            <th>DISK</th>
+                            <th>TRAFFIC</th>
                             <th>CREATED BY</th>
                             <th>APPROVED BY</th>
-                            <th>ACTION</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
@@ -46,5 +42,5 @@
 @push('scripts')
 <script src="{{ asset('js/libs/DataTables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js') }}"></script>
-<script src="{{ asset('js/pages/dt_order.min.js') }}"></script>
+<script src="{{ asset('js/pages/dt_web_email_order.min.js') }}"></script>
 @endpush

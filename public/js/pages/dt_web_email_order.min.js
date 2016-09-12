@@ -1,14 +1,14 @@
 (function (namespace, $) {
     "use strict";
 
-    var OrderDataTable = function () {
+    var WebEmailOrderDataTable = function () {
         var o = this;
         $(document).ready(function () {
             o.initialize();
         });
 
     };
-    var p = OrderDataTable.prototype;
+    var p = WebEmailOrderDataTable.prototype;
 
     p.initialize = function () {
         this._initDataTables();
@@ -23,16 +23,16 @@
     };
 
     p.createDataTable = function () {
-        var $dt_order = $("#dt_order");
+        var $dt_web_email_order = $("#dt_web_email_order");
 
-        var table = $dt_order.DataTable({
+        var table = $dt_web_email_order.DataTable({
             "dom": '<"clear">lfrtip',
             "order": [],
             "processing": true,
             "serverSide": true,
             "ajax": {
                 "type": "POST",
-                "url": $dt_order.data("source")
+                "url": $dt_web_email_order.data("source")
             },
             "pageLength": "50",
             "columns": [
@@ -44,10 +44,12 @@
                     "searchable": false
                 },
                 {"data": "customer"},
-                {"data": "date", "class": "text-center"},
+                {"data": "order.date", "class": "text-center"},
+                {"data": "domain", "class": "text-center"},
+                {"data": "disk", "class": "text-center"},
+                {"data": "traffic", "class": "text-center"},
                 {"data": "created_by", "class": "text-center"},
-                {"data": "approved_by", "class": "text-center text-capitalize"},
-                {"data": "action", "class": "text-right", "orderable": false, "searchable": false}
+                {"data": "approved_by", "class": "text-center text-capitalize"}
             ],
             "createdRow": function (row, data) {
                 if ('approved' == data["status"]) {
@@ -62,7 +64,7 @@
         });
 
         var o = this;
-        $dt_order.find('tbody').on('click', 'td.details-control', function () {
+        $dt_web_email_order.find('tbody').on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = table.row(tr);
 
@@ -72,10 +74,10 @@
 
     p._formatDetails = function (d, row, tr) {
         var orderId = d.id;
-        var $dt_order = $("#dt_order");
+        var $dt_web_email_order = $("#dt_web_email_order");
         $.ajax({
             "type": "POST",
-            "url": $dt_order.data("details-source"),
+            "url": $dt_web_email_order.data("details-source"),
             "data": {id: orderId},
             "success": function (response) {
                 if (row.child.isShown()) {
@@ -93,5 +95,5 @@
         });
     };
 
-    window.materialadmin.OrderDataTable = new OrderDataTable;
+    window.materialadmin.WebEmailOrderDataTable = new WebEmailOrderDataTable;
 }(this.materialadmin, jQuery));

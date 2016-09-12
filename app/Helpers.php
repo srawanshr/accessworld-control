@@ -41,7 +41,7 @@ function user_avatar($width, $username = null)
 
 /**
  * @param $width
- * @param $staff
+ * @param null $entity
  * @return mixed
  */
 function thumbnail($width, $entity = null)
@@ -51,4 +51,14 @@ function thumbnail($width, $entity = null)
             return asset($image->thumbnail($width, $width));
 
     return asset(config('paths.placeholder.avatar'));
+}
+
+function data_centers()
+{
+    return App\Models\DataCenter::pluck('name', 'id');
+}
+
+function operating_systems()
+{
+    return App\Models\OperatingSystem::active()->pluck('name', 'id');
 }

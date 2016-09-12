@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\EmailOrder;
 use App\Models\Order;
 use App\Models\VpsOrder;
 use App\Models\WebOrder;
+use App\Models\EmailOrder;
 
 class UpdateOrder extends StoreOrder {
 
@@ -34,9 +34,9 @@ class UpdateOrder extends StoreOrder {
             $data['approved_by'] = auth()->id();
 
         if ($this->get('approve'))
-            $data['status'] = 1;
+            $data['status'] = 'approved';
         elseif ($this->get('reject'))
-            $data['status'] = 2;
+            $data['status'] = 'rejected';
 
         return $order->update($data);
     }
@@ -110,7 +110,7 @@ class UpdateOrder extends StoreOrder {
                 'discount' => $this->input('email.' . $id . '.discount') ?: 0
             ];
 
-            EmailOrder::find($id)->create($data);
+            EmailOrder::find($id)->update($data);
         }
     }
 

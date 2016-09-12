@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataCenter;
-use App\Models\OperatingSystem;
 use DB;
+use Form;
 use Datatables;
 use App\Models\Order;
 use App\Models\Service;
+use App\Models\VpsOrder;
+use App\Models\WebOrder;
 use App\Models\Customer;
+use App\Models\EmailOrder;
+use App\Models\DataCenter;
+use Illuminate\Http\Request;
+use App\Models\OperatingSystem;
 use App\Http\Requests\StoreOrder;
 use App\Http\Requests\UpdateOrder;
-use Illuminate\Http\Request;
 
 class OrderController extends Controller {
 
@@ -32,11 +36,7 @@ class OrderController extends Controller {
 
         $customers = Customer::all()->pluck('name', 'id');
 
-        $data_centers = DataCenter::pluck('name', 'id');
-
-        $operating_systems = OperatingSystem::active()->pluck('name', 'id');
-
-        return view('order.create', compact('services', 'customers', 'data_centers', 'operating_systems'));
+        return view('order.create', compact('services', 'customers'));
     }
 
     /**
@@ -62,73 +62,11 @@ class OrderController extends Controller {
         return redirect()->route('order.index')->withSuccess(trans('messages.create_success', ['entity' => 'Order']));
     }
 
-    /**
-     * @param Order $order
-     * @return \Illuminate\View\View
-     */
     public function edit(Order $order)
     {
         $customers = Customer::all()->pluck('name', 'id');
 
-        $data_centers = DataCenter::pluck('name', 'id');
-
-        $operating_systems = OperatingSystem::active()->pluck('name', 'id');
-
-        return view('order.edit', compact('order', 'customers', 'data_centers', 'operating_systems'));
-    }
-
-    public function update(UpdateOrder $request, Order $order)
-    {
-        DB::transaction(function () use ($request, $order)
-        {
-            $request->updateOrder($order);
-
-            if ($request->has('vps'))
-                $request->updateVpsOrder($order);
-
-            if ($request->has('web'))
-                $request->updateWebOrder($order);
-
-            if ($request->has('email'))
-                $request->updateEmailOrder($order);
-        });
-
-        return back()->withSuccess(trans('messages.update_success', ['entity' => 'Order']));
-    }
-
-    public function destroy(Order $order)
-    {
-        dd($order);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function orderList()
-    {
-        return Datatables::eloquent(Order::with('customer', 'createdBy', 'approvedBy')->select([
-            'id',
-            'customer_id',
-            'date',
-            'status',
-            'created_by',
-            'approved_by'
-        ]))->addColumn('action', function ($order)
-        {
-            $buttons = '<a href="' . route('order.edit', $order->id) . '" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="md md-edit"></i></a>';
-            $buttons .= '<button type="button" class="btn btn-icon-toggle btn-delete" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="md md-delete"></i></button>';
-
-            return $buttons;
-        })->addColumn('customer', function ($order)
-        {
-            return $order->customer->name;
-        })->editColumn('created_by', function ($order)
-        {
-            return $order->createdBy->name;
-        })->editColumn('approved_by', function ($order)
-        {
-            return $order->approvedBy ? $order->status == 2 ? 'rejected' : $order->approvedBy->name : 'pending';
-        })->make(true);
+        return view('order.edit', compact('order', 'customers'));
     }
 
     /**
@@ -137,8 +75,54 @@ class OrderController extends Controller {
      */
     public function details(Request $request)
     {
-        $order = Order::find($request->get('id'));
+        return view('order.partials.details');
+    }
 
-        return view('order.partials.details', compact('order'));
+    /**
+     * @param UpdateOrder $request
+     * @param Order $order
+     * @return mixed
+     */
+    public function update(UpdateOrder $request, Order $order)
+    {
+        DB::transaction(function () use ($request, $order)
+        {
+            $request->updateOrder($order);
+
+            if ($request->has('vps'))
+                $request->updateVpsOrder();
+
+            if ($request->has('web'))
+                $request->updateWebOrder();
+
+            if ($request->has('email'))
+                $request->updateEmailOrder();
+        });
+
+        return back()->withSuccess(trans('messages.update_success', ['entity' => 'Order']));
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function orderList(Request $request)
+    {
+        return Datatables::eloquent(Order::with('customer', 'createdBy', 'approvedBy')->latest()->select())
+            ->addColumn('customer', function ($item)
+            {
+                return $item->customer->name;
+            })->editColumn('created_by', function ($item)
+            {
+                return $item->createdBy->name;
+            })->editColumn('approved_by', function ($item)
+            {
+                return $item->approvedBy ? $item->approvedBy->name : $item->status;
+            })->addColumn('action', function ($item) {
+                $button = '<a href="'.route('order.edit', $item->id).'" class="text-primary">Edit</a>';
+                $button .= '&nbsp;&nbsp;<a href="javascript:void(0);" class="text-primary item-delete" url="'.route('order.destroy', $item->id).'">Delete</a>';
+
+                return $button;
+            })->make(true);
     }
 }

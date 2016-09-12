@@ -7,6 +7,7 @@
     var infoMsg = "{{ session('info') }}";
     var warningMsg = "{{ session('warning') }}";
     var dangerMsg = "{{ session('danger') }}";
+    var errorMsg = "{{ isset($errors) && ! empty($errors->all()) ? 'Validation error!' : false }}";
 
     //Active links
     var requestUrl = "{{ request()->url() }}";
