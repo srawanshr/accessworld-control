@@ -17,7 +17,7 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::open(['route' => 'dataCenter.store', 'class' => 'form form-validate', 'role' => 'form', 'novalidate']) }}
+                {{ Form::open(['route' => 'dataCenter.store', 'class' => 'form form-validate', 'role' => 'form', 'novalidate', 'files'=>true]) }}
                     @include('dataCenter.partials.form')
                 {{ Form::close() }}
             </div><!--end .card -->
@@ -26,4 +26,7 @@
 @stop
 
 @push('scripts')
+<script src="{{ asset('js/libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery-validation/dist/additional-methods.min.js') }}"></script>
+<script src="{{ asset('js/preview.js') }}"></script>
 @endpush

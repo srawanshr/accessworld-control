@@ -1,4 +1,5 @@
 <div class="card">
+    @include('partials.errors')
     <div class="card-head">
         <header>{!! $header !!}</header>
         <div class="tools">

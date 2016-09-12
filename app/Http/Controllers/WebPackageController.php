@@ -76,7 +76,7 @@ class WebPackageController extends Controller
             $webPackage->update($request->data());
         });
 
-        return redirect()->route('webPackage.edit', $webPackage->slug)->withSuccess('Package updated!');
+        return redirect()->route('webPackage.index', $webPackage->slug)->withSuccess('Package updated!');
     }
 
     /**

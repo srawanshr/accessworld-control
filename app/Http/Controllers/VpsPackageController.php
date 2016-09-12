@@ -75,7 +75,7 @@ class VpsPackageController extends Controller
             $vpsPackage->update($request->data());
         });
 
-        return back()->withSuccess('Package updated!');
+        return redirect()->route('vpsPackage.index')->withSuccess('Package updated!');
     }
 
     /**

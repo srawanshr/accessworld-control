@@ -22,7 +22,8 @@
                     'class' => 'form form-validate',
                     'method' => 'PUT',
                     'role' => 'form',
-                    'novalidate'
+                    'novalidate',
+                    'files'=>true
                 ]) }}
                 @include('dataCenter.partials.form')
                 {{ Form::close() }}
@@ -32,4 +33,7 @@
 @stop
 
 @push('scripts')
+<script src="{{ asset('js/libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery-validation/dist/additional-methods.min.js') }}"></script>
+<script src="{{ asset('js/preview.js') }}"></script>
 @endpush

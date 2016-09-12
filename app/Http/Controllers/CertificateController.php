@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Models\Certificate;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCertificate;
+use App\Http\Requests\UpdateCertificate;
 
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class CertificateController extends Controller
 {
@@ -33,14 +35,10 @@ class CertificateController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreCertificate $request)
     {
-        $inputs = $request->all();
-
-        $inputs['slug'] = str_slug($inputs['title']);
-
-        DB::transaction(function () use ($inputs, $request) {
-            $certificate = Certificate::create($inputs);
+        DB::transaction(function () use ($request) {
+            $certificate = Certificate::create($request->data());
 
             $this->uploadRequestImage($request, $certificate);
         });
@@ -62,12 +60,10 @@ class CertificateController extends Controller
      * @param Certificate $certificate
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Certificate $certificate)
+    public function update(UpdateCertificate $request, Certificate $certificate)
     {
-        $inputs = $request->all();
-
-        DB::transaction(function () use ($inputs, $request, $certificate) {
-            $certificate->update($inputs);
+        DB::transaction(function () use ($request, $certificate) {
+            $certificate->update($request->data());
 
             $this->uploadRequestImage($request, $certificate);
         });

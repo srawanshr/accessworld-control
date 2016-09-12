@@ -23,8 +23,9 @@
                         <tr>
                             <th width="5%">#</th>
                             <th width="10%">Logo</th>
-                            <th width="40%">Name</th>
+                            <th width="30%">Name</th>
                             <th width="30%">Website</th>
+                            <th width="10%">Published</th>
                             <th width="15%" class="text-right">Actions</th>
                         </tr>
                         </thead>

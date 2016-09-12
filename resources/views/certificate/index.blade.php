@@ -24,7 +24,8 @@
                         <tr>
                             <th width="5%">#</th>
                             <th width="10%">Image</th>
-                            <th width="70%">Title</th>
+                            <th width="50%">Title</th>
+                            <th width="20%">Published</th>
                             <th width="15%" class="text-right">Actions</th>
                         </tr>
                         </thead>

@@ -1,6 +1,7 @@
 <tr>
     <td>{{ $webPackage->id }}</td>
     <td>{{ $webPackage->name }}</td>
+    <td>{{ ($webPackage->is_published)? 'Yes' : 'No' }}</td>
     <td class="text-right">{{ '$ '.$webPackage->price }}</td>
     <td class="text-right">
         <a href="{{ route('webPackage.edit', $webPackage->slug) }}"

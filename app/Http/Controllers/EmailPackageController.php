@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\StoreEmailPackage;
-use App\Http\Requests\UpdateEmailPackage;
 use DB;
 use App\Models\EmailPackage;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreEmailPackage;
+use App\Http\Requests\UpdateEmailPackage;
 
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class EmailPackageController extends Controller
 {
@@ -77,7 +77,7 @@ class EmailPackageController extends Controller
             $emailPackage->update($request->data());
         });
 
-        return redirect()->route('emailPackage.edit', $emailPackage->slug)->withSuccess('Package updated!');
+        return redirect()->route('emailPackage.index', $emailPackage->slug)->withSuccess('Package updated!');
     }
 
     /**

@@ -1,17 +1,27 @@
 <div class="card-body">
     @include('partials.errors')
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-10">
             <div class="form-group">
                 {{ Form::text('title',old('title'),['class'=>'form-control', 'required']) }}
                 <label>Title</label>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <div class="checkbox checkbox-styled">
+                    <label>
+                        {{ Form::checkbox("is_published", 1, old('is_published'), ['class' => 'form-control']) }}
+                        <span>Publish</span>
+                    </label>
+                </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
-                {{ Form::textarea('description',old('description'),['class'=>'form-control', 'required']) }}
+                {{ Form::textarea('description',old('description'),['class'=>'form-control', 'rows'=>'4', 'required']) }}
                 <label>Description</label>
             </div>
         </div>

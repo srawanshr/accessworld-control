@@ -9,6 +9,7 @@
         @endif
     </td>
     <td>{{ $certificate->title }}</td>
+    <td>{{ ($certificate->is_published)? 'Yes' : 'No' }}</td>
     <td class="text-right">
         <a href="{{route('certificate.edit', $certificate->slug)}}" class="btn btn-icon-toggle" data-toggle="tooltip"
            data-placement="top" data-original-title="Edit certificate">

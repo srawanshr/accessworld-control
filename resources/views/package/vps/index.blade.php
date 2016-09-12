@@ -21,10 +21,11 @@
                             <table id="vps-package-datatable" class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th class="text-right">Price&nbsp;</th>
-                                    <th class="text-right">Actions</th>
+                                    <th width="5%">#</th>
+                                    <th width="40%">Name</th>
+                                    <th width="10%">Published</th>
+                                    <th width="35%" class="text-right">Price&nbsp;</th>
+                                    <th width="10%" class="text-right">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
