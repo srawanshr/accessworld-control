@@ -55,6 +55,34 @@
             </li>
             <!-- END ORDER -->
 
+            <!-- BEGIN Provision -->
+            <li class="gui-folder">
+                <a href="javascript:void(0);">
+                    <div class="gui-icon">
+                        <i class="md md-face-unlock"></i>
+                    </div>
+                    <span class="title">Provision</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('provision.vps.index') }}">
+                            <span class="title">VPS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="title">Web</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="title">Email</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END Provision -->
+
             <!-- BEGIN CUSTOMER -->
             <li>
                 <a href="{{ route('customer.index') }}">

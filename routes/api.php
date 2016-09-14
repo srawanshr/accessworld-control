@@ -26,3 +26,12 @@ Route::post('order/list', 'OrderController@orderList')->name('order.list')->midd
 Route::post('order/vps/list', 'VpsOrderController@vpsOrderList')->name('order.vps.list')->middleware('auth:api');
 Route::post('order/web/list', 'WebOrderController@webOrderList')->name('order.web.list')->middleware('auth:api');
 Route::post('order/email/list', 'EmailOrderController@emailOrderList')->name('order.email.list')->middleware('auth:api');
+
+/*
+|--------------------------------------------------------------------------
+| Provision List Routes
+|--------------------------------------------------------------------------
+*/
+Route::post('provision/vps/list', 'VpsProvisionController@vpsOrderList')->name('provision.vps.list')->middleware('auth:api');
+Route::post('provision/web/list', 'WebProvisionController@webProvisionList')->name('provision.web.list')->middleware('auth:api');
+Route::post('provision/email/list', 'EmailProvisionController@emailProvisionList')->name('provision.email.list')->middleware('auth:api');
