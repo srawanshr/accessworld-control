@@ -43,6 +43,8 @@ class OperatingSystem extends Model {
 
     /**
      * @param $query
+     * @param bool $type
+     * @return mixed
      */
     public function scopeActive($query, $type = true)
     {

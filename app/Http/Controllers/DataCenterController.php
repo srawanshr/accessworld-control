@@ -10,12 +10,10 @@ use App\Http\Requests\UpdateDataCenter;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-class DataCenterController extends Controller
-{
+class DataCenterController extends Controller {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -25,9 +23,7 @@ class DataCenterController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -35,10 +31,8 @@ class DataCenterController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param StoreDataCenter $request
+     * @return mixed
      */
     public function store(StoreDataCenter $request)
     {
@@ -49,14 +43,12 @@ class DataCenterController extends Controller
             $this->uploadRequestImage($request, $dataCenter);
         });
 
-        return redirect()->route('dataCenter.index')->withSuccess('Data center created!');
+        return redirect()->route('dataCenter.index')->withSuccess(trans('messages.create_success', ['entity' => 'Data Center']));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  DataCenter $dataCenter
-     * @return \Illuminate\Http\Response
+     * @param DataCenter $dataCenter
+     * @return \Illuminate\View\View
      */
     public function edit(DataCenter $dataCenter)
     {
@@ -64,12 +56,9 @@ class DataCenterController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
+     * @param UpdateDataCenter $request
      * @param DataCenter $dataCenter
-     * @return \Illuminate\Http\Response
-     * @internal param int $id
+     * @return mixed
      */
     public function update(UpdateDataCenter $request, DataCenter $dataCenter)
     {
@@ -80,19 +69,17 @@ class DataCenterController extends Controller
             $this->uploadRequestImage($request, $dataCenter);
         });
 
-        return redirect()->route('dataCenter.index')->withSuccess('Data center updated!');
+        return redirect()->route('dataCenter.index')->withSuccess(trans('messages.update_success', ['entity' => 'Data Center']));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param DataCenter $dataCenter
-     * @return \Illuminate\Http\Response
-     * @internal param $id
-     * @internal param DataCenter $dataCenter
+     * @return mixed
      */
     public function destroy(DataCenter $dataCenter)
     {
-        return redirect()->back()->withSuccess('Data center deleted!');
+        $dataCenter->delete();
+
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Data Center']));
     }
 }

@@ -120,9 +120,10 @@ class OrderController extends Controller {
             })->editColumn('approved_by', function ($item)
             {
                 return $item->approvedBy ? $item->approvedBy->name : $item->status;
-            })->addColumn('action', function ($item) {
-                $button = '<a href="'.route('order.edit', $item->id).'" class="text-primary">Edit</a>';
-                $button .= '&nbsp;&nbsp;<a href="javascript:void(0);" class="text-primary item-delete" data-url="'.route('order.destroy', $item->id).'">Delete</a>';
+            })->addColumn('action', function ($item)
+            {
+                $button = '<a href="' . route('order.edit', $item->id) . '" class="text-primary">Edit</a>';
+                $button .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('order.destroy', $item->id) . '">Delete</a>';
 
                 return $button;
             })->make(true);

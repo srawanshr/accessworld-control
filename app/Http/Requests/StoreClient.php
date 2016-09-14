@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreClient extends FormRequest
-{
+class StoreClient extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +26,7 @@ class StoreClient extends FormRequest
         return [
             'name'    => 'required|unique:clients,name',
             'website' => 'required',
-            'image'   => 'image|max:2048'
+            'image'   => 'required|image|max:2048'
         ];
     }
 

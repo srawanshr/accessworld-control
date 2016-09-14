@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOperatingSystem extends FormRequest
-{
+class StoreOperatingSystem extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -36,9 +36,9 @@ class StoreOperatingSystem extends FormRequest
     public function data()
     {
         $inputs = [
-            'slug'        => str_slug(trim($this->get('name'))),
-            'name'        => trim($this->get('name')),
-            'price'       => $this->get('price')
+            'slug'  => str_slug(trim($this->get('name'))),
+            'name'  => trim($this->get('name')),
+            'price' => $this->get('price')
         ];
 
         if ($this->has('is_active'))

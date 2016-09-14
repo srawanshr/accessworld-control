@@ -2,18 +2,16 @@
 
 @section('title', 'Data Centers')
 
-@push('styles')
-@endpush
-
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>List of data centers</header>
+                    <header class="text-capitalize">all data centers</header>
                     <div class="tools">
-                        <a class="btn btn-default btn-ink" href="{{ route('dataCenter.create') }}">
-                            <i class="fa fa-plus"></i> Add
+                        <a class="btn btn-primary" href="{{ route('dataCenter.create') }}">
+                            <i class="md md-add"></i>
+                            Add
                         </a>
                     </div>
                 </div>
@@ -21,12 +19,11 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th width="10%">#</th>
-                            <th width="10%">Logo</th>
-                            <th width="40%">Name</th>
-                            <th width="15%">Price</th>
-                            <th width="15%">Prefix</th>
-                            <th width="10%" class="text-right" data-orderable="false">Actions</th>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th class="text-center">Prefix</th>
+                            <th class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,7 +41,4 @@
         </div>
     </section>
 @stop
-
-@push('scripts')
-@endpush
 

@@ -68,7 +68,7 @@ class ServiceController extends Controller {
             $this->uploadRequestImage($request, $service);
         });
 
-        return redirect()->back()->withSuccess(trans('messages.update_success', ['entity' => 'Service']));
+        return back()->withSuccess(trans('messages.update_success', ['entity' => 'Service']));
     }
 
     /**
@@ -85,6 +85,6 @@ class ServiceController extends Controller {
             $service->delete();
         });
 
-        return redirect()->back()->withSuccess('Service removed!');
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Service']));
     }
 }

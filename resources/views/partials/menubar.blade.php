@@ -149,38 +149,33 @@
             </li>
             <!-- END CLIENT -->
 
-            <!-- BEGIN EMAIL PACKAGE -->
-            <li>
-                <a href="{{ route('emailPackage.index') }}">
+            <!-- BEGIN PACKAGE -->
+            <li class="gui-folder">
+                <a href="javascript:void(0);">
                     <div class="gui-icon">
-                        <i class="md md-layers"></i>
+                        <i class="md md-wallet-giftcard"></i>
                     </div>
-                    <span class="title">Email Package</span>
+                    <span class="title">Packages</span>
                 </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('vpsPackage.index') }}">
+                            <span class="title">Vps</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('webPackage.index') }}">
+                            <span class="title">Web</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('emailPackage.index') }}">
+                            <span class="title">Email</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <!-- END EMAIL PACKAGE -->
-
-            <!-- BEGIN VPS PACKAGE -->
-            <li>
-                <a href="{{ route('vpsPackage.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-layers"></i>
-                    </div>
-                    <span class="title">Vps Package</span>
-                </a>
-            </li>
-            <!-- END VPS PACKAGE -->
-
-            <!-- BEGIN WEB PACKAGE -->
-            <li>
-                <a href="{{ route('webPackage.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-layers"></i>
-                    </div>
-                    <span class="title">Web Package</span>
-                </a>
-            </li>
-            <!-- END WEB PACKAGE -->
+            <!-- END PACKAGE -->
 
             <!-- BEGIN DATACENTER -->
             <li>

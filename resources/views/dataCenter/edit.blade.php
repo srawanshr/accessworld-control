@@ -1,30 +1,21 @@
 @extends('layout')
 
-@section('title', 'Data Center | Edit')
-
-@push('styles')
-@endpush
+@section('title', 'Data Center')
 
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>Edit a data center</header>
+                    <header class="text-capitalize">edit data center</header>
                     <div class="tools">
-                        <a class="btn btn-default btn-ink" href="{{ route('dataCenter.index') }}">
-                            <i class="fa fa-arrow-left"></i> Back
+                        <a class="btn btn-default" href="{{ route('dataCenter.index') }}">
+                            <i class="md md-arrow-back"></i>
+                            Back
                         </a>
                     </div>
                 </div>
-                {{ Form::model($dataCenter, [
-                    'route' => ['dataCenter.update', $dataCenter->slug],
-                    'class' => 'form form-validate',
-                    'method' => 'PUT',
-                    'role' => 'form',
-                    'novalidate',
-                    'files'=>true
-                ]) }}
+                {{ Form::model($dataCenter, ['route' => ['dataCenter.update', $dataCenter->slug],'class' => 'form form-validate','files'=>true,'novalidate']) }}
                 @include('dataCenter.partials.form')
                 {{ Form::close() }}
             </div><!--end .card -->

@@ -14,10 +14,11 @@ return [
 
     'image' => [
 
-        'User' => 'avatars',
-        'Page' => 'featured',
-        'Staff' => 'avatars',
-        'Client' => 'logos',
+        'User'        => 'avatars',
+        'Page'        => 'featured',
+        'Staff'       => 'avatars',
+        'Client'      => 'logos',
+        'Certificate' => 'certificates'
 
     ],
 

@@ -7,15 +7,10 @@ use App\Models\OperatingSystem;
 use App\Http\Requests\StoreOperatingSystem;
 use App\Http\Requests\UpdateOperatingSystem;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
+class OperatingSystemController extends Controller {
 
-class OperatingSystemController extends Controller
-{
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -25,9 +20,7 @@ class OperatingSystemController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -35,10 +28,8 @@ class OperatingSystemController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  OperatingSystemRequest $request
-     * @return \Illuminate\Http\Response
+     * @param StoreOperatingSystem $request
+     * @return mixed
      */
     public function store(StoreOperatingSystem $request)
     {
@@ -49,14 +40,12 @@ class OperatingSystemController extends Controller
             $this->uploadRequestImage($request, $operatingSystem);
         });
 
-        return redirect()->route('operatingSystem.index')->withSuccess('Operating system created!');
+        return redirect()->route('operatingSystem.index')->withSuccess(trans('messages.create_success', ['entity' => 'Operating System']));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  OperatingSystem $os
-     * @return \Illuminate\Http\Response
+     * @param OperatingSystem $operatingSystem
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(OperatingSystem $operatingSystem)
     {
@@ -64,11 +53,9 @@ class OperatingSystemController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  OperatingSystem $os
-     * @return \Illuminate\Http\Response
+     * @param UpdateOperatingSystem $request
+     * @param OperatingSystem $operatingSystem
+     * @return mixed
      */
     public function update(UpdateOperatingSystem $request, OperatingSystem $operatingSystem)
     {
@@ -79,17 +66,17 @@ class OperatingSystemController extends Controller
             $this->uploadRequestImage($request, $operatingSystem);
         });
 
-        return redirect()->route('operatingSystem.index')->withSuccess('Operating system updated!');
+        return redirect()->route('operatingSystem.index')->withSuccess(trans('messages.update_success', ['entity' => 'Operating System']));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  OperatingSystem $os
-     * @return \Illuminate\Http\Response
+     * @param OperatingSystem $operatingSystem
+     * @return mixed
      */
     public function destroy(OperatingSystem $operatingSystem)
     {
-        return redirect()->back()->withSuccess('Operating system deleted!');
+        $operatingSystem->delete();
+
+        return back()->withSuccess(trans('messages.create_success', ['entity' => 'Operating System']));
     }
 }

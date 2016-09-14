@@ -11,12 +11,10 @@ use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 
-class TestimonialController extends Controller
-{
+class TestimonialController extends Controller {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -26,73 +24,57 @@ class TestimonialController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        $customer = Customer::pluck('username', 'id');
+        $customers = Customer::select(['first_name', 'last_name', 'username', 'id'])->get()->pluck('name', 'id');
 
-        return view('testimonial.create', compact('customer'));
+        return view('testimonial.create', compact('customers'));
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param StoreTestimonial $request
+     * @return mixed
      */
     public function store(StoreTestimonial $request)
     {
-        DB::transaction(function () use ($request)
-        {
-            Testimonial::create($request->data());
-        });
+        Testimonial::create($request->data());
 
-        return redirect()->route('testimonial.index')->withSuccess('Testimonial created!');
+        return redirect()->route('testimonial.index')->withSuccess(trans('messages.create_success', ['entity' => 'Testimonial']));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
      * @param Testimonial $testimonial
-     * @return \Illuminate\Http\Response
-     * @internal param int $id
+     * @return \Illuminate\View\View
      */
     public function edit(Testimonial $testimonial)
     {
-        return view('admin.testimonials.edit', compact('testimonial'));
+        $customers = Customer::select(['first_name', 'last_name', 'username', 'id'])->get()->pluck('name', 'id');
+
+        return view('testimonial.edit', compact('testimonial', 'customers'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
+     * @param UpdateTestimonial $request
      * @param Testimonial $testimonial
-     * @return \Illuminate\Http\Response
-     * @internal param int $id
+     * @return mixed
      */
     public function update(UpdateTestimonial $request, Testimonial $testimonial)
     {
-        DB::transaction(function () use ($request, $testimonial)
-        {
-            $testimonial->update($request->data());
-        });
+        $testimonial->update($request->data());
 
-        return redirect()->route('testimonial.index')->withSuccess('Testimonial updated!');
+        return redirect()->route('testimonial.index')->withSuccess(trans('messages.update_success', ['entity' => 'Testimonial']));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param Testimonial $testimonial
-     * @return \Illuminate\Http\Response
-     * @throws \Exception
-     * @internal param int $id
+     * @return mixed
      */
     public function destroy(Testimonial $testimonial)
     {
-        return redirect()->back()->withSuccess('Testimonial deleted!');
+        $testimonial->delete();
+
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Testimonial']));
     }
 }

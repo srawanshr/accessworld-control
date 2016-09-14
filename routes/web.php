@@ -96,21 +96,6 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
-    | Service Package CRUD Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['as' => 'service.package.', 'prefix' => 'service/{service}/package'], function ()
-    {
-        Route::get('', 'PackageController@index')->name('index');
-        Route::get('create', 'PackageController@create')->name('create');
-        Route::post('', 'PackageController@store')->name('store');
-        Route::get('{package}/edit', 'PackageController@edit')->name('edit');
-        Route::put('{package}', 'PackageController@update')->name('update');
-        Route::delete('{package}', 'PackageController@destroy')->name('destroy');
-    });
-
-    /*
-    |--------------------------------------------------------------------------
     | Page CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -203,10 +188,10 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
-    | Client CRUD Routes
+    | Operating System CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'operatingSystem.', 'prefix' => 'operatingSystem'], function ()
+    Route::group(['as' => 'operatingSystem.', 'prefix' => 'operating-system'], function ()
     {
         Route::get('', 'OperatingSystemController@index')->name('index');
         Route::get('create', 'OperatingSystemController@create')->name('create');
@@ -221,7 +206,7 @@ Route::group(['middleware' => 'auth'], function ()
     | DataCenter CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'dataCenter.', 'prefix' => 'dataCenter'], function ()
+    Route::group(['as' => 'dataCenter.', 'prefix' => 'data-center'], function ()
     {
         Route::get('', 'DataCenterController@index')->name('index');
         Route::get('create', 'DataCenterController@create')->name('create');
@@ -233,25 +218,10 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
-    | Email Package CRUD Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['as' => 'emailPackage.', 'prefix' => 'emailPackage'], function ()
-    {
-        Route::get('', 'EmailPackageController@index')->name('index');
-        Route::get('create', 'EmailPackageController@create')->name('create');
-        Route::post('', 'EmailPackageController@store')->name('store');
-        Route::get('{emailPackage}/edit', 'EmailPackageController@edit')->name('edit');
-        Route::put('{emailPackage}', 'EmailPackageController@update')->name('update');
-        Route::delete('{emailPackage}', 'EmailPackageController@destroy')->name('destroy');
-    });
-
-    /*
-    |--------------------------------------------------------------------------
     | VPS Package CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'vpsPackage.', 'prefix' => 'vpsPackage'], function ()
+    Route::group(['as' => 'vpsPackage.', 'prefix' => 'vps-package'], function ()
     {
         Route::get('', 'VpsPackageController@index')->name('index');
         Route::get('create', 'VpsPackageController@create')->name('create');
@@ -266,7 +236,7 @@ Route::group(['middleware' => 'auth'], function ()
     | WEB Package CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'webPackage.', 'prefix' => 'webPackage'], function ()
+    Route::group(['as' => 'webPackage.', 'prefix' => 'web-package'], function ()
     {
         Route::get('', 'WebPackageController@index')->name('index');
         Route::get('create', 'WebPackageController@create')->name('create');
@@ -274,6 +244,21 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{webPackage}/edit', 'WebPackageController@edit')->name('edit');
         Route::put('{webPackage}', 'WebPackageController@update')->name('update');
         Route::delete('{webPackage}', 'WebPackageController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Email Package CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'emailPackage.', 'prefix' => 'email-package'], function ()
+    {
+        Route::get('', 'EmailPackageController@index')->name('index');
+        Route::get('create', 'EmailPackageController@create')->name('create');
+        Route::post('', 'EmailPackageController@store')->name('store');
+        Route::get('{emailPackage}/edit', 'EmailPackageController@edit')->name('edit');
+        Route::put('{emailPackage}', 'EmailPackageController@update')->name('update');
+        Route::delete('{emailPackage}', 'EmailPackageController@destroy')->name('destroy');
     });
 
     /*

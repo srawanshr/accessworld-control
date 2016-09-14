@@ -3,8 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVpsProvisionsTable extends Migration
-{
+class CreateVpsProvisionsTable extends Migration {
+
     /**
      * Run the migrations.
      *
@@ -12,7 +12,8 @@ class CreateVpsProvisionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vps_provisions', function (Blueprint $table) {
+        Schema::create('vps_provisions', function (Blueprint $table)
+        {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
@@ -27,10 +28,14 @@ class CreateVpsProvisionsTable extends Migration
             $table->float('ram');
             $table->float('disk');
             $table->float('traffic');
+            $table->string('ip')->unsigned()->index();
+            $table->string('mac')->unsigned()->index();
             $table->string('password')->nullable();
             $table->boolean('is_managed')->default(0);
             $table->boolean('is_suspended')->default(0);
+            $table->boolean('is_trial')->default(0);
             $table->integer('provisioned_by')->unsigned();
+            $table->date('expiry_date');
             $table->foreign('customer_id')
                 ->references('id')
                 ->on('customers')
@@ -42,14 +47,6 @@ class CreateVpsProvisionsTable extends Migration
             $table->foreign('vps_order_id')
                 ->references('id')
                 ->on('vps_orders')
-                ->onDelete('restrict');
-            $table->foreign('operating_system_id')
-                ->references('id')
-                ->on('operating_systems')
-                ->onDelete('restrict');
-            $table->foreign('data_center_id')
-                ->references('id')
-                ->on('data_centers')
                 ->onDelete('restrict');
             $table->softDeletes();
             $table->timestamps();
@@ -63,7 +60,8 @@ class CreateVpsProvisionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('vps_provisions',function(Blueprint $table){
+        Schema::table('vps_provisions', function (Blueprint $table)
+        {
             $table->dropForeign('vps_provisions_customer_id_foreign');
             $table->dropForeign('vps_provisions_provisioned_by_foreign');
             $table->dropForeign('vps_provisions_vps_order_id_foreign');

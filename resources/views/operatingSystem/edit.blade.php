@@ -1,22 +1,22 @@
 @extends('layout')
 
-@section('title', 'Operating System | Edit')
-
-@push('styles')
-@endpush
+@section('title', 'Operating System')
 
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>Edit an operating system ({{ $operatingSystem->name }})</header>
+                    <header>Edit operating system ({{ $operatingSystem->name }})</header>
                     <div class="tools">
-                        <a class="btn btn-default btn-ink" href="{{ route('operatingSystem.index') }}"><i class="fa fa-arrow-left"></i> Back</a>
+                        <a class="btn btn-default" href="{{ route('operatingSystem.index') }}">
+                            <i class="md md-arrow-back"></i>
+                            Back
+                        </a>
                     </div>
                 </div>
                 {{ Form::model($operatingSystem, ['route' => ['operatingSystem.update', $operatingSystem->slug ], 'class' => 'form form-validate', 'method' => 'PUT', 'role' => 'form', 'novalidate' => 'novalidate', 'files' => true]) }}
-                    @include('operatingSystem.partials.form')
+                @include('operatingSystem.partials.form')
                 {{ Form::close() }}
             </div>
         </div>

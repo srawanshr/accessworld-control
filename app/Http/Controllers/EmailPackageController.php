@@ -52,11 +52,8 @@ class EmailPackageController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param EmailPackage $package
+     * @param EmailPackage $emailPackage
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
     public function edit(EmailPackage $emailPackage)
     {

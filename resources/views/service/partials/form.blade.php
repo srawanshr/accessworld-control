@@ -29,7 +29,7 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="form-group">
                         @if(isset($service) && $service->image)
-                            <img src="{{ asset($service->image->path) }}" data-src="{{ asset($service->image->path) }}" class="preview" height="150" width="150">
+                            <img src="{{ thumbnail(150, $service) }}" data-src="{{ thumbnail(150, $service) }}" class="preview" height="150" width="150">
                         @else
                             <img src="{{ asset(config('paths.placeholder.default')) }}" data-src="{{ asset(config('paths.placeholder.default')) }}" class="preview" height="150" width="150">
                         @endif

@@ -30,7 +30,7 @@ class CustomerController extends Controller {
             {
                 $buttons = '<a href="'.route('customer.show', $customer->username).'" class="text-primary">View</a>';
                 $buttons .= '&nbsp;&nbsp;<a href="' . route('customer.edit', $customer->username) . '" class="text-primary">Edit</a>';
-                $buttons .= '&nbsp;&nbsp;<a href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('customer.destroy', $customer->username) . '">Delete</a>';
+                $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('customer.destroy', $customer->username) . '">Delete</a>';
 
                 return $buttons;
             })->make(true);
@@ -104,6 +104,6 @@ class CustomerController extends Controller {
     {
         $customer->delete();
 
-        return redirect()->route('customer.index')->withSuccess(trans('messages.delete_success', ['entity' => 'Customer']));
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Customer']));
     }
 }

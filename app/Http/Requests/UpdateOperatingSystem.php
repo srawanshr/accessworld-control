@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateOperatingSystem extends FormRequest
-{
+class UpdateOperatingSystem extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,7 +24,7 @@ class UpdateOperatingSystem extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required|unique:operating_systems,name,'.$this->operatingSystem->id,
+            'name'  => 'required|unique:operating_systems,name,' . $this->operatingSystem->id,
             'image' => 'image|max:2048',
             'price' => 'required|min:0'
         ];
@@ -36,16 +36,13 @@ class UpdateOperatingSystem extends FormRequest
     public function data()
     {
         $inputs = [
-            'name'  => trim($this->get('name')),
-            'price' => $this->get('price')
+            'name'      => trim($this->get('name')),
+            'price'     => $this->get('price'),
+            'is_active' => false
         ];
 
         if ($this->has('is_active'))
-        {
             $inputs['is_active'] = true;
-        } else {
-            $inputs['is_active'] = false;
-        }
 
         return $inputs;
     }

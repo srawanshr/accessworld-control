@@ -27,7 +27,7 @@ class UserController extends Controller {
      */
     public function userList()
     {
-        $users = User::select(['username', 'email', 'first_name', 'last_name', 'phone', 'address', 'created_at']);
+        $users = User::select(['username', 'email', 'first_name', 'last_name', 'phone', 'address', 'created_at'])->where('username', '<>', 'super_admin');
 
         return Datatables::eloquent($users)
             ->addColumn('avatar', function ($user)
@@ -36,8 +36,8 @@ class UserController extends Controller {
             })
             ->addColumn('action', function ($user)
             {
-                $buttons = '<a href="' . route('user.edit', $user->username) . '" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="md md-edit"></i></a>';
-                $buttons .= '<button type="button" class="btn btn-icon-toggle btn-delete" data-url="' . route('user.destroy', $user->username) . '" data-toggle="tooltip" data-placement="top" data-original-title="Delete"><i class="md md-delete"></i></button>';
+                $buttons = '<a href="' . route('user.edit', $user->username) . '" class="text-primary">Edit</a>';
+                $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('user.destroy', $user->username) . '">Delete</a>';
 
                 return $buttons;
             })
@@ -148,6 +148,6 @@ class UserController extends Controller {
 
         $user->update(['password' => $password]);
 
-        return redirect()->back()->with('success', 'Password changed!');
+        return back()->with('success', 'Password changed!');
     }
 }

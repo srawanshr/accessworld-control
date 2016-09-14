@@ -30,9 +30,9 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="form-group">
                         @if(isset($client))
-                            <img src="{{ thumbnail(200, $client) }}" data-src="{{ thumbnail(200, $client) }}" class="preview" height="150" width="150">
+                            <img src="{{ thumbnail(150, $client) }}" data-src="{{ thumbnail(150, $client) }}" class="preview" height="150" width="150">
                         @else
-                            <img src="{{ thumbnail(200) }}" data-src="{{ thumbnail(200) }}" class="preview" height="150" width="150">
+                            <img src="{{ asset(config('paths.placeholder.default')) }}" data-src="{{ asset(config('paths.placeholder.default')) }}" class="preview" height="150" width="150">
                         @endif
                     </div>
                 </div>
@@ -48,7 +48,7 @@
 </div><!--end .card-body -->
 <div class="card-actionbar">
     <div class="card-actionbar-row">
-        <button type="reset" class="btn btn-flat ink-reaction">Reset</button>
-        <button type="submit" class="btn btn-flat btn-primary ink-reaction">Save</button>
+        <button type="reset" class="btn btn-flat">Reset</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </div>

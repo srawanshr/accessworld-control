@@ -2,17 +2,14 @@
 
 @section('title', 'Certificates')
 
-@push('styles')
-@endpush
-
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>List of certificates</header>
+                    <header class="text-capitalize">all certificates</header>
                     <div class="tools">
-                        <a class="btn btn-default btn-ink" href="{{ route('certificate.create') }}">
+                        <a class="btn btn-primary" href="{{ route('certificate.create') }}">
                             <i class="md md-add"></i>
                             Add
                         </a>
@@ -22,17 +19,15 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th width="5%">#</th>
-                            <th width="10%">Image</th>
-                            <th width="50%">Title</th>
-                            <th width="20%">Published</th>
-                            <th width="15%" class="text-right">Actions</th>
+                            <th>Title</th>
+                            <th class="text-center">Published</th>
+                            <th class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         @if($certificates->isEmpty())
                             <tr>
-                                <td class="text-center" colspan="5">No data available.</td>
+                                <td class="text-center" colspan="3">No data available.</td>
                             </tr>
                         @else
                             @each('certificate.partials.table', $certificates, 'certificate')
@@ -44,6 +39,3 @@
         </div>
     </section>
 @stop
-
-@push('scripts')
-@endpush

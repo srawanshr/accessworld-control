@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateClient extends FormRequest
-{
+class UpdateClient extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -36,15 +36,13 @@ class UpdateClient extends FormRequest
     public function data()
     {
         $inputs = [
-            'name'    => trim($this->get('name')),
-            'website' => $this->get('website')
+            'name'         => trim($this->get('name')),
+            'website'      => $this->get('website'),
+            'is_published' => false
         ];
 
-        if ($this->has('is_published')) {
+        if ($this->has('is_published'))
             $inputs['is_published'] = true;
-        } else {
-            $inputs['is_published'] = false;
-        }
 
         return $inputs;
     }
