@@ -1,9 +1,8 @@
 <tr>
-{{--    {{ dd(thumbnail(200)) }}--}}
     <td>{{ $testimonial->id }}</td>
     <td>
         @if(isset($testimonial->customer))
-            <img src="{{ thumbnail(200, $testimonail->customer) }}" data-src="{{ thumbnail(200, $testimonail->customer) }}" class="img-circle width-1" >
+            <img src="{{ thumbnail(200, $testimonial->customer) }}" data-src="{{ thumbnail(200, $testimonial->customer) }}" class="img-circle width-1" >
         @else
             <img src="{{ thumbnail(200) }}" data-src="{{ thumbnail(200) }}" class="img-circle width-1" >
         @endif

@@ -12,7 +12,9 @@ class Testimonial extends Model
      * @var array
      */
     protected $fillable = [
-        'customer_id', 'quote', 'is_published'
+        'customer_id',
+        'quote',
+        'is_published'
     ];
 
     /**
@@ -21,7 +23,7 @@ class Testimonial extends Model
      * @var array
      */
     protected $casts = [
-        'is_published' => 'boolean',
+        'is_published' => 'boolean'
     ];
 
     /**

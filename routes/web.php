@@ -278,6 +278,19 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | VPS Provision CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'provision.vps.', 'prefix' => 'provision/vps'], function ()
+    {
+        Route::get('', 'VpsProvisionController@index')->name('index');
+        Route::put('{vps_provision}', 'VpsProvisionController@update')->name('update');
+        Route::delete('{vps_provision}', 'VpsProvisionController@destroy')->name('destroy');
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Menu CRUD Routes
     |--------------------------------------------------------------------------
     */
