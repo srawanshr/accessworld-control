@@ -7,28 +7,9 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">all orders</header>
+                    <header class="text-capitalize">all vps provisions</header>
                 </div>
-                <div class="card-body">
-                    <table id="dt_vps_order" class="table order-column hover" data-source="" data-details-source="">
-                        <thead>
-                        <tr>
-                            <th>
-                                <i class="md md-view-stream"></i>
-                            </th>
-                            <th>CUSTOMER</th>
-                            <th>DATE</th>
-                            <th>CPU</th>
-                            <th>RAM</th>
-                            <th>DISK</th>
-                            <th>TRAFFIC</th>
-                            <th>CREATED BY</th>
-                            <th>APPROVED BY</th>
-                        </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
+                <div class="card-body"></div>
             </div>
         </div>
     </section>

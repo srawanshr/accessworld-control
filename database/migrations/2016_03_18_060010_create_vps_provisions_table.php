@@ -19,8 +19,8 @@ class CreateVpsProvisionsTable extends Migration {
             $table->string('name');
             $table->integer('customer_id')->unsigned();
             $table->integer('vps_order_id')->unsigned();
-            $table->integer('operating_system_id')->unsigned();
-            $table->integer('data_center_id')->unsigned();
+            $table->integer('operating_system_id')->unsigned()->index();
+            $table->integer('data_center_id')->unsigned()->index();
             $table->string('server_id');
             $table->string('virtual_machine');
             $table->string('uuid');
@@ -35,7 +35,7 @@ class CreateVpsProvisionsTable extends Migration {
             $table->boolean('is_suspended')->default(0);
             $table->boolean('is_trial')->default(0);
             $table->integer('provisioned_by')->unsigned();
-            $table->date('expiry_date');
+            $table->dateTime('expiry_date');
             $table->foreign('customer_id')
                 ->references('id')
                 ->on('customers')

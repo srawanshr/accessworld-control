@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VpsProvision extends Model
-{
+class VpsProvision extends Model {
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,9 +24,13 @@ class VpsProvision extends Model
         'ram',
         'disk',
         'traffic',
+        'ip',
+        'mac',
         'password',
+        'is_trial',
         'is_managed',
         'is_suspended',
+        'expiry_date',
         'provisioned_by'
     ];
 
@@ -59,14 +63,6 @@ class VpsProvision extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function operatingSystem()
-    {
-        return $this->belongsTo('App\Models\OperatingSystem');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function dataCenter()
     {
         return $this->belongsTo('App\Models\DataCenter');
@@ -75,9 +71,8 @@ class VpsProvision extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function provisionedBy()
     {
         return $this->belongsTo('App\Models\User', 'provisioned_by');
     }
-
 }

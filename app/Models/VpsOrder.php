@@ -12,7 +12,6 @@ class VpsOrder extends Model {
      * @var array
      */
     protected $fillable = [
-        'customer_id',
         'operating_system_id',
         'data_center_id',
         'order_id',
@@ -36,5 +35,13 @@ class VpsOrder extends Model {
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function provision()
+    {
+        return $this->hasOne(VpsProvision::class);
     }
 }

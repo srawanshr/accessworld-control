@@ -84,8 +84,8 @@ class StoreOrder extends FormRequest {
     {
         foreach ($this->get('vps') as $key => $values)
         {
-            $term = $this->input('vps.' . $id . '.term');
-            $is_trial = $this->input('vps.' . $id . '.trial');
+            $term = $this->input('vps.' . $key . '.term');
+            $is_trial = $this->input('vps.' . $key . '.trial');
 
             $data = [
                 'name'                => $this->input('vps.' . $key . '.name'),

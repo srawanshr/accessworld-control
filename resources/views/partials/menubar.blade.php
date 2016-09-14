@@ -29,13 +29,18 @@
 
             <!-- BEGIN ORDER -->
             <li class="gui-folder">
-                <a href="{{ route('order.index') }}">
+                <a href="javascript:void(0);">
                     <div class="gui-icon">
                         <i class="md md-markunread-mailbox"></i>
                     </div>
                     <span class="title">Orders</span>
                 </a>
                 <ul>
+                    <li>
+                        <a href="{{ route('order.index') }}">
+                            <span class="title">All</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ route('order.vps.index') }}">
                             <span class="title">VPS</span>
@@ -59,9 +64,9 @@
             <li class="gui-folder">
                 <a href="javascript:void(0);">
                     <div class="gui-icon">
-                        <i class="md md-face-unlock"></i>
+                        <i class="md md-cloud"></i>
                     </div>
-                    <span class="title">Provision</span>
+                    <span class="title">Provisions</span>
                 </a>
                 <ul>
                     <li>

@@ -307,6 +307,15 @@ Route::group(['middleware' => 'auth'], function ()
         Route::delete('{vps_order}', 'VpsOrderController@destroy')->name('destroy');
     });
 
+    Route::group(['as' => 'provision.vps.', 'prefix' => 'vps/provision'], function () {
+        Route::get('', 'VpsProvisionController@index')->name('index');
+        Route::get('{vps_order}/create', 'VpsProvisionController@create')->name('create');
+        Route::post('{vps_order}', 'VpsProvisionController@store')->name('store');
+        Route::get('{vps_provision}/edit', 'VpsProvisionController@edit')->name('edit');
+        Route::put('{vps_provision}', 'VpsProvisionController@update')->name('update');
+        Route::delete('{vps_provision}', 'VpsProvisionController@destroy')->name('destroy');
+    });
+
     /*
     |--------------------------------------------------------------------------
     | Web Order CRUD Routes

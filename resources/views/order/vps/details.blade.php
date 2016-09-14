@@ -4,6 +4,11 @@
         <header>VPS Order</header>
         <div class="tools">
             <input type="submit" class="btn btn-primary" value="Save">
+            @unless($vpsOrder->is_provisioned)
+                <a href="{{ route('provision.vps.create', $vpsOrder->id) }}" class="btn btn-success">
+                    Provision
+                </a>
+            @endunless
         </div>
     </div>
     <div class="card-body">
