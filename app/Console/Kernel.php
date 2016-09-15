@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\SendExpiryEmails::class,
+        Commands\CrawlTraffic::class,
+        Commands\AggregateTraffic::class
     ];
 
     /**
@@ -24,8 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('emails:send')->dailyAt('1:00');
+        $schedule->command('traffic:aggregate')->twiceDaily(11, 23);
+        $schedule->command('traffic:crawl')->hourly();
     }
 
     /**
