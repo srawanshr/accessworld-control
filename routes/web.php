@@ -45,7 +45,10 @@ Route::post('activate/email/{user}', 'Auth\UserActivationController@sendActivati
 */
 Route::get('', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function ()
+Route::group(/**
+ *
+ */
+    [ 'middleware' => 'auth'], function ()
 {
     /*
     |--------------------------------------------------------------------------
@@ -354,5 +357,6 @@ Route::group(['middleware' => 'auth'], function ()
         Route::post('order/vps/details', 'VpsOrderController@details')->name('order.vps.details');
         Route::post('order/web/details', 'WebOrderController@details')->name('order.web.details');
         Route::post('order/email/details', 'EmailOrderController@details')->name('order.email.details');
+        Route::post('provision/vps/details', 'VpsProvisionController@details')->name('provision.vps.details');
     });
 });
