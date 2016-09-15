@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomer extends FormRequest
-{
+class StoreCustomer extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -42,25 +42,13 @@ class StoreCustomer extends FormRequest
             'email'           => trim($this->get('email')),
             'username'        => str_slug($this->get('username')),
             'password'        => bcrypt($this->get('password')),
-            'is_admin'        => $this->has('is_admin') ? trim($this->get('is_admin')) : 0,
+            'first_name'      => $this->has('first_name') ? trim($this->get('first_name')) : null,
+            'last_name'       => $this->has('last_name') ? trim($this->get('last_name')) : null,
+            'address'         => $this->has('address') ? trim($this->get('address')) : null,
+            'phone'           => $this->has('phone') ? trim($this->get('phone')) : null,
+            'country'         => $this->has('country') ? trim($this->get('country')) : null,
+            'company'         => $this->has('company') ? trim($this->get('company')) : null,
             'activation_code' => str_random(60)
-        ];
-
-        return $inputs;
-    }
-
-    /**
-     * @return array
-     */
-    public function detailData()
-    {
-        $inputs = [
-            'first_name' => $this->has('detail.first_name') ? trim($this->get('detail.first_name')) : null,
-            'last_name'  => $this->has('detail.last_name') ? trim($this->get('detail.last_name')) : null,
-            'address'   => $this->has('detail.address') ? trim($this->get('detail.address')) : null,
-            'phone'     => $this->has('detail.phone') ? trim($this->get('detail.phone')) : null,
-            'country'   => $this->has('detail.country') ? trim($this->get('detail.country')) : null,
-            'company'   => $this->has('detail.company') ? trim($this->get('detail.company')) : null,
         ];
 
         return $inputs;

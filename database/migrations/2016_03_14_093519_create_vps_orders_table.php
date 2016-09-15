@@ -17,6 +17,8 @@ class CreateVpsOrdersTable extends Migration {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('order_id')->unsigned();
+            $table->integer('operating_system_id')->unsigned();
+            $table->integer('data_center_id')->unsigned();
             $table->string('name');
             $table->integer('term')->nullable();
             $table->float('cpu');
@@ -33,6 +35,14 @@ class CreateVpsOrdersTable extends Migration {
                 ->references('id')
                 ->on('orders')
                 ->onDelete('restrict');
+            $table->foreign('operating_system_id')
+                ->references('id')
+                ->on('operating_systems')
+                ->onDelete('cascade');
+            $table->foreign('data_center_id')
+                ->references('id')
+                ->on('data_centers')
+                ->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

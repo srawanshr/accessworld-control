@@ -50,5 +50,15 @@ function thumbnail($width, $entity = null)
         if ($image = $entity->image)
             return asset($image->thumbnail($width, $width));
 
-    return asset(config('paths.placeholder.avatar'));
+    return asset(config('paths.placeholder.default'));
+}
+
+function data_centers()
+{
+    return App\Models\DataCenter::pluck('name', 'id');
+}
+
+function operating_systems()
+{
+    return App\Models\OperatingSystem::active()->pluck('name', 'id');
 }

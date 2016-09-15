@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCustomer;
+use App\Http\Requests\UpdateCustomer;
 use App\Models\Customer;
 use DB;
 use Form;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
 
-class CustomerController extends Controller
-{
+class CustomerController extends Controller {
+
     /**
      * @return \Illuminate\View\View
      */
@@ -24,21 +25,14 @@ class CustomerController extends Controller
      */
     public function customerList()
     {
-        return Datatables::eloquent(Customer::with('image')->select([
-            'username',
-            'email',
-            'id'
-        ]))->addColumn('action', function ($customer)
+        return Datatables::eloquent(Customer::with('image')->select(['username','phone','address','first_name', 'last_name', 'email', 'id']))
+            ->addColumn('action', function ($customer)
             {
-                $buttons = Form::open([ 'route' => [ 'customer.destroy', $customer->username ], 'method' => 'DELETE' ]);
-                $buttons .= '<a href="' . route('customer.edit', $customer->username) . '" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>';
-                $buttons .= '<button type="submit" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Delete" onClick="return confirm(\'Delete customer ' . $customer->name . '?\')"><i class="fa fa-trash-o"></i></button>';
-                $buttons .= Form::close();
+                $buttons = '<a href="'.route('customer.show', $customer->username).'" class="text-primary">View</a>';
+                $buttons .= '&nbsp;&nbsp;<a href="' . route('customer.edit', $customer->username) . '" class="text-primary">Edit</a>';
+                $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('customer.destroy', $customer->username) . '">Delete</a>';
 
                 return $buttons;
-            })->addColumn('avatar', function ($customer)
-            {
-                return thumbnail(50, $customer);
             })->make(true);
     }
 
@@ -68,12 +62,11 @@ class CustomerController extends Controller
         DB::transaction(function () use ($request)
         {
             $customer = Customer::create($request->data());
-            $customer->detail()->save($request->data());
 
             $this->uploadRequestImage($request, $customer);
         });
 
-        return redirect()->route('customer.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Customer' ]));
+        return redirect()->route('customer.index')->withSuccess(trans('messages.create_success', ['entity' => 'Customer']));
     }
 
     /**
@@ -86,29 +79,17 @@ class CustomerController extends Controller
     }
 
     /**
-     * @param CustomerRequest $request
+     * @param UpdateCustomer $request
      * @param Customer $customer
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(CustomerRequest $request, Customer $customer)
+    public function update(UpdateCustomer $request, Customer $customer)
     {
-        if ($request->get('password') == "")
+        DB::transaction(function () use ($request, $customer)
         {
-            $inputs = $request->except('password');
-        }
-        else
-        {
-            $inputs['password'] = bcrypt($request->get('password'));
-        }
+            $customer->update($request->data());
 
-        DB::transaction(function () use ($inputs, $request, $customer)
-        {
-            $customer->update($inputs);
-            if ($request->hasFile('profile_picture'))
-            {
-                $customer->image->setPath($request->file('profile_picture'));
-            }
-            $customer->detail->update($inputs['detail']);
+            $this->uploadRequestImage($request, $customer);
         });
 
         return redirect()->back()->with('success', 'Customer updated!');
@@ -123,24 +104,6 @@ class CustomerController extends Controller
     {
         $customer->delete();
 
-        return redirect()->route('customer.index')->withSuccess(trans('messages.delete_success', [ 'entity' => 'Customer' ]));
-    }
-
-    /**
-     * @param Request $request
-     * @return string
-     */
-    public function details(Request $request)
-    {
-        $id = $request->get('id', false);
-
-        if ($id)
-        {
-            $customer = Customer::with('detail', 'vpsProvisions', 'webProvisions', 'emailProvisions', 'domainProvisions', 'sslProvisions')->findOrFail($id);
-
-            return view('customer.detail', compact('customer'))->render();
-        }
-
-        return false;
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Customer']));
     }
 }

@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OperatingSystem extends Model
-{
+class OperatingSystem extends Model {
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'price', 'slug', 'is_active'
+        'id', 'slug', 'name', 'price', 'is_active'
     ];
 
     /**
@@ -43,11 +43,12 @@ class OperatingSystem extends Model
 
     /**
      * @param $query
-     * @return Builder
+     * @param bool $type
+     * @return mixed
      */
-    public function scopeActive($query)
+    public function scopeActive($query, $type = true)
     {
-        return $query->where('is_active', 1);
+        return $query->where('is_active', $type);
     }
 
     /**
@@ -97,6 +98,8 @@ class OperatingSystem extends Model
      */
     public function delete(array $options = array())
     {
-        parent::delete($options);
+        $this->image->delete();
+
+        return parent::delete($options);
     }
 }

@@ -12,7 +12,7 @@ $(document).ready(function (e) {
     hideEasing: 'swing',
     showMethod: 'slideDown',
     hideMethod: 'slideUp'
-  }
+  };
 
   if(successMsg) { toastr.success(successMsg, ''); }
 
@@ -21,4 +21,6 @@ $(document).ready(function (e) {
   if(warningMsg) { toastr.warning(warningMsg, ''); }
 
   if(dangerMsg) { toastr.error(dangerMsg, ''); }
+
+  if(errorMsg) { toastr.warning(errorMsg, ''); }
 });

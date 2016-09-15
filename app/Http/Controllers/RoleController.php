@@ -90,6 +90,6 @@ class RoleController extends Controller {
             return redirect()->back()->withSuccess('Role deleted!');
         }
 
-        return redirect()->back()->withWarning('Cannot delete. Role is assigned!');
+        return back()->withWarning('Cannot delete. Role is assigned!');
     }
 }

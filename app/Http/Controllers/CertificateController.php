@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Models\Certificate;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCertificate;
+use App\Http\Requests\UpdateCertificate;
 
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
-class CertificateController extends Controller
-{
+class CertificateController extends Controller {
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -22,7 +23,7 @@ class CertificateController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -30,27 +31,24 @@ class CertificateController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param StoreCertificate $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreCertificate $request)
     {
-        $inputs = $request->all();
-
-        $inputs['slug'] = str_slug($inputs['title']);
-
-        DB::transaction(function () use ($inputs, $request) {
-            $certificate = Certificate::create($inputs);
+        DB::transaction(function () use ($request)
+        {
+            $certificate = Certificate::create($request->data());
 
             $this->uploadRequestImage($request, $certificate);
         });
 
-        return redirect()->route('certificate.index')->with('success', 'Certificate created!');
+        return redirect()->route('certificate.index')->withSuccess(trans('messages.create_success', ['entity' => 'Certificate']));
     }
 
     /**
      * @param Certificate $certificate
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function edit(Certificate $certificate)
     {
@@ -58,21 +56,20 @@ class CertificateController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param UpdateCertificate $request
      * @param Certificate $certificate
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Certificate $certificate)
+    public function update(UpdateCertificate $request, Certificate $certificate)
     {
-        $inputs = $request->all();
-
-        DB::transaction(function () use ($inputs, $request, $certificate) {
-            $certificate->update($inputs);
+        DB::transaction(function () use ($request, $certificate)
+        {
+            $certificate->update($request->data());
 
             $this->uploadRequestImage($request, $certificate);
         });
 
-        return redirect()->route('certificate.index')->with('success', 'Certificate updated!');
+        return redirect()->route('certificate.index')->withSuccess(trans('messages.update_success', ['entity' => 'Certificate']));
     }
 
     /**
@@ -83,6 +80,7 @@ class CertificateController extends Controller
     public function destroy(Certificate $certificate)
     {
         $certificate->delete();
-        return redirect()->back()->with('success', 'Certificate deleted!');
+
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Certificate']));
     }
 }

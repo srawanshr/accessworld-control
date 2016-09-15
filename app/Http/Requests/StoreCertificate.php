@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCertificate extends FormRequest
-{
+class StoreCertificate extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +26,7 @@ class StoreCertificate extends FormRequest
         return [
             'title'       => 'required|unique:certificates,title',
             'description' => 'required',
-            'image'       => 'image|max:2048'
+            'image'       => 'required|image|max:2048'
         ];
     }
 
@@ -36,9 +36,10 @@ class StoreCertificate extends FormRequest
     public function data()
     {
         $inputs = [
-            'slug'        => str_slug(trim($this->get('title'))),
-            'title'       => trim($this->get('title')),
-            'description' => $this->get('description')
+            'slug'         => str_slug(trim($this->get('title'))),
+            'title'        => trim($this->get('title')),
+            'description'  => $this->get('description'),
+            'is_published' => false
         ];
 
         if ($this->has('is_published'))

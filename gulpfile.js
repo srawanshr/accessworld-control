@@ -30,5 +30,10 @@ elixir(function (mix) {
         .scripts(['pages/form_checkbox_role.js'], 'public/js/pages/form_checkbox_role.min.js')
         .scripts(['pages/dt_user.js'], 'public/js/pages/dt_user.min.js')
         .scripts(['pages/dt_order.js'], 'public/js/pages/dt_order.min.js')
+        .scripts(['pages/dt_vps_order.js'], 'public/js/pages/dt_vps_order.min.js')
+        .scripts(['pages/dt_web_email_order.js'], 'public/js/pages/dt_web_email_order.min.js')
+        .scripts(['pages/dt_customer.js'], 'public/js/pages/dt_customer.min.js')
+        .scripts(['pages/dt_staff.js'], 'public/js/pages/dt_staff.min.js')
+        .scripts(['pages/dt_vps_provision.js'], 'public/js/pages/dt_vps_provision.min.js')
         .scripts(['pages/form_order.js'], 'public/js/pages/form_order.min.js');
 });

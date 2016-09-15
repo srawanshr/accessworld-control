@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Models\Client;
 use App\Http\Requests\StoreClient;
 use App\Http\Requests\UpdateClient;
-use App\Models\Client;
-use DB;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
-class ClientController extends Controller
-{
+class ClientController extends Controller {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -25,9 +23,7 @@ class ClientController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -35,9 +31,7 @@ class ClientController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
+     * @param StoreClient $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreClient $request)
@@ -49,7 +43,7 @@ class ClientController extends Controller
             $this->uploadRequestImage($request, $client);
         });
 
-        return redirect()->route('client.index')->with('success', 'Client added!');
+        return redirect()->route('client.index')->withSuccess(trans('messages.create_success', ['entity' => 'Client']));
     }
 
     /**
@@ -64,9 +58,7 @@ class ClientController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
+     * @param UpdateClient $request
      * @param  client $client
      * @return \Illuminate\Http\Response
      */
@@ -79,17 +71,17 @@ class ClientController extends Controller
             $this->uploadRequestImage($request, $client);
         });
 
-        return redirect()->route('client.index')->with('success', 'Client updated!');
+        return redirect()->route('client.index')->withSuccess(trans('messages.update_success', ['entity' => 'Client']));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param  Client $client
      * @return \Illuminate\Http\Response
      */
     public function destroy(Client $client)
     {
-        return redirect()->back()->with('success', 'Client deleted!');
+        $client->delete();
+
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Client']));
     }
 }

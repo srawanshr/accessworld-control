@@ -8,6 +8,9 @@
                         <span class="text-xxxl text-light">{{ $error_code }}</span>
                     </h1>
                     <h2 class="text-light">{{ $error_message }}</h2>
+                    <p>
+                        <a href="{{ url('') }}" class="text-primary text-xxl"><i class="md md-home"></i>Home</a>
+                    </p>
                 </div><!--end .col -->
             </div><!--end .row -->
         </div><!--end .section-body -->

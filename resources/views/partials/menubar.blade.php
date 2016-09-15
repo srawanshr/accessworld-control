@@ -28,15 +28,65 @@
             <!-- END DASHBOARD -->
 
             <!-- BEGIN ORDER -->
-            <li>
-                <a href="{{ route('order.index') }}">
+            <li class="gui-folder">
+                <a href="javascript:void(0);">
                     <div class="gui-icon">
                         <i class="md md-markunread-mailbox"></i>
                     </div>
                     <span class="title">Orders</span>
                 </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('order.index') }}">
+                            <span class="title">All</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('order.vps.index') }}">
+                            <span class="title">VPS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('order.web.index') }}">
+                            <span class="title">Web</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('order.email.index') }}">
+                            <span class="title">Email</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <!-- END ORDER -->
+
+            <!-- BEGIN Provision -->
+            <li class="gui-folder">
+                <a href="javascript:void(0);">
+                    <div class="gui-icon">
+                        <i class="md md-cloud"></i>
+                    </div>
+                    <span class="title">Provisions</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('provision.vps.index') }}">
+                            <span class="title">VPS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="title">Web</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="title">Email</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END Provision -->
 
             <!-- BEGIN CUSTOMER -->
             <li>
@@ -132,27 +182,33 @@
             </li>
             <!-- END CLIENT -->
 
-            <!-- BEGIN EMAIL PACKAGE -->
-            <li>
-                <a href="{{ route('emailPackage.index') }}">
+            <!-- BEGIN PACKAGE -->
+            <li class="gui-folder">
+                <a href="javascript:void(0);">
                     <div class="gui-icon">
-                        <i class="md md-layers"></i>
+                        <i class="md md-wallet-giftcard"></i>
                     </div>
-                    <span class="title">Email Package</span>
+                    <span class="title">Packages</span>
                 </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('vpsPackage.index') }}">
+                            <span class="title">Vps</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('webPackage.index') }}">
+                            <span class="title">Web</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('emailPackage.index') }}">
+                            <span class="title">Email</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <!-- END EMAIL PACKAGE -->
-
-            <!-- BEGIN VPS PACKAGE -->
-            <li>
-                <a href="{{ route('vpsPackage.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-layers"></i>
-                    </div>
-                    <span class="title">Vps Package</span>
-                </a>
-            </li>
-            <!-- END VPS PACKAGE -->
+            <!-- END PACKAGE -->
 
             <!-- BEGIN DATACENTER -->
             <li>

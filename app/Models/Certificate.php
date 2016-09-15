@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Certificate extends Model
-{
+class Certificate extends Model {
+
     /**
      * The attributes that are mass assignable.
      *
@@ -43,11 +43,12 @@ class Certificate extends Model
 
     /**
      * @param $query
+     * @param bool $type
      * @return mixed
      */
-    public function scopePublished($query)
+    public function scopePublished($query, $type = true)
     {
-        return $query->where('is_published', 1);
+        return $query->where('is_published', $type);
     }
 
     /**
@@ -57,6 +58,8 @@ class Certificate extends Model
      */
     public function delete(array $options = array())
     {
-        parent::delete($options);
+        $this->image->delete();
+
+        return parent::delete($options);
     }
 }

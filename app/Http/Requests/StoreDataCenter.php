@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDataCenter extends FormRequest
-{
+class StoreDataCenter extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,7 +26,9 @@ class StoreDataCenter extends FormRequest
         return [
             'country' => 'required',
             'name'    => 'required',
-            'prefix'  => 'required'
+            'prefix'  => 'required',
+            'image'   => 'required|image|max:2048',
+            'price'   => 'required|min:0'
         ];
     }
 
@@ -39,7 +41,8 @@ class StoreDataCenter extends FormRequest
             'slug'    => str_slug(trim($this->get('name'))),
             'name'    => trim($this->get('name')),
             'country' => $this->get('country'),
-            'prefix'  => $this->get('prefix')
+            'prefix'  => $this->get('prefix'),
+            'price'   => $this->get('price')
         ];
 
         return $inputs;

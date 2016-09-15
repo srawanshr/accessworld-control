@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\EmailOrder;
 use App\Models\Order;
 use App\Models\VpsOrder;
 use App\Models\WebOrder;
+use App\Models\EmailOrder;
 
 class UpdateOrder extends StoreOrder {
 
@@ -28,14 +28,15 @@ class UpdateOrder extends StoreOrder {
         $data = [
             'customer_id' => $this->input('customer_id'),
             'date'        => $this->input('date'),
-            'approved_by' => $this->get('approve') || $this->get('reject') ? auth()->id() : null,
-            'status'      => 0
         ];
 
+        if ($this->get('approve') || $this->get('reject'))
+            $data['approved_by'] = auth()->id();
+
         if ($this->get('approve'))
-            $data['status'] = 1;
+            $data['status'] = 'approved';
         elseif ($this->get('reject'))
-            $data['status'] = 2;
+            $data['status'] = 'rejected';
 
         return $order->update($data);
     }
@@ -52,17 +53,19 @@ class UpdateOrder extends StoreOrder {
             $is_trial = $this->input('vps.' . $id . '.is_trial');
 
             $data = [
-                'name'          => $this->input('vps.' . $id . '.name'),
-                'term'          => $term ? $is_trial ? null : $term : null,
-                'cpu'           => $this->input('vps.' . $id . '.cpu'),
-                'ram'           => $this->input('vps.' . $id . '.ram'),
-                'disk'          => $this->input('vps.' . $id . '.disk'),
-                'traffic'       => $this->input('vps.' . $id . '.traffic'),
-                'price'         => $price ? $is_trial ? 0 : $price : 0,
-                'discount'      => $this->input('vps.' . $id . '.discount') ?: 0,
-                'is_trial'      => $this->input('vps.' . $id . '.is_trial') ?: 0,
-                'is_managed'    => $this->input('vps.' . $id . '.is_managed') ?: 0,
-                'additional_ip' => $this->input('vps.' . $id . '.additional_ip') ?: 0,
+                'name'                => $this->input('vps.' . $id . '.name'),
+                'operating_system_id' => $this->input('vps.' . $id . '.operating_system_id'),
+                'data_center_id'      => $this->input('vps.' . $id . '.data_center_id'),
+                'term'                => $term ? $is_trial ? null : $term : null,
+                'cpu'                 => $this->input('vps.' . $id . '.cpu'),
+                'ram'                 => $this->input('vps.' . $id . '.ram'),
+                'disk'                => $this->input('vps.' . $id . '.disk'),
+                'traffic'             => $this->input('vps.' . $id . '.traffic'),
+                'price'               => $price ? $is_trial ? 0 : $price : 0,
+                'discount'            => $this->input('vps.' . $id . '.discount') ?: 0,
+                'is_trial'            => $this->input('vps.' . $id . '.is_trial') ?: 0,
+                'is_managed'          => $this->input('vps.' . $id . '.is_managed') ?: 0,
+                'additional_ip'       => $this->input('vps.' . $id . '.additional_ip') ?: 0,
             ];
 
             VpsOrder::find($id)->update($data);
@@ -107,7 +110,7 @@ class UpdateOrder extends StoreOrder {
                 'discount' => $this->input('email.' . $id . '.discount') ?: 0
             ];
 
-            EmailOrder::find($id)->create($data);
+            EmailOrder::find($id)->update($data);
         }
     }
 

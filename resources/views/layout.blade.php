@@ -31,7 +31,7 @@
     <script type="text/javascript" src="{{ asset('js/libs/utils/html5shiv.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/libs/utils/respond.min.js') }}"></script><![endif]-->
 </head>
-<body class="menubar-hoverable header-fixed menubar-pin ">
+<body class="menubar-hoverable header-fixed menubar-pin">
 @if (auth()->guest())
     @yield('guest')
 @else

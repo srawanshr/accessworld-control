@@ -6,14 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model {
 
-    /*
-     * Array constant for Order Types
-     */
-    const TYPES = [
-        'trial'    => 'Trial',
-        'customer' => 'Customer'
-    ];
-
     /**
      * The attributes that are mass assignable.
      *

@@ -1,6 +1,7 @@
 <tr>
     <td>{{ $vpsPackage->id }}</td>
     <td>{{ $vpsPackage->name }}</td>
+    <td>{{ ($vpsPackage->is_published)? 'Yes' : 'No' }}</td>
     <td class="text-right">{{ $vpsPackage->price }}</td>
     <td class="text-right">
         <a href="{{ route('vpsPackage.edit', $vpsPackage->slug) }}"

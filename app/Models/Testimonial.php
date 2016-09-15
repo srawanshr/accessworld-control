@@ -4,15 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Testimonial extends Model
-{
+class Testimonial extends Model {
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'customer_id', 'quote', 'is_published'
+        'customer_id',
+        'quote',
+        'is_published'
     ];
 
     /**
@@ -21,7 +23,7 @@ class Testimonial extends Model
      * @var array
      */
     protected $casts = [
-        'is_published' => 'boolean',
+        'is_published' => 'boolean'
     ];
 
     /**
@@ -31,23 +33,13 @@ class Testimonial extends Model
     {
         return $this->belongsTo('App\Models\Customer');
     }
-    
+
     /**
      * @param $query
      * @return mixed
      */
-    public function scopePublished($query)
+    public function scopePublished($query, $type = true)
     {
-        return $query->whereIsPublished(1);
-    }
-
-    /**
-     * @param array $options
-     * @return bool|null|void
-     * @throws \Exception
-     */
-    public function delete(array $options = array())
-    {
-        parent::delete($options);
+        return $query->where('is_published', $type);
     }
 }

@@ -19,8 +19,11 @@
                             <i class="md md-save"></i>
                             Save
                         </button>
-                        <input type="submit" name="approve" class="btn btn-primary" value="Approve">
-                        <input type="submit" name="reject" class="btn btn-primary" value="Reject">
+                        @if($order->status == 2)
+                            <input type="submit" name="approve" class="btn btn-primary" value="Approve">
+                        @elseif($order->status == 1 || $order->status == 0)
+                            <input type="submit" name="reject" class="btn btn-primary" value="Reject">
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
@@ -47,21 +50,7 @@
                 </div>
             </div>
             <br/>
-            @unless($order->vpsOrder->isEmpty())
-                @foreach($order->vpsOrder as $key => $vpsOrder)
-                    @include('order.partials.form-edit', ['header'=>'VPS', 'vpsOrder' => $vpsOrder, 'key' => $key])
-                @endforeach
-            @endunless
-            @unless($order->webOrder->isEmpty())
-                @foreach($order->webOrder as $key => $webOrder)
-                    @include('order.partials.form-edit', ['header'=>'Web Hosting','webOrder' => $webOrder, 'key' => $key])
-                @endforeach
-            @endunless
-            @unless($order->emailOrder->isEmpty())
-                @foreach($order->webOrder as $key => $emailOrder)
-                    @include('order.partials.form-edit', ['header'=>'Email','emailOrder' => $emailOrder, 'key' => $key])
-                @endforeach
-            @endunless
+            @include('order.partials.form-edit')
             {{ Form::close() }}
         </div>
     </section>

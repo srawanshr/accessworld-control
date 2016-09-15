@@ -57,6 +57,6 @@ class PageController extends Controller {
             $this->uploadRequestImage($request, $page);
         });
 
-        return redirect()->back()->withSuccess(trans('messages.update_success', ['entity' => 'Page']));
+        return back()->withSuccess(trans('messages.update_success', ['entity' => 'Page']));
     }
 }

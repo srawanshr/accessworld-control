@@ -12,16 +12,22 @@ class VpsOrder extends Model {
      * @var array
      */
     protected $fillable = [
-        'customer_id', 'order_id', 'name', 'term', 'cpu', 'ram', 'disk', 'traffic', 'price', 'discount', 'is_trial', 'is_managed', 'is_provisioned', 'additional_ip'
+        'operating_system_id',
+        'data_center_id',
+        'order_id',
+        'name',
+        'term',
+        'cpu',
+        'ram',
+        'disk',
+        'traffic',
+        'price',
+        'discount',
+        'is_trial',
+        'is_managed',
+        'is_provisioned',
+        'additional_ip'
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class);
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -29,5 +35,13 @@ class VpsOrder extends Model {
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function provision()
+    {
+        return $this->hasOne(VpsProvision::class);
     }
 }

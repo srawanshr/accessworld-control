@@ -28,8 +28,12 @@
             "dom": '<"clear">lfrtip',
             "processing": true,
             "serverSide": true,
-            "ajax": $dt_user.data('source'),
+            "ajax": {
+                "type": "POST",
+                "url": $dt_user.data('source')
+            },
             "pageLength": "50",
+            "order": [],
             "columns": [
                 {
                     "class": 'details-control text-center',
@@ -39,16 +43,19 @@
                     "searchable": false
                 },
                 {
-                    "data": "avatar", "render": function (data, type, full) {
-                    return "<img src='" + data + "' class='img-circle width-1'>";
-                }, "searchable": false, "class": "text-center", "orderable": false
+                    "data": "avatar",
+                    "searchable": false,
+                    "class": "text-center",
+                    "orderable": false,
+                    "render": function (data) {
+                        return "<img src='" + data + "' class='img-circle width-1'>";
+                    }
                 },
                 {"data": "username"},
                 {"data": "email"},
                 {"data": "role", "class": "text-center"},
                 {"data": "action", name: "action", "class": "text-right", "orderable": false, "searchable": false}
             ],
-            "order": [[2, 'asc']],
             "drawCallback": function () {
                 $('[data-toggle="tooltip"]').tooltip();
             }

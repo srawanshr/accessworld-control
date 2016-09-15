@@ -48,7 +48,7 @@
 </div>
 <div class="card-actionbar">
     <div class="card-actionbar-row">
-        <button type="reset" class="btn btn-flat ink-reaction">Reset</button>
-        <button type="submit" class="btn btn-flat btn-primary ink-reaction">Save</button>
+        <button type="reset" class="btn btn-flat">Reset</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </div>

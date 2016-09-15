@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataCenter;
 use App\Models\Menu;
+use App\Models\OperatingSystem;
 use App\Models\Page;
 use App\Models\Service;
 use DB;
@@ -31,6 +33,10 @@ class ComponentController extends Controller {
 
         $key = $request->get('key');
 
-        return view('order.partials.form', compact('service', 'key'))->render();
+        $data_centers = DataCenter::pluck('name', 'id');
+
+        $operating_systems = OperatingSystem::active()->pluck('name', 'id');
+
+        return view('order.partials.form', compact('service', 'key', 'data_centers', 'operating_systems'))->render();
     }
 }

@@ -4,8 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTestimonial extends FormRequest
-{
+class StoreTestimonial extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,7 +24,8 @@ class StoreTestimonial extends FormRequest
     public function rules()
     {
         return [
-            'quote' => 'required|unique:testimonials,title'
+            'customer_id' => 'required',
+            'quote'       => 'required'
         ];
     }
 
@@ -34,10 +35,13 @@ class StoreTestimonial extends FormRequest
     public function data()
     {
         $inputs = [
-            'quote' => trim($this->get('quote'))
+            'quote'        => trim($this->get('quote')),
+            'customer_id'  => $this->get('customer_id'),
+            'is_published' => false
         ];
 
-        if ($this->has('is_published')) $inputs['is_published'] = true;
+        if ($this->has('is_published'))
+            $inputs['is_published'] = true;
 
         return $inputs;
     }

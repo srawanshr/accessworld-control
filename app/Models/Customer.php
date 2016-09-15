@@ -54,15 +54,6 @@ class Customer extends Model
     ];
 
     /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'is_admin' => 'boolean',
-    ];
-
-    /**
      * Route resource binding using slug
      * @return string
      */
@@ -114,51 +105,43 @@ class Customer extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function vpsProvisions()
-    {
-        return $this->hasMany(VpsProvision::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function emailProvisions()
-    {
-        return $this->hasMany(EmailProvision::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function webProvisions()
-    {
-        return $this->hasMany(WebProvision::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function domainProvisions()
-    {
-        return $this->hasMany(DomainOrder::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function sslProvisions()
-    {
-        return $this->hasMany(SslOrder::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function freeDns()
-    {
-        return $this->hasMany(FreeDns::class);
-    }
+//    /**
+//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+//     */
+//    public function vpsProvisions()
+//    {
+//        return $this->hasMany(VpsProvision::class);
+//    }
+//
+//    /**
+//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+//     */
+//    public function emailProvisions()
+//    {
+//        return $this->hasMany(EmailProvision::class);
+//    }
+//
+//    /**
+//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+//     */
+//    public function webProvisions()
+//    {
+//        return $this->hasMany(WebProvision::class);
+//    }
+//
+//    /**
+//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+//     */
+//    public function domainProvisions()
+//    {
+//        return $this->hasMany(DomainOrder::class);
+//    }
+//
+//    /**
+//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+//     */
+//    public function sslProvisions()
+//    {
+//        return $this->hasMany(SslOrder::class);
+//    }
 }

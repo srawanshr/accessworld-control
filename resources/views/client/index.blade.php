@@ -2,36 +2,33 @@
 
 @section('title', 'Clients')
 
-@push('styles')
-@endpush
-
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>List of clients</header>
+                    <header class="text-capitalize">all clients</header>
                     <div class="tools">
-                        <a class="btn btn-default btn-ink" href="{{ route('client.create') }}"><i
-                                    class="fa fa-plus"></i>
-                            Add</a>
+                        <a class="btn btn-primary" href="{{ route('client.create') }}">
+                            <i class="md md-add"></i>
+                            Add
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th width="5%">#</th>
-                            <th width="10%">Logo</th>
-                            <th width="40%">Name</th>
-                            <th width="30%">Website</th>
-                            <th width="15%" class="text-right">Actions</th>
+                            <th>Name</th>
+                            <th>Website</th>
+                            <th class="text-center">Published</th>
+                            <th class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         @if($clients->isEmpty())
                             <tr>
-                                <td class="text-center" colspan="5">No data available.</td>
+                                <td class="text-center" colspan="4">No data available.</td>
                             </tr>
                         @else
                             @each('client.partials.table', $clients, 'client')
@@ -43,7 +40,3 @@
         </div>
     </section>
 @stop
-
-
-@push('scripts')
-@endpush

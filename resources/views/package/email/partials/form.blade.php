@@ -1,16 +1,27 @@
 <div class="card-body">
+    @include('partials.errors')
     <div class="floating-label">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <div class="form-group">
                     {{ Form::text('name', old('name'), ['class'=>'form-control', 'required']) }}
                     <label>Name</label>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="form-group">
                     {{ Form::text('price', old('price'), ['class'=>'form-control', 'min'=>0, 'max'=>999999.99, 'step'=>'any']) }}
                     <label for="price">Price</label>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <div class="checkbox checkbox-styled">
+                        <label>
+                            {{ Form::checkbox("is_published", 1, old('is_published'), ['class' => 'form-control']) }}
+                            <span>Publish</span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -18,7 +29,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label>Description</label>
-                    {{ Form::textarea('description', old('description'), ['class'=>'form-control', 'required']) }}
+                    {{ Form::textarea('description', old('description'), ['class'=>'form-control', 'rows'=>'4', 'required']) }}
                 </div>
             </div>
         </div>
