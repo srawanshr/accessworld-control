@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VpsProvision extends Model {
+class VpsProvision extends Model
+{
 
     /**
      * The attributes that are mass assignable.
@@ -50,6 +51,14 @@ class VpsProvision extends Model {
     public function customer()
     {
         return $this->belongsTo('App\Models\Customer');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function operatingSystem()
+    {
+        return $this->belongsTo('App\Models\OperatingSystem');
     }
 
     /**
