@@ -36,4 +36,8 @@ elixir(function (mix) {
         .scripts(['pages/dt_staff.js'], 'public/js/pages/dt_staff.min.js')
         .scripts(['pages/dt_vps_provision.js'], 'public/js/pages/dt_vps_provision.min.js')
         .scripts(['pages/form_order.js'], 'public/js/pages/form_order.min.js');
+
+    mix.scripts([
+        'node_modules/vue/dist/vue.js'
+    ], 'public/assets/js/vue.js', './')
 });

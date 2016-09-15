@@ -62,3 +62,13 @@ function operating_systems()
 {
     return App\Models\OperatingSystem::active()->pluck('name', 'id');
 }
+
+/**
+ * @param $amount
+ * @return string
+ */
+function currency($amount=false)
+{
+    $prefix = config('website.currency');
+    return $amount ? $prefix.' '.$amount : $prefix;
+}
