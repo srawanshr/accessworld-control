@@ -69,9 +69,11 @@
                             {{ Form::select('service_id', $services, null, ['id'=>'service_id','class'=>'form-control','placeholder'=>'Select a service', 'v-model' => 'new_order.type']) }}
                         </div>
                         <div class="col-sm-3">
-                            <button type="button" @click="addItemInOrder" class="btn btn-lg btn-primary ink-reaction" :class="{ 'disabled' : !type_selected }" data-url="{{ route('component.order.form') }}">
-                                <i class="md md-add"></i>
-                                Add Service
+                            <button type="button" @click="addItemInOrder" class="btn btn-lg btn-primary ink-reaction"
+                                                        :class="{ 'disabled' : !type_selected }" data-url=
+                                                        "{{ route('component.order.form') }}">
+                            <i class="md md-add"></i>
+                                                        Add Service
                             </button>
                         </div>
                     </div>
@@ -88,22 +90,6 @@
 <script src="{{ asset('js/pages/form_order.min.js') }}"></script>
 <script src="{{ asset('assets/js/vue.js') }}"></script>
 <script>
-    Vue.component('order-item', {
-        template: '#order-template',
-
-        data: function () {
-            return {}
-        },
-
-        methods: {
-            selfDestruct: function (item) {
-                this.$dispatch('remove-item', item);
-            }
-        },
-
-        props: ['item']
-    });
-
     var vm = new Vue({
         el: '#order-app',
 
@@ -114,11 +100,11 @@
                     date: '{{ date('Y-m-d') }}',
                     items: [
                         @foreach(['vps', 'web', 'email'] as $type)
-                            @unless(empty(old($type)))
-                                @foreach(old($type) as $item)
-                                    {!! json_encode($item) !!},
-                                @endforeach
-                            @endunless
+                        @unless(empty(old($type)))
+                        @foreach(old($type) as $item)
+                        {!! json_encode($item) !!},
+                        @endforeach
+                        @endunless
                         @endforeach
                     ]
                 },
@@ -143,12 +129,11 @@
 
                 this.order.items.push(item);
             },
-            makeId: function ()
-            {
+            makeId: function () {
                 var text = "";
                 var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-                for( var i=0; i < 5; i++ )
+                for (var i = 0; i < 5; i++)
                     text += possible.charAt(Math.floor(Math.random() * possible.length));
 
                 return text;
@@ -158,6 +143,24 @@
         events: {
             'remove-item': function (item) {
                 this.order.items.$remove(item);
+            }
+        },
+
+        components: {
+            'order-item': {
+                template: '#order-template',
+                
+                data: function () {
+                    return {}
+                },
+
+                methods: {
+                    selfDestruct: function (item) {
+                        this.$dispatch('remove-item', item);
+                    }
+                },
+
+                props: ['item']
             }
         }
     });
