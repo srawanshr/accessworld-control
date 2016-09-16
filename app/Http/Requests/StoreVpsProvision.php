@@ -37,7 +37,7 @@ class StoreVpsProvision extends FormRequest {
     /**
      * @return array
      */
-    public function data()
+    public function data($vpsOrder)
     {
         $expiry_date = Carbon::createFromFormat('Y-m-d', $this->input('created_at'));
 
@@ -47,6 +47,8 @@ class StoreVpsProvision extends FormRequest {
             $expiry_date->addMonths($this->input('term'));
 
         $data = [
+            'vps_order_id'        => $vpsOrder->id,
+            'customer_id'         => $vpsOrder->order->customer_id,
             'name'                => $this->input('name'),
             'operating_system_id' => $this->input('operating_system_id'),
             'data_center_id'      => $this->input('data_center_id'),
