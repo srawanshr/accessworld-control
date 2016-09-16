@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Vps Provision')
+@section('title', 'Web Provision')
 
 @section('content')
     <section>
@@ -8,12 +8,12 @@
             <div class="card">
                 <div class="card-head">
                     <header class="text-capitalize">edit vps provision
-                        <span class="text-primary">({{ $vpsProvision->customer->name }})</span>
+                        <span class="text-primary">({{ $webProvision->customer->name }})</span>
                     </header>
                 </div>
-                {{ Form::model($vpsProvision, ['route'=>['provision.vps.update',$vpsProvision->id],'class'=>'form form-validate','novalidate']) }}
+                {{ Form::model($webProvision, ['route'=>['provision.web.update',$webProvision->id],'class'=>'form form-validate','novalidate']) }}
                 {{ method_field('PUT') }}
-                @include('provision.vps.partials.form-edit')
+                @include('provision.web.partials.form-edit')
                 {{ Form::close() }}
             </div>
         </div>

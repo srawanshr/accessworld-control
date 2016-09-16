@@ -42,7 +42,7 @@ class VpsProvisionController extends Controller
     public function store(StoreVpsProvision $request, VpsOrder $vpsOrder)
     {
         DB::transaction(function () use($request, $vpsOrder){
-            VpsProvision::create($request->data($vpsOrder));
+            VpsProvision::create($request->data());
 
             $vpsOrder->update(['is_provisioned'=>true]);
         });

@@ -1,14 +1,14 @@
 (function (namespace, $) {
     "use strict";
 
-    var VpsProvisionDataTable = function () {
+    var WebProvisionDataTable = function () {
         var o = this;
         $(document).ready(function () {
             o.initialize();
         });
 
     };
-    var p = VpsProvisionDataTable.prototype;
+    var p = WebProvisionDataTable.prototype;
 
     p.initialize = function () {
         this._initDataTables();
@@ -96,5 +96,5 @@
         });
     };
 
-    window.materialadmin.VpsProvisionDataTable = new VpsProvisionDataTable;
+    window.materialadmin.WebProvisionDataTable = new WebProvisionDataTable;
 }(this.materialadmin, jQuery));

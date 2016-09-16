@@ -48,12 +48,18 @@ class WebProvisionController extends Controller
         return redirect()->route('provision.web.index')->withSuccess('messages.create_success', [ 'entity' => 'Web Provision' ]);
     }
 
-    public function edit()
+    /**
+     * @param WebProvision $webProvision
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(WebProvision $webProvision)
     {
+        return view('provision.web.edit', compact('webProvision'));
     }
 
     public function update()
     {
+
     }
 
     public function destroy()
