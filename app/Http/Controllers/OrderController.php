@@ -32,7 +32,7 @@ class OrderController extends Controller {
      */
     public function create()
     {
-        $services = Service::orderBy('order')->limit(3)->pluck('name', 'id');
+        $services = Service::orderBy('order')->limit(3)->pluck('name', 'slug');
 
         $customers = Customer::all()->pluck('name', 'id');
 
