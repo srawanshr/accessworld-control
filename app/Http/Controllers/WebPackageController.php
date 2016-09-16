@@ -37,7 +37,7 @@ class WebPackageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  WebPackageRequest  $request
+     * @param WebPackageRequest|StoreWebPackage $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreWebPackage $request)

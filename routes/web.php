@@ -310,6 +310,11 @@ Route::group(/**
         Route::delete('{vps_order}', 'VpsOrderController@destroy')->name('destroy');
     });
 
+    /*
+    |--------------------------------------------------------------------------
+    | VPS Provision CRUD Routes
+    |--------------------------------------------------------------------------
+    */
     Route::group(['as' => 'provision.vps.', 'prefix' => 'vps/provision'], function () {
         Route::get('', 'VpsProvisionController@index')->name('index');
         Route::get('{vps_order}/create', 'VpsProvisionController@create')->name('create');
@@ -317,6 +322,20 @@ Route::group(/**
         Route::get('{vps_provision}/edit', 'VpsProvisionController@edit')->name('edit');
         Route::put('{vps_provision}', 'VpsProvisionController@update')->name('update');
         Route::delete('{vps_provision}', 'VpsProvisionController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Web Provision CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'provision.web.', 'prefix' => 'web/provision'], function () {
+        Route::get('', 'WebProvisionController@index')->name('index');
+        Route::get('{web_order}/create', 'WebProvisionController@create')->name('create');
+        Route::post('{web_order}', 'WebProvisionController@store')->name('store');
+        Route::get('{web_provision}/edit', 'WebProvisionController@edit')->name('edit');
+        Route::put('{web_provision}', 'WebProvisionController@update')->name('update');
+        Route::delete('{web_provision}', 'WebProvisionController@destroy')->name('destroy');
     });
 
     /*

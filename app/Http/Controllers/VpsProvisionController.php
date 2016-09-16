@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Datatables;
 use App\Models\VpsOrder;
+use Illuminate\Http\Request;
 use App\Models\VpsProvision;
 use App\Http\Requests\StoreVpsProvision;
 use App\Http\Requests\UpdateVpsProvision;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 class VpsProvisionController extends Controller
 {
-
     /**
      * @return \Illuminate\View\View
      */
@@ -28,7 +28,8 @@ class VpsProvisionController extends Controller
      */
     public function create(VpsOrder $vpsOrder)
     {
-        if ($vpsOrder->provision) return redirect()->route('provision.vps.edit', $vpsOrder->provision->id)->withInfo('Already provisioned!');
+        if ($vpsOrder->provision)
+            return redirect()->route('provision.vps.edit', $vpsOrder->provision->id)->withInfo('Already provisioned!');
 
         return view('provision.vps.create', compact('vpsOrder'));
     }
@@ -40,8 +41,11 @@ class VpsProvisionController extends Controller
      */
     public function store(StoreVpsProvision $request, VpsOrder $vpsOrder)
     {
-        VpsProvision::create($request->data());
+        DB::transaction(function () use($request, $vpsOrder){
+            VpsProvision::create($request->data());
 
+            $vpsOrder->update(['is_provisioned'=>true]);
+        });
         return redirect()->route('provision.vps.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'VPS Provision' ]));
     }
 

@@ -4,6 +4,11 @@
         <header>Web Order</header>
         <div class="tools">
             <input type="submit" class="btn btn-primary" value="Save">
+            @unless($webOrder->is_provisioned)
+                <a href="{{ route('provision.web.create', $webOrder->id) }}" class="btn btn-success">
+                    Provision
+                </a>
+            @endunless
         </div>
     </div>
     <div class="card-body">

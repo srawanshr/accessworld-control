@@ -19,8 +19,12 @@ class CreateWebProvisionsTable extends Migration
             $table->integer('customer_id')->unsigned();
             $table->integer('web_order_id')->unsigned();
             $table->integer('provisioned_by')->unsigned();
+            $table->integer('term');
+            $table->integer('domain');
+            $table->float('disk');
+            $table->float('traffic');
             $table->string('connection_string');
-            $table->integer('server_dmoain_id')->nullable();
+            $table->integer('server_domain_id')->nullable();
             $table->foreign('customer_id')
                 ->references('id')
                 ->on('customers')
