@@ -397,6 +397,7 @@ Route::group(['middleware' => 'auth'], function ()
     {
         Route::get('', 'MapController@index')->name('index');
         Route::get('edit', 'MapController@edit')->name('edit');
+        Route::post('', 'MapController@store')->name('store');
         Route::put('{map}', 'MapController@update')->name('update');
         Route::delete('{map}', 'MapController@destroy')->name('destroy');
     });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dhcp;
 
+use App\Http\Requests\StoreDhcpMap;
 use App\Http\Requests\UpdateDhcpMap;
 use DB;
 use Datatables;
@@ -17,7 +18,20 @@ class MapController extends Controller {
      */
     public function index()
     {
-        return view('dhcp.map.index');
+        $ips = Ip::used(false)->pluck('ip', 'ip');
+
+        return view('dhcp.map.index', compact('ips'));
+    }
+
+    /**
+     * @param StoreDhcpMap $request
+     * @return mixed
+     */
+    public function store(StoreDhcpMap $request)
+    {
+        Map::create($request->data());
+
+        return back()->withSuccess(trans('messages.create_success', ['entity' => 'DHCP IP record']));
     }
 
     /**
@@ -38,7 +52,7 @@ class MapController extends Controller {
      */
     public function update(Map $map, UpdateDhcpMap $request)
     {
-//        $map->update($request->all());
+        $map->update($request->all());
 
         return back()->withSuccess(trans('messages.update_success', ['entity' => 'DHCP IP']));
     }
