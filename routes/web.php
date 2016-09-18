@@ -309,6 +309,30 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | Web Order CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'order.web.', 'prefix' => 'order/web'], function ()
+    {
+        Route::get('', 'WebOrderController@index')->name('index');
+        Route::put('{web_order}', 'WebOrderController@update')->name('update');
+        Route::delete('{web_order}', 'WebOrderController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Email Order CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'order.email.', 'prefix' => 'order/email'], function ()
+    {
+        Route::get('', 'EmailOrderController@index')->name('index');
+        Route::put('{email_order}', 'EmailOrderController@update')->name('update');
+        Route::delete('{email_order}', 'EmailOrderController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | VPS Provision CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -353,26 +377,13 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
-    | Web Order CRUD Routes
+    | Vps Component CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'order.web.', 'prefix' => 'order/web'], function ()
+    Route::group(['as' => 'component.vps.', 'prefix' => 'component/vps'], function ()
     {
-        Route::get('', 'WebOrderController@index')->name('index');
-        Route::put('{web_order}', 'WebOrderController@update')->name('update');
-        Route::delete('{web_order}', 'WebOrderController@destroy')->name('destroy');
-    });
-
-    /*
-    |--------------------------------------------------------------------------
-    | Email Order CRUD Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['as' => 'order.email.', 'prefix' => 'order/email'], function ()
-    {
-        Route::get('', 'EmailOrderController@index')->name('index');
-        Route::put('{email_order}', 'EmailOrderController@update')->name('update');
-        Route::delete('{email_order}', 'EmailOrderController@destroy')->name('destroy');
+        Route::get('', 'VpsComponentController@index')->name('index');
+        Route::post('store', 'VpsComponentController@store')->name('store');
     });
 
     /*
@@ -411,10 +422,12 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{menu}/subMenuModal', 'ComponentController@subMenuModal')->name('subMenuModal');
         Route::get('customer/details', 'CustomerController@details')->name('customer.details');
         Route::get('order/form', 'ComponentController@orderForm')->name('order.form');
+
         Route::post('order/details', 'OrderController@details')->name('order.details');
         Route::post('order/vps/details', 'VpsOrderController@details')->name('order.vps.details');
         Route::post('order/web/details', 'WebOrderController@details')->name('order.web.details');
         Route::post('order/email/details', 'EmailOrderController@details')->name('order.email.details');
+
         Route::post('provision/vps/details', 'VpsProvisionController@details')->name('provision.vps.details');
         Route::post('provision/web/details', 'WebProvisionController@details')->name('provision.web.details');
         Route::post('provision/email/details', 'EmailProvisionController@details')->name('provision.email.details');
