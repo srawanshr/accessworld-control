@@ -39,14 +39,11 @@
 @stop
 
 @push('styles')
-<link href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/libs/DataTables/extensions/dataTables.colVis.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/libs/DataTables/extensions/dataTables.tableTools.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/TableTools.min.css') }}"/>
 @endpush
 
 @push('scripts')
-<script src="{{ asset('js/libs/DataTables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/libs/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js') }}"></script>
-<script src="{{ asset('js/libs/DataTables/extensions/ColVis/js/dataTables.colVis.min.js') }}"></script>
+<script src="{{ asset('js/DataTables/datatables.min.js') }}"></script>
 <script src="{{ asset('js/pages/dt_staff.min.js') }}"></script>
 @endpush
