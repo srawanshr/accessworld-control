@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateVpsOrder;
 use Datatables;
 use App\Models\VpsOrder;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateVpsOrder;
 
 class VpsOrderController extends Controller {
 

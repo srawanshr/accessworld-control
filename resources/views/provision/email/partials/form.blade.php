@@ -4,7 +4,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-content">
-                        <input type="number" name="domain" id="domain" class="form-control" min="1" value="{{$webOrder->domain}}" >
+                        <input type="number" name="domain" id="domain" class="form-control" min="1" value="{{$emailOrder->domain}}" >
                         <label for="domain">Domain</label>
                     </div>
                     <span class="input-group-addon">#</span>
@@ -15,7 +15,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-content">
-                        <input type="number" name="disk" id="disk" class="form-control" min="1" value="{{$webOrder->disk}}" >
+                        <input type="number" name="disk" id="disk" class="form-control" min="1" value="{{$emailOrder->disk}}" >
                         <label for="disk">Disk</label>
                     </div>
                     <span class="input-group-addon">GB</span>
@@ -26,7 +26,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-content">
-                        <input type="number" name="traffic" id="traffic" class="form-control" min="1" value="{{$webOrder->traffic}}" >
+                        <input type="number" name="traffic" id="traffic" class="form-control" min="1" value="{{$emailOrder->traffic}}" >
                         <label for="traffic">Traffic</label>
                     </div>
                     <span class="input-group-addon">GB</span>
@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="form-group">
-                {{ Form::text('name', old('name') ?: $webOrder->name,['id'=>'name','class'=>'form-control','required']) }}
+                {{ Form::text('name', old('name') ?: $emailOrder->name,['id'=>'name','class'=>'form-control','required']) }}
                 <label for="name">Name</label>
             </div>
         </div>

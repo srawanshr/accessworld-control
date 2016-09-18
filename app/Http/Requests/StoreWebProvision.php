@@ -25,7 +25,6 @@ class StoreWebProvision extends FormRequest
     {
         return [
             'name'              => 'required',
-            'term'              => 'required',
             'domain'            => 'required',
             'disk'              => 'required',
             'traffic'           => 'required',
@@ -41,13 +40,15 @@ class StoreWebProvision extends FormRequest
     {
         $data = [
             'name'              => $this->input('name'),
-            'provisioned_by'    => auth()->id(),
-            'term'              => $this->input('term'),
+            'customer_id'       => $this->web_order->order->customer_id,
+            'web_order_id'      => $this->web_order->id,
             'domain'            => $this->input('domain'),
             'disk'              => $this->input('disk'),
             'traffic'           => $this->input('traffic'),
             'connection_string' => $this->input('connection_string'),
-            'server_domain_id'  => $this->input('server_domain_id')
+            'server_domain_id'  => $this->input('server_domain_id'),
+            'provisioned_by'    => auth()->id(),
+            'created_at'        => $this->input('created_at')
 
         ];
 

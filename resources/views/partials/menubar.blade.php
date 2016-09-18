@@ -75,12 +75,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{ route('provision.web.index') }}">
                             <span class="title">Web</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{ route('provision.email.index') }}">
                             <span class="title">Email</span>
                         </a>
                     </li>

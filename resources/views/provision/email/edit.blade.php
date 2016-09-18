@@ -7,12 +7,13 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">create email provision
-                        <span class="text-primary">({{ $webOrder->order->customer->name }})</span>
+                    <header class="text-capitalize">edit email provision
+                        <span class="text-primary">({{ $emailProvision->customer->name }})</span>
                     </header>
                 </div>
-                {{ Form::open(['route'=>['provision.web.store',$webOrder->id],'class'=>'form form-validate','novalidate']) }}
-                    @include('provision.web.partials.form')
+                {{ Form::model($emailProvision, ['route'=>['provision.email.update',$emailProvision->id],'class'=>'form form-validate','novalidate']) }}
+                {{ method_field('PUT') }}
+                @include('provision.email.partials.form-edit')
                 {{ Form::close() }}
             </div>
         </div>

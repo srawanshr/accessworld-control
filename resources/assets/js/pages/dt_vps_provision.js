@@ -23,16 +23,16 @@
     };
 
     p.createDataTable = function () {
-        var $dt_order = $("#dt_vps_provision");
+        var $dt_vps_provision = $("#dt_vps_provision");
 
-        var table = $dt_order.DataTable({
+        var table = $dt_vps_provision.DataTable({
             "dom": '<"clear">lfrtip',
             "order": [],
             "processing": true,
             "serverSide": true,
             "ajax": {
                 "type": "POST",
-                "url": $dt_order.data("source")
+                "url": $dt_vps_provision.data("source")
             },
             "pageLength": "50",
             "columns": [
@@ -43,11 +43,12 @@
                     "defaultContent": '',
                     "searchable": false
                 },
-                {"data": "customer"},
-                {"data": "date", "class": "text-center"},
-                {"data": "created_by", "class": "text-center"},
-                {"data": "approved_by", "class": "text-center text-capitalize"},
-                {"data": "action", "class": "text-right", "orderable": false, "searchable": false}
+                {"data": "customer.name"},
+                {"data": "operating_system", "class": "text-center"},
+                {"data": "provisioned_by", "class": "text-center"},
+                {"data": "virtual_machine", "class": "text-center"},
+                {"data": "ip", "class": "text-center"},
+                {"data": "mac", "class": "text-center"}
             ],
             "createdRow": function (row, data) {
                 if ('approved' == data["status"]) {
@@ -62,7 +63,7 @@
         });
 
         var o = this;
-        $dt_order.find('tbody').on('click', 'td.details-control', function () {
+        $dt_vps_provision.find('tbody').on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = table.row(tr);
 
@@ -71,12 +72,14 @@
     };
 
     p._formatDetails = function (d, row, tr) {
-        var orderId = d.id;
-        var $dt_order = $("#dt_vps_order");
+
+        var provisionId = d.id;
+        var $dt_vps_provision = $("#dt_vps_provision");
+
         $.ajax({
             "type": "POST",
-            "url": $dt_order.data("details-source"),
-            "data": {id: orderId},
+            "url": $dt_vps_provision.data("details-source"),
+            "data": {id: provisionId},
             "success": function (response) {
                 if (row.child.isShown()) {
                     row.child.hide();
@@ -95,4 +98,3 @@
 
     window.materialadmin.VpsProvisionDataTable = new VpsProvisionDataTable;
 }(this.materialadmin, jQuery));
-

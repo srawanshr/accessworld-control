@@ -16,14 +16,12 @@ class WebProvision extends Model
         'customer_id',
         'web_order_id',
         'provisioned_by',
-        'term',
         'domain',
         'disk',
         'traffic',
         'connection_string',
         'server_domain_id'
     ];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

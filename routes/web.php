@@ -339,6 +339,20 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | Email Provision CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'provision.email.', 'prefix' => 'email/provision'], function () {
+        Route::get('', 'EmailProvisionController@index')->name('index');
+        Route::get('{email_order}/create', 'EmailProvisionController@create')->name('create');
+        Route::post('{email_order}', 'EmailProvisionController@store')->name('store');
+        Route::get('{email_provision}/edit', 'EmailProvisionController@edit')->name('edit');
+        Route::put('{email_provision}', 'EmailProvisionController@update')->name('update');
+        Route::delete('{email_provision}', 'EmailProvisionController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Web Order CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -402,5 +416,7 @@ Route::group(['middleware' => 'auth'], function ()
         Route::post('order/web/details', 'WebOrderController@details')->name('order.web.details');
         Route::post('order/email/details', 'EmailOrderController@details')->name('order.email.details');
         Route::post('provision/vps/details', 'VpsProvisionController@details')->name('provision.vps.details');
+        Route::post('provision/web/details', 'WebProvisionController@details')->name('provision.web.details');
+        Route::post('provision/email/details', 'EmailProvisionController@details')->name('provision.email.details');
     });
 });

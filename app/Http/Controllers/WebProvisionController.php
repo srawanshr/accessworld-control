@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreWebProvision;
+use DB;
+use Datatables;
 use App\Models\WebOrder;
 use App\Models\WebProvision;
-use DB;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreWebProvision;
+use App\Http\Requests\UpdateWebProvision;
 
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class WebProvisionController extends Controller
 {
@@ -48,15 +50,64 @@ class WebProvisionController extends Controller
         return redirect()->route('provision.web.index')->withSuccess('messages.create_success', [ 'entity' => 'Web Provision' ]);
     }
 
-    public function edit()
+    /**
+     * @param WebProvision $webProvision
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(WebProvision $webProvision)
     {
+        return view('provision.web.edit', compact('webProvision'));
     }
 
-    public function update()
+    /**
+     * @param WebProvision $webProvision
+     * @param UpdateWebProvision $request
+     * @return mixed
+     */
+    public function update(WebProvision $webProvision, UpdateWebProvision $request)
     {
+        $webProvision->update($request->data());
+
+        return back()->withSuccess(trans('messages.update_success', [ 'entity' => 'Web Provision' ]));
     }
 
-    public function destroy()
+    /**
+     * @return mixed
+     */
+    public function webProvisionList()
     {
+        $provisions = WebProvision::with('customer', 'provisionedBy')->latest()->select([
+            'id',
+            'customer_id',
+            'domain',
+            'provisioned_by',
+            'server_domain_id'
+        ]);
+        return Datatables::eloquent($provisions)->addColumn('provisioned_by', function ($item)
+        {
+            return $item->provisionedBy->name;
+        })->make(true);
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed|null|string
+     */
+    public function details(Request $request)
+    {
+        $webProvision = WebProvision::find($request->get('id'));
+
+        return view('provision.web.partials.form-edit', compact('webProvision'))->render();
+    }
+
+    /**
+     * @param WebProvision $webProvision
+     * @return mixed
+     */
+    public function destroy(WebProvision $webProvision)
+    {
+        $webProvision->delete();
+
+        return back()->withSuccess(trans('messages.delete_success', [ 'entity' => 'Web Provision' ]));
     }
 }

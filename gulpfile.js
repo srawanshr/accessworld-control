@@ -38,6 +38,8 @@ elixir(function (mix) {
         .scripts(['pages/dt_vps_provision.js'], 'public/js/pages/dt_vps_provision.min.js')
         .scripts(['pages/dt_dhcp_map.js'], 'public/js/pages/dt_dhcp_map.min.js')
         .scripts(['pages/dt_ip.js'], 'public/js/pages/dt_ip.min.js')
+        .scripts(['pages/dt_web_provision.js'], 'public/js/pages/dt_web_provision.min.js')
+        .scripts(['pages/dt_email_provision.js'], 'public/js/pages/dt_email_provision.min.js')
         .scripts(['pages/form_order.js'], 'public/js/pages/form_order.min.js');
 
     mix.scripts([
