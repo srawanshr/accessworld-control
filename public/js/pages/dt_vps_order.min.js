@@ -43,14 +43,22 @@
                     "defaultContent": '',
                     "searchable": false
                 },
-                {"data": "customer"},
-                {"data": "order.date", "class": "text-center"},
-                {"data": "cpu", "class": "text-center"},
-                {"data": "ram", "class": "text-center"},
-                {"data": "disk", "class": "text-center"},
-                {"data": "traffic", "class": "text-center"},
-                {"data": "created_by", "class": "text-center"},
-                {"data": "approved_by", "class": "text-center text-capitalize"}
+                {"data": "order.customer.first_name", "name": "order.customer.first_name"},
+                {"data": "order.customer.last_name", "name": "order.customer.last_name"},
+                {"data": "order.date", "name": "order.date", "class": "text-center"},
+                {"data": "cpu", "name": "vps_orders.cpu", "class": "text-center"},
+                {"data": "ram", "name": "vps_orders.ram", "class": "text-center"},
+                {"data": "disk", "name": "vps_orders.disk", "class": "text-center"},
+                {"data": "traffic", "name": "vps_orders.traffic", "class": "text-center"},
+                {"data": "order.created_by.username", "class": "text-center text-capitalize"},
+                {"data": "order.status", "name": "order.status", "class": "text-center text-capitalize"},
+                {
+                    "data": "order.approved_by.username",
+                    "class": "text-center text-capitalize",
+                    "render": function (data) {
+                        return data ? data : '-';
+                    }
+                }
             ],
             "createdRow": function (row, data) {
                 if ('approved' == data.order.status) {
