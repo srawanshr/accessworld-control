@@ -103,12 +103,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{ route('component.web.index') }}">
                             <span class="title">Web</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{ route('component.email.index') }}">
                             <span class="title">Email</span>
                         </a>
                     </li>

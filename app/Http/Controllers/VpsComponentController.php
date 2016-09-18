@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VpsComponent;
 use DB;
+use App\Models\VpsComponent;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;

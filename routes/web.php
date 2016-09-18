@@ -390,6 +390,28 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | Web Component CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'component.web.', 'prefix' => 'component/web'], function ()
+    {
+        Route::get('', 'WebComponentController@index')->name('index');
+        Route::post('store', 'WebComponentController@store')->name('store');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Email Component CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'component.email.', 'prefix' => 'component/email'], function ()
+    {
+        Route::get('', 'EmailComponentController@index')->name('index');
+        Route::post('store', 'EmailComponentController@store')->name('store');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | IP CRUD Routes
     |--------------------------------------------------------------------------
     */
