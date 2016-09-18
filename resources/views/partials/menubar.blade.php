@@ -88,6 +88,34 @@
             </li>
             <!-- END Provision -->
 
+            <!-- BEGIN Component -->
+            <li class="gui-folder">
+                <a href="javascript:void(0);">
+                    <div class="gui-icon">
+                        <i class="md md-cloud"></i>
+                    </div>
+                    <span class="title">Component</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('component.vps.index') }}">
+                            <span class="title">VPS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('component.web.index') }}">
+                            <span class="title">Web</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('component.email.index') }}">
+                            <span class="title">Email</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END Component -->
+
             <!-- BEGIN DHCP -->
             <li class="gui-folder">
                 <a href="javascript:void(0);">
