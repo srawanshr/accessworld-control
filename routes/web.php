@@ -320,6 +320,8 @@ Route::group(/**
         Route::get('{vps_order}/create', 'VpsProvisionController@create')->name('create');
         Route::post('{vps_order}', 'VpsProvisionController@store')->name('store');
         Route::get('{vps_provision}/edit', 'VpsProvisionController@edit')->name('edit');
+        Route::get('{vps_provision}/renew', 'VpsProvisionController@renew')->name('renew');
+        Route::post('{vps_provision}/renew', 'VpsProvisionController@extend')->name('extend');
         Route::put('{vps_provision}', 'VpsProvisionController@update')->name('update');
         Route::delete('{vps_provision}', 'VpsProvisionController@destroy')->name('destroy');
     });

@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input type="text" :name=" 'vps[' + item.id + '][additional_ip]' " class="form-control" v-model="item.additional_ip">
+                            <input type="number" :name=" 'vps[' + item.id + '][additional_ip]' " class="form-control" v-model="item.additional_ip">
                             <label>Additional IP</label>
                         </div>
                     </div>

@@ -50,6 +50,14 @@ class Order extends Model {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function vpsRenewals()
+    {
+        return $this->hasMany(VpsRenewal::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function webOrder()
     {
         return $this->hasMany(WebOrder::class);
@@ -61,5 +69,13 @@ class Order extends Model {
     public function emailOrder()
     {
         return $this->hasMany(EmailOrder::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class);
     }
 }
