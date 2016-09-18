@@ -23,16 +23,16 @@
     };
 
     p.createDataTable = function () {
-        var $dt_order = $("#dt_vps_provision");
+        var $dt_vps_provision = $("#dt_vps_provision");
 
-        var table = $dt_order.DataTable({
+        var table = $dt_vps_provision.DataTable({
             "dom": '<"clear">lfrtip',
             "order": [],
             "processing": true,
             "serverSide": true,
             "ajax": {
                 "type": "POST",
-                "url": $dt_order.data("source")
+                "url": $dt_vps_provision.data("source")
             },
             "pageLength": "50",
             "columns": [

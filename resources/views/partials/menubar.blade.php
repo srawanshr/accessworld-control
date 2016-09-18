@@ -80,7 +80,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('provision.vps.index') }}">
+                        <a href="{{ route('provision.email.index') }}">
                             <span class="title">Email</span>
                         </a>
                     </li>

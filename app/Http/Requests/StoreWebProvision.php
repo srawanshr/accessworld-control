@@ -25,7 +25,6 @@ class StoreWebProvision extends FormRequest
     {
         return [
             'name'              => 'required',
-            'term'              => 'required',
             'domain'            => 'required',
             'disk'              => 'required',
             'traffic'           => 'required',
@@ -43,7 +42,6 @@ class StoreWebProvision extends FormRequest
             'name'              => $this->input('name'),
             'customer_id'       => $this->web_order->order->customer_id,
             'web_order_id'      => $this->web_order->id,
-            'term'              => $this->input('term'),
             'domain'            => $this->input('domain'),
             'disk'              => $this->input('disk'),
             'traffic'           => $this->input('traffic'),

@@ -35,6 +35,8 @@ elixir(function (mix) {
         .scripts(['pages/dt_customer.js'], 'public/js/pages/dt_customer.min.js')
         .scripts(['pages/dt_staff.js'], 'public/js/pages/dt_staff.min.js')
         .scripts(['pages/dt_vps_provision.js'], 'public/js/pages/dt_vps_provision.min.js')
+        .scripts(['pages/dt_web_provision.js'], 'public/js/pages/dt_web_provision.min.js')
+        .scripts(['pages/dt_email_provision.js'], 'public/js/pages/dt_email_provision.min.js')
         .scripts(['pages/form_order.js'], 'public/js/pages/form_order.min.js');
 
     mix.scripts([

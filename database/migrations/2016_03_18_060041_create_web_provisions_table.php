@@ -19,7 +19,6 @@ class CreateWebProvisionsTable extends Migration
             $table->integer('customer_id')->unsigned();
             $table->integer('web_order_id')->unsigned();
             $table->integer('provisioned_by')->unsigned();
-            $table->integer('term');
             $table->integer('domain');
             $table->float('disk');
             $table->float('traffic');
