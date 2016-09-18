@@ -73,7 +73,7 @@ return [
          * With Model: App\Post
          * Export filename: posts_timestamp
          */
-        'model' => '',
+        'model' => 'App\Models',
     ],
 
     /**

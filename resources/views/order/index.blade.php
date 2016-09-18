@@ -22,7 +22,8 @@
                             <th>
                                 <i class="md md-info"></i>
                             </th>
-                            <th>CUSTOMER</th>
+                            <th>FIRST NAME</th>
+                            <th>LAST NAME</th>
                             <th>DATE</th>
                             <th>CREATED BY</th>
                             <th>APPROVED BY</th>

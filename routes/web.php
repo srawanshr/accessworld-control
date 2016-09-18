@@ -38,15 +38,15 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::get('activate/{token}', 'Auth\UserActivationController@activate');
 Route::post('activate/email/{user}', 'Auth\UserActivationController@sendActivationLinkEmail');
 
-/*
-|--------------------------------------------------------------------------
-| Home routes
-|--------------------------------------------------------------------------
-*/
-Route::get('', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => 'auth'], function ()
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Home routes
+    |--------------------------------------------------------------------------
+    */
+    Route::get('', 'HomeController@index')->name('home');
+
     /*
     |--------------------------------------------------------------------------
     | Admin User CRUD Routes
