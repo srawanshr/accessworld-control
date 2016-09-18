@@ -22,29 +22,7 @@ class WebOrderController extends Controller {
      */
     public function webOrderList()
     {
-        $orders = WebOrder::with('order')->latest()->select([
-            'id',
-            'order_id',
-            'name',
-            'term',
-            'domain',
-            'disk',
-            'traffic',
-            'price',
-            'discount',
-            'is_provisioned'
-        ]);
-
-        return Datatables::eloquent($orders)->addColumn('customer', function ($item)
-        {
-            return $item->order->customer->name;
-        })->editColumn('created_by', function ($item)
-        {
-            return $item->order->createdBy->name;
-        })->editColumn('approved_by', function ($item)
-        {
-            return $item->order->approvedBy ? $item->order->approvedBy->name : $item->order->status;
-        })->make(true);
+        return Datatables::of(WebOrder::with('order.customer', 'order.created_by', 'order.approved_by')->latest()->get())->make(true);
     }
 
     /**

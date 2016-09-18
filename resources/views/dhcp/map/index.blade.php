@@ -82,7 +82,8 @@
 @stop
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('js/DataTables/datatables.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/TableTools.min.css') }}"/>
 <link rel="stylesheet" href="{{ asset('css/libs/select2/select2.css') }}"/>
 @endpush
 

@@ -15,12 +15,15 @@
                         <tr>
                             <th>
                                 <i class="md md-info"></i>
+                                <span class="hidden">Info</span>
                             </th>
-                            <th>CUSTOMER</th>
+                            <th>FIRST NAME</th>
+                            <th>LAST NAME</th>
                             <th>DATE</th>
                             <th>DOMAIN</th>
                             <th>DISK</th>
                             <th>TRAFFIC</th>
+                            <th>STATUS</th>
                             <th>CREATED BY</th>
                             <th>APPROVED BY</th>
                         </tr>
