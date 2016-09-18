@@ -111,12 +111,14 @@ class StaffController extends Controller {
      */
     public function destroy(Staff $staff)
     {
-        DB::transaction(function () use ($staff)
-        {
-            $staff->delete();
-        });
+        if ($staff->delete())
+            return response()->json([
+                'Result' => 'OK'
+            ]);
 
-        return back()->with('success', 'Staff deleted!');
+        return response()->json([
+            'Result' => 'Error'
+        ], 500);
     }
 
     /**

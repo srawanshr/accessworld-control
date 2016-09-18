@@ -10,7 +10,7 @@
                     <header class="text-capitalize">all web packages</header>
                     <div class="tools">
                         <a class="btn btn-primary" href="{{ route('webPackage.create') }}">
-                            <i class="md md-plus"></i>
+                            <i class="md md-add"></i>
                             Create
                         </a>
                     </div>

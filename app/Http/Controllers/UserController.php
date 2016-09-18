@@ -129,12 +129,14 @@ class UserController extends Controller {
      */
     public function destroy(User $user)
     {
-        DB::transaction(function () use ($user)
-        {
-            $user->delete();
-        });
-
-        return redirect()->back()->with('success', 'User deleted!');
+        if ($user->delete())
+            return response()->json([
+                'Result' => 'OK'
+            ]);
+        
+        return response()->json([
+            'Result' => 'Error'
+        ], 500);
     }
 
     /**

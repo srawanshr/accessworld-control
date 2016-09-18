@@ -49,7 +49,7 @@ class VpsProvision extends Model
      */
     public function customer()
     {
-        return $this->belongsTo('App\Models\Customer');
+        return $this->belongsTo(Customer::class);
     }
 
     /**
@@ -57,7 +57,7 @@ class VpsProvision extends Model
      */
     public function operatingSystem()
     {
-        return $this->belongsTo('App\Models\OperatingSystem');
+        return $this->belongsTo(OperatingSystem::class);
     }
 
     /**
@@ -65,7 +65,7 @@ class VpsProvision extends Model
      */
     public function vpsOrder()
     {
-        return $this->belongsTo('App\Models\VpsOrder');
+        return $this->belongsTo(VpsOrder::class);
     }
 
     /**
@@ -73,7 +73,7 @@ class VpsProvision extends Model
      */
     public function dataCenter()
     {
-        return $this->belongsTo('App\Models\DataCenter');
+        return $this->belongsTo(DataCenter::class);
     }
 
     /**
@@ -81,6 +81,11 @@ class VpsProvision extends Model
      */
     public function provisionedBy()
     {
-        return $this->belongsTo('App\Models\User', 'provisioned_by');
+        return $this->belongsTo(User::class, 'provisioned_by');
+    }
+
+    public function renewals()
+    {
+        return $this->hasMany(VpsRenewal::class);
     }
 }

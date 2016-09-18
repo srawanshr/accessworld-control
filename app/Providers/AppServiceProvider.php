@@ -10,6 +10,7 @@ use App\Models\Page;
 use App\Models\Service;
 use App\Models\Staff;
 use App\Models\User;
+use App\Models\VpsProvision;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,7 +32,8 @@ class AppServiceProvider extends ServiceProvider
             'client'           => Client::class,
             'certificate'      => Certificate::class,
             'operating_system' => OperatingSystem::class,
-            'staff'            => Staff::class
+            'staff'            => Staff::class,
+            'vps_provision'    => VpsProvision::class,
         ]);
     }
 

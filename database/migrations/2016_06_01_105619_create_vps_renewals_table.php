@@ -15,21 +15,17 @@ class CreateVpsRenewalsTable extends Migration
     	Schema::create('vps_renewals', function (Blueprint $table) {
 			$table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('customer_id')->unsigned();
-            $table->integer('invoice_id')->unsigned();
+            $table->integer('order_id')->unsigned();
             $table->integer('vps_provision_id')->unsigned();
             $table->integer('provisioned_by')->unsigned()->nullable();
             $table->integer('term');
             $table->double('price', 15, 4);
-            $table->float('discount_percent')->default(0);
-            $table->boolean('is_provisioned')->default(0);
-            $table->foreign('customer_id')
+            $table->float('discount')->default(0);
+            $table->date('start_date');
+            $table->date('expiry_date');
+            $table->foreign('order_id')
                 ->references('id')
-                ->on('customers')
-                ->onDelete('restrict');
-            $table->foreign('invoice_id')
-                ->references('id')
-                ->on('invoices')
+                ->on('orders')
                 ->onDelete('restrict');
             $table->foreign('provisioned_by')
                 ->references('id')

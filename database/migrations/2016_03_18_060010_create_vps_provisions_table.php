@@ -28,8 +28,8 @@ class CreateVpsProvisionsTable extends Migration {
             $table->float('ram');
             $table->float('disk');
             $table->float('traffic');
-            $table->string('ip')->unsigned()->index();
-            $table->string('mac')->unsigned()->index();
+            $table->string('ip')->index();
+            $table->string('mac')->index();
             $table->string('password')->nullable();
             $table->boolean('is_managed')->default(0);
             $table->boolean('is_suspended')->default(0);

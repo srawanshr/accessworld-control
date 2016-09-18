@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Staff extends Model
-{
+class Staff extends Model {
+
     use SoftDeletes;
 
     protected $table = 'staffs';
@@ -59,7 +59,7 @@ class Staff extends Model
      */
     public function image()
     {
-        return $this->morphOne('App\Models\Image', 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     /**
@@ -86,5 +86,18 @@ class Staff extends Model
         $code = intval(static::max('code')) + 1;
 
         $this->attributes['code'] = $code;
+    }
+
+    /**
+     * @param array $options
+     * @return bool|null|void
+     * @throws \Exception
+     */
+    public function delete(array $options = array())
+    {
+        if ($this->image)
+            $this->image->delete();
+
+        return parent::delete($options);
     }
 }

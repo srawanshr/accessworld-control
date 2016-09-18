@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Customer extends Model
-{
+class Customer extends Model {
+
     use SoftDeletes;
     /**
      * The attributes that should be mutated to dates.
@@ -103,6 +103,19 @@ class Customer extends Model
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    /**
+     * @param array $options
+     * @return bool|null|void
+     * @throws \Exception
+     */
+    public function delete(array $options = array())
+    {
+        if ($this->image)
+            $this->image->delete();
+
+        return parent::delete($options);
     }
 
 //    /**
