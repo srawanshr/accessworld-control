@@ -65,7 +65,7 @@ class MapController extends Controller {
         return Datatables::eloquent(Map::select(['ip', 'mac', 'subnet', 'hostname', 'serial']))
             ->addColumn('action', function ($map)
             {
-                $buttons = '<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('dhcp.map.destroy', $map->ip) . '">Delete</a>';
+                $buttons = '<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('dhcp.map.destroy', $map->mac) . '">Delete</a>';
 
                 return $buttons;
             })->make(true);
@@ -79,14 +79,16 @@ class MapController extends Controller {
     {
         DB::transaction(function () use ($map)
         {
-            $ip = Ip::where('ip_address', $map->ip)->first();
+            $ip = Ip::where('ip', $map->ip)->first();
 
             if ($ip)
-                $ip->update(['is_used' => false, $ip->mac_address => null, $ip->hostname => null]);
+                $ip->update(['is_used' => false, 'mac' => null, 'hostname' => null]);
 
             Map::where('ip', $map->ip)->first()->delete();
         });
 
-        return redirect()->back()->withSuccess(trans('messages.delete_success', ['entity' => 'DHCP IP']));
+        return response()->json([
+            'Result' => 'OK'
+        ]);
     }
 }

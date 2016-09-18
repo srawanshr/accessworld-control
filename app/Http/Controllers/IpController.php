@@ -49,7 +49,7 @@ class IpController extends Controller {
     public function ipList()
     {
         return Datatables::eloquent(Ip::select(['ip', 'mac', 'hostname', 'is_used']))
-            ->addColumn('used', function ($ip)
+            ->addColumn('is_used', function ($ip)
             {
                 return $ip->is_used ? 'Yes' : 'No';
             })

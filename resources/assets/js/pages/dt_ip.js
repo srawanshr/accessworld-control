@@ -54,7 +54,7 @@
                         return data ? data : "-";
                     }
                 },
-                {"data": "used", "orderable": false, "class": "text-center"},
+                {"data": "is_used", "orderable": true, "searchable": false, "class": "text-center"},
                 {"data": "action", "name": "action", "class": "text-right", "orderable": false, "searchable": false}
             ],
             "buttons": [
