@@ -27,6 +27,7 @@
                             <th>DATE</th>
                             <th>CREATED BY</th>
                             <th>APPROVED BY</th>
+                            <th>STATUS</th>
                             <th>ACTION</th>
                         </tr>
                         </thead>

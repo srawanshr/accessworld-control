@@ -49,8 +49,9 @@
                 {"data": "created_by.username", "class": "text-center", "render": function (data) {
                     return data ? data : '-';
                 }},
-                {"data": "approved_by.username", "class": "text-center text-capitalize", "render": function (data, row, full) {
-                    return data ? data : full.status;
+                {"data": "status", "class": "text-center text-capitalize"},
+                {"data": "approved_by.username", "class": "text-center text-capitalize", "render": function (data) {
+                    return data ? data : '-';
                 }},
                 {"data": "action", "class": "text-right", "orderable": false, "searchable": false}
             ],
