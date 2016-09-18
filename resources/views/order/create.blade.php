@@ -149,7 +149,6 @@
         components: {
             'order-item': {
                 template: '#order-template',
-                
                 data: function () {
                     return {}
                 },

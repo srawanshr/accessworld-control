@@ -61,7 +61,7 @@ class StoreVpsProvision extends FormRequest {
             'traffic'             => $this->input('traffic'),
             'ip'                  => $this->input('ip'),
             'mac'                 => $this->input('mac'),
-            'is_managed'          => $this->is_managed,
+            'is_managed'          => is_null($this->is_managed) ? 0 : $this->is_managed,
             'expiry_date'         => $expiry_date->toDateTimeString(),
             'provisioned_by'      => auth()->id(),
             'created_at'          => $this->input('created_at')

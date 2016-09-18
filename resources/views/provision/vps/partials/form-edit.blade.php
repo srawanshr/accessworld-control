@@ -148,6 +148,7 @@
 </div>
 <div class="card-actionbar">
     <div class="card-actionbar-row">
+        <a href="{{ route('provision.vps.renew', $vpsProvision->id) }}" class="btn btn-success pull-left">Renew</a>
         <input type="submit" class="btn btn-primary" value="Save">
     </div>
 </div>
