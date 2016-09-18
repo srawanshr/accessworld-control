@@ -20,4 +20,34 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    _evalContentScrollbar = function () {
+        if (!$.isFunction($.fn.nanoScroller)) {
+            return;
+        }
+
+        // Check if there is a base
+        var content = $('#content');
+        if (content.length === 0)
+            return;
+
+        // Get scrollbar elements
+        var sectionScroller = $('section');
+        var parent = sectionScroller.parent();
+
+        // Add the scroller wrapper
+        if (parent.hasClass('nano-content') === false) {
+            sectionScroller.wrap('<div class="nano"><div class="nano-content"></div></div>');
+        }
+
+        // Set the correct height
+        var height = $(window).height() - content.position().top - content.find('.nano').position().top;
+        var scroller = sectionScroller.closest('.nano');
+        scroller.css({height: height});
+
+        // Add the nanoscroller
+        scroller.nanoScroller({preventPageScrolling: true, iOSNativeScrolling: true});
+    };
+
+    _evalContentScrollbar();
 </script>

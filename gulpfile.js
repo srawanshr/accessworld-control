@@ -16,6 +16,7 @@ elixir.config.sourcemaps = false;
 
 elixir(function (mix) {
     mix.styles(['libs/summernote.css'], 'public/css/libs/summernote/summernote.min.css')
+        .styles(['libs/datatables.css'], 'public/js/DataTables/datatables.min.css')
         .styles(['libs/dropify.css'], 'public/css/libs/dropify/dropify.min.css');
 
     mix.scripts(['App.js'], 'public/js/core/source/App.min.js')
@@ -35,6 +36,8 @@ elixir(function (mix) {
         .scripts(['pages/dt_customer.js'], 'public/js/pages/dt_customer.min.js')
         .scripts(['pages/dt_staff.js'], 'public/js/pages/dt_staff.min.js')
         .scripts(['pages/dt_vps_provision.js'], 'public/js/pages/dt_vps_provision.min.js')
+        .scripts(['pages/dt_dhcp_map.js'], 'public/js/pages/dt_dhcp_map.min.js')
+        .scripts(['pages/dt_ip.js'], 'public/js/pages/dt_ip.min.js')
         .scripts(['pages/form_order.js'], 'public/js/pages/form_order.min.js');
 
     mix.scripts([

@@ -45,10 +45,7 @@ Route::post('activate/email/{user}', 'Auth\UserActivationController@sendActivati
 */
 Route::get('', 'HomeController@index')->name('home');
 
-Route::group(/**
- *
- */
-    [ 'middleware' => 'auth'], function ()
+Route::group(['middleware' => 'auth'], function ()
 {
     /*
     |--------------------------------------------------------------------------
@@ -315,7 +312,8 @@ Route::group(/**
     | VPS Provision CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'provision.vps.', 'prefix' => 'vps/provision'], function () {
+    Route::group(['as' => 'provision.vps.', 'prefix' => 'vps/provision'], function ()
+    {
         Route::get('', 'VpsProvisionController@index')->name('index');
         Route::get('{vps_order}/create', 'VpsProvisionController@create')->name('create');
         Route::post('{vps_order}', 'VpsProvisionController@store')->name('store');
@@ -329,7 +327,8 @@ Route::group(/**
     | Web Provision CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'provision.web.', 'prefix' => 'web/provision'], function () {
+    Route::group(['as' => 'provision.web.', 'prefix' => 'web/provision'], function ()
+    {
         Route::get('', 'WebProvisionController@index')->name('index');
         Route::get('{web_order}/create', 'WebProvisionController@create')->name('create');
         Route::post('{web_order}', 'WebProvisionController@store')->name('store');
@@ -360,6 +359,32 @@ Route::group(/**
         Route::get('', 'EmailOrderController@index')->name('index');
         Route::put('{email_order}', 'EmailOrderController@update')->name('update');
         Route::delete('{email_order}', 'EmailOrderController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | IP CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'ip.', 'prefix' => 'ip'], function ()
+    {
+        Route::get('', 'IpController@index')->name('index');
+        Route::get('edit', 'IpController@edit')->name('edit');
+        Route::put('{ip}', 'IpController@update')->name('update');
+        Route::delete('{ip}', 'IpController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | DHCP CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'dhcp.map.', 'prefix' => 'dhcp/map', 'namespace' => 'Dhcp'], function ()
+    {
+        Route::get('', 'MapController@index')->name('index');
+        Route::get('edit', 'MapController@edit')->name('edit');
+        Route::put('{map}', 'MapController@update')->name('update');
+        Route::delete('{map}', 'MapController@destroy')->name('destroy');
     });
 
     /*

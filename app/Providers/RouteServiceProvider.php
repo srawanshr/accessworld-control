@@ -36,6 +36,7 @@ class RouteServiceProvider extends ServiceProvider {
         Route::model('vps_provision', 'App\Models\VpsProvision');
         Route::model('web_order', 'App\Models\WebOrder');
         Route::model('email_order', 'App\Models\EmailOrder');
+        Route::model('map', 'App\Models\Dhcp\Map');
     }
 
     /**

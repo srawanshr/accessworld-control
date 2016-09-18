@@ -14,7 +14,7 @@
                         <thead>
                         <tr>
                             <th>
-                                <i class="md md-view-stream"></i>
+                                <i class="md md-info"></i>
                             </th>
                             <th>CUSTOMER</th>
                             <th>DATE</th>

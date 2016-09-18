@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Dhcp;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DhcpMap extends Model
-{
-    protected $connection = 'DHCP';
+class Map extends Model {
 
     /**
-     * Table name
+     * Modal Connection String
+     *
      * @var string
      */
-    protected $table = 'maps';
+    protected $connection = 'DHCP';
 
     /**
      * @var boolean
