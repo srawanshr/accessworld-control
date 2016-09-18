@@ -102,8 +102,13 @@ class CustomerController extends Controller {
      */
     public function destroy(Customer $customer)
     {
-        $customer->delete();
+        if ($customer->delete())
+            return response()->json([
+                'Result' => 'OK'
+            ]);
 
-        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Customer']));
+        return response()->json([
+            'Result' => 'Error'
+        ], 500);
     }
 }
