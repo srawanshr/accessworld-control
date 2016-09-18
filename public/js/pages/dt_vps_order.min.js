@@ -26,7 +26,7 @@
         var $dt_vps_order = $("#dt_vps_order");
 
         var table = $dt_vps_order.DataTable({
-            "dom": '<"clear">lfrtip',
+            "dom": "Bfrtip",
             "order": [],
             "processing": true,
             "serverSide": true,
@@ -34,6 +34,7 @@
                 "type": "POST",
                 "url": $dt_vps_order.data("source")
             },
+            "lengthMenu": [[50, 100, -1], [50, 100, "All"]],
             "pageLength": "50",
             "columns": [
                 {
@@ -50,8 +51,16 @@
                 {"data": "ram", "name": "vps_orders.ram", "class": "text-center"},
                 {"data": "disk", "name": "vps_orders.disk", "class": "text-center"},
                 {"data": "traffic", "name": "vps_orders.traffic", "class": "text-center"},
-                {"data": "order.created_by.username", "class": "text-center text-capitalize"},
                 {"data": "order.status", "name": "order.status", "class": "text-center text-capitalize"},
+                {
+                    "data": "order.is_trial",
+                    "name": "order.is_trial",
+                    "class": "text-center text-capitalize",
+                    "render": function (data) {
+                        return data ? 'Yes' : 'No';
+                    }
+                },
+                {"data": "order.created_by.username", "class": "text-center text-capitalize"},
                 {
                     "data": "order.approved_by.username",
                     "class": "text-center text-capitalize",
@@ -67,6 +76,9 @@
                     $(row).addClass("warning");
                 }
             },
+            "buttons": [
+                'pageLength', 'excel', 'pdf', 'print', 'colvis'
+            ],
             "drawCallback": function () {
                 $('[data-toggle="tooltip"]').tooltip();
             }
