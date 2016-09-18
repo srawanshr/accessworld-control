@@ -37,15 +37,15 @@
             "columns": [
                 {
                     "class": 'details-control text-center',
-                    "orderable": false,
                     "data": null,
                     "defaultContent": '',
-                    "searchable": false
+                    "searchable": false,
+                    "orderable": false
                 },
                 {
                     "data": "avatar",
-                    "searchable": false,
                     "class": "text-center",
+                    "searchable": false,
                     "orderable": false,
                     "render": function (data) {
                         return "<img src='" + data + "' class='img-circle width-1'>";
@@ -53,7 +53,7 @@
                 },
                 {"data": "username"},
                 {"data": "email"},
-                {"data": "role", "class": "text-center"},
+                {"data": "role", "searchable": false, "orderable": false, "class": "text-center"},
                 {"data": "action", name: "action", "class": "text-right", "orderable": false, "searchable": false}
             ],
             "drawCallback": function () {

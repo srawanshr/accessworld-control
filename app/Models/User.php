@@ -64,7 +64,7 @@ class User extends Authenticatable implements HasRoleAndPermissionContract {
      */
     public function image()
     {
-        return $this->morphOne('App\Models\Image', 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     /**
@@ -74,7 +74,8 @@ class User extends Authenticatable implements HasRoleAndPermissionContract {
      */
     public function delete(array $options = array())
     {
-        $this->image->delete();
+        if ($this->image)
+            $this->image->delete();
 
         return parent::delete($options);
     }
