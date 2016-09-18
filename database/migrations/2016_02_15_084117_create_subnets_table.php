@@ -24,7 +24,6 @@ class CreateSubnetsTable extends Migration
             $table->string('ntp_servers')->nullable();
             $table->string('domain_name_servers');
             $table->string('domain_name');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -36,6 +35,6 @@ class CreateSubnetsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('subnets');
+        Schema::dropIfExists('subnets');
     }
 }

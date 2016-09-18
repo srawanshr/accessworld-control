@@ -15,7 +15,7 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::open(['route' =>'user.store','class'=>'form form-validate','role'=>'form','files'=>true, 'novalidate'=>'novalidate']) }}
+                {{ Form::open(['route' =>'user.store','class'=>'form form-validate','role'=>'form','files'=>true, 'novalidate']) }}
                 @include('user.partials.form')
                 {{ Form::close() }}
             </div>

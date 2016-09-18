@@ -78,7 +78,6 @@ class VpsProvisionController extends Controller
      */
     public function vpsProvisionList()
     {
-
         $provisions = VpsProvision::with('customer', 'operatingSystem', 'provisionedBy')->latest()->select([
             'id',
             'customer_id',

@@ -23,3 +23,29 @@ input[type="file"] {
 .dl-horizontal dt {
     text-align: left;
 }
+
+.gui-text {
+    padding: 8px 12px;
+}
+
+#content .nano:focus,
+#content .nano-content:focus {
+    outline: none;
+}
+
+#content .nano-pane {
+    z-index: 2;
+    width: 5px;
+    background: transparent;
+}
+
+#content .nano-slider {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#content section {
+    position: relative;
+    padding-top: 16px;
+    z-index: 2;
+    min-height: 100%;
+}

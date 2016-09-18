@@ -1,17 +1,6 @@
 <div class="card-body">
     <div class="row">
-        <div class="col-md-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-content">
-                        <input type="number" name="term" id="term" class="form-control" min="1" value="{{$webOrder->term ?: 7}}" >
-                        <label for="term">Term</label>
-                    </div>
-                    <span class="input-group-addon">Months</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-4">
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-content">
@@ -22,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-4">
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-content">
@@ -33,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-4">
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-content">

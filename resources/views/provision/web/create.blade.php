@@ -7,7 +7,7 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">create vps provision
+                    <header class="text-capitalize">create email provision
                         <span class="text-primary">({{ $webOrder->order->customer->name }})</span>
                     </header>
                 </div>

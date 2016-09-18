@@ -3,7 +3,7 @@
     <div class="menubar-fixed-panel">
         <div>
             <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
-                <i class="fa fa-bars"></i>
+                <i class="md md-menu"></i>
             </a>
         </div>
         <div class="expanded">
@@ -24,7 +24,7 @@
                     </div>
                     <span class="title">Home</span>
                 </a>
-            </li><!--end /menu-li -->
+            </li>
             <!-- END DASHBOARD -->
 
             <!-- BEGIN ORDER -->
@@ -80,13 +80,36 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('provision.vps.index') }}">
+                        <a href="{{ route('provision.email.index') }}">
                             <span class="title">Email</span>
                         </a>
                     </li>
                 </ul>
             </li>
             <!-- END Provision -->
+
+            <!-- BEGIN DHCP -->
+            <li class="gui-folder">
+                <a href="javascript:void(0);">
+                    <div class="gui-icon gui-text">
+                        IP
+                    </div>
+                    <span class="title">IP Management</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('ip.index') }}">
+                            <span class="title">IP Pool</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('dhcp.map.index') }}">
+                            <span class="title">DHCP</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END DHCP -->
 
             <!-- BEGIN CUSTOMER -->
             <li>

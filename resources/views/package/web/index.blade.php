@@ -2,17 +2,17 @@
 
 @section('title', 'Web Packages')
 
-@push('styles')
-@endpush
-
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>List of Web Packages</header>
+                    <header class="text-capitalize">all web packages</header>
                     <div class="tools">
-                        <a class="btn btn-default btn-ink" href="{{ route('webPackage.create') }}"><i class="fa fa-plus"></i> Create</a>
+                        <a class="btn btn-primary" href="{{ route('webPackage.create') }}">
+                            <i class="md md-add"></i>
+                            Create
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -29,13 +29,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @if($webPackages->isEmpty())
-                                        <tr>
-                                            <td class="text-center" colspan="5">No data available.</td>
-                                        </tr>
-                                    @else
-                                        @each('package.web.partials.table', $webPackages, 'webPackage')
-                                    @endif
+                                @if($webPackages->isEmpty())
+                                    <tr>
+                                        <td class="text-center" colspan="5">No data available.</td>
+                                    </tr>
+                                @else
+                                    @each('package.web.partials.table', $webPackages, 'webPackage')
+                                @endif
                                 </tbody>
                             </table>
                         </div>
@@ -45,6 +45,3 @@
         </div>
     </section>
 @stop
-
-@push('scripts')
-@endpush

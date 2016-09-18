@@ -20,7 +20,7 @@
                         <thead>
                         <tr>
                             <th>
-                                <i class="md md-view-stream"></i>
+                                <i class="md md-info"></i>
                             </th>
                             <th>Avatar</th>
                             <th>Username</th>

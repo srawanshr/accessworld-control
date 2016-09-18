@@ -45,10 +45,7 @@ Route::post('activate/email/{user}', 'Auth\UserActivationController@sendActivati
 */
 Route::get('', 'HomeController@index')->name('home');
 
-Route::group(/**
- *
- */
-    [ 'middleware' => 'auth'], function ()
+Route::group(['middleware' => 'auth'], function ()
 {
     /*
     |--------------------------------------------------------------------------
@@ -315,7 +312,8 @@ Route::group(/**
     | VPS Provision CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'provision.vps.', 'prefix' => 'vps/provision'], function () {
+    Route::group(['as' => 'provision.vps.', 'prefix' => 'vps/provision'], function ()
+    {
         Route::get('', 'VpsProvisionController@index')->name('index');
         Route::get('{vps_order}/create', 'VpsProvisionController@create')->name('create');
         Route::post('{vps_order}', 'VpsProvisionController@store')->name('store');
@@ -331,13 +329,28 @@ Route::group(/**
     | Web Provision CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group(['as' => 'provision.web.', 'prefix' => 'web/provision'], function () {
+    Route::group(['as' => 'provision.web.', 'prefix' => 'web/provision'], function ()
+    {
         Route::get('', 'WebProvisionController@index')->name('index');
         Route::get('{web_order}/create', 'WebProvisionController@create')->name('create');
         Route::post('{web_order}', 'WebProvisionController@store')->name('store');
         Route::get('{web_provision}/edit', 'WebProvisionController@edit')->name('edit');
         Route::put('{web_provision}', 'WebProvisionController@update')->name('update');
         Route::delete('{web_provision}', 'WebProvisionController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Email Provision CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'provision.email.', 'prefix' => 'email/provision'], function () {
+        Route::get('', 'EmailProvisionController@index')->name('index');
+        Route::get('{email_order}/create', 'EmailProvisionController@create')->name('create');
+        Route::post('{email_order}', 'EmailProvisionController@store')->name('store');
+        Route::get('{email_provision}/edit', 'EmailProvisionController@edit')->name('edit');
+        Route::put('{email_provision}', 'EmailProvisionController@update')->name('update');
+        Route::delete('{email_provision}', 'EmailProvisionController@destroy')->name('destroy');
     });
 
     /*
@@ -366,6 +379,32 @@ Route::group(/**
 
     /*
     |--------------------------------------------------------------------------
+    | IP CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'ip.', 'prefix' => 'ip'], function ()
+    {
+        Route::get('', 'IpController@index')->name('index');
+        Route::get('edit', 'IpController@edit')->name('edit');
+        Route::put('{ip}', 'IpController@update')->name('update');
+        Route::delete('{ip}', 'IpController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | DHCP CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'dhcp.map.', 'prefix' => 'dhcp/map', 'namespace' => 'Dhcp'], function ()
+    {
+        Route::get('', 'MapController@index')->name('index');
+        Route::get('edit', 'MapController@edit')->name('edit');
+        Route::put('{map}', 'MapController@update')->name('update');
+        Route::delete('{map}', 'MapController@destroy')->name('destroy');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Component Routes
     |--------------------------------------------------------------------------
     */
@@ -379,5 +418,7 @@ Route::group(/**
         Route::post('order/web/details', 'WebOrderController@details')->name('order.web.details');
         Route::post('order/email/details', 'EmailOrderController@details')->name('order.email.details');
         Route::post('provision/vps/details', 'VpsProvisionController@details')->name('provision.vps.details');
+        Route::post('provision/web/details', 'WebProvisionController@details')->name('provision.web.details');
+        Route::post('provision/email/details', 'EmailProvisionController@details')->name('provision.email.details');
     });
 });

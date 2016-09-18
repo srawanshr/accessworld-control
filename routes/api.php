@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 Route::post('user/list', 'UserController@userList')->name('user.list')->middleware('auth:api');
 Route::post('staff/list', 'StaffController@staffList')->name('staff.list')->middleware('auth:api');
 Route::post('customer/list', 'CustomerController@customerList')->name('customer.list')->middleware('auth:api');
+Route::post('dhcp/map/list', 'Dhcp\MapController@mapList')->name('dhcp.map.list')->middleware('auth:api');
+Route::post('ip/list', 'IpController@ipList')->name('ip.list')->middleware('auth:api');
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +35,5 @@ Route::post('order/email/list', 'EmailOrderController@emailOrderList')->name('or
 |--------------------------------------------------------------------------
 */
 Route::post('provision/vps/list', 'VpsProvisionController@vpsProvisionList')->name('provision.vps.list')->middleware('auth:api');
-//Route::post('provision/web/list', 'WebProvisionController@webProvisionList')->name('provision.web.list')->middleware('auth:api');
-//Route::post('provision/email/list', 'EmailProvisionController@emailProvisionList')->name('provision.email.list')->middleware('auth:api');
+Route::post('provision/web/list', 'WebProvisionController@webProvisionList')->name('provision.web.list')->middleware('auth:api');
+Route::post('provision/email/list', 'EmailProvisionController@emailProvisionList')->name('provision.email.list')->middleware('auth:api');

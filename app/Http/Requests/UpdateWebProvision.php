@@ -13,7 +13,7 @@ class UpdateWebProvision extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,30 @@ class UpdateWebProvision extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'              => 'required',
+            'domain'            => 'required',
+            'disk'              => 'required',
+            'traffic'           => 'required',
+            'connection_string' => 'required',
+            'server_domain_id'  => 'required'
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function data()
+    {
+        $data = [
+            'name'              => $this->input('name'),
+            'domain'            => $this->input('domain'),
+            'disk'              => $this->input('disk'),
+            'traffic'           => $this->input('traffic'),
+            'connection_string' => $this->input('connection_string'),
+            'server_domain_id'  => $this->input('server_domain_id'),
+            'created_at'        => $this->input('created_at')
+        ];
+
+        return $data;
     }
 }
