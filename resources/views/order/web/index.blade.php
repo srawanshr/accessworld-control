@@ -37,10 +37,11 @@
 @stop
 
 @push('styles')
-<link href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/TableTools.min.css') }}"/>
 @endpush
 
 @push('scripts')
-<script src="{{ asset('js/libs/DataTables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/DataTables/datatables.min.js') }}"></script>
 <script src="{{ asset('js/pages/dt_web_email_order.min.js') }}"></script>
 @endpush

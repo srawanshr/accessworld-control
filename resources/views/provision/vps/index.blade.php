@@ -15,6 +15,7 @@
                         <tr>
                             <th>
                                 <i class="md md-view-stream"></i>
+                                <span class="hidden">Info</span>
                             </th>
                             <th>Customer</th>
                             <th>Operating System</th>
@@ -33,10 +34,11 @@
 @stop
 
 @push('styles')
-<link href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/TableTools.min.css') }}"/>
 @endpush
 
 @push('scripts')
-<script src="{{ asset('js/libs/DataTables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/DataTables/datatables.min.js') }}"></script>
 <script src="{{ asset('js/pages/dt_vps_provision.min.js') }}"></script>
 @endpush

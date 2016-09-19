@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RenewVpsProvision;
-use App\Http\Requests\StoreVpsProvision;
-use App\Http\Requests\UpdateVpsProvision;
-use App\Models\ManualPayment;
+use DB;
+use Datatables;
+use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\VpsOrder;
 use App\Models\VpsProvision;
-use Carbon\Carbon;
-use Datatables;
-use DB;
 use Illuminate\Http\Request;
+use App\Models\ManualPayment;
+use App\Http\Requests\RenewVpsProvision;
+use App\Http\Requests\StoreVpsProvision;
+use App\Http\Requests\UpdateVpsProvision;
 
 class VpsProvisionController extends Controller
 {
@@ -78,23 +78,7 @@ class VpsProvisionController extends Controller
      */
     public function vpsProvisionList()
     {
-        $provisions = VpsProvision::with('customer', 'operatingSystem', 'provisionedBy')->latest()->select([
-            'id',
-            'customer_id',
-            'operating_system_id',
-            'provisioned_by',
-            'virtual_machine',
-            'ip',
-            'mac'
-        ]);
-
-        return Datatables::eloquent($provisions)->addColumn('operating_system', function ($item)
-        {
-            return $item->operatingSystem->name;
-        })->addColumn('provisioned_by', function ($item)
-        {
-            return $item->provisionedBy->name;
-        })->make(true);
+        return Datatables::of(VpsProvision::with('customer', 'operatingSystem', 'provisionedBy')->latest()->get())->make(true);
     }
 
     /**

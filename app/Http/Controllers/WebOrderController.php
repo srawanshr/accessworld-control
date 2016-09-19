@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateWebOrder;
 use Datatables;
 use App\Models\WebOrder;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateWebOrder;
 
 class WebOrderController extends Controller {
 
