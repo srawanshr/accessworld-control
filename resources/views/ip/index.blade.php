@@ -13,7 +13,10 @@
                     <table id="dt_ip" class="table order-column hover" data-source="{{ route('ip.list') }}" data-details-source="{{ route('ip.edit') }}">
                         <thead>
                         <tr>
-                            <th><i class="md md-info"></i></th>
+                            <th>
+                                <i class="md md-info"></i>
+                                <span class="hidden">Info</span>
+                            </th>
                             <th>Hostname</th>
                             <th>IP</th>
                             <th>MAC</th>
@@ -31,7 +34,8 @@
 @stop
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('js/DataTables/datatables.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/TableTools.min.css') }}"/>
 @endpush
 
 @push('scripts')

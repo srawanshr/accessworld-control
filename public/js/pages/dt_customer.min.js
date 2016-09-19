@@ -26,7 +26,7 @@
         var $dt_customer = $('#dt_customer');
 
         var table = $dt_customer.DataTable({
-            "dom": "CT<'clear'>lfrtip",
+            "dom": "Bfrtip",
             "processing": true,
             "serverSide": true,
             "ajax": {
@@ -58,14 +58,9 @@
                 },
                 {"data": "action", name: "action", "class": "text-right", "orderable": false, "searchable": false}
             ],
-            "colVis": {
-                "buttonText": "Columns",
-                "overlayFade": 0,
-                "align": "right"
-            },
-            "tableTools": {
-                "sSwfPath": sSwfPath
-            }
+            "buttons": [
+                'pageLength', 'excel', 'pdf', 'print', 'colvis'
+            ]
         });
     };
 

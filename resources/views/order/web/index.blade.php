@@ -15,12 +15,15 @@
                         <tr>
                             <th>
                                 <i class="md md-info"></i>
+                                <span class="hidden">Info</span>
                             </th>
-                            <th>CUSTOMER</th>
+                            <th>FIRST NAME</th>
+                            <th>LAST NAME</th>
                             <th>DATE</th>
                             <th>DOMAIN</th>
                             <th>DISK</th>
                             <th>TRAFFIC</th>
+                            <th>STATUS</th>
                             <th>CREATED BY</th>
                             <th>APPROVED BY</th>
                         </tr>
@@ -34,10 +37,11 @@
 @stop
 
 @push('styles')
-<link href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/TableTools.min.css') }}"/>
 @endpush
 
 @push('scripts')
-<script src="{{ asset('js/libs/DataTables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/DataTables/datatables.min.js') }}"></script>
 <script src="{{ asset('js/pages/dt_web_email_order.min.js') }}"></script>
 @endpush

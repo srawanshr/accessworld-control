@@ -25,7 +25,7 @@
     p.createDataTable = function () {
         var $dt_staff = $('#dt_staff');
         var table = $dt_staff.DataTable({
-            "dom": "CT<'clear'>lfrtip",
+            "dom": "Bfrtip",
             "processing": true,
             "serverSide": true,
             "ajax": {
@@ -63,14 +63,9 @@
             "drawCallback": function (settings) {
                 $('[data-toggle="tooltip"]').tooltip();
             },
-            "colVis": {
-                "buttonText": "Columns",
-                "overlayFade": 0,
-                "align": "right"
-            },
-            "tableTools": {
-                "sSwfPath": sSwfPath
-            }
+            "buttons": [
+                'pageLength', 'excel', 'pdf', 'print', 'colvis'
+            ]
         });
 
         var o = this;
@@ -119,6 +114,5 @@
             '</div></div></div>';
     };
 
-// =========================================================================
     window.materialadmin.StaffDataTable = new StaffDataTable;
 }(this.materialadmin, jQuery));
