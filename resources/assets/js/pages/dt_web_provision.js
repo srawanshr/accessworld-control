@@ -43,10 +43,10 @@
                     "defaultContent": '',
                     "searchable": false
                 },
-                {"data": "customer.name"},
-                {"data": "domain", "class": "text-center"},
-                {"data": "provisioned_by", "class": "text-center"},
-                {"data": "server_domain_id", "class": "text-center"}
+                {"data": "customer.name", "name": "customer.name"},
+                {"data": "domain", "name": "web_provisions.name", "class": "text-center"},
+                {"data": "provisioned_by.name", "name": "provisionedBy.name", "class": "text-center"},
+                {"data": "server_domain_id", "name": "web_provisions.server_domain_id", "class": "text-center"}
             ],
             "createdRow": function (row, data) {
                 if ('approved' == data["status"]) {

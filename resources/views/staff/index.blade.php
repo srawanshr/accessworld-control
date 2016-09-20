@@ -9,10 +9,12 @@
                 <div class="card-head">
                     <header class="text-capitalize">all staffs</header>
                     <div class="tools">
-                        <a class="btn btn-primary ink-reaction" href="{{ route('staff.create') }}">
-                            <i class="md md-person-add"></i>
-                            Add
-                        </a>
+                        @if(auth()->user()->can('save.staff'))
+                            <a class="btn btn-primary ink-reaction" href="{{ route('staff.create') }}">
+                                <i class="md md-person-add"></i>
+                                Add
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
