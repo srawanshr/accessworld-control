@@ -84,23 +84,7 @@ class VpsProvisionController extends Controller
      */
     public function vpsProvisionList()
     {
-        $provisions = VpsProvision::with('customer', 'operatingSystem', 'provisionedBy')->latest()->select([
-            'id',
-            'customer_id',
-            'operating_system_id',
-            'provisioned_by',
-            'virtual_machine',
-            'ip',
-            'mac'
-        ]);
-
-        return Datatables::eloquent($provisions)->addColumn('operating_system', function ($item)
-        {
-            return $item->operatingSystem->name;
-        })->addColumn('provisioned_by', function ($item)
-        {
-            return $item->provisionedBy->name;
-        })->make(true);
+        return Datatables::of(VpsProvision::with('customer', 'operatingSystem', 'provisionedBy')->latest()->get())->make(true);
     }
 
     /**

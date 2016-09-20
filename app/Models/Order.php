@@ -26,7 +26,7 @@ class Order extends Model {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function createdBy()
+    public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
@@ -34,7 +34,7 @@ class Order extends Model {
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function approvedBy()
+    public function approved_by()
     {
         return $this->belongsTo(User::class, 'approved_by');
     }

@@ -16,266 +16,33 @@
         <!-- BEGIN MAIN MENU -->
         <ul id="main-menu" class="gui-controls">
 
-            <!-- BEGIN DASHBOARD -->
-            <li>
-                <a href="{{ url('') }}">
-                    <div class="gui-icon">
-                        <i class="md md-home"></i>
-                    </div>
-                    <span class="title">Home</span>
-                </a>
-            </li>
-            <!-- END DASHBOARD -->
-
-            <!-- BEGIN ORDER -->
-            <li class="gui-folder">
-                <a href="javascript:void(0);">
-                    <div class="gui-icon">
-                        <i class="md md-markunread-mailbox"></i>
-                    </div>
-                    <span class="title">Orders</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="{{ route('order.index') }}">
-                            <span class="title">All</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('order.vps.index') }}">
-                            <span class="title">VPS</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('order.web.index') }}">
-                            <span class="title">Web</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('order.email.index') }}">
-                            <span class="title">Email</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- END ORDER -->
-
-            <!-- BEGIN Provision -->
-            <li class="gui-folder">
-                <a href="javascript:void(0);">
-                    <div class="gui-icon">
-                        <i class="md md-cloud"></i>
-                    </div>
-                    <span class="title">Provisions</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="{{ route('provision.vps.index') }}">
-                            <span class="title">VPS</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('provision.web.index') }}">
-                            <span class="title">Web</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('provision.email.index') }}">
-                            <span class="title">Email</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- END Provision -->
-
-            <!-- BEGIN DHCP -->
-            <li class="gui-folder">
-                <a href="javascript:void(0);">
-                    <div class="gui-icon gui-text">
-                        IP
-                    </div>
-                    <span class="title">IP Management</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="{{ route('ip.index') }}">
-                            <span class="title">IP Pool</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('dhcp.map.index') }}">
-                            <span class="title">DHCP</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- END DHCP -->
-
-            <!-- BEGIN CUSTOMER -->
-            <li>
-                <a href="{{ route('customer.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-people"></i>
-                    </div>
-                    <span class="title">Customers</span>
-                </a>
-            </li>
-            <!-- END CUSTOMER -->
-
-            <!-- BEGIN USERS -->
-            <li class="gui-folder">
-                <a href="javascript:void(0);">
-                    <div class="gui-icon">
-                        <i class="md md-face-unlock"></i>
-                    </div>
-                    <span class="title">Users</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="{{ route('user.index') }}">
-                            <span class="title">List</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('user.create') }}">
-                            <span class="title">Create</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('role.index') }}">
-                            <span class="title">Role</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- END USERS -->
-
-            <!-- BEGIN STAFF -->
-            <li>
-                <a href="{{ route('staff.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-assignment-ind"></i>
-                    </div>
-                    <span class="title">Staffs</span>
-                </a>
-            </li>
-            <!-- END STAFF -->
-
-            <!-- BEGIN SERVICES -->
-            <li>
-                <a href="{{ route('service.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-layers"></i>
-                    </div>
-                    <span class="title">Services</span>
-                </a>
-            </li>
-            <!-- END SERVICES -->
-
-            <!-- BEGIN TESTIMONIALS -->
-            <li>
-                <a href="{{ route('testimonial.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-message"></i>
-                    </div>
-                    <span class="title">Testimonials</span>
-                </a>
-            </li>
-            <!-- END TESTIMONIALS -->
-
-            <!-- BEGIN CERTIFICATE -->
-            <li>
-                <a href="{{ route('certificate.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-verified-user"></i>
-                    </div>
-                    <span class="title">Certificates</span>
-                </a>
-            </li>
-            <!-- END CERTIFICATE -->
-
-            <!-- BEGIN CLIENT -->
-            <li>
-                <a href="{{ route('client.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-people-outline"></i>
-                    </div>
-                    <span class="title">Clients</span>
-                </a>
-            </li>
-            <!-- END CLIENT -->
-
-            <!-- BEGIN PACKAGE -->
-            <li class="gui-folder">
-                <a href="javascript:void(0);">
-                    <div class="gui-icon">
-                        <i class="md md-wallet-giftcard"></i>
-                    </div>
-                    <span class="title">Packages</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="{{ route('vpsPackage.index') }}">
-                            <span class="title">Vps</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('webPackage.index') }}">
-                            <span class="title">Web</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('emailPackage.index') }}">
-                            <span class="title">Email</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- END PACKAGE -->
-
-            <!-- BEGIN DATACENTER -->
-            <li>
-                <a href="{{ route('dataCenter.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-place"></i>
-                    </div>
-                    <span class="title">Data Centers</span>
-                </a>
-            </li>
-            <!-- END DATA CENTER -->
-
-            <!-- BEGIN OPERATING SYSTEM -->
-            <li>
-                <a href="{{ route('operatingSystem.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-computer"></i>
-                    </div>
-                    <span class="title">Operating Systems</span>
-                </a>
-            </li>
-            <!-- END OPERATING SYSTEM -->
-
-            <!-- BEGIN PAGES -->
-            <li>
-                <a href="{{ route('page.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-pages"></i>
-                    </div>
-                    <span class="title">Pages</span>
-                </a>
-            </li>
-            <!-- END PAGES -->
-
-            <!-- BEGIN MENU -->
-            <li>
-                <a href="{{ route('menu.index') }}">
-                    <div class="gui-icon">
-                        <i class="md md-list"></i>
-                    </div>
-                    <span class="title">Menu</span>
-                </a>
-            </li>
-            <!-- END MENU -->
+            @foreach($allMenu as $menu)
+                <li class="{{ $menu['class'] ?: '' }}">
+                    <a href="{{ $menu['route'] }}">
+                        @if(isset($menu['icon']))
+                            <div class="gui-icon">
+                                <i class="{{ $menu['icon'] }}"></i>
+                            </div>
+                        @else
+                            <div class="gui-icon gui-text">
+                                {{ $menu['text'] }}
+                            </div>
+                        @endif
+                        <span class="title">{{ $menu['title'] }}</span>
+                    </a>
+                    @if(isset($menu['items']))
+                        <ul>
+                            @foreach($menu['items'] as $item)
+                                <li>
+                                    <a href="{{ $item['route'] }}">
+                                        <span class="title">{{ $item['title'] }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </li>
+            @endforeach
 
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->

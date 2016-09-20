@@ -11,32 +11,28 @@ class PermissionsTableSeeder extends Seeder {
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
-        DB::table('permissions')->truncate();
-
-        DB::table('permissions')->insert([
+        $permissions = [
             /*
             |--------------------------------------------------------------------------
             | Role CRUD permissions
             |--------------------------------------------------------------------------
             */
             [
-                'name' => 'Update and insert role',
-                'slug' => 'upsert.role',
-                'model' => 'Bican\Roles\Models\Role',
+                'name'        => 'Update and insert role',
+                'slug'        => 'upsert.role',
+                'model'       => 'Bican\Roles\Models\Role',
                 'description' => 'Permission to update and insert roles'
             ],
             [
-                'name' => 'Read Role',
-                'slug' => 'read.role',
-                'model' => 'Bican\Roles\Models\Role',
+                'name'        => 'Read role',
+                'slug'        => 'read.role',
+                'model'       => 'Bican\Roles\Models\Role',
                 'description' => 'Permission to view roles'
             ],
             [
-                'name' => 'Delete Role',
-                'slug' => 'delete.role',
-                'model' => 'Bican\Roles\Models\Role',
+                'name'        => 'Delete role',
+                'slug'        => 'delete.role',
+                'model'       => 'Bican\Roles\Models\Role',
                 'description' => 'Permission to delete roles'
             ],
             /*
@@ -45,24 +41,168 @@ class PermissionsTableSeeder extends Seeder {
             |--------------------------------------------------------------------------
             */
             [
-                'name' => 'Update and insert User',
-                'slug' => 'upsert.user',
-                'model' => 'App\Models\User',
+                'name'        => 'Update and insert user',
+                'slug'        => 'save.user',
+                'model'       => 'App\Models\User',
                 'description' => 'Permission to update or insert users'
             ],
             [
-                'name' => 'Read User',
-                'slug' => 'read.user',
-                'model' => 'App\Models\User',
+                'name'        => 'Read user',
+                'slug'        => 'read.user',
+                'model'       => 'App\Models\User',
                 'description' => 'Permission to view user list'
             ],
             [
-                'name' => 'Delete User',
-                'slug' => 'delete.user',
-                'model' => 'App\Models\User',
+                'name'        => 'Delete user',
+                'slug'        => 'delete.user',
+                'model'       => 'App\Models\User',
                 'description' => 'Permission to delete users'
             ],
-        ]);
+            /*
+            |--------------------------------------------------------------------------
+            | Customer CRUD permissions
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name'        => 'Update and insert customer',
+                'slug'        => 'save.customer',
+                'model'       => 'App\Models\Customer',
+                'description' => 'Permission to update or insert customers'
+            ],
+            [
+                'name'        => 'Read customer',
+                'slug'        => 'read.customer',
+                'model'       => 'App\Models\Customer',
+                'description' => 'Permission to view customer list'
+            ],
+            [
+                'name'        => 'Delete customer',
+                'slug'        => 'delete.customer',
+                'model'       => 'App\Models\Customer',
+                'description' => 'Permission to delete customer'
+            ],
+            /*
+            |--------------------------------------------------------------------------
+            | Staff CRUD permissions
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name'        => 'Update and insert staff',
+                'slug'        => 'save.staff',
+                'model'       => 'App\Models\Staff',
+                'description' => 'Permission to update or insert staffs'
+            ],
+            [
+                'name'        => 'Read staff',
+                'slug'        => 'read.staff',
+                'model'       => 'App\Models\Staff',
+                'description' => 'Permission to view staff list'
+            ],
+            [
+                'name'        => 'Delete staff',
+                'slug'        => 'delete.staff',
+                'model'       => 'App\Models\Staff',
+                'description' => 'Permission to delete staffs'
+            ],
+            /*
+            |--------------------------------------------------------------------------
+            | Content CRUD permissions
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name'        => 'Update and insert frontend content',
+                'slug'        => 'save.content',
+                'model'       => 'App\Models\Page',
+                'description' => 'Permission to update or insert contents'
+            ],
+            [
+                'name'        => 'Read content',
+                'slug'        => 'read.content',
+                'model'       => 'App\Models\Page',
+                'description' => 'Permission to view contents'
+            ],
+            [
+                'name'        => 'Delete content',
+                'slug'        => 'delete.content',
+                'model'       => 'App\Models\Content',
+                'description' => 'Permission to delete contents'
+            ],
+            /*
+            |--------------------------------------------------------------------------
+            | Order CRUD permissions
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name'        => 'Update and insert order',
+                'slug'        => 'save.order',
+                'model'       => 'App\Models\Order',
+                'description' => 'Permission to update or insert order'
+            ],
+            [
+                'name'        => 'Read order',
+                'slug'        => 'read.order',
+                'model'       => 'App\Models\Order',
+                'description' => 'Permission to view orders'
+            ],
+            [
+                'name'        => 'Delete order',
+                'slug'        => 'delete.order',
+                'model'       => 'App\Models\Order',
+                'description' => 'Permission to delete orders'
+            ],
+            /*
+            |--------------------------------------------------------------------------
+            | Provision CRUD permissions
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name'        => 'Update and insert provision',
+                'slug'        => 'save.provision',
+                'model'       => 'App\Models\Provision',
+                'description' => 'Permission to update or insert provision'
+            ],
+            [
+                'name'        => 'Read provision',
+                'slug'        => 'read.provision',
+                'model'       => 'App\Models\Provision',
+                'description' => 'Permission to view provisions'
+            ],
+            [
+                'name'        => 'Delete provision',
+                'slug'        => 'delete.provision',
+                'model'       => 'App\Models\Provision',
+                'description' => 'Permission to delete provisions'
+            ],
+            /*
+            |--------------------------------------------------------------------------
+            | IP CRUD permissions
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name'        => 'Update and insert IP',
+                'slug'        => 'save.ip',
+                'model'       => 'App\Models\Ip',
+                'description' => 'Permission to update or insert IP'
+            ],
+            [
+                'name'        => 'Read IP',
+                'slug'        => 'read.ip',
+                'model'       => 'App\Models\Ip',
+                'description' => 'Permission to view IPs'
+            ],
+            [
+                'name'        => 'Delete IP',
+                'slug'        => 'delete.ip',
+                'model'       => 'App\Models\Ip',
+                'description' => 'Permission to delete IPs'
+            ]
+        ];
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        DB::table('permissions')->truncate();
+
+        DB::table('permissions')->insert($permissions);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-        {{ Form::model($map,['route'=>['dhcp.map.update',$map->ip],'class'=>'form-horizontal','method'=>'PUT']) }}
+        {{ Form::model($map,['route'=>['dhcp.map.update',$map->mac],'class'=>'form-horizontal','method'=>'PUT']) }}
         <div class="card">
             <div class="card-head style-accent-bright">
                 <header>Edit DHCP IP</header>

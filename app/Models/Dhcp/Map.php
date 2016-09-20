@@ -19,6 +19,11 @@ class Map extends Model {
     public $timestamps = false;
 
     /**
+     * Setting a primary key
+     */
+    protected $primaryKey = 'mac';
+
+    /**
      * Setting non-incrementing or a non-numeric primary key
      *
      * @var boolean
@@ -40,6 +45,6 @@ class Map extends Model {
      */
     public function getRouteKeyName()
     {
-        return 'ip';
+        return 'mac';
     }
 }

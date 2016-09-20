@@ -43,10 +43,16 @@
                     "defaultContent": '',
                     "searchable": false
                 },
-                {"data": "customer"},
+                {"data": "customer.first_name"},
+                {"data": "customer.last_name"},
                 {"data": "date", "class": "text-center"},
-                {"data": "created_by", "class": "text-center"},
-                {"data": "approved_by", "class": "text-center text-capitalize"},
+                {"data": "created_by.username", "class": "text-center", "render": function (data) {
+                    return data ? data : '-';
+                }},
+                {"data": "status", "class": "text-center text-capitalize"},
+                {"data": "approved_by.username", "class": "text-center text-capitalize", "render": function (data) {
+                    return data ? data : '-';
+                }},
                 {"data": "action", "class": "text-right", "orderable": false, "searchable": false}
             ],
             "createdRow": function (row, data) {

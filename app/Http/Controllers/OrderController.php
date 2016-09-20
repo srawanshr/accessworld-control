@@ -110,17 +110,8 @@ class OrderController extends Controller {
      */
     public function orderList(Request $request)
     {
-        return Datatables::eloquent(Order::with('customer', 'createdBy', 'approvedBy')->latest()->select())
-            ->addColumn('customer', function ($item)
-            {
-                return $item->customer->name;
-            })->editColumn('created_by', function ($item)
-            {
-                return $item->createdBy->name;
-            })->editColumn('approved_by', function ($item)
-            {
-                return $item->approvedBy ? $item->approvedBy->name : $item->status;
-            })->addColumn('action', function ($item)
+        return Datatables::eloquent(Order::with('customer', 'created_by', 'approved_by')->latest()->select())
+            ->addColumn('action', function ($item)
             {
                 $button = '<a href="' . route('order.edit', $item->id) . '" class="text-primary">Edit</a>';
                 $button .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('order.destroy', $item->id) . '">Delete</a>';

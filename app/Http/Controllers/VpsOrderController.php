@@ -22,31 +22,7 @@ class VpsOrderController extends Controller {
      */
     public function vpsOrderList()
     {
-        $orders = VpsOrder::with('order')->latest()->select([
-            'id',
-            'operating_system_id',
-            'order_id',
-            'name',
-            'term',
-            'cpu',
-            'ram',
-            'disk',
-            'traffic',
-            'price',
-            'is_trial',
-            'is_provisioned'
-        ]);
-
-        return Datatables::eloquent($orders)->addColumn('customer', function ($item)
-        {
-            return $item->order->customer->name;
-        })->editColumn('created_by', function ($item)
-        {
-            return $item->order->createdBy->name;
-        })->editColumn('approved_by', function ($item)
-        {
-            return $item->order->approvedBy ? $item->order->status == 2 ? 'rejected' : $item->order->approvedBy->name : 'pending';
-        })->make(true);
+        return Datatables::of(VpsOrder::with('order.customer', 'order.created_by', 'order.approved_by')->latest()->get())->make(true);
     }
 
     /**

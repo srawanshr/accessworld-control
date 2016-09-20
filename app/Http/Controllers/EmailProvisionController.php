@@ -75,17 +75,7 @@ class EmailProvisionController extends Controller
      */
     public function emailProvisionList()
     {
-        $provisions = EmailProvision::with('customer', 'provisionedBy')->latest()->select([
-            'id',
-            'customer_id',
-            'domain',
-            'provisioned_by',
-            'server_domain_id'
-        ]);
-        return Datatables::eloquent($provisions)->addColumn('provisioned_by', function ($item)
-        {
-            return $item->provisionedBy->name;
-        })->make(true);
+        return Datatables::of(EmailProvision::with('customer', 'provisionedBy')->latest()->get())->make(true);
     }
 
     /**

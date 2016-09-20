@@ -43,18 +43,22 @@
                     "defaultContent": '',
                     "searchable": false
                 },
-                {"data": "customer"},
+                {"data": "order.customer.first_name"},
+                {"data": "order.customer.last_name"},
                 {"data": "order.date", "class": "text-center"},
                 {"data": "domain", "class": "text-center"},
                 {"data": "disk", "class": "text-center"},
                 {"data": "traffic", "class": "text-center"},
-                {"data": "created_by", "class": "text-center"},
-                {"data": "approved_by", "class": "text-center text-capitalize"}
+                {"data": "order.status", "class": "text-center text-capitalize"},
+                {"data": "order.created_by.username", "class": "text-center"},
+                {"data": "order.approved_by.username", "class": "text-center text-capitalize", "render": function (data) {
+                    return data ? data : '-';
+                }}
             ],
             "createdRow": function (row, data) {
-                if ('approved' == data["status"]) {
+                if ('approved' == data.order.status) {
                     $(row).addClass("success");
-                } else if ('rejected' == data["status"]) {
+                } else if ('rejected' == data.order.status) {
                     $(row).addClass("warning");
                 }
             },

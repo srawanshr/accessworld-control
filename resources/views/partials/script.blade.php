@@ -7,7 +7,7 @@
     var infoMsg = "{{ session('info') }}";
     var warningMsg = "{{ session('warning') }}";
     var dangerMsg = "{{ session('danger') }}";
-    var errorMsg = "{{ isset($errors) && ! empty($errors->all()) ? 'Validation error!' : false }}";
+    var errorMsg = "{{ isset($errors) && ! empty($errors->all()) ? 'Form validation error!' : false }}";
 
     //Active links
     var requestUrl = "{{ request()->url() }}";
@@ -50,4 +50,22 @@
     };
 
     _evalContentScrollbar();
+
+    $(document).on("click", ".item-delete", function () {
+        var $button = $(this), $row = $(this).closest("tr");
+        bootbox.confirm("Are you sure you want to delete this item?", function (response) {
+            if (response)
+                $.ajax({
+                    "type": "POST",
+                    "url": $button.data("url"),
+                    "data": {_method: "DELETE"},
+                    "success": function () {
+                        $row.addClass("danger").fadeOut();
+                    },
+                    "error": function () {
+                        bootbox.alert("Delete failed!");
+                    }
+                });
+        });
+    });
 </script>
