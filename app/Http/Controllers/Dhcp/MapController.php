@@ -18,9 +18,7 @@ class MapController extends Controller {
      */
     public function index()
     {
-        $ips = Ip::used(false)->pluck('ip', 'ip');
-
-        return view('dhcp.map.index', compact('ips'));
+        return view('dhcp.map.index');
     }
 
     /**

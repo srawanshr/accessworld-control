@@ -37,3 +37,6 @@ Route::post('order/email/list', 'EmailOrderController@emailOrderList')->name('or
 Route::post('provision/vps/list', 'VpsProvisionController@vpsProvisionList')->name('provision.vps.list')->middleware('auth:api');
 Route::post('provision/web/list', 'WebProvisionController@webProvisionList')->name('provision.web.list')->middleware('auth:api');
 Route::post('provision/email/list', 'EmailProvisionController@emailProvisionList')->name('provision.email.list')->middleware('auth:api');
+
+Route::get('vm/os', 'VpsProvisionController@getOperatingSystems')->name('vm.os.list')->middleware('auth:api');
+Route::get('vm/serverid', 'VpsProvisionController@getServerId')->name('vm.serverid')->middleware('auth:api');

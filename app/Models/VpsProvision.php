@@ -26,6 +26,7 @@ class VpsProvision extends Model
         'traffic',
         'ip',
         'mac',
+        'vdi_uuid',
         'password',
         'is_trial',
         'is_managed',

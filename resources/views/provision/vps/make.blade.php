@@ -5,14 +5,15 @@
 @section('content')
     <section>
         <div class="section-body">
+            @include('partials.errors')
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">create vps provision
+                    <header class="text-capitalize">Provision New VPS
                         <span class="text-primary">({{ $vpsOrder->order->customer->name }})</span>
                     </header>
                 </div>
-                {{ Form::open(['route'=>['provision.vps.store',$vpsOrder->id],'class'=>'form form-validate','novalidate']) }}
-                    @include('provision.vps.partials.form')
+                {{ Form::open(['route'=>['provision.vps.provision',$vpsOrder->id],'class'=>'form form-validate','novalidate']) }}
+                    @include('provision.vps.partials.form-make')
                 {{ Form::close() }}
             </div>
         </div>

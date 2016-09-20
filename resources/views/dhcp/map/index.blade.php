@@ -21,7 +21,7 @@
                     <div class="form-group">
                         {{ Form::label('ip', 'IP Address', ['class'=>'col-sm-4 control-label']) }}
                         <div class="col-sm-8">
-                            {{ Form::select('ip', $ips, old('ip'), ['class'=>'form-control select2-list', 'required']) }}
+                            {{ Form::select('ip', ips(), old('ip'), ['class'=>'form-control select2-list', 'required']) }}
                             <div class="form-control-line"></div>
                         </div>
                     </div>
