@@ -1,4 +1,5 @@
 <?php
+use App\Models\Ip;
 
 /**
  * @param $value
@@ -46,9 +47,7 @@ function user_avatar($width, $username = null)
  */
 function thumbnail($width, $entity = null)
 {
-    if ( ! is_null($entity))
-        if ($image = $entity->image)
-            return asset($image->thumbnail($width, $width));
+    if ( ! is_null($entity)) if ($image = $entity->image) return asset($image->thumbnail($width, $width));
 
     return asset(config('paths.placeholder.default'));
 }
@@ -67,8 +66,31 @@ function operating_systems()
  * @param $amount
  * @return string
  */
-function currency($amount=false)
+function currency($amount = false)
 {
     $prefix = config('website.currency');
-    return $amount ? $prefix.' '.$amount : $prefix;
+
+    return $amount ? $prefix . ' ' . $amount : $prefix;
+}
+
+/**
+ * @return array
+ */
+function vms()
+{
+    $vms = [];
+    foreach (config('xenapi') as $vm => $value)
+    {
+        if ($value['ACTIVE']) $vms[ $vm ] = $value['URL'];
+    }
+
+    return $vms;
+}
+
+/**
+ * @return mixed
+ */
+function ips()
+{
+    return Ip::used(false)->pluck('ip', 'ip');
 }

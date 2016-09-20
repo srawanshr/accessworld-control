@@ -340,6 +340,8 @@ Route::group(['middleware' => 'auth'], function ()
     {
         Route::get('', 'VpsProvisionController@index')->name('index');
         Route::get('{vps_order}/create', 'VpsProvisionController@create')->name('create');
+        Route::get('{vps_order}/make', 'VpsProvisionController@make')->name('make');
+        Route::post('{vps_order}/make', 'VpsProvisionController@provision')->name('provision');
         Route::post('{vps_order}', 'VpsProvisionController@store')->name('store');
         Route::get('{vps_provision}/edit', 'VpsProvisionController@edit')->name('edit');
         Route::get('{vps_provision}/renew', 'VpsProvisionController@renew')->name('renew');

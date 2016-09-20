@@ -30,6 +30,7 @@ class CreateVpsProvisionsTable extends Migration {
             $table->float('traffic');
             $table->string('ip')->index();
             $table->string('mac')->index();
+            $table->string('vdi_uuid');
             $table->string('password')->nullable();
             $table->boolean('is_managed')->default(0);
             $table->boolean('is_suspended')->default(0);

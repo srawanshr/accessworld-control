@@ -3,9 +3,17 @@
     <div class="card-head style-accent-bright">
         <header>VPS Order</header>
         <div class="tools">
-            <input type="submit" class="btn btn-primary" value="Save">
+            <button type="submit" class="btn btn-primary">
+                <i class="md md-save"></i>
+                Save
+            </button>
             @unless($vpsOrder->is_provisioned)
                 <a href="{{ route('provision.vps.create', $vpsOrder->id) }}" class="btn btn-success">
+                    <i class="md md-archive"></i>
+                    Import Provision
+                </a>
+                <a href="{{ route('provision.vps.make', $vpsOrder->id) }}" class="btn btn-success">
+                    <i class="md md-cloud-done"></i>
                     Provision
                 </a>
             @endunless
