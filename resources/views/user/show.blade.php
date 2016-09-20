@@ -1,6 +1,6 @@
-@extends('admin.layouts.master')
+@extends('layout')
 
-@section('title', $user->display_name)
+@section('title', $user->name)
 
 @section('header')
     <style type="text/css">
@@ -32,31 +32,28 @@
 @stop
 
 @section('content')
+    {{ Form::model($user, ['route' => ['admin::user.update', $user->username], 'class'=>'form form-validate', 'method'=>'put','files'=>true]) }}
     <!-- BEGIN PROFILE HEADER -->
-    {{ Form::model($user, ['route' => ['admin.user.update', $user->slug], 'class'=>'form form-validate', 'method'=>'put','files'=>true]) }}
     <section class="full-bleed">
         <div class="section-body style-default-dark force-padding text-shadow">
-            <div class="img-backdrop" style="background-image: url('{{ asset('assets/img/img16.jpg') }}')"></div>
+            <div class="img-backdrop" style="background-image: url('{{ asset('img/login-bg.jpg') }}')"></div>
             <div class="overlay overlay-shade-top stick-top-left height-3"></div>
             <div class="row">
-                <div class="col-md-3 col-xs-5 text-center">
-                    <div class="row">
-                        <div class="col-sm-12 profile-picture">
-                            <img class="img-circle border-white border-xl auto-width" src="{{$user->image->thumbnail()}}" alt=""/>
-                            <button class="btn btn-xs btn-raised btn-primary ink-reaction" type="button">Change</button>
-                            {{ Form::file('profile_picture', ['class'=>'hidden profile-picture']) }}
-                        </div>
-                        <div class="col-sm-12">
-                            <h3>{{$user->display_name}}<br/>
-                                <small>{{\Auth::user()->roles->pluck('name')->implode(', ')}}</small>
-                            </h3>
-                        </div>
+                <div class="col-md-3 col-xs-5">
+                    <div class="row text-center">
+                        <img class="img-circle border-white border-xl auto-width avatar" src="{{ user_avatar(140)  }}" alt="user_avatar" style="width: 140px;"/>
+                        {{ Form::file('image', ['class'=>'hidden avatar-file']) }}
+                        <h3>{{$user->name}}<br/>
+                            <small>{{ auth()->user()->roles->first()->name }}</small>
+                        </h3>
                     </div>
                 </div><!--end .col -->
                 <div class="col-md-9 col-xs-7">
                     <div class="width-4 text-center pull-right">
-                        <strong class="text-xl">{{$user->created_at->toDateString()}}</strong><br/>
-                        <span class="text-light opacity-75">Date Joined</span>
+                        @unless(empty($user->created_at))
+                            <strong class="text-xl">{{ $user->created_at }}</strong><br/>
+                            <span class="text-light opacity-75">Date Joined</span>
+                        @endunless
                     </div>
                 </div><!--end .col -->
             </div><!--end .row -->
@@ -64,20 +61,22 @@
                 <a href="mailto:{{$user->email}}" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Contact me">
                     <i class="fa fa-envelope"></i>
                 </a>
-                <span data-toggle="modal" data-target="#passwordModal">
-                    <a href="#" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Change password">
-                        <i class="fa fa-key"></i>
-                    </a>
-                </span>
+                @if(auth()->user()->id == $user->id)
+                    <span data-toggle="modal" data-target="#passwordModal">
+                        <a href="#" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Change password">
+                            <i class="fa fa-key"></i>
+                        </a>
+                    </span>
+                @endif
             </div>
-        </div><!--end .section-body -->
+        </div>
     </section>
     <!-- END PROFILE HEADER  -->
 
-    <section class="no-padding">
+    <section class="no-margin">
         <div class="section-body no-margin">
+            @include('partials.errors')
             <div class="row">
-                <h2>&nbsp;</h2>
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-6">
@@ -100,7 +99,7 @@
                                                     <i class="md md-border-color"></i>
                                                 </div>
                                                 <div class="tile-text">
-                                                    {{ Form::text('detail[first_name]', old('first_name'), ['class'=>'form-control', 'placeholder'=>'First Name']) }}
+                                                    {{ Form::text('first_name', old('first_name'), ['class'=>'form-control', 'placeholder'=>'First Name']) }}
                                                 </div>
                                             </a>
                                         </li>
@@ -110,7 +109,7 @@
                                                     <i class="md md-border-color"></i>
                                                 </div>
                                                 <div class="tile-text">
-                                                    {{ Form::text('detail[last_name]', old('last_name'), ['class'=>'form-control', 'placeholder'=>'Last Name']) }}
+                                                    {{ Form::text('last_name', old('last_name'), ['class'=>'form-control', 'placeholder'=>'Last Name']) }}
                                                 </div>
                                             </a>
                                         </li>
@@ -135,8 +134,9 @@
                                         <small>Contact info</small>
                                     </header>
                                     <div class="tools">
-                                        <button type="submit" class="btn btn-icon-toggle ink-reaction"><i
-                                                    class="md md-save"></i></button>
+                                        <button type="submit" class="btn btn-icon-toggle ink-reaction">
+                                            <i class="md md-save"></i>
+                                        </button>
                                     </div><!--end .tools -->
                                 </div>
                                 <div class="card-body">
@@ -144,10 +144,10 @@
                                         <li class="tile">
                                             <a class="tile-content ink-reaction">
                                                 <div class="tile-icon">
-                                                    <i class="md md-location-on"></i>
+                                                    <i class="md md-business"></i>
                                                 </div>
                                                 <div class="tile-text">
-                                                    {{ Form::text('detail[address]', old('address'), ['class'=>'form-control', 'placeholder'=>'Address']) }}
+                                                    {{ Form::text('organization', old('organization'), ['class'=>'form-control', 'placeholder'=>'Organization', 'readonly']) }}
                                                 </div>
                                             </a>
                                         </li>
@@ -157,7 +157,7 @@
                                                     <i class="md md-local-phone"></i>
                                                 </div>
                                                 <div class="tile-text">
-                                                    {{ Form::text('detail[phone]', old('phone'), ['class'=>'form-control', 'placeholder'=>'Phone']) }}
+                                                    {{ Form::text('phone', old('phone'), ['class'=>'form-control', 'placeholder'=>'Phone']) }}
                                                 </div>
                                             </a>
                                         </li>
@@ -167,7 +167,7 @@
                                                     <i class="md md-insert-link"></i>
                                                 </div>
                                                 <div class="tile-text">
-                                                    {{ Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Email']) }}
+                                                    {{ Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Email', 'readonly']) }}
                                                 </div>
                                             </a>
                                         </li>
@@ -191,7 +191,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="passwordModalLabel">Change Password</h4>
                 </div>
-                {{ Form::open(['route'=>['admin.user.changePassword', $user->slug], 'class'=>'form form-validate', 'role'=>'form', 'method'=>'PUT']) }}
+                {{ Form::open(['route'=>['admin.user.changePassword', $user->username], 'class'=>'form form-validate', 'role'=>'form', 'method'=>'PUT']) }}
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="password" name="password_current" id="password_current" class="form-control"
