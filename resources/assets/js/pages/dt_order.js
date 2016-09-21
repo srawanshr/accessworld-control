@@ -34,6 +34,7 @@
                 "type": "POST",
                 "url": $dt_order.data("source")
             },
+            "lengthMenu": [[50, 100, -1], [50, 100, "All"]],
             "pageLength": "50",
             "columns": [
                 {
@@ -43,17 +44,19 @@
                     "defaultContent": '',
                     "searchable": false
                 },
-                {"data": "customer.first_name"},
-                {"data": "customer.last_name"},
-                {"data": "date", "class": "text-center"},
-                {"data": "created_by.username", "class": "text-center", "render": function (data) {
+                {"data": "customer.first_name", "name": "customer.first_name"},
+                {"data": "customer.last_name", "name": "customer.last_name"},
+                {"data": "date", "name": "order.date", "class": "text-center"},
+                {"data": "created_by.username", "name": "order.created_by.username", "class": "text-center", "render": function (data) {
                     return data ? data : '-';
                 }},
-                {"data": "status", "class": "text-center text-capitalize"},
-                {"data": "approved_by.username", "class": "text-center text-capitalize", "render": function (data) {
+                {"data": "status", "name": "order.status", "class": "text-center text-capitalize"},
+                {"data": "approved_by.username", "name": "order.approved_by.username", "class": "text-center text-capitalize", "render": function (data) {
                     return data ? data : '-';
                 }},
-                {"data": "action", "class": "text-right", "orderable": false, "searchable": false}
+                {"data": "action", "class": "text-right", "orderable": false, "searchable": false, "render": function (data) {
+                    return data ? data : '-';
+                }}
             ],
             "createdRow": function (row, data) {
                 if ('approved' == data["status"]) {

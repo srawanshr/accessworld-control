@@ -7,7 +7,15 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">all email orders</header>
+                    <header class="text-capitalize">all orders</header>
+                    <div class="tools">
+                        @if(auth()->user()->can('save.order'))
+                            <a class="btn btn-primary ink-reaction" href="{{ route('order.create') }}">
+                                <i class="md md-add"></i>
+                                Add
+                            </a>
+                        @endif
+                    </div>
                 </div>
                 <div class="card-body">
                     <table id="dt_web_email_order" class="table order-column hover" data-source="{{ route('order.email.list') }}" data-details-source="{{ route('component.order.email.details') }}">

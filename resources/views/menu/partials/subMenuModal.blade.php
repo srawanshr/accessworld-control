@@ -20,7 +20,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Add Sub Menu</button>
+                @if(auth()->user()->can('save.content'))
+                    <button type="submit" class="btn btn-primary">Add Sub Menu</button>
+                @endif
             </div>
         </div>
     </div>

@@ -55,7 +55,10 @@ class IpController extends Controller {
             })
             ->addColumn('action', function ($ip)
             {
-                $buttons = '<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('ip.destroy', $ip->id) . '">Delete</a>';
+                if (auth()->user()->can('delete.ip'))
+                    $buttons = '<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('ip.destroy', $ip->id) . '">Delete</a>';
+                else
+                    $buttons = "NA";
 
                 return $buttons;
             })->make(true);

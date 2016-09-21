@@ -9,10 +9,12 @@
                 <div class="card-head">
                     <header class="text-capitalize">all orders</header>
                     <div class="tools">
-                        <a class="btn btn-primary ink-reaction" href="{{ route('order.create') }}">
-                            <i class="md md-add"></i>
-                            Add
-                        </a>
+                        @if(auth()->user()->can('save.order'))
+                            <a class="btn btn-primary ink-reaction" href="{{ route('order.create') }}">
+                                <i class="md md-add"></i>
+                                Add
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">

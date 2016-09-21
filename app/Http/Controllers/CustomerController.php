@@ -28,9 +28,20 @@ class CustomerController extends Controller {
         return Datatables::eloquent(Customer::with('image')->select(['username','phone','address','first_name', 'last_name', 'email', 'id']))
             ->addColumn('action', function ($customer)
             {
-                $buttons = '<a href="'.route('customer.show', $customer->username).'" class="text-primary">View</a>';
-                $buttons .= '&nbsp;&nbsp;<a href="' . route('customer.edit', $customer->username) . '" class="text-primary">Edit</a>';
-                $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('customer.destroy', $customer->username) . '">Delete</a>';
+                if (auth()->user()->canOne(['read.customer', 'save.customer', 'delete.customer']))
+                {
+                    $buttons = false;
+                    if (auth()->user()->can('read.customer'))
+                        $buttons .= '<a href="'.route('customer.show', $customer->username).'" class="text-primary">View</a>';
+
+                    if (auth()->user()->can('save.customer'))
+                        $buttons .= '&nbsp;&nbsp;<a href="' . route('customer.edit', $customer->username) . '" class="text-primary">Edit</a>';
+
+                    if (auth()->user()->can('delete.customer'))
+                        $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('customer.destroy', $customer->username) . '">Delete</a>';
+                } else {
+                    $buttons .= "NA";
+                }
 
                 return $buttons;
             })->make(true);

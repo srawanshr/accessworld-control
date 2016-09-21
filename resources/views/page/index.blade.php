@@ -12,19 +12,22 @@
                 <div class="card-head">
                     <header class="text-capitalize">all pages</header>
                     <div class="tools">
-                        <a class="btn btn-primary ink-reaction" href="{{ route('page.create') }}">
-                            <i class="md md-add"></i>
-                            Add
-                        </a>
+                        @if(auth()->user()->can('save.content'))
+                            <a class="btn btn-primary ink-reaction" href="{{ route('page.create') }}">
+                                <i class="md md-add"></i>
+                                Add
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th class="text-center">Published</th>
-                            <th class="text-right">Actions</th>
+                            <th width="5%">#</th>
+                            <th width="60%">Name</th>
+                            <th width="20%" class="text-center">Published</th>
+                            <th width="15%" class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>

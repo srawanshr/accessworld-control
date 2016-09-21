@@ -9,19 +9,22 @@
                 <div class="card-head">
                     <header class="text-capitalize">all testimonials</header>
                     <div class="tools">
-                        <a class="btn btn-primary" href="{{ route('testimonial.create') }}">
-                            <i class="md md-add"></i>
-                            Add
-                        </a>
+                        @if(auth()->user()->can('save.content'))
+                            <a class="btn btn-primary" href="{{ route('testimonial.create') }}">
+                                <i class="md md-add"></i>
+                                Add
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>Customer</th>
-                            <th class="text-center">Published</th>
-                            <th class="text-right">Actions</th>
+                            <th width="5%">#</th>
+                            <th width="60%">Customer</th>
+                            <th width="20%" class="text-center">Published</th>
+                            <th width="15%" class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>

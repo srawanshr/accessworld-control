@@ -133,6 +133,12 @@ class PermissionsTableSeeder extends Seeder {
             |--------------------------------------------------------------------------
             */
             [
+                'name'        => 'Approve customer',
+                'slug'        => 'approve.customer',
+                'model'       => 'App\Models\Customer',
+                'description' => 'Permission to approve a order'
+            ],
+            [
                 'name'        => 'Update and insert order',
                 'slug'        => 'save.order',
                 'model'       => 'App\Models\Order',

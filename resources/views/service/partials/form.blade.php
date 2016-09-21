@@ -48,6 +48,8 @@
 <div class="card-actionbar">
     <div class="card-actionbar-row">
         <button type="reset" class="btn btn-flat ink-reaction">Reset</button>
-        <button type="submit" class="btn btn-flat btn-primary ink-reaction">Save</button>
+        @if(auth()->user()->can('save.content'))
+            <button type="submit" class="btn btn-flat btn-primary ink-reaction">Save</button>
+        @endif
     </div>
 </div>
