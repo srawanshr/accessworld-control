@@ -38,6 +38,14 @@ class VpsOrder extends Model {
     }
 
     /**
+     * @return mixed
+     */
+    public function customer()
+    {
+        return $this->order->customer();
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function provision()

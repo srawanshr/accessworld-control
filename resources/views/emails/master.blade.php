@@ -101,7 +101,7 @@
                                         @yield('content')
                                         <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                             <td class="content-block aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">
-                                                AccessWorld, {{ display_contact( 'address' ) }}, Kathmandu, Nepal
+                                                AccessWorld, {{ setting( 'address' ) }}, Kathmandu, Nepal
                                             </td>
                                         </tr>
                                     </td>
@@ -115,25 +115,25 @@
                         <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                             <td class="aligncenter content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; color: #999; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">
                                 Questions? Email
-                                <a href="mailto:{{ display_contact( 'email' ) }}" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #999; text-decoration: underline; margin: 0;">
-                                    {{ display_contact( 'email' ) }}
+                                <a href="mailto:{{ setting( 'email' ) }}" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #999; text-decoration: underline; margin: 0;">
+                                    {{ setting( 'email' ) }}
                                 </a>
                             </td>
                         </tr>
                         <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                             <td class="aligncenter content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; color: #999; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">
-                                Phone {{ display_contact( 'phone' ) }}
+                                Phone {{ setting( 'phone' ) }}
                             </td>
                         </tr>
                     </table>
                     <table width="100%" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                         <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                             <td class="aligncenter content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; color: #999; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">
-                                <a href="{{ site_info( 'facebook' ) }}"><img src="<?php echo $message->embed($images['facebook']); ?>"
+                                <a href="{{ setting( 'facebook' ) }}"><img src="<?php echo $message->embed($images['facebook']); ?>"
                                  width="30" height="30" alt="facebook" style="margin-right: 5px;"></a>
-                                <a href="{{ site_info( 'twitter' ) }}"><img src="<?php echo $message->embed($images['twitter']); ?>"
+                                <a href="{{ setting( 'twitter' ) }}"><img src="<?php echo $message->embed($images['twitter']); ?>"
                                  width="30" height="30" alt="twitter" style="margin-right: 5px;"></a>
-                                <a href="{{ site_info( 'google_plus' ) }}"><img src="<?php echo $message->embed($images['google']); ?>"
+                                <a href="{{ setting( 'google_plus' ) }}"><img src="<?php echo $message->embed($images['google']); ?>"
                                  width="30" height="30" alt="google_plus" style="margin-right: 5px;"></a>
                             </td>
                         </tr>

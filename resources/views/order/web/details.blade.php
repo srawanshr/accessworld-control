@@ -6,6 +6,11 @@
             <input type="submit" class="btn btn-primary" value="Save">
             @unless($webOrder->is_provisioned)
                 <a href="{{ route('provision.web.create', $webOrder->id) }}" class="btn btn-success">
+                    <i class="md md-archive"></i>
+                    Import Provision
+                </a>
+                <a href="{{ route('provision.web.make', $webOrder->id) }}" class="btn btn-success">
+                    <i class="md md-cloud-done"></i>
                     Provision
                 </a>
             @endunless

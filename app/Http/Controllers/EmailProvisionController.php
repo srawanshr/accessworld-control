@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MakeEmailProvision;
+use App\Services\SoapService;
 use DB;
 use Datatables;
 use App\Models\EmailOrder;
@@ -98,5 +100,56 @@ class EmailProvisionController extends Controller
         $emailProvision->delete();
 
         return back()->withSuccess(trans('messages.delete_success', [ 'entity' => 'Email Provision' ]));
+    }
+
+    /**
+     * @param EmailOrder $emailOrder
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function make(EmailOrder $emailOrder)
+    {
+        if ($emailOrder->provision) return redirect()->route('provision.email.edit', $emailOrder->provision->id)->withInfo('Already provisioned!');
+
+        return view('provision.email.make', compact('emailOrder'));
+    }
+
+    /**
+     * @param EmailOrder $order
+     * @param MakeEmailProvision $request
+     * @return array
+     */
+    public function provision(EmailOrder $order, MakeEmailProvision $request)
+    {
+        $provision = DB::transaction(function () use ($request, $order)
+        {
+            $lakuri = new SoapService();
+            if ($domain_id = $lakuri->provisionEmail($request->data()))
+            {
+                $order->is_provisioned = 1;
+                $order->save();
+
+                $provision = EmailProvision::create([
+                    'name'              => $order->name,
+                    'customer_id'       => $order->customer->id,
+                    'email_order_id'      => $order->id,
+                    'provisioned_by'    => auth()->id(),
+                    'domain'            => $order->domain,
+                    'disk'              => $order->disk,
+                    'traffic'           => $order->traffic,
+                    'connection_string' => 'LAKURI3',
+                    'server_domain_id'  => $domain_id
+                ]);
+
+                //                $mailer->sendEmailProvisionEmail($provision);
+                return $provision;
+            }
+            $lakuri->disconnect();
+
+            return false;
+        });
+
+        if ($provision) return [ 'status' => 'ok'];
+        else
+            return [ 'status' => 'something went wrong'];
     }
 }

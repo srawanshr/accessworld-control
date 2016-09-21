@@ -7,17 +7,20 @@ use App\Http\Requests\RenewVpsProvision;
 use App\Http\Requests\StoreVpsProvision;
 use App\Http\Requests\UpdateVpsProvision;
 use App\Models\DataCenter;
+use App\Models\Dhcp\Map;
 use App\Models\Ip;
 use App\Models\ManualPayment;
 use App\Models\Order;
 use App\Models\VpsOrder;
 use App\Models\VpsProvision;
+use App\Notifications\VpsProvisioned;
 use App\Services\XenService;
 use Carbon\Carbon;
 use Datatables;
 use DB;
 use Exception;
 use Illuminate\Http\Request;
+use Mail;
 use phpseclib\Net\SSH2;
 
 class VpsProvisionController extends Controller
@@ -204,13 +207,13 @@ class VpsProvisionController extends Controller
                         'hostname' => $vps['name']
                     ]);
 
-                    //                    Map::create([
-                    //                        'mac'      => $vps['mac'],
-                    //                        'ip'       => $vps['ip'],
-                    //                        'hostname' => $vps['name'],
-                    //                        'subnet'   => $ip->subnet->subnet,
-                    //                        'serial'   => explode('.', $vps['ip'])[2]
-                    //                    ]);
+                    Map::create([
+                        'mac'      => $vps['mac'],
+                        'ip'       => $vps['ip'],
+                        'hostname' => $vps['name'],
+                        'subnet'   => $ip->subnet->subnet,
+                        'serial'   => explode('.', $vps['ip'])[2]
+                    ]);
 
                     $expiry = Carbon::createFromFormat('Y-m-d', $request->get('created_at'))->addMonths($request->get('term'))->format('Y-m-d');
 
@@ -239,7 +242,7 @@ class VpsProvisionController extends Controller
                         'created_at'          => $request->get('created_at')
                     ]);
 
-                    //                    $this->dispatch(( new AddUserToVps($provision->virtual_machine, $provision->ips->first()->ip_address, $provision->operatingSystem, $provision->customer->username, $provision->customer->detail->password_sha_512, $provision) )->onQueue('adduser')->delay(60));
+                    Mail::to($order->customer())->send(new \App\Mail\VpsProvisioned($provision));
 
                     return $provision;
                 }

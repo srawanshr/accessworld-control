@@ -6,6 +6,11 @@
             <input type="submit" class="btn btn-primary" value="Save">
             @unless($emailOrder->is_provisioned)
                 <a href="{{ route('provision.email.create', $emailOrder->id) }}" class="btn btn-success">
+                    <i class="md md-archive"></i>
+                    Import Provision
+                </a>
+                <a href="{{ route('provision.email.make', $emailOrder->id) }}" class="btn btn-success">
+                    <i class="md md-cloud-done"></i>
                     Provision
                 </a>
             @endunless
