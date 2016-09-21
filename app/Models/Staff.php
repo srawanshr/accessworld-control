@@ -89,6 +89,16 @@ class Staff extends Model {
     }
 
     /**
+     * @param $query
+     * @param bool $type
+     * @return mixed
+     */
+    public function scopeActive($query, $type = true)
+    {
+        return $query->where('is_active', $type);
+    }
+
+    /**
      * @param array $options
      * @return bool|null|void
      * @throws \Exception

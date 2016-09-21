@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Models\Staff;
 use App\Models\Client;
 use App\Models\Service;
+use App\Models\Setting;
+use App\Models\Customer;
 use App\Models\Certificate;
 use App\Models\VpsProvision;
 use App\Models\OperatingSystem;
@@ -32,10 +34,12 @@ class AppServiceProvider extends ServiceProvider {
             'page'             => Page::class,
             'menu'             => Menu::class,
             'client'           => Client::class,
+            'customer'         => Customer::class,
             'certificate'      => Certificate::class,
             'operating_system' => OperatingSystem::class,
             'staff'            => Staff::class,
             'vps_provision'    => VpsProvision::class,
+            'setting'          => Setting::class,
         ]);
 
         Validator::extend('old_password', function ($attribute, $value, $parameters, $validator)
