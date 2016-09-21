@@ -11,7 +11,9 @@
             <div class="card-head style-accent-bright">
                 <header>Edit IP in IP Pool</header>
                 <div class="tools">
-                    <input type="submit" class="btn btn-primary" value="Save">
+                    @if(auth()->user()->can('save.ip'))
+                        <input type="submit" class="btn btn-primary" value="Save">
+                    @endif
                 </div>
             </div>
             <div class="card-body">
@@ -57,7 +59,11 @@
             </div>
             <div class="card-actionbar style-accent-bright">
                 <div class="card-actionbar-row">
-                    <input type="submit" class="btn btn-primary" value="Save">
+                    @if(auth()->user()->can('save.ip'))
+                        <input type="submit" class="btn btn-primary" value="Save">
+                    @else
+                        <br>
+                    @endif
                 </div>
             </div>
         </div>

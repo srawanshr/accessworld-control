@@ -3,8 +3,10 @@
     <div class="card-head style-accent-bright">
         <header>Web Order</header>
         <div class="tools">
-            <input type="submit" class="btn btn-primary" value="Save">
-            @unless($webOrder->is_provisioned)
+            @if(auth()->user()->can('save.order'))
+                <input type="submit" class="btn btn-primary" value="Save">
+            @endif
+            @if(!$webOrder->is_provisioned && auth()->user()->can('save.provision'))
                 <a href="{{ route('provision.web.create', $webOrder->id) }}" class="btn btn-success">
                     <i class="md md-archive"></i>
                     Import Provision
@@ -13,7 +15,7 @@
                     <i class="md md-cloud-done"></i>
                     Provision
                 </a>
-            @endunless
+            @endif
         </div>
     </div>
     <div class="card-body">

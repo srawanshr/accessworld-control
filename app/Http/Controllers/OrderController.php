@@ -17,7 +17,8 @@ use App\Models\OperatingSystem;
 use App\Http\Requests\StoreOrder;
 use App\Http\Requests\UpdateOrder;
 
-class OrderController extends Controller {
+class OrderController extends Controller
+{
 
     /**
      * @return \Illuminate\View\View
@@ -49,17 +50,14 @@ class OrderController extends Controller {
         {
             $order = $request->createOrder();
 
-            if ($request->has('vps'))
-                $request->createVpsOrder($order);
+            if ($request->has('vps')) $request->createVpsOrder($order);
 
-            if ($request->has('web'))
-                $request->createWebOrder($order);
+            if ($request->has('web')) $request->createWebOrder($order);
 
-            if ($request->has('email'))
-                $request->createEmailOrder($order);
+            if ($request->has('email')) $request->createEmailOrder($order);
         });
 
-        return redirect()->route('order.index')->withSuccess(trans('messages.create_success', ['entity' => 'Order']));
+        return redirect()->route('order.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Order' ]));
     }
 
     public function edit(Order $order)
@@ -91,17 +89,14 @@ class OrderController extends Controller {
         {
             $request->updateOrder($order);
 
-            if ($request->has('vps'))
-                $request->updateVpsOrder();
+            if ($request->has('vps')) $request->updateVpsOrder();
 
-            if ($request->has('web'))
-                $request->updateWebOrder();
+            if ($request->has('web')) $request->updateWebOrder();
 
-            if ($request->has('email'))
-                $request->updateEmailOrder();
+            if ($request->has('email')) $request->updateEmailOrder();
         });
 
-        return back()->withSuccess(trans('messages.update_success', ['entity' => 'Order']));
+        return back()->withSuccess(trans('messages.update_success', [ 'entity' => 'Order' ]));
     }
 
     /**
@@ -113,9 +108,17 @@ class OrderController extends Controller {
         return Datatables::eloquent(Order::with('customer', 'created_by', 'approved_by')->latest()->select())
             ->addColumn('action', function ($item)
             {
-                $button = '<a href="' . route('order.edit', $item->id) . '" class="text-primary">Edit</a>';
-                $button .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('order.destroy', $item->id) . '">Delete</a>';
+                if (auth()->user()->canOne(['save.order', 'delete.order']))
+                {
+                    $button = false;
+                    if (auth()->user()->can('save.order'))
+                        $button .= '<a href="' . route('order.edit', $item->id) . '" class="text-primary">"Edit"</a>';
 
+                    if (auth()->user()->can('delete.order'))
+                        $button .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('order.destroy', $item->id) . '">"Delete"</a>';
+                } else {
+                    $button = "NA";
+                }
                 return $button;
             })->make(true);
     }

@@ -7,8 +7,10 @@
                 <i class="md md-arrow-back"></i>
                 Back
             </a>
-            <input type="submit" name="draft" class="btn btn-info ink-reaction" value="Save as Draft">
-            <input type="submit" name="publish" class="btn btn-primary ink-reaction" value="Publish">
+            @if(auth()->user()->can('save.content'))
+                <input type="submit" name="draft" class="btn btn-info ink-reaction" value="Save as Draft">
+                <input type="submit" name="publish" class="btn btn-primary ink-reaction" value="Publish">
+            @endif
         </div>
     </div>
     <div class="card-body">
@@ -45,8 +47,10 @@
     <div class="card-actionbar">
         <div class="card-actionbar-row">
             <button type="reset" class="btn btn-default ink-reaction">Reset</button>
-            <input type="submit" name="draft" class="btn btn-info ink-reaction" value="Save as Draft">
-            <input type="submit" name="publish" class="btn btn-primary ink-reaction" value="Publish">
+            @if(auth()->user()->can('save.content'))
+                <input type="submit" name="draft" class="btn btn-info ink-reaction" value="Save as Draft">
+                <input type="submit" name="publish" class="btn btn-primary ink-reaction" value="Publish">
+            @endif
         </div>
     </div>
 </div>

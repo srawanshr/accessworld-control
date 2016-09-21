@@ -32,7 +32,7 @@
                     <ul class="dropdown-menu animation-dock">
                         <li class="dropdown-header">Config</li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('user.show', auth()->user()->username) }}">
                                 <i class="md md-account-circle"></i>
                                 My profile
                             </a>

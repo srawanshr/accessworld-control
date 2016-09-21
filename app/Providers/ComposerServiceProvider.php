@@ -16,6 +16,8 @@ class ComposerServiceProvider extends ServiceProvider
     {
         // Using class based composers...
         View::creator('partials.menubar', 'App\Http\ViewCreators\MenuBarCreator');
+
+        View::creator('home', 'App\Http\ViewCreators\HomeCreator');
     }
 
     /**

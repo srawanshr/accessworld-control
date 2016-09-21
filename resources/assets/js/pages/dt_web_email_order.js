@@ -26,7 +26,7 @@
         var $dt_web_email_order = $("#dt_web_email_order");
 
         var table = $dt_web_email_order.DataTable({
-            "dom": '<"clear">lfrtip',
+            "dom": 'Bfrtip',
             "order": [],
             "processing": true,
             "serverSide": true,
@@ -43,15 +43,15 @@
                     "defaultContent": '',
                     "searchable": false
                 },
-                {"data": "order.customer.first_name"},
-                {"data": "order.customer.last_name"},
-                {"data": "order.date", "class": "text-center"},
+                {"data": "order.customer.first_name", "name": "order.customer.first_name"},
+                {"data": "order.customer.last_name", "name": "order.customer.last_name"},
+                {"data": "order.date", "class": "text-center", "name": "order.date"},
                 {"data": "domain", "class": "text-center"},
                 {"data": "disk", "class": "text-center"},
                 {"data": "traffic", "class": "text-center"},
-                {"data": "order.status", "class": "text-center text-capitalize"},
-                {"data": "order.created_by.username", "class": "text-center"},
-                {"data": "order.approved_by.username", "class": "text-center text-capitalize", "render": function (data) {
+                {"data": "order.status", "name": "order.status", "class": "text-center text-capitalize"},
+                {"data": "order.created_by.username", "name": "order.created_by.username", "class": "text-center"},
+                {"data": "order.approved_by.username", "name": "order.approved_by.username", "class": "text-center text-capitalize", "render": function (data) {
                     return data ? data : '-';
                 }}
             ],
@@ -62,6 +62,9 @@
                     $(row).addClass("warning");
                 }
             },
+            "buttons": [
+                'pageLength', 'excel', 'pdf', 'print', 'colvis'
+            ],
             "drawCallback": function () {
                 $('[data-toggle="tooltip"]').tooltip();
             }

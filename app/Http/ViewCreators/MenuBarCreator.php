@@ -29,7 +29,12 @@ class MenuBarCreator {
      */
     public function create(View $view)
     {
-        $menu = [];
+        $menu[] = [
+            'class' => false,
+            'route' => route('home'),
+            'icon'  => 'md md-home',
+            'title' => 'Home'
+        ];
 
         if ($this->user->can('read.order'))
         {

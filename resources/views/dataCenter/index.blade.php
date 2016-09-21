@@ -9,10 +9,12 @@
                 <div class="card-head">
                     <header class="text-capitalize">all data centers</header>
                     <div class="tools">
-                        <a class="btn btn-primary" href="{{ route('dataCenter.create') }}">
-                            <i class="md md-add"></i>
-                            Add
-                        </a>
+                        @if(auth()->user()->can('save.content'))
+                            <a class="btn btn-primary" href="{{ route('dataCenter.create') }}">
+                                <i class="md md-add"></i>
+                                Add
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">

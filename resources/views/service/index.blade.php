@@ -12,19 +12,22 @@
                 <div class="card-head">
                     <header>All Services</header>
                     <div class="tools">
-                        <a href="{{ route('service.create') }}" class="btn btn-primary">
-                            <i class="md md-add"></i>
-                            Add
-                        </a>
+                        @if(auth()->user()->can('save.content'))
+                            <a href="{{ route('service.create') }}" class="btn btn-primary">
+                                <i class="md md-add"></i>
+                                Add
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th class="text-center">Active</th>
-                            <th class="text-right">Actions</th>
+                            <th width="5%">#</th>
+                            <th width="60%">Name</th>
+                            <th width="20%" class="text-center">Active</th>
+                            <th width="15%" class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>

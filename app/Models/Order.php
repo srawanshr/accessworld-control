@@ -16,6 +16,16 @@ class Order extends Model {
     ];
 
     /**
+     * @param $query
+     * @param bool $type
+     * @return mixed
+     */
+    public function scopeStatus($query, $type = true)
+    {
+        return $query->where('status', $type);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function customer()

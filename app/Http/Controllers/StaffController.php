@@ -28,9 +28,16 @@ class StaffController extends Controller {
     {
         return Datatables::eloquent(Staff::with('image'))->addColumn('action', function ($staff)
         {
-            $buttons = '<a href="' . route('staff.edit', $staff->id) . '" class="text-primary">Edit</a>';
-            $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" data-url="' . route('staff.destroy', $staff->id) . '" class="text-primary item-delete">Delete</a>';
-
+            if (auth()->user()->canOne(['save.staff', 'delete.staff']))
+            {
+                $buttons = false;
+                if(auth()->user()->can('save.staff'))
+                    $buttons .= '<a href="' . route('staff.edit', $staff->id) . '" class="text-primary">Edit</a>';
+                if(auth()->user()->can('delete.staff'))
+                    $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" data-url="' . route('staff.destroy', $staff->id) . '" class="text-primary item-delete">Delete</a>';
+            } else {
+                $buttons = "NA";
+            }
             return $buttons;
         })->addColumn('qr', function ($staff)
         {

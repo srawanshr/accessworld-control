@@ -69,7 +69,9 @@
 </div>
 <div class="card-actionbar">
     <div class="card-actionbar-row">
-        <input type="submit" class="btn btn-primary" value="Save">
+        @if(auth()->user()->can('save.provision'))
+            <input type="submit" class="btn btn-primary" value="Save">
+        @endif
     </div>
 </div>
 {{ Form::close() }}

@@ -43,12 +43,12 @@
                     "defaultContent": '',
                     "searchable": false
                 },
-                {"data": "customer.name"},
-                {"data": "operating_system", "class": "text-center"},
-                {"data": "provisioned_by", "class": "text-center"},
-                {"data": "virtual_machine", "class": "text-center"},
-                {"data": "ip", "class": "text-center"},
-                {"data": "mac", "class": "text-center"}
+                {"data": "customer.name", "name": "customer.name"},
+                {"data": "operating_system.name", "name": "operatingSystem.name", "class": "text-center"},
+                {"data": "provisioned_by.name", "name": "provisionedBy.name", "class": "text-center"},
+                {"data": "virtual_machine", "name": "vps_provisions.virtual_machine", "class": "text-center"},
+                {"data": "ip", "name": "vps_provisions.ip", "class": "text-center"},
+                {"data": "mac", "name": "vps_provisions.mac", "class": "text-center"}
             ],
             "createdRow": function (row, data) {
                 if ('approved' == data["status"]) {

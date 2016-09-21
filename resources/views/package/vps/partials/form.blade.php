@@ -63,6 +63,8 @@
 </div><!--end .card-body -->
 <div class="card-actionbar">
     <div class="card-actionbar-row">
-        <button type="submit" class="btn btn-flat btn-primary ink-reaction">Save</button>
+        @if(auth()->user()->can('save.content'))
+            <button type="submit" class="btn btn-flat btn-primary ink-reaction">Save</button>
+        @endif
     </div>
 </div>

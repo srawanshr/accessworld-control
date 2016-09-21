@@ -17,14 +17,16 @@
                 {{ Form::open(['route' => 'menu.update', 'files' => true, 'method' => 'put', 'class' => 'form form-validation', 'novalidate']) }}
                 <div class="col-md-8 col-md-offset-2">
                     <article class="margin-bottom-xxl">
-                        <button class="btn btn-primary ink-reaction" data-toggle="modal" data-target="#addMenu" type="button">
-                            <i class="md md-add"></i>
-                            Add
-                        </button>
-                        <button class="btn btn-primary ink-reaction" type="submit">
-                            <i class="md md-save"></i>
-                            Save Menu Order
-                        </button>
+                        @if(auth()->user()->can('save.content'))
+                            <button class="btn btn-primary ink-reaction" data-toggle="modal" data-target="#addMenu" type="button">
+                                <i class="md md-add"></i>
+                                Add
+                            </button>
+                            <button class="btn btn-primary ink-reaction" type="submit">
+                                <i class="md md-save"></i>
+                                Save Menu Order
+                            </button>
+                        @endif
                     </article>
                 </div>
                 <div class="col-md-8 col-md-offset-2">
