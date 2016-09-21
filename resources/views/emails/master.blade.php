@@ -94,7 +94,7 @@
                                 <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                                     <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 0;" valign="top">
                                         <h1 class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;" align="center">
-                                            <img src="<?php echo $message->embed($images['logo']); ?>" 
+                                            <img src="<?php echo $message->embed(setting('logo')); ?>"
                                                 width="90" height="90"
                                                 alt='Logo' />
                                         </h1>
@@ -129,11 +129,11 @@
                     <table width="100%" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                         <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                             <td class="aligncenter content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; color: #999; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">
-                                <a href="{{ setting( 'facebook' ) }}"><img src="<?php echo $message->embed($images['facebook']); ?>"
+                                <a href="{{ setting( 'facebook' ) }}"><img src="<?php echo $message->embed(setting('facebook_logo')); ?>"
                                  width="30" height="30" alt="facebook" style="margin-right: 5px;"></a>
-                                <a href="{{ setting( 'twitter' ) }}"><img src="<?php echo $message->embed($images['twitter']); ?>"
+                                <a href="{{ setting( 'twitter' ) }}"><img src="<?php echo $message->embed(setting('twitter_logo')); ?>"
                                  width="30" height="30" alt="twitter" style="margin-right: 5px;"></a>
-                                <a href="{{ setting( 'google_plus' ) }}"><img src="<?php echo $message->embed($images['google']); ?>"
+                                <a href="{{ setting( 'google_plus' ) }}"><img src="<?php echo $message->embed(setting('google_plus_logo')); ?>"
                                  width="30" height="30" alt="google_plus" style="margin-right: 5px;"></a>
                             </td>
                         </tr>

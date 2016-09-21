@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MakeEmailProvision;
-use App\Services\SoapService;
-use DB;
-use Datatables;
-use App\Models\EmailOrder;
-use App\Models\EmailProvision;
 use App\Http\Requests\StoreEmailProvision;
 use App\Http\Requests\UpdateEmailProvision;
-
-use App\Http\Requests;
+use App\Mail\EmailProvisioned;
+use App\Models\EmailOrder;
+use App\Models\EmailProvision;
+use App\Services\SoapService;
+use Datatables;
+use DB;
 use Illuminate\Http\Request;
+use Mail;
 
 class EmailProvisionController extends Controller
 {
@@ -30,8 +30,7 @@ class EmailProvisionController extends Controller
      */
     public function create(EmailOrder $emailOrder)
     {
-        if ($emailOrder->provision)
-            return redirect()->route('provision.vps.edit', $emailOrder->provision->id)->withInfo('Already Provisioned');
+        if ($emailOrder->provision) return redirect()->route('provision.vps.edit', $emailOrder->provision->id)->withInfo('Already Provisioned');
 
         return view('provision.email.create', compact('emailOrder'));
     }
@@ -43,10 +42,11 @@ class EmailProvisionController extends Controller
      */
     public function store(EmailOrder $emailOrder, StoreEmailProvision $request)
     {
-        DB::transaction(function () use($emailOrder, $request){
+        DB::transaction(function () use ($emailOrder, $request)
+        {
             EmailProvision::create($request->data());
 
-            $emailOrder->update(['is_provisioned'=>true]);
+            $emailOrder->update([ 'is_provisioned' => true ]);
         });
 
         return redirect()->route('provision.email.index')->withSuccess('messages.create_success', [ 'entity' => 'Email Provision' ]);
@@ -122,7 +122,8 @@ class EmailProvisionController extends Controller
     {
         $provision = DB::transaction(function () use ($request, $order)
         {
-            $lakuri = new SoapService();
+            $provision = false;
+            $lakuri    = new SoapService();
             if ($domain_id = $lakuri->provisionEmail($request->data()))
             {
                 $order->is_provisioned = 1;
@@ -131,7 +132,7 @@ class EmailProvisionController extends Controller
                 $provision = EmailProvision::create([
                     'name'              => $order->name,
                     'customer_id'       => $order->customer->id,
-                    'email_order_id'      => $order->id,
+                    'email_order_id'    => $order->id,
                     'provisioned_by'    => auth()->id(),
                     'domain'            => $order->domain,
                     'disk'              => $order->disk,
@@ -140,16 +141,15 @@ class EmailProvisionController extends Controller
                     'server_domain_id'  => $domain_id
                 ]);
 
-                //                $mailer->sendEmailProvisionEmail($provision);
-                return $provision;
+                Mail::to($order->customer)->queue(new EmailProvisioned($provision));
             }
             $lakuri->disconnect();
 
-            return false;
+            return $provision;
         });
 
-        if ($provision) return [ 'status' => 'ok'];
+        if ($provision) return [ 'status' => 'ok' ];
         else
-            return [ 'status' => 'something went wrong'];
+            return [ 'status' => 'something went wrong' ];
     }
 }

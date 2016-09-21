@@ -11,7 +11,7 @@
                         <h2 class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 18px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 20px 0 20px;" align="center">
                             Enterprise Email Provision Notification! <br />
                         </h2>
-                        Hi {{ $provision->customer->display_name }},
+                        Hi {{ $provision->customer->name }},
                         <br />
                         <table width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding-top: 10px;">
                             <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
@@ -53,7 +53,7 @@
                                             Password
                                         </td>
                                         <td class="alignright" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 5px 0;" align="right" valign="top">
-                                            {same as AccessWorld password}
+                                            {will be sent to you by SMS}
                                         </td>
                                     </tr>
                                 </table>

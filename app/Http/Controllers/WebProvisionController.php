@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MakeWebProvision;
 use App\Http\Requests\StoreWebProvision;
 use App\Http\Requests\UpdateWebProvision;
+use App\Mail\WebProvisioned;
 use App\Models\WebOrder;
 use App\Models\WebProvision;
 use App\Services\SoapService;
 use Datatables;
 use DB;
 use Illuminate\Http\Request;
+use Mail;
 
 class WebProvisionController extends Controller
 {
@@ -121,6 +123,7 @@ class WebProvisionController extends Controller
     {
         $provision = DB::transaction(function () use ($request, $order)
         {
+            $provision = false;
             $lakuri = new SoapService();
             if ($domain_id = $lakuri->provisionWeb($request->data()))
             {
@@ -139,12 +142,12 @@ class WebProvisionController extends Controller
                     'server_domain_id'  => $domain_id
                 ]);
 
-                //                $mailer->sendWebProvisionEmail($provision);
-                return $provision;
+                Mail::to($order->customer)->queue(new WebProvisioned($provision));
             }
+
             $lakuri->disconnect();
 
-            return false;
+            return $provision;
         });
 
         if ($provision) return [ 'status' => 'ok'];

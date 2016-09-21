@@ -2,13 +2,13 @@
 
 namespace App\Mail;
 
-use App\Models\VpsProvision;
+use App\Models\WebProvision;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VpsProvisioned extends Mailable
+class WebProvisioned extends Mailable
 {
     use Queueable, SerializesModels;
     public $provision;
@@ -16,9 +16,9 @@ class VpsProvisioned extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param VpsProvision $provision
+     * @param WebProvision $provision
      */
-    public function __construct(VpsProvision $provision)
+    public function __construct(WebProvision $provision)
     {
         $this->provision = $provision;
     }
@@ -30,6 +30,6 @@ class VpsProvisioned extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.vpsprovision');
+        return $this->view('emails.webprovision');
     }
 }
