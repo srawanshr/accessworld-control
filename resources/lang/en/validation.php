@@ -92,8 +92,8 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
-
-    'custom' => [
+    'old_password'         => 'The current password is incorrect.',
+    'custom'               => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],

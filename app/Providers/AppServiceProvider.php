@@ -2,20 +2,22 @@
 
 namespace App\Providers;
 
-use App\Models\Certificate;
-use App\Models\Client;
+use DB;
+use Hash;
+use Validator;
 use App\Models\Menu;
-use App\Models\OperatingSystem;
 use App\Models\Page;
-use App\Models\Service;
-use App\Models\Staff;
 use App\Models\User;
+use App\Models\Staff;
+use App\Models\Client;
+use App\Models\Service;
+use App\Models\Certificate;
 use App\Models\VpsProvision;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use App\Models\OperatingSystem;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
-class AppServiceProvider extends ServiceProvider
-{
+class AppServiceProvider extends ServiceProvider {
 
     /**
      * Bootstrap any application services.
@@ -35,6 +37,20 @@ class AppServiceProvider extends ServiceProvider
             'staff'            => Staff::class,
             'vps_provision'    => VpsProvision::class,
         ]);
+
+        Validator::extend('old_password', function ($attribute, $value, $parameters, $validator)
+        {
+            $table = $parameters[0];
+            $id = $parameters[1];
+            $inputPassword = $value;
+            $hashedPassword = DB::table($table)->find($id)->password;
+            if (Hash::check($inputPassword, $hashedPassword))
+            {
+                return true;
+            }
+
+            return false;
+        });
     }
 
     /**

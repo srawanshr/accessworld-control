@@ -2,11 +2,6 @@
 
 @section('title', 'Home')
 
-@push('styles')
-@endpush
-
 @section('content')
+    <section></section>
 @stop
-
-@push('scripts')
-@endpush
