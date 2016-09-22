@@ -342,9 +342,9 @@ Route::group(['middleware' => 'auth'], function ()
     {
         Route::get('', 'VpsProvisionController@index')->name('index');
         Route::get('{vps_order}/create', 'VpsProvisionController@create')->name('create');
+        Route::post('{vps_order}', 'VpsProvisionController@store')->name('store');
         Route::get('{vps_order}/make', 'VpsProvisionController@make')->name('make');
         Route::post('{vps_order}/make', 'VpsProvisionController@provision')->name('provision');
-        Route::post('{vps_order}', 'VpsProvisionController@store')->name('store');
         Route::get('{vps_provision}/edit', 'VpsProvisionController@edit')->name('edit');
         Route::get('{vps_provision}/renew', 'VpsProvisionController@renew')->name('renew');
         Route::post('{vps_provision}/renew', 'VpsProvisionController@extend')->name('extend');
@@ -362,6 +362,8 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('', 'WebProvisionController@index')->name('index');
         Route::get('{web_order}/create', 'WebProvisionController@create')->name('create');
         Route::post('{web_order}', 'WebProvisionController@store')->name('store');
+        Route::get('{web_order}/make', 'WebProvisionController@make')->name('make');
+        Route::post('{web_order}/make', 'WebProvisionController@provision')->name('provision');
         Route::get('{web_provision}/edit', 'WebProvisionController@edit')->name('edit');
         Route::put('{web_provision}', 'WebProvisionController@update')->name('update');
         Route::delete('{web_provision}', 'WebProvisionController@destroy')->name('destroy');
@@ -376,6 +378,8 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('', 'EmailProvisionController@index')->name('index');
         Route::get('{email_order}/create', 'EmailProvisionController@create')->name('create');
         Route::post('{email_order}', 'EmailProvisionController@store')->name('store');
+        Route::get('{email_order}/make', 'EmailProvisionController@make')->name('make');
+        Route::post('{email_order}/make', 'EmailProvisionController@provision')->name('provision');
         Route::get('{email_provision}/edit', 'EmailProvisionController@edit')->name('edit');
         Route::put('{email_provision}', 'EmailProvisionController@update')->name('update');
         Route::delete('{email_provision}', 'EmailProvisionController@destroy')->name('destroy');

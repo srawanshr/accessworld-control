@@ -6,13 +6,15 @@
             @if(auth()->user()->can('save.order'))
                 <input type="submit" class="btn btn-primary" value="Save">
             @endif
-
-            @if(auth()->user()->can('save.provision'))
-                @unless($emailOrder->is_provisioned)
-                    <a href="{{ route('provision.email.create', $emailOrder->id) }}" class="btn btn-success">
-                        Provision
-                    </a>
-                @endunless
+            @if(!$emailOrder->is_provisioned && auth()->user()->can('save.provision'))
+                <a href="{{ route('provision.email.create', $emailOrder->id) }}" class="btn btn-success">
+                    <i class="md md-archive"></i>
+                    Import Provision
+                </a>
+                <a href="{{ route('provision.email.make', $emailOrder->id) }}" class="btn btn-success">
+                    <i class="md md-cloud-done"></i>
+                    Provision
+                </a>
             @endif
         </div>
     </div>

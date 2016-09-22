@@ -43,24 +43,29 @@ class SettingsTableSeeder extends Seeder {
                 'value' => 'https://www.twitter.com'
             ],
             [
-                'slug'  => 'google-plus',
+                'slug'  => 'google_plus',
                 'name'  => 'Google Plus',
                 'value' => 'https://www.google.com'
             ],
             [
+                'slug'  => 'logo',
+                'name'  => 'Logo',
+                'value' => public_path().'\img\logo.png'
+            ],
+            [
                 'slug'  => 'facebook_logo',
                 'name'  => 'Facebook Logo',
-                'value' => public_path().'img\facebook.png'
+                'value' => public_path().'\img\facebook.png'
             ],
             [
                 'slug'  => 'twitter_logo',
                 'name'  => 'Twitter Logo',
-                'value' => public_path().'img\twitter.png'
+                'value' => public_path().'\img\twitter.png'
             ],
             [
                 'slug'  => 'google_plus_logo',
                 'name'  => 'Google Plus Logo',
-                'value' => public_path().'img\google-plus.png'
+                'value' => public_path().'\img\google-plus.png'
             ],
         ];
 

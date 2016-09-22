@@ -2,23 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Mail;
+use Exception;
+use Datatables;
+use App\Models\Ip;
+use Carbon\Carbon;
+use App\Models\Order;
+use phpseclib\Net\SSH2;
+use App\Models\VpsOrder;
+use App\Models\Dhcp\Map;
+use App\Models\DataCenter;
+use Illuminate\Http\Request;
+use App\Services\XenService;
+use App\Models\VpsProvision;
+use App\Mail\VpsProvisioned;
+use App\Models\ManualPayment;
 use App\Http\Requests\MakeVpsProvision;
 use App\Http\Requests\RenewVpsProvision;
 use App\Http\Requests\StoreVpsProvision;
 use App\Http\Requests\UpdateVpsProvision;
-use App\Models\DataCenter;
-use App\Models\Ip;
-use App\Models\ManualPayment;
-use App\Models\Order;
-use App\Models\VpsOrder;
-use App\Models\VpsProvision;
-use App\Services\XenService;
-use Carbon\Carbon;
-use Datatables;
-use DB;
-use Exception;
-use Illuminate\Http\Request;
-use phpseclib\Net\SSH2;
 
 class VpsProvisionController extends Controller
 {
@@ -204,13 +207,13 @@ class VpsProvisionController extends Controller
                         'hostname' => $vps['name']
                     ]);
 
-                    //                    Map::create([
-                    //                        'mac'      => $vps['mac'],
-                    //                        'ip'       => $vps['ip'],
-                    //                        'hostname' => $vps['name'],
-                    //                        'subnet'   => $ip->subnet->subnet,
-                    //                        'serial'   => explode('.', $vps['ip'])[2]
-                    //                    ]);
+                    Map::create([
+                        'mac'      => $vps['mac'],
+                        'ip'       => $vps['ip'],
+                        'hostname' => $vps['name'],
+                        'subnet'   => $ip->subnet->subnet,
+                        'serial'   => explode('.', $vps['ip'])[2]
+                    ]);
 
                     $expiry = Carbon::createFromFormat('Y-m-d', $request->get('created_at'))->addMonths($request->get('term'))->format('Y-m-d');
 
@@ -229,7 +232,7 @@ class VpsProvisionController extends Controller
                         'traffic'             => $request->input('traffic'),
                         'ip'                  => $vps['ip'],
                         'mac'                 => $vps['mac'],
-                        'password'            => '',
+                        'password'            => null,
                         'is_trial'            => $request->input('is_trial', false),
                         'is_managed'          => $request->input('is_managed', false),
                         'is_suspended'        => false,
@@ -239,7 +242,7 @@ class VpsProvisionController extends Controller
                         'created_at'          => $request->get('created_at')
                     ]);
 
-                    //                    $this->dispatch(( new AddUserToVps($provision->virtual_machine, $provision->ips->first()->ip_address, $provision->operatingSystem, $provision->customer->username, $provision->customer->detail->password_sha_512, $provision) )->onQueue('adduser')->delay(60));
+                    Mail::to($order->customer)->queue(new VpsProvisioned($provision));
 
                     return $provision;
                 }

@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Datatables;
-use App\Models\WebOrder;
-use App\Models\WebProvision;
+use App\Http\Requests\MakeWebProvision;
 use App\Http\Requests\StoreWebProvision;
 use App\Http\Requests\UpdateWebProvision;
-
-use App\Http\Requests;
+use App\Mail\WebProvisioned;
+use App\Models\WebOrder;
+use App\Models\WebProvision;
+use App\Services\SoapService;
+use Datatables;
+use DB;
 use Illuminate\Http\Request;
+use Mail;
 
 class WebProvisionController extends Controller
 {
@@ -28,8 +30,7 @@ class WebProvisionController extends Controller
      */
     public function create(WebOrder $webOrder)
     {
-        if ($webOrder->provision)
-            return redirect()->route('provision.vps.edit', $webOrder->provision->id)->withInfo('Already Provisioned');
+        if ($webOrder->provision) return redirect()->route('provision.web.edit', $webOrder->provision->id)->withInfo('Already Provisioned');
 
         return view('provision.web.create', compact('webOrder'));
     }
@@ -41,10 +42,11 @@ class WebProvisionController extends Controller
      */
     public function store(WebOrder $webOrder, StoreWebProvision $request)
     {
-        DB::transaction(function () use($webOrder, $request){
+        DB::transaction(function () use ($webOrder, $request)
+        {
             WebProvision::create($request->data());
 
-            $webOrder->update(['is_provisioned'=>true]);
+            $webOrder->update([ 'is_provisioned' => true ]);
         });
 
         return redirect()->route('provision.web.index')->withSuccess('messages.create_success', [ 'entity' => 'Web Provision' ]);
@@ -99,5 +101,75 @@ class WebProvisionController extends Controller
         $webProvision->delete();
 
         return back()->withSuccess(trans('messages.delete_success', [ 'entity' => 'Web Provision' ]));
+    }
+
+    /**
+     * @param WebOrder $webOrder
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function make(WebOrder $webOrder)
+    {
+        if ($webOrder->provision) return redirect()->route('provision.web.edit', $webOrder->provision->id)->withInfo('Already provisioned!');
+
+        return view('provision.web.make', compact('webOrder'));
+    }
+
+    /**
+     * @param WebOrder $order
+     * @param MakeWebProvision $request
+     * @return array
+     */
+    public function provision(WebOrder $order, MakeWebProvision $request)
+    {
+        $provision = DB::transaction(function () use ($request, $order)
+        {
+            $provision = false;
+            $lakuri = new SoapService();
+            if ($domain_id = $lakuri->provisionWeb($request->data()))
+            {
+                $order->is_provisioned = 1;
+                $order->save();
+
+                $provision = WebProvision::create([
+                    'name'              => $order->name,
+                    'customer_id'       => $order->customer->id,
+                    'web_order_id'      => $order->id,
+                    'provisioned_by'    => auth()->id(),
+                    'domain'            => $order->domain,
+                    'disk'              => $order->disk,
+                    'traffic'           => $order->traffic,
+                    'connection_string' => 'LAKURI3',
+                    'server_domain_id'  => $domain_id
+                ]);
+
+                Mail::to($order->customer)->queue(new WebProvisioned($provision));
+            }
+
+            $lakuri->disconnect();
+
+            return $provision;
+        });
+
+        if ($provision) return [ 'status' => 'ok'];
+        else
+            return [ 'status' => 'something went wrong'];
+    }
+
+    /**
+     * @param Request $request
+     * @return bool
+     */
+    public function checkClient(Request $request)
+    {
+        $lakuri   = new SoapService();
+        $username = $request->get('username', false);
+        if ($username)
+        {
+            $clientExists = $lakuri->clientExists($username);
+
+            if ($clientExists) return 1;
+
+            return 0;
+        }
     }
 }
