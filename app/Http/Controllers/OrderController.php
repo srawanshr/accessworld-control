@@ -112,10 +112,10 @@ class OrderController extends Controller
                 {
                     $button = false;
                     if (auth()->user()->can('save.order'))
-                        $button .= '<a href="' . route('order.edit', $item->id) . '" class="text-primary">"Edit"</a>';
+                        $button .= '<a href="' . route('order.edit', $item->id) . '" class="text-primary">Edit</a>';
 
                     if (auth()->user()->can('delete.order'))
-                        $button .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('order.destroy', $item->id) . '">"Delete"</a>';
+                        $button .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('order.destroy', $item->id) . '">Delete</a>';
                 } else {
                     $button = "NA";
                 }

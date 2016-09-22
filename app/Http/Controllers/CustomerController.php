@@ -31,8 +31,12 @@ class CustomerController extends Controller {
                 if (auth()->user()->canOne(['read.customer', 'save.customer', 'delete.customer']))
                 {
                     $buttons = false;
+
+                    if (auth()->user()->can('read.deposit'))
+                        $buttons .= '<a href="'.route('customer.deposit.index', $customer->username).'" class="text-primary">Deposit</a>';
+
                     if (auth()->user()->can('read.customer'))
-                        $buttons .= '<a href="'.route('customer.show', $customer->username).'" class="text-primary">View</a>';
+                        $buttons .= '&nbsp;&nbsp;<a href="'.route('customer.show', $customer->username).'" class="text-primary">View</a>';
 
                     if (auth()->user()->can('save.customer'))
                         $buttons .= '&nbsp;&nbsp;<a href="' . route('customer.edit', $customer->username) . '" class="text-primary">Edit</a>';

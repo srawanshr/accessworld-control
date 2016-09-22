@@ -20,7 +20,7 @@ class AggregateTraffic extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Aggregate daily traffic from the raw traffic data';
 
     /**
      * Create a new command instance.
