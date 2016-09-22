@@ -1,7 +1,10 @@
 <div class="card">
     <div class="card-head style-accent-bright">
         <header>Order Details</header>
-        <div class="tools"></div>
+        <div class="tools">
+            <a href="" class="btn btn-success">Approve</a>
+            <a href="" class="btn btn-danger">Disapprove</a>
+        </div>
     </div>
     <div class="card-body">
         <div class="row">

@@ -13,7 +13,7 @@ class UpdateRole extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
