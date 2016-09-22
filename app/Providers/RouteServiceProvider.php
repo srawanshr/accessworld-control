@@ -29,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider {
         Route::model('customer', 'App\Models\Customer');
         Route::model('service', 'App\Models\Service');
         Route::model('page', 'App\Models\Page');
+        Route::model('role', 'Bican\Roles\Models\Role');
         Route::model('package', 'App\Models\Package');
         Route::model('client', 'App\Models\Client');
         Route::model('certificate', 'App\Models\Certificate');

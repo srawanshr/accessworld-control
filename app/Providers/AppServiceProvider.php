@@ -2,24 +2,27 @@
 
 namespace App\Providers;
 
-use DB;
-use Hash;
-use Validator;
-use App\Models\Menu;
-use App\Models\Page;
-use App\Models\User;
-use App\Models\Staff;
+use App\Models\Certificate;
 use App\Models\Client;
+use App\Models\Customer;
+use App\Models\EsewaDeposit;
+use App\Models\ManualDeposit;
+use App\Models\Menu;
+use App\Models\OperatingSystem;
+use App\Models\Page;
 use App\Models\Service;
 use App\Models\Setting;
-use App\Models\Customer;
-use App\Models\Certificate;
+use App\Models\Staff;
+use App\Models\User;
 use App\Models\VpsProvision;
-use App\Models\OperatingSystem;
-use Illuminate\Support\ServiceProvider;
+use DB;
+use Hash;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\ServiceProvider;
+use Validator;
 
-class AppServiceProvider extends ServiceProvider {
+class AppServiceProvider extends ServiceProvider
+{
 
     /**
      * Bootstrap any application services.
@@ -40,13 +43,15 @@ class AppServiceProvider extends ServiceProvider {
             'staff'            => Staff::class,
             'vps_provision'    => VpsProvision::class,
             'setting'          => Setting::class,
+            'esewa_deposit'    => EsewaDeposit::class,
+            'manual_deposit'   => ManualDeposit::class,
         ]);
 
         Validator::extend('old_password', function ($attribute, $value, $parameters, $validator)
         {
-            $table = $parameters[0];
-            $id = $parameters[1];
-            $inputPassword = $value;
+            $table          = $parameters[0];
+            $id             = $parameters[1];
+            $inputPassword  = $value;
             $hashedPassword = DB::table($table)->find($id)->password;
             if (Hash::check($inputPassword, $hashedPassword))
             {

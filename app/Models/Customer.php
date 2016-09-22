@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Customer extends Model {
+class Customer extends Model
+{
 
     use SoftDeletes;
     /**
@@ -13,7 +14,7 @@ class Customer extends Model {
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = [ 'deleted_at' ];
 
     /**
      * The attributes that are mass assignable.
@@ -54,6 +55,20 @@ class Customer extends Model {
     ];
 
     /**
+     * Boot the model.
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($customer)
+        {
+            $customer->activation_code = str_random(60);
+        });
+    }
+
+    /**
      * Route resource binding using slug
      * @return string
      */
@@ -68,21 +83,7 @@ class Customer extends Model {
      */
     public function getNameAttribute()
     {
-        return empty($this->first_name) ? ucwords($this->username) : ucwords($this->first_name) . ' ' . ucwords($this->last_name);
-    }
-
-    /**
-     * Boot the model.
-     *
-     * @return void
-     */
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(function ($customer)
-        {
-            $customer->activation_code = str_random(60);
-        });
+        return empty( $this->first_name ) ? ucwords($this->username) : ucwords($this->first_name) . ' ' . ucwords($this->last_name);
     }
 
     /**
@@ -102,7 +103,7 @@ class Customer extends Model {
      */
     public function confirmEmail()
     {
-        $this->status = true;
+        $this->status          = true;
         $this->activation_code = null;
         $this->save();
     }
@@ -120,51 +121,74 @@ class Customer extends Model {
      * @return bool|null|void
      * @throws \Exception
      */
-    public function delete(array $options = array())
+    public function delete(array $options = [])
     {
-        if ($this->image)
-            $this->image->delete();
+        if ($this->image) $this->image->delete();
 
         return parent::delete($options);
     }
 
-//    /**
-//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-//     */
-//    public function vpsProvisions()
-//    {
-//        return $this->hasMany(VpsProvision::class);
-//    }
-//
-//    /**
-//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-//     */
-//    public function emailProvisions()
-//    {
-//        return $this->hasMany(EmailProvision::class);
-//    }
-//
-//    /**
-//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-//     */
-//    public function webProvisions()
-//    {
-//        return $this->hasMany(WebProvision::class);
-//    }
-//
-//    /**
-//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-//     */
-//    public function domainProvisions()
-//    {
-//        return $this->hasMany(DomainOrder::class);
-//    }
-//
-//    /**
-//     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-//     */
-//    public function sslProvisions()
-//    {
-//        return $this->hasMany(SslOrder::class);
-//    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function deposits()
+    {
+        return $this->hasMany(Deposit::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBalance()
+    {
+        return $this->deposits->sum('amount') - $this->invoices->sum('total');
+    }
+
+    //    /**
+    //     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //     */
+    //    public function vpsProvisions()
+    //    {
+    //        return $this->hasMany(VpsProvision::class);
+    //    }
+    //
+    //    /**
+    //     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //     */
+    //    public function emailProvisions()
+    //    {
+    //        return $this->hasMany(EmailProvision::class);
+    //    }
+    //
+    //    /**
+    //     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //     */
+    //    public function webProvisions()
+    //    {
+    //        return $this->hasMany(WebProvision::class);
+    //    }
+    //
+    //    /**
+    //     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //     */
+    //    public function domainProvisions()
+    //    {
+    //        return $this->hasMany(DomainOrder::class);
+    //    }
+    //
+    //    /**
+    //     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //     */
+    //    public function sslProvisions()
+    //    {
+    //        return $this->hasMany(SslOrder::class);
+    //    }
 }

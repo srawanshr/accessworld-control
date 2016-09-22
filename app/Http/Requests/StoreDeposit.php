@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRole extends FormRequest
+class StoreDeposit extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class UpdateRole extends FormRequest
     public function rules()
     {
         return [
-            //
+            'amount' => 'required|numeric|min:1'
         ];
     }
 }

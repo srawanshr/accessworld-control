@@ -201,6 +201,23 @@ class PermissionsTableSeeder extends Seeder {
                 'slug'        => 'delete.ip',
                 'model'       => 'App\Models\Ip',
                 'description' => 'Permission to delete IPs'
+            ],
+            /*
+            |--------------------------------------------------------------------------
+            | Deposit permissions
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name'        => 'Insert Deposit',
+                'slug'        => 'save.deposit',
+                'model'       => 'App\Models\Deposit',
+                'description' => 'Permission to Insert Deposit'
+            ],
+            [
+                'name'        => 'Read Deposit',
+                'slug'        => 'read.deposit',
+                'model'       => 'App\Models\Deposit',
+                'description' => 'Permission to view Deposits'
             ]
         ];
 

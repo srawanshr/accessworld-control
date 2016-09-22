@@ -42,3 +42,10 @@ Route::get('vm/os', 'VpsProvisionController@getOperatingSystems')->name('vm.os.l
 Route::get('vm/serverid', 'VpsProvisionController@getServerId')->name('vm.serverid')->middleware('auth:api');
 
 Route::get('lakuri/checkuser', 'WebProvisionController@checkClient')->name('lakuri.checkuser')->middleware('auth:api');
+
+/*
+|--------------------------------------------------------------------------
+| Deposit List Routes
+|--------------------------------------------------------------------------
+*/
+Route::post('customer/{customer}/deposit', 'DepositController@depositList')->name('customer.deposit.list')->middleware('auth:api');

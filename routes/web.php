@@ -141,6 +141,17 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('{customer}/edit', 'CustomerController@edit')->name('edit')->middleware('permission:save.customer');
         Route::put('{customer}', 'CustomerController@update')->name('update')->middleware('permission:save.customer');
         Route::delete('{customer}', 'CustomerController@destroy')->name('destroy')->middleware('permission:save.customer');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Deposit Routes
+        |--------------------------------------------------------------------------
+        */
+        Route::group(['as' => 'deposit.', 'prefix' => '{customer}/deposit'], function ()
+        {
+            Route::get('', 'DepositController@index')->name('index');
+            Route::post('', 'DepositController@store')->name('store');
+        });
     });
 
     /*
