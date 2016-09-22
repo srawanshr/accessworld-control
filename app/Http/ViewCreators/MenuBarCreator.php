@@ -110,9 +110,18 @@ class MenuBarCreator {
                 'title' => 'Users',
                 'items' => [
                     ['route' => route('user.index'), 'title' => 'All'],
-                    ['route' => route('user.create'), 'title' => 'Create'],
-                    ['route' => route('role.index'), 'title' => 'Roles'],
+                    ['route' => route('user.create'), 'title' => 'Create']
                 ]
+            ]);
+        }
+
+        if ($this->user->can('read.role'))
+        {
+            array_push($menu, [
+                'class' => false,
+                'route' => route('role.index'),
+                'icon'  => 'md md-group-work',
+                'title' => 'Roles'
             ]);
         }
 

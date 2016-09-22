@@ -46,6 +46,8 @@ Route::group(['middleware' => 'auth'], function ()
     |--------------------------------------------------------------------------
     */
     Route::get('', 'HomeController@index')->name('home');
+    Route::get('setting', 'SettingController@index')->name('setting.index');
+    Route::put('setting/update', 'SettingController@update')->name('setting.update');
 
     /*
     |--------------------------------------------------------------------------
