@@ -89,4 +89,12 @@ class User extends Authenticatable implements HasRoleAndPermissionContract {
 
         return parent::delete($options);
     }
+
+    /*
+     * Get the original value from database without integer conversion
+     */
+    public function getAuthIdentifier()
+    {
+        return $this->id;
+    }
 }
