@@ -19,7 +19,7 @@ class PermissionsTableSeeder extends Seeder {
             */
             [
                 'name'        => 'Update and insert role',
-                'slug'        => 'upsert.role',
+                'slug'        => 'save.role',
                 'model'       => 'Bican\Roles\Models\Role',
                 'description' => 'Permission to update and insert roles'
             ],
@@ -133,9 +133,9 @@ class PermissionsTableSeeder extends Seeder {
             |--------------------------------------------------------------------------
             */
             [
-                'name'        => 'Approve customer',
-                'slug'        => 'approve.customer',
-                'model'       => 'App\Models\Customer',
+                'name'        => 'Approve order',
+                'slug'        => 'approve.order',
+                'model'       => 'App\Models\order',
                 'description' => 'Permission to approve a order'
             ],
             [
