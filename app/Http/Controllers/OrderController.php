@@ -105,21 +105,40 @@ class OrderController extends Controller
      */
     public function orderList(Request $request)
     {
-        return Datatables::eloquent(Order::with('customer', 'created_by', 'approved_by')->latest()->select())
-            ->addColumn('action', function ($item)
+        return Datatables::eloquent(Order::with('customer', 'created_by', 'approved_by')->latest()->select())->addColumn('action', function ($item)
             {
-                if (auth()->user()->canOne(['save.order', 'delete.order']))
+                $button = false;
+                if (auth()->user()->canOne([ 'save.order', 'delete.order' ]))
                 {
-                    $button = false;
                     if (auth()->user()->can('save.order'))
                         $button .= '<a href="' . route('order.edit', $item->id) . '" class="text-primary">Edit</a>';
-
-                    if (auth()->user()->can('delete.order'))
-                        $button .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('order.destroy', $item->id) . '">Delete</a>';
-                } else {
+                }
+                else
+                {
                     $button = "NA";
                 }
+
                 return $button;
             })->make(true);
+    }
+
+    /**
+     * @param Order $order
+     */
+    public function approve(Order $order)
+    {
+        $order->update(['approved_by' => auth()->id()]);
+
+        return back()->withSuccess('Order Approved');
+    }
+
+    /**
+     * @param Order $order
+     */
+    public function destroy(Order $order)
+    {
+        $order->delete();
+
+        return back()->withSuccess('Order Rejected');
     }
 }

@@ -28,8 +28,8 @@
                             <th>LAST NAME</th>
                             <th>DATE</th>
                             <th>CREATED BY</th>
-                            <th>APPROVED BY</th>
                             <th>STATUS</th>
+                            <th>APPROVED BY</th>
                             <th>ACTION</th>
                         </tr>
                         </thead>

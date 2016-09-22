@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model {
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -12,8 +14,10 @@ class Order extends Model {
      * @var array
      */
     protected $fillable = [
-        'customer_id', 'slug', 'date', 'created_by', 'approved_by', 'status'
+        'customer_id', 'slug', 'date', 'created_by', 'approved_by'
     ];
+
+    protected $appends = ['status', 'is_pending'];
 
     /**
      * @param $query
@@ -87,5 +91,25 @@ class Order extends Model {
     public function invoice()
     {
         return $this->hasOne(Invoice::class);
+    }
+
+    public function getStatusAttribute()
+    {
+        if(!empty($this->deleted_at))
+            return 'Rejected';
+        if(empty($this->approved_by))
+            return 'Pending';
+        else
+            return 'Approved';
+    }
+
+    public function getIsPendingAttribute()
+    {
+        if(!empty($this->deleted_at))
+            return false;
+        if(empty($this->approved_by))
+            return true;
+        else
+            return false;
     }
 }

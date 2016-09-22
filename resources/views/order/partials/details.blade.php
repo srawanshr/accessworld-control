@@ -2,8 +2,14 @@
     <div class="card-head style-accent-bright">
         <header>Order Details</header>
         <div class="tools">
-            <a href="" class="btn btn-success">Approve</a>
-            <a href="" class="btn btn-danger">Disapprove</a>
+            @if($order->is_pending)
+                {{ Form::open(['route' => ['order.approve', $order->id, 'approved']]) }}
+                    <button type="submit" class="btn btn-success">Approve</button>
+                {{ Form::close() }}
+                {{ Form::open(['route' => ['order.destroy', $order->id], 'method' => 'DELETE']) }}
+                    <button type="submit" class="btn btn-danger">Rejected</button>
+                {{ Form::close() }}
+            @endif
         </div>
     </div>
     <div class="card-body">

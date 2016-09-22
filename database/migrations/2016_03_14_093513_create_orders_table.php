@@ -21,7 +21,6 @@ class CreateOrdersTable extends Migration {
             $table->date('date');
             $table->integer('created_by')->unsigned()->index();
             $table->integer('approved_by')->unsigned()->nullable()->index();
-            $table->char('status')->default('pending');
             $table->foreign('customer_id')
                 ->references('id')
                 ->on('customers')
@@ -34,6 +33,7 @@ class CreateOrdersTable extends Migration {
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
