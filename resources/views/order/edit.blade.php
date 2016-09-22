@@ -19,10 +19,10 @@
                             <i class="md md-save"></i>
                             Save
                         </button>
-                        @if($order->status == 2)
-                            <input type="submit" name="approve" class="btn btn-primary" value="Approve">
-                        @elseif($order->status == 1 || $order->status == 0)
+                        @if($order->approved_by)
                             <input type="submit" name="reject" class="btn btn-primary" value="Reject">
+                        @else
+                            <input type="submit" name="approve" class="btn btn-primary" value="Approve">
                         @endif
                     </div>
                 </div>

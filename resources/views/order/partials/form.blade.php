@@ -154,6 +154,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" :name=" 'web[' + item.id + '][name]' " class="form-control" v-model="item.name" required>
+                            <input type="hidden" :name=" 'web[' + item.id + '][type]' " v-model="item.type">
                             <label>Name</label>
                         </div>
                     </div>
@@ -227,6 +228,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" :name=" 'email[' + item.id + '][name]' " class="form-control" v-model="item.name" required>
+                            <input type="hidden" :name=" 'email[' + item.id + '][type]' " v-model="item.type">
                             <label>Name</label>
                         </div>
                     </div>

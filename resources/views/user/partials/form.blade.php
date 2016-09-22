@@ -43,20 +43,22 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                {{ Form::password('password', ['class' => 'form-control', isset($user) ? '' : 'required']) }}
-                {{ Form::label('password', 'Password') }}
+    @unless(isset($user))
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    {{ Form::password('password', ['class' => 'form-control', 'required']) }}
+                    {{ Form::label('password', 'Password') }}
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    {{ Form::password('password_confirmation', ['class' => 'form-control', 'required']) }}
+                    {{ Form::label('password_confirmation', 'Confirm Password') }}
+                </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                {{ Form::password('password_confirmation', ['class' => 'form-control', isset($user) ? '' : 'required']) }}
-                {{ Form::label('password_confirmation', 'Confirm Password') }}
-            </div>
-        </div>
-    </div>
+    @endunless
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">

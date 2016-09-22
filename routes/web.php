@@ -46,6 +46,8 @@ Route::group(['middleware' => 'auth'], function ()
     |--------------------------------------------------------------------------
     */
     Route::get('', 'HomeController@index')->name('home');
+    Route::get('setting', 'SettingController@index')->name('setting.index');
+    Route::put('setting/update', 'SettingController@update')->name('setting.update');
 
     /*
     |--------------------------------------------------------------------------
@@ -348,6 +350,7 @@ Route::group(['middleware' => 'auth'], function ()
         Route::post('{vps_provision}/renew', 'VpsProvisionController@extend')->name('extend')->middleware('permission:save.provision');
         Route::put('{vps_provision}', 'VpsProvisionController@update')->name('update')->middleware('permission:save.provision');
         Route::delete('{vps_provision}', 'VpsProvisionController@destroy')->name('destroy')->middleware('permission:delete.provision');
+
     });
 
     /*
@@ -360,6 +363,8 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('', 'WebProvisionController@index')->name('index')->middleware('permission:read.provision');
         Route::get('{web_order}/create', 'WebProvisionController@create')->name('create')->middleware('permission:save.provision');
         Route::post('{web_order}', 'WebProvisionController@store')->name('store')->middleware('permission:save.provision');
+        Route::get('{web_order}/make', 'WebProvisionController@make')->name('make')->middleware('permission:save.provision');
+        Route::post('{web_order}/make', 'WebProvisionController@provision')->name('provision')->middleware('permission:save.provision');
         Route::get('{web_provision}/edit', 'WebProvisionController@edit')->name('edit')->middleware('permission:save.provision');
         Route::put('{web_provision}', 'WebProvisionController@update')->name('update')->middleware('permission:save.provision');
         Route::delete('{web_provision}', 'WebProvisionController@destroy')->name('destroy')->middleware('permission:delete.provision');
@@ -374,6 +379,8 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('', 'EmailProvisionController@index')->name('index')->middleware('permission:read.provision');
         Route::get('{email_order}/create', 'EmailProvisionController@create')->name('create')->middleware('permission:save.provision');
         Route::post('{email_order}', 'EmailProvisionController@store')->name('store')->middleware('permission:save.provision');
+        Route::get('{email_order}/make', 'EmailProvisionController@make')->name('make')->middleware('permission:save.provision');
+        Route::post('{email_order}/make', 'EmailProvisionController@provision')->name('provision')->middleware('permission:save.provision');
         Route::get('{email_provision}/edit', 'EmailProvisionController@edit')->name('edit')->middleware('permission:save.provision');
         Route::put('{email_provision}', 'EmailProvisionController@update')->name('update')->middleware('permission:save.provision');
         Route::delete('{email_provision}', 'EmailProvisionController@destroy')->name('destroy')->middleware('permission:delete.provision');

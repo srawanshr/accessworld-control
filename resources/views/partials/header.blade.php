@@ -1,7 +1,5 @@
-<!-- BEGIN HEADER-->
 <header id="header">
     <div class="headerbar">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="headerbar-left">
             <ul class="header-nav header-nav-options">
                 <li class="header-nav-brand">
@@ -18,7 +16,6 @@
                 </li>
             </ul>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="headerbar-right">
             <ul class="header-nav header-nav-profile">
                 <li class="dropdown">
@@ -32,21 +29,28 @@
                     <ul class="dropdown-menu animation-dock">
                         <li class="dropdown-header">Config</li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('user.show', auth()->user()->username) }}">
                                 <i class="md md-account-circle"></i>
                                 My profile
                             </a>
                         </li>
+                        @if(auth()->user()->isRole('super'))
+                            <li>
+                                <a href="{{ route('setting.index') }}">
+                                    <i class="md md-settings"></i>
+                                    Settings
+                                </a>
+                            </li>
+                        @endif
                         <li>
                             <a href="{{url('/logout')}}">
                                 <i class="md md-settings-power text-danger"></i>
                                 Logout
                             </a>
                         </li>
-                    </ul><!--end .dropdown-menu -->
-                </li><!--end .dropdown -->
-            </ul><!--end .header-nav-profile -->
-        </div><!--end #header-navbar-collapse -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </header>
-<!-- END HEADER-->

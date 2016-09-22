@@ -40,3 +40,5 @@ Route::post('provision/email/list', 'EmailProvisionController@emailProvisionList
 
 Route::get('vm/os', 'VpsProvisionController@getOperatingSystems')->name('vm.os.list')->middleware('auth:api');
 Route::get('vm/serverid', 'VpsProvisionController@getServerId')->name('vm.serverid')->middleware('auth:api');
+
+Route::get('lakuri/checkuser', 'WebProvisionController@checkClient')->name('lakuri.checkuser')->middleware('auth:api');

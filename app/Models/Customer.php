@@ -86,6 +86,16 @@ class Customer extends Model {
     }
 
     /**
+     * @param $query
+     * @param bool $type
+     * @return mixed
+     */
+    public function scopeStatus($query, $type = true)
+    {
+        return $query->where('status', $type);
+    }
+
+    /**
      * Confirm the customer.
      *
      * @return void

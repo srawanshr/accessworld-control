@@ -18,6 +18,7 @@ return [
         'Page'        => 'featured',
         'Staff'       => 'avatars',
         'Client'      => 'logos',
+        'Customer'    => 'avatars',
         'Certificate' => 'certificates'
 
     ],

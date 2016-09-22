@@ -24,10 +24,9 @@ class UpdateUser extends FormRequest {
     public function rules()
     {
         return [
-            'username' => 'required|min:3|unique:users,username,' . $this->user->id,
-            'email'    => 'required|email|unique:users,email,' . $this->user->id,
-            'password' => 'min:8|confirmed',
-            'role'     => 'exists:roles,id'
+            'password_current' => 'required_with:password|old_password:users,' . $this->user->id,
+            'password'         => 'required_with:password_current|min:8|confirmed',
+            'role'             => 'exists:roles,id'
         ];
     }
 
@@ -36,17 +35,20 @@ class UpdateUser extends FormRequest {
      */
     public function userFillData()
     {
-        $inputs = [
-            'first_name'      => $this->has('first_name') ? trim($this->get('first_name')) : null,
-            'last_name'       => $this->has('last_name') ? trim($this->get('last_name')) : null,
-            'address'         => $this->has('address') ? trim($this->get('address')) : null,
-            'phone'           => $this->has('phone') ? trim($this->get('phone')) : null,
-        ];
+        if ($this->has('first_name'))
+            $inputs['first_name'] = trim($this->get('first_name'));
 
-        if($this->has('password'))
-        {
+        if ($this->has('last_name'))
+            $inputs['last_name'] = trim($this->get('last_name'));
+
+        if ($this->has('address'))
+            $inputs['address'] = trim($this->get('address'));
+
+        if ($this->has('phone'))
+            $inputs['phone'] = trim($this->get('phone'));
+
+        if ($this->has('password'))
             $inputs['password'] = bcrypt($this->get('password'));
-        }
 
         return $inputs;
     }
