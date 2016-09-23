@@ -124,7 +124,7 @@ class PermissionsTableSeeder extends Seeder {
             [
                 'name'        => 'Delete content',
                 'slug'        => 'delete.content',
-                'model'       => 'App\Models\Content',
+                'model'       => 'App\Models\Page',
                 'description' => 'Permission to delete contents'
             ],
             /*
@@ -135,7 +135,7 @@ class PermissionsTableSeeder extends Seeder {
             [
                 'name'        => 'Approve order',
                 'slug'        => 'approve.order',
-                'model'       => 'App\Models\order',
+                'model'       => 'App\Models\Order',
                 'description' => 'Permission to approve a order'
             ],
             [

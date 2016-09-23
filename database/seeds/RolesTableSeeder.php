@@ -28,7 +28,7 @@ class RolesTableSeeder extends Seeder {
 
         $super = \Bican\Roles\Models\Role::first();
 
-        $super->attachPermission(\Bican\Roles\Models\Permission::all());
+        $super->attachPermission(\Bican\Roles\Models\Permission::all()->pluck('id')->toArray());
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
