@@ -306,6 +306,7 @@ Route::group(['middleware' => 'auth'], function ()
         Route::post('', 'OrderController@store')->name('store')->middleware('permission:save.order');
         Route::put('{order}', 'OrderController@update')->name('update')->middleware('permission:save.order');
         Route::delete('{order}', 'OrderController@destroy')->name('destroy')->middleware('permission:delete.order');
+        Route::post('{order}/approve', 'OrderController@approve')->name('approve')->middleware('permission:approve.order');
     });
 
     /*

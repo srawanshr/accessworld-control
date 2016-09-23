@@ -59,9 +59,9 @@
                 }}
             ],
             "createdRow": function (row, data) {
-                if ('approved' == data["status"]) {
+                if ('approved' == data["status"].toLowerCase()) {
                     $(row).addClass("success");
-                } else if ('rejected' == data["status"]) {
+                } else if ('rejected' == data["status"].toLowerCase()) {
                     $(row).addClass("warning");
                 }
             },
