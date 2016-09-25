@@ -117,7 +117,6 @@ class OrderController extends Controller
                 {
                     $button = "NA";
                 }
-
                 return $button;
             })->make(true);
     }
