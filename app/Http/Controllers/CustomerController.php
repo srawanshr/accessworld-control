@@ -33,16 +33,16 @@ class CustomerController extends Controller {
                     $buttons = false;
 
                     if (auth()->user()->can('read.deposit'))
-                        $buttons .= '<a href="'.route('customer.deposit.index', $customer->username).'" class="text-primary">Deposit</a>';
+                        $buttons .= '<a href="'.route('customer.deposit.index', $customer->username).'" class="btn-primary btn btn-flat">Deposit</a>';
 
                     if (auth()->user()->can('read.customer'))
-                        $buttons .= '&nbsp;&nbsp;<a href="'.route('customer.show', $customer->username).'" class="text-primary">View</a>';
+                        $buttons .= '&nbsp;&nbsp;<a href="'.route('customer.show', $customer->username).'" class="btn-primary btn btn-flat">View</a>';
 
                     if (auth()->user()->can('save.customer'))
-                        $buttons .= '&nbsp;&nbsp;<a href="' . route('customer.edit', $customer->username) . '" class="text-primary">Edit</a>';
+                        $buttons .= '&nbsp;&nbsp;<a href="' . route('customer.edit', $customer->username) . '" class="btn-primary btn btn-flat">Edit</a>';
 
                     if (auth()->user()->can('delete.customer'))
-                        $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('customer.destroy', $customer->username) . '">Delete</a>';
+                        $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="btn-primary item-delete btn btn-flat" data-url="' . route('customer.destroy', $customer->username) . '">Delete</a>';
                 } else {
                     $buttons .= "NA";
                 }

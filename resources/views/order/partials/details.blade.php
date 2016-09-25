@@ -3,10 +3,10 @@
         <header>Order Details</header>
         <div class="tools">
             @if($order->is_pending)
-                {{ Form::open(['route' => ['order.approve', $order->id, 'approved']]) }}
+                {{ Form::open(['route' => ['order.approve', $order->id, 'approved'], 'class' => 'form-inline']) }}
                     <button type="submit" class="btn btn-success">Approve</button>
                 {{ Form::close() }}
-                {{ Form::open(['route' => ['order.destroy', $order->id], 'method' => 'DELETE']) }}
+                {{ Form::open(['route' => ['order.destroy', $order->id], 'method' => 'DELETE', 'class' => 'form-inline']) }}
                     <button type="submit" class="btn btn-danger">Rejected</button>
                 {{ Form::close() }}
             @endif

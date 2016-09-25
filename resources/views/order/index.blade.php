@@ -18,7 +18,10 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="dt_order" class="table order-column hover" data-source="{{ route('order.list') }}" data-details-source="{{ route('component.order.details') }}">
+                    <table id="dt_order"
+                           class="table order-column hover"
+                           data-source="{{ route('order.list') }}"
+                           data-details-source="{{ route('component.order.details') }}">
                         <thead>
                         <tr>
                             <th>
@@ -43,7 +46,16 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/libs/DataTables/jquery.dataTables.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/libs/DataTables/TableTools.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('css/libs/DataTables/TableTools.min.css') }}" />
+<style>
+    .form-inline {
+        display: inline-block;
+        margin: 0;
+    }
+    .form-inline .btn {
+        margin: 0;
+    }
+</style>
 @endpush
 
 @push('scripts')

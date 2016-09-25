@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Form;
-use Datatables;
-use App\Models\Order;
-use App\Models\Service;
-use App\Models\VpsOrder;
-use App\Models\WebOrder;
-use App\Models\Customer;
-use App\Models\EmailOrder;
-use App\Models\DataCenter;
-use Illuminate\Http\Request;
-use App\Models\OperatingSystem;
 use App\Http\Requests\StoreOrder;
 use App\Http\Requests\UpdateOrder;
+use App\Models\Customer;
+use App\Models\Order;
+use App\Models\Service;
+use Datatables;
+use DB;
+use Form;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -105,21 +100,33 @@ class OrderController extends Controller
      */
     public function orderList(Request $request)
     {
-        return Datatables::eloquent(Order::with('customer', 'created_by', 'approved_by')->latest()->select())->addColumn('action', function ($item)
+        return Datatables::eloquent(Order::with([
+            'customer'    => function ($q)
             {
-                $button = false;
-                if (auth()->user()->canOne([ 'save.order', 'delete.order' ]))
-                {
-                    if (auth()->user()->can('save.order'))
-                        $button .= '<a href="' . route('order.edit', $item->id) . '" class="text-primary">Edit</a>';
-                }
-                else
-                {
-                    $button = "NA";
-                }
+                $q->select('id', 'first_name', 'last_name');
+            },
+            'created_by'  => function ($q)
+            {
+                $q->select('id', 'username');
+            },
+            'approved_by' => function ($q)
+            {
+                $q->select('id', 'username');
+            }
+        ])->latest()->select('id', 'customer_id', 'created_by', 'approved_by', 'date'))->addColumn('action', function ($item)
+        {
+            $button = false;
+            if (auth()->user()->canOne([ 'save.order', 'delete.order' ]))
+            {
+                if (auth()->user()->can('save.order')) $button .= '<a href="' . route('order.edit', $item->id) . '" class="btn-primary btn btn-flat">Edit</a>';
+            }
+            else
+            {
+                $button = "NA";
+            }
 
-                return $button;
-            })->make(true);
+            return $button;
+        })->make(true);
     }
 
     /**
@@ -127,9 +134,14 @@ class OrderController extends Controller
      */
     public function approve(Order $order)
     {
-        $order->update(['approved_by' => auth()->id()]);
+        if($order->customer->getBalance() >= $order->total)
+        {
+            $order->update([ 'approved_by' => auth()->id() ]);
 
-        return back()->withSuccess('Order Approved');
+            return back()->withSuccess('Order Approved');
+        }
+
+        return back()->withWarning('Cannot Approve the order. Please verify the customer has enough balance!');
     }
 
     /**

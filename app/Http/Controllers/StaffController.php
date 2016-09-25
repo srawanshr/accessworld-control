@@ -32,9 +32,9 @@ class StaffController extends Controller {
             {
                 $buttons = false;
                 if(auth()->user()->can('save.staff'))
-                    $buttons .= '<a href="' . route('staff.edit', $staff->id) . '" class="text-primary">Edit</a>';
+                    $buttons .= '<a href="' . route('staff.edit', $staff->id) . '" class="btn-primary btn btn-flat">Edit</a>';
                 if(auth()->user()->can('delete.staff'))
-                    $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" data-url="' . route('staff.destroy', $staff->id) . '" class="text-primary item-delete">Delete</a>';
+                    $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" data-url="' . route('staff.destroy', $staff->id) . '" class="btn-primary btn btn-flat item-delete">Delete</a>';
             } else {
                 $buttons = "NA";
             }

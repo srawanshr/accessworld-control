@@ -5,12 +5,12 @@
     <td class="text-right">
         @if(auth()->user()->canOne(['save.content', 'delete.content']))
             @if(auth()->user()->can('save.content'))
-                <a href="{{route('certificate.edit', $certificate->slug)}}" class="text-primary">
+                <a href="{{route('certificate.edit', $certificate->slug)}}" class="btn btn-flat btn-primary">
                     Edit
                 </a>
             @endif
             @if(auth()->user()->can('delete.content'))
-                <a role="button" href="javascript:void(0);" data-url="{{ route('certificate.destroy', $certificate->slug) }}" class="text-primary item-delete">
+                <a role="button" href="javascript:void(0);" data-url="{{ route('certificate.destroy', $certificate->slug) }}" class="btn btn-flat btn-primary item-delete">
                     Delete
                 </a>
             @endif

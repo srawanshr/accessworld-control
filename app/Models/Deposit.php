@@ -15,6 +15,7 @@ class Deposit extends Model
      */
     protected $dates = ['deleted_at'];
 
+    protected $appends = ['deposited_by'];
     /**
      * The attributes that are mass assignable.
      *
@@ -85,5 +86,10 @@ class Deposit extends Model
     public function depositable()
     {
         return $this->morphTo();
+    }
+
+    public function getDepositedByAttribute()
+    {
+        return $this->depositable instanceOf ManualDeposit ? $this->depositable->user->name: $this->depositable_type;
     }
 }

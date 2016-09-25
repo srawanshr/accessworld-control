@@ -67,6 +67,21 @@ class SettingsTableSeeder extends Seeder {
                 'name'  => 'Google Plus Logo',
                 'value' => public_path().'\img\google-plus.png'
             ],
+            [
+                'slug'  => 'order_mail_recipients',
+                'name'  => 'Order Mail Notification Recipients',
+                'value' => 'bharat@accessworld.net'
+            ],
+            [
+                'slug'  => 'provision_mail_recipients',
+                'name'  => 'Provision Mail Notification Recipients',
+                'value' => 'it.support@accessworld.net'
+            ],
+            [
+                'slug'  => 'vat',
+                'name'  => 'VAT Percent',
+                'value' => '0.13'
+            ],
         ];
 
         DB::table('settings')->truncate();

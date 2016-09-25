@@ -24,7 +24,7 @@ class DepositController extends Controller
      */
     public function depositList(Customer $customer)
     {
-        return Datatables::eloquent($customer->deposits()->with('user'))->make(true);
+        return Datatables::of($customer->deposits()->with('user')->get())->make(true);
     }
 
     /**

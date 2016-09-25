@@ -38,7 +38,7 @@
             "columns": [
                 {"data": "created_at"},
                 {"data": "amount"},
-                {"data": "depositable_type"}
+                {"data": "deposited_by"}
             ],
             "buttons": [
                 'pageLength', 'excel', 'pdf', 'print', 'colvis'

@@ -6,12 +6,12 @@
     <td class="text-right">
         @if(auth()->user()->canOne(['save.content', 'delete.content']))
             @if(auth()->user()->can('save.content'))
-                 <a href="{{route('dataCenter.edit', $dataCenter->slug)}}" class="text-primary">
+                 <a href="{{route('dataCenter.edit', $dataCenter->slug)}}" class="btn btn-flat btn-primary">
                     Edit
                  </a>
             @endif
             @if(auth()->user()->can('delete.content'))
-                 <a role="button" href="javascript:void(0);" data-url="{{ route('dataCenter.destroy', $dataCenter->slug) }}" class="text-primary item-delete">
+                 <a role="button" href="javascript:void(0);" data-url="{{ route('dataCenter.destroy', $dataCenter->slug) }}" class="btn btn-flat btn-primary item-delete">
                     Delete
                  </a>
             @endif

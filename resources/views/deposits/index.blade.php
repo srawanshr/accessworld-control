@@ -26,7 +26,7 @@
                     <h4 class="modal-title">Add Deposit</h4>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to add a deposit of <big><b><span id="deposit-amount"></span></b></big> to
+                    Are you sure you want to add a deposit of {{ currency() }}<big><b><span id="deposit-amount"></span></b></big> to
                     <big>{{ $customer->name }}</big>'s account?
                     This cannot be undone.
                 </div>

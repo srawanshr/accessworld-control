@@ -2,6 +2,9 @@
 
 namespace App\Exceptions;
 
+use Bican\Roles\Exceptions\LevelDeniedException;
+use Bican\Roles\Exceptions\PermissionDeniedException;
+use Bican\Roles\Exceptions\RoleDeniedException;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -47,6 +50,9 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof TokenMismatchException)
             return redirect()->back()->withWarning('Security token expired. Please retry.');
+
+        if($exception instanceof  PermissionDeniedException || $exception instanceof  RoleDeniedException || $exception instanceof  LevelDeniedException)
+            return abort(403);
 
         return parent::render($request, $exception);
     }

@@ -8,30 +8,18 @@ class Invoice extends Model
 {
     protected $prefix = "AWT-IN";
 
-    protected $fillable = [ 'customer_id', 'order_id', 'date', 'code', 'sub_total', 'discount', 'vat', 'total', 'payable_id', 'payable_type' ];
-
-    /**
-     * Boot the model.
-     *
-     * @return void
-     */
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(function ($invoice) {
-            $invoice->code = $invoice->setCode();
-            $invoice->date = date('Y-m-d');
-        });
-    }
-
-    /**
-     * @return float
-     */
-    public static function getVat()
-    {
-        $vat = 0.13;
-        return $vat;
-    }
+    protected $fillable = [
+        'customer_id',
+        'order_id',
+        'date',
+        'code',
+        'sub_total',
+        'discount',
+        'vat',
+        'total',
+        'payable_id',
+        'payable_type'
+    ];
 
     /**
      * Route resource binding using code
@@ -50,24 +38,28 @@ class Invoice extends Model
         return $this->belongsTo('App\Models\Customer');
     }
 
-    /**
-     * @return string
-     */
-    protected function setCode()
+    public function setDateAttribute()
     {
-        $maxId = self::where('code', 'like', $this->prefix . "-" . date('Ymd') . "%")->max('code');
-
-        if ($maxId)
-            $serialNumber = sprintf('%04d', intval(explode('-', $maxId)[3] + 1));
-        else
-            $serialNumber = sprintf('%04d', 1);
-
-        $date = date('Ymd');
-        return $this->prefix . '-' . $date . '-' . $serialNumber;
+        $this->attributes['date'] = date('Y-m-d');
     }
 
     public function payable()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * @return string
+     */
+    protected function setCodeAttribute()
+    {
+        $maxId = self::where('code', 'like', $this->prefix . "-" . date('Ymd') . "%")->max('code');
+
+        if ($maxId) $serialNumber = sprintf('%04d', intval(explode('-', $maxId)[3] + 1));
+        else
+            $serialNumber = sprintf('%04d', 1);
+
+        $date = date('Ymd');
+        $this->attributes['code'] = $this->prefix . '-' . $date . '-' . $serialNumber;
     }
 }

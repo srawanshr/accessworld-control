@@ -15,4 +15,9 @@ class ManualDeposit extends Model
     {
         return $this->morphOne(Deposit::class, 'depositable');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

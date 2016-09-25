@@ -36,8 +36,8 @@ class UserController extends Controller {
             })
             ->addColumn('action', function ($user)
             {
-                $buttons = '<a href="' . route('user.edit', $user->username) . '" class="text-primary">Edit</a>';
-                $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="text-primary item-delete" data-url="' . route('user.destroy', $user->username) . '">Delete</a>';
+                $buttons = '<a href="' . route('user.edit', $user->username) . '" class="btn-primary btn btn-flat">Edit</a>';
+                $buttons .= '&nbsp;&nbsp;<a role="button" href="javascript:void(0);" class="btn-primary btn btn-flat item-delete" data-url="' . route('user.destroy', $user->username) . '">Delete</a>';
 
                 return $buttons;
             })

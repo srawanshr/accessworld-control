@@ -5,12 +5,12 @@
     <td class="text-right">
         @if(auth()->user()->canOne(['save.content', 'delete.content']))
             @if(auth()->user()->can('save.content'))
-                <a href="{{route('service.edit', $service->slug)}}" class="text-primary">
+                <a href="{{route('service.edit', $service->slug)}}" class="btn-primary btn btn-flat">
                     Edit
                 </a>
             @endif
             @if(auth()->user()->can('delete.content'))
-                <a role="button" href="javascript:void(0);" data-url="{{ route('service.destroy', $service->slug) }}" class="text-primary item-delete">
+                <a role="button" href="javascript:void(0);" data-url="{{ route('service.destroy', $service->slug) }}" class="btn-primary btn btn-flat item-delete">
                     Delete
                 </a>
             @endif

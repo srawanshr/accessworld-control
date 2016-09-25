@@ -47,7 +47,7 @@
                 {"data": "customer.first_name", "name": "customer.first_name"},
                 {"data": "customer.last_name", "name": "customer.last_name"},
                 {"data": "date", "name": "order.date", "class": "text-center"},
-                {"data": "created_by.username", "name": "order.created_by.username", "class": "text-center", "render": function (data) {
+                {"data": "created_by.username", "name": "order.created_by.username", "class": "text-center text-capitalize", "render": function (data) {
                     return data ? data : '-';
                 }},
                 {"data": "status", "name": "order.status", "class": "text-center text-capitalize"},

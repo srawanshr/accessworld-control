@@ -102,7 +102,7 @@ class SoapService
 
         //Web Domain
         $params = [
-            'server_id'               => 1, // server_id =1 is for lakuri2.accessworld.net
+            'server_id'               => 1, // server_id =1 is for lakuri3.accessworld.net
             'ip_address'              => '*',
             'domain'                  => $data['name'],
             'type'                    => 'vhost',
@@ -113,16 +113,16 @@ class SoapService
             'cgi'                     => 'n',
             'ssi'                     => 'n',
             'suexec'                  => 'y',
-            'errordocs'               => 1,
+            'errordocs'               => 'n',
             'is_subdomainwww'         => 1,
             'subdomain'               => 'www',
+            'ssl'                     => 'n',
+            'ssl_state'               => '',
+            'ssl_locality'            => '',
             'php'                     => 'fast-cgi',
             'ruby'                    => 'n',
             'redirect_type'           => '',
             'redirect_path'           => '',
-            'ssl'                     => 'n',
-            'ssl_state'               => '',
-            'ssl_locality'            => '',
             'ssl_organisation'        => '',
             'ssl_organisation_unit'   => '',
             'ssl_country'             => 'NP',
@@ -330,7 +330,6 @@ class SoapService
      */
     public function setClient($data)
     {
-        return $this->clientExists($data['username']);
         if ($this->clientExists($data['username']))
         {
             $this->updateClient($data);
@@ -470,8 +469,8 @@ class SoapService
         }
         elseif ($this->serviceType = self::WEB)
         {
-            $params['limit_web_domain']      = $this->client['limit_maildomain'] + $no_of_domain;
-            $params['limit_web_quota']       = $this->client['limit_mailquota'] + $disk;
+            $params['limit_web_domain']      = $this->client['limit_web_domain'] + $no_of_domain;
+            $params['limit_web_quota']       = $this->client['limit_web_quota'] + $disk;
             $params['limit_web_subdomain']   = $no_of_domain * 2;
             $params['limit_web_aliasdomain'] = $no_of_domain * 2;
             $params['limit_ftp_user']        = $no_of_domain * 2;
@@ -609,12 +608,12 @@ class SoapService
             $params['limit_web_ip']            = '';
             $params['web_php_options']         = 'no,fast-cgi,cgi,mod,suphp';
             $params['limit_shell_user']        = 0;
-            $params['ssh_chroot']              = 'no,jailkit,ssh-chroot';
+            $params['ssh_chroot']              = 'no,ssh-chroot';
             $params['limit_webdav_user']       = 0;
             $params['default_dnsserver']       = 1;
-            $params['limit_dns_zone']          = - 1;
-            $params['limit_dns_slave_zone']    = - 1;
-            $params['limit_dns_record']        = $no_of_domain * 5;
+            $params['limit_dns_zone']          = $no_of_domain + 1; // +1 for test dns zone
+            $params['limit_dns_slave_zone']    = $no_of_domain + 1; // +1 for test dns zone
+            $params['limit_dns_record']        = $no_of_domain * 6;
             $params['default_dbserver']        = 2;
             $params['limit_cron']              = 0;
             $params['limit_cron_type']         = 'url';
@@ -622,7 +621,7 @@ class SoapService
             $params['limit_traffic_quota']     = $traffic;
             $params['limit_client']            = 0; // If this value is > 0, then the client is a reseller
             $params['parent_client_id']        = 0;
-            $params['username']                = $customer->username;
+            $params['username']                = $data['username'];
             $params['password']                = $this->salted($data['password']);
             $params['language']                = 'en';
             $params['usertheme']               = 'default';
