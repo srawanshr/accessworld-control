@@ -122,10 +122,19 @@ class OrderController extends Controller
             }
             else
             {
-                $button = "NA";
-            }
+                $button = false;
 
-            return $button;
+                if (auth()->user()->canOne([ 'save.order', 'delete.order' ]))
+                {
+                    if (auth()->user()->can('save.order')) $button .= '<a href="' . route('order.edit', $item->id) . '" class="text-primary">Edit</a>';
+                }
+                else
+                {
+                    $button = "NA";
+                }
+
+                return $button;
+            }
         })->make(true);
     }
 
@@ -134,7 +143,7 @@ class OrderController extends Controller
      */
     public function approve(Order $order)
     {
-        if($order->customer->getBalance() >= $order->total)
+        if ($order->customer->getBalance() >= $order->total)
         {
             $order->update([ 'approved_by' => auth()->id() ]);
 
