@@ -76,20 +76,27 @@ class RoleController extends Controller {
             $role->attachPermission($permissions);
         });
 
-        return redirect()->route('role.index')->withSuccess('Role updated!');
+        return back()->withSuccess(trans('messages.update_success', ['entity' => 'Role']));
     }
 
+    /**
+     * @param Role $role
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroy(Role $role)
     {
         $notAssigned = $role->users->isEmpty();
 
         if ($notAssigned)
         {
-            $role->delete();
-
-            return redirect()->back()->withSuccess('Role deleted!');
+            if ($role->delete())
+                return response()->json([
+                    'Result' => 'OK'
+                ]);
         }
 
-        return back()->withWarning('Cannot delete. Role is assigned!');
+        return response()->json([
+            'Result' => 'Error'
+        ], 500);
     }
 }
