@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Order extends Model
-{
+class Order extends Model {
+
     use SoftDeletes;
 
     /**
@@ -22,7 +22,7 @@ class Order extends Model
         'approved_by'
     ];
 
-    protected $appends = [ 'status', 'is_pending', 'total' ];
+    protected $appends = ['status', 'is_pending', 'total'];
 
     /**
      * @param $query
@@ -95,8 +95,8 @@ class Order extends Model
      */
     public function getStatusAttribute()
     {
-        if ( ! empty( $this->deleted_at )) return 'Rejected';
-        if (empty( $this->approved_by )) return 'Pending';
+        if ( ! empty($this->deleted_at)) return 'Rejected';
+        if (empty($this->approved_by)) return 'Pending';
         else
             return 'Approved';
     }
@@ -106,10 +106,15 @@ class Order extends Model
      */
     public function getIsPendingAttribute()
     {
-        if ( ! empty( $this->deleted_at )) return false;
-        if (empty( $this->approved_by )) return true;
+        if ( ! empty($this->deleted_at)) return false;
+        if (empty($this->approved_by)) return true;
         else
             return false;
+    }
+
+    public function getItems()
+    {
+        return $this->vpsOrder->merge($this->webOrder)->merge($this->emailOrder);
     }
 
     /**
@@ -117,13 +122,13 @@ class Order extends Model
      */
     public function getTotalAttribute()
     {
-        $items      = $this->vpsOrder->merge($this->webOrder)->merge($this->emailOrder);
+        $items = $this->getItems();
 
         $totalPrice = $items->sum('price');
-        $discount   = $items->sum('discount');
+        $discount = $items->sum('discount');
 
         $subTotal = $totalPrice - $discount;
-        $vat      = $subTotal * setting('vat');
+        $vat = $subTotal * setting('vat');
 
         $total = $subTotal + $vat;
 

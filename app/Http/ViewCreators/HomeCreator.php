@@ -53,10 +53,17 @@ class HomeCreator {
             'total'  => Staff::count()
         ];
 
-        $count['orders'] = [
-            'recent' => Order::whereBetween('created_at', [Carbon::now()->subDays(6)->toDateTimeString(), Carbon::now()->toDateTimeString()])->count(),
-        ];
+        if(auth()->user()->can('save.provision'))
+        {
+            $data['orders'] = [
+                'recent' => Order::status('approved')->whereBetween('created_at', [Carbon::now()->subDays(6)->toDateTimeString(), Carbon::now()->toDateTimeString()])->latest(),
+            ];
+        } else {
+            $data['orders'] = [
+                'recent' => Order::whereBetween('created_at', [Carbon::now()->subDays(6)->toDateTimeString(), Carbon::now()->toDateTimeString()])->latest(),
+            ];
+        }
 
-        $view->with('count', $count);
+        $view->with('count', $count)->with('data', $data);
     }
 }
