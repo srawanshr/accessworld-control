@@ -22,7 +22,7 @@ class VpsOrderController extends Controller {
      */
     public function vpsOrderList()
     {
-        return Datatables::of(VpsOrder::with('order.customer', 'order.created_by', 'order.approved_by')->latest()->get())->make(true);
+        return Datatables::of(VpsOrder::with('order.customer', 'order.created_by', 'order.approved_by')->provisioned(false)->latest()->get())->make(true);
     }
 
     /**

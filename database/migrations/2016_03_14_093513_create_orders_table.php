@@ -15,6 +15,7 @@ class CreateOrdersTable extends Migration {
     {
         Schema::create('orders', function (Blueprint $table)
         {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('customer_id')->unsigned()->index();
             $table->string('slug')->unique()->index();

@@ -14,6 +14,7 @@ class CreateEsewaDepositsTable extends Migration
     public function up()
     {
         Schema::create('esewa_deposits', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->timestamps();
         });

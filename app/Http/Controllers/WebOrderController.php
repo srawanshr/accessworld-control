@@ -22,7 +22,7 @@ class WebOrderController extends Controller {
      */
     public function webOrderList()
     {
-        return Datatables::of(WebOrder::with('order.customer', 'order.created_by', 'order.approved_by')->latest()->get())->make(true);
+        return Datatables::of(WebOrder::with('order.customer', 'order.created_by', 'order.approved_by')->provisioned(false)->latest()->get())->make(true);
     }
 
     /**
