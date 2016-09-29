@@ -190,10 +190,10 @@ class VpsProvisionController extends Controller
     {
         $provision = DB::transaction(function () use ($request, $order)
         {
-            $xen        = new XenService();
             $connection = $request->get('vm');
+            $xen        = new XenService($connection);
 
-            if ($xen->connect($connection))
+            if ($xen)
             {
                 if ($vps = $xen->provision($request->data()))
                 {

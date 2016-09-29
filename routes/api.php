@@ -49,3 +49,12 @@ Route::get('lakuri/checkuser', 'WebProvisionController@checkClient')->name('laku
 |--------------------------------------------------------------------------
 */
 Route::post('customer/{customer}/deposit', 'DepositController@depositList')->name('customer.deposit.list')->middleware('auth:api');
+
+/*
+|--------------------------------------------------------------------------
+| Bandwidth Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::post('traffic/daily/list', 'TrafficController@dailyList')->name('traffic.daily.list')->middleware('auth:api');
+Route::post('traffic/monthly/list', 'TrafficController@monthlyList')->name('traffic.monthly.list')->middleware('auth:api');

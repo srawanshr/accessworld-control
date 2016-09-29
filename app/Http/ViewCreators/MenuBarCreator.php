@@ -125,6 +125,20 @@ class MenuBarCreator {
             ]);
         }
 
+        if ($this->user->can('read.traffic'))
+        {
+            array_push($menu, [
+                'class' => 'gui-folder',
+                'icon'  => 'md md-trending-up',
+                'title' => 'Traffic',
+                'route' => 'javascript:void(0);',
+                'items' => [
+                    ['route' => route('traffic.daily.index'), 'title' => 'Daily'],
+                    ['route' => route('traffic.monthly.index'), 'title' => 'Monthly']
+                ]
+            ]);
+        }
+
         if ($this->user->can('read.content'))
         {
             array_push($menu,

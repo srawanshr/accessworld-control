@@ -478,4 +478,15 @@ Route::group(['middleware' => 'auth'], function ()
         Route::post('provision/web/details', 'WebProvisionController@details')->name('provision.web.details');
         Route::post('provision/email/details', 'EmailProvisionController@details')->name('provision.email.details');
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Bandwidth Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::get('traffic', function(){
+        return redirect()->route('traffic.daily.index');
+    })->name('traffic.index');
+    Route::get('traffic/daily', 'TrafficController@daily')->name('traffic.daily.index');
+    Route::get('traffic/monthly', 'TrafficController@monthly')->name('traffic.monthly.index');
 });

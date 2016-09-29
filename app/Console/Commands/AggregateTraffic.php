@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\DailyTraffic;
 use App\Models\Traffic;
+use App\Services\XenService;
+use Exception;
 use Illuminate\Console\Command;
 
 class AggregateTraffic extends Command
@@ -20,7 +22,7 @@ class AggregateTraffic extends Command
      *
      * @var string
      */
-    protected $description = 'Aggregate daily traffic from the raw traffic data';
+    protected $description = 'Aggregate data from traffic into daily_traffic';
 
     /**
      * Create a new command instance.
@@ -39,23 +41,54 @@ class AggregateTraffic extends Command
      */
     public function handle()
     {
-        $traffic = Traffic::whereDate('created_date', '=', date('Y-m-d'))->get();
+        $today = date('Y-m-d');
 
-        //        $vpsName = VpsProvision::lists('name', 'uuid');
+        $traffic = Traffic::whereDate('created_date', '=', $today)->get();
 
         foreach ($traffic->groupBy('uuid') as $uuid => $records)
         {
-            $upload = 0;
+            try
+            {
+                $dt = DailyTraffic::whereUuid($uuid)->first();
+                if ($dt)
+                {
+                    $name = $dt->name;
+                }
+                else
+                {
+                    $host   = $records->first()->host;
+                    $xen    = new XenService($host);
+                    $record = $xen->getRecord($uuid);
+                    $name   = empty( $record['name_description'] ) ? $record['name_label'] : $record['name_description'];
+                }
+            } catch (Exception $e)
+            {
+                $name = null;
+            }
+
+            $upload   = 0;
             $download = 0;
+
+            $count = 0;
             foreach ($records->groupBy('domid') as $domainRecords)
             {
-                $download += floatval($domainRecords->max('traffic_in'));
-                $upload += floatval($domainRecords->max('traffic_out'));
+                if ($count == 0)
+                {
+                    $download = floatval($domainRecords->max('traffic_in') - $domainRecords->min('traffic_in'));
+                    $upload   = floatval($domainRecords->max('traffic_out') - $domainRecords->min('traffic_out'));
+                }
+                else
+                {
+                    $download += floatval($domainRecords->max('traffic_in'));
+                    $upload += floatval($domainRecords->max('traffic_out'));
+                }
+                $count ++;
             }
-            $dailyTraffic = DailyTraffic::firstOrCreate(['date' => date('Y-m-d'), 'uuid' => $uuid]);
-            $dailyTraffic->upload = $upload;
+            $dailyTraffic           = DailyTraffic::firstOrCreate([ 'date' => $today, 'uuid' => $uuid ]);
+            $dailyTraffic->upload   = $upload;
             $dailyTraffic->download = $download;
-            $dailyTraffic->total = $upload + $download;
+            $dailyTraffic->total    = $upload + $download;
+            $dailyTraffic->name     = $name;
             $dailyTraffic->save();
         }
     }

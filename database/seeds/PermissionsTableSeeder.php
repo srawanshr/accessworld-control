@@ -218,7 +218,18 @@ class PermissionsTableSeeder extends Seeder {
                 'slug'        => 'read.deposit',
                 'model'       => 'App\Models\Deposit',
                 'description' => 'Permission to view Deposits'
-            ]
+            ],
+            /*
+            |--------------------------------------------------------------------------
+            | Bandwidth permissions
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name'        => 'View Traffic',
+                'slug'        => 'read.traffic',
+                'model'       => 'App\Models\Traffic',
+                'description' => 'Permission to view Traffic details'
+            ],
         ];
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');

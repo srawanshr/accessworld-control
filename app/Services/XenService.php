@@ -42,9 +42,17 @@ class XenService
     private $_user;
     private $_password;
 
-    public function connect ( $vm = null )
+    public function __construct($vm)
+    {
+        $this->connect($vm);
+    }
+
+    public function connect ( $vm )
     {
         $connection = config ( 'xenapi.' . strtoupper ( $vm ) );
+
+        if(is_null($connection))
+            return $this->error('Invalid Connection String');
 
         $r = $this->xenrpc_request (
             $connection[ 'URL' ],
@@ -153,12 +161,13 @@ class XenService
     }
 
     /**
-     * @param $message
+     * @param string $message
      * @return \Illuminate\Http\JsonResponse
+     * @throws Exception
      */
     private function error ( $message = "unknown" )
     {
-        die("API failure. (" . $message . ")");
+        throw new Exception("API failure. (" . $message . ")");
     }
 
     public function provision ( $data = [] )
