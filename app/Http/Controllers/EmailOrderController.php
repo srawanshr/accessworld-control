@@ -22,7 +22,7 @@ class EmailOrderController extends Controller
      */
     public function emailOrderList()
     {
-        return Datatables::of(EmailOrder::with('order.customer', 'order.created_by', 'order.approved_by')->latest()->get())->make(true);
+        return Datatables::of(EmailOrder::with('order.customer', 'order.created_by', 'order.approved_by')->provisioned(false)->latest()->get())->make(true);
     }
 
     /**

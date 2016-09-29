@@ -30,6 +30,16 @@ class VpsOrder extends Model {
     ];
 
     /**
+     * @param $query
+     * @param $type
+     * @return mixed
+     */
+    public function scopeProvisioned($query, $type)
+    {
+        return $query->whereIsProvisioned($type);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function order()
