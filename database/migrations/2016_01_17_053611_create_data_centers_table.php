@@ -15,12 +15,16 @@ class CreateDataCentersTable extends Migration
         Schema::create('data_centers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('country');
+            $table->integer('country_id')->unsigned();
             $table->string('slug');
             $table->string('name');
             $table->string('prefix');
             $table->float('price');
             $table->boolean('is_active')->default(0);
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

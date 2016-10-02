@@ -15,6 +15,7 @@ class CreateEmailPackagesTable extends Migration
         Schema::create('email_packages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('country_id')->unsigned();
             $table->string('name');
             $table->string('slug');
             $table->string('description');
@@ -24,6 +25,10 @@ class CreateEmailPackagesTable extends Migration
             $table->float('discount_percent');
             $table->boolean('is_published')->default(0);
             $table->boolean('is_featured')->default(0);
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

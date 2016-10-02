@@ -61,14 +61,6 @@ class CreateVpsProvisionsTable extends Migration {
      */
     public function down()
     {
-        Schema::table('vps_provisions', function (Blueprint $table)
-        {
-            $table->dropForeign('vps_provisions_customer_id_foreign');
-            $table->dropForeign('vps_provisions_provisioned_by_foreign');
-            $table->dropForeign('vps_provisions_vps_order_id_foreign');
-            $table->dropForeign('vps_provisions_operating_system_id_foreign');
-            $table->dropForeign('vps_provisions_data_center_id_foreign');
-        });
         Schema::drop('vps_provisions');
     }
 }

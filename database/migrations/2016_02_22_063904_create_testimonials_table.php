@@ -15,6 +15,7 @@ class CreateTestimonialsTable extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('country_id')->unsigned();
             $table->integer('customer_id')->unsigned();
             $table->string('quote');
             $table->boolean('is_published')->default(0);
@@ -22,6 +23,10 @@ class CreateTestimonialsTable extends Migration
                 ->references('id')
                 ->on('customers')
                 ->onDelete('cascade');
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

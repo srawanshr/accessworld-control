@@ -16,10 +16,15 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('country_id')->unsigned();
             $table->string('slug')->unique()->index();
             $table->string('name', 50);
             $table->string('value');
             $table->boolean('is_active')->default(true);
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

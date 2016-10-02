@@ -48,11 +48,6 @@ class CreateWebProvisionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('web_provisions',function(Blueprint $table){
-            $table->dropForeign('web_provisions_customer_id_foreign');
-            $table->dropForeign('web_provisions_web_order_id_foreign');
-            $table->dropForeign('web_provisions_provisioned_by_foreign');
-        });
         Schema::drop('web_provisions');
     }
 }

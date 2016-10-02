@@ -15,7 +15,8 @@
     "yajra/laravel-datatables-oracle": "~6.0",
     "phpseclib/phpseclib": "2.0",
     "kairos/phpqrcode": "^1.0",
-    "laravel/passport": "^1.0"
+    "laravel/passport": "^1.0",
+    "torann/geoip": "0.2.*@dev"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

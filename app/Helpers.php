@@ -1,5 +1,7 @@
 <?php
+use App\Models\Country;
 use App\Models\Ip;
+use Torann\GeoIP\GeoIPFacade;
 
 /**
  * @param $value
@@ -104,4 +106,39 @@ function setting($query)
     $setting = \App\Models\Setting::fetch($query)->first();
 
     return $setting ? $setting->value : null;
+}
+
+/**
+ * @return mixed
+ */
+function country()
+{
+    if(is_null(Session::get('country')))
+        Session::put('country', get_geo_code());
+
+    $code = Session::get('country');
+
+    return Country::where('iso_alpha2',$code)->firstOrFail();
+}
+
+/**
+ * @return mixed
+ */
+function supported_countries()
+{
+    return Country::where('is_supported', 1)->get();
+}
+
+/**
+ * @return mixed
+ */
+function get_geo_code()
+{
+    $default = config('geoip.default_location');
+
+    $geo = GeoIPFacade::getLocation();
+
+    if(supported_countries()->where('iso_alpha2', $geo['isoCode'])->first())
+        return $geo['isoCode'];
+    return $default['isoCode'];
 }

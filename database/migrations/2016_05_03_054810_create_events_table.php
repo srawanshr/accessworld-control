@@ -15,12 +15,17 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('country_id')->unsigned();
             $table->string('slug')->unique();
             $table->string('title');
             $table->text('description');
             $table->date('from_date');
             $table->date('to_date');
             $table->boolean('is_published')->default(0);
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

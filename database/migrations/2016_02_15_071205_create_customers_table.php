@@ -19,7 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->string('activation_code', 60)->nullable();
-            $table->string('country');
+            $table->integer('country_id')->unsigned();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('phone')->nullable();
@@ -29,6 +29,10 @@ class CreateCustomersTable extends Migration
             $table->boolean('is_subscribed')->default(0);
             $table->rememberToken();
             $table->softDeletes();
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

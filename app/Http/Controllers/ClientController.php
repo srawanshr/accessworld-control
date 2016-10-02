@@ -17,7 +17,7 @@ class ClientController extends Controller {
      */
     public function index()
     {
-        $clients = Client::all();
+        $clients = country()->clients;
 
         return view('client.index', compact('clients'));
     }

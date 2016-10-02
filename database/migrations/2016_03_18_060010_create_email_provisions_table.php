@@ -48,11 +48,6 @@ class CreateEmailProvisionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('email_provisions',function(Blueprint $table){
-            $table->dropForeign('email_provisions_customer_id_foreign');
-            $table->dropForeign('email_provisions_email_order_id_foreign');
-            $table->dropForeign('email_provisions_provisioned_by_foreign');
-        });
         Schema::drop('email_provisions');
     }
 }

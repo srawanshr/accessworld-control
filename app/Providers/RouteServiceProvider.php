@@ -41,6 +41,7 @@ class RouteServiceProvider extends ServiceProvider {
         Route::model('email_order', 'App\Models\EmailOrder');
         Route::model('email_provision', 'App\Models\EmailProvision');
         Route::model('map', 'App\Models\Dhcp\Map');
+        Route::model('country', 'App\Models\Country');
     }
 
     /**
