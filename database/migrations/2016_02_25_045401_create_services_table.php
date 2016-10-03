@@ -16,7 +16,6 @@ class CreateServicesTable extends Migration {
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('country_id')->unsigned();
             $table->string('slug')->unique();
             $table->string('name')->unique();
             $table->string('short_description')->nullable();
@@ -24,10 +23,6 @@ class CreateServicesTable extends Migration {
             $table->integer('order');
             $table->string('view');
             $table->boolean('is_published')->default(0);
-            $table->foreign('country_id')
-                ->references('id')
-                ->on('countries')
-                ->onDelete('restrict');
             $table->timestamps();
         });
     }

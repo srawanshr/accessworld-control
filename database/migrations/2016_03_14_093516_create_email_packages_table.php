@@ -22,7 +22,8 @@ class CreateEmailPackagesTable extends Migration
             $table->float('disk');
             $table->float('traffic');
             $table->integer('domain');
-            $table->float('discount_percent');
+            $table->float('price');
+            $table->float('discount')->default(0);
             $table->boolean('is_published')->default(0);
             $table->boolean('is_featured')->default(0);
             $table->foreign('country_id')

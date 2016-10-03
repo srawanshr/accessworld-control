@@ -13,7 +13,7 @@ class DataCentersTableSeeder extends Seeder {
     {
         $data_centers = [
             [
-                'country'    => 'Nepal',
+                'country_id'    => 147,
                 'slug'       => 'krishna-galli',
                 'name'       => 'Krishna Galli',
                 'prefix'     => 'K',
@@ -22,7 +22,7 @@ class DataCentersTableSeeder extends Seeder {
                 'updated_at' => \Carbon\Carbon::now(),
             ],
             [
-                'country'    => 'Nepal',
+                'country_id'    => 147,
                 'slug'       => 'putalisadak',
                 'name'       => 'Putalisadak',
                 'prefix'     => 'P',

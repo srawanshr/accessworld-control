@@ -29,7 +29,8 @@ class StoreWebPackage extends FormRequest
             "disk"        => "required|min:1",
             "traffic"     => "required|min:1",
             "domain"      => "required|min:1",
-            'price'       => 'required|min:0'
+            'price'       => 'required|min:0',
+            'discount'    => 'required|min:0'
         ];
     }
 
@@ -45,10 +46,12 @@ class StoreWebPackage extends FormRequest
             'disk'        => $this->get('disk'),
             'traffic'     => $this->get('traffic'),
             'domain'      => $this->get('domain'),
-            'price'       => $this->get('price')
+            'price'       => $this->get('price'),
+            'discount'    => $this->get('discount')
         ];
 
         if ($this->has('is_published')) $inputs['is_published'] = true;
+        if ($this->has('is_featured')) $inputs['is_featured'] = true;
 
         return $inputs;
     }

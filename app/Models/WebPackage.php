@@ -19,7 +19,9 @@ class WebPackage extends Model
         'traffic',
         'domain',
         'price',
-        'is_published'
+        'discount',
+        'is_published',
+        'is_featured'
     ];
 
     /**
@@ -28,7 +30,8 @@ class WebPackage extends Model
      * @var array
      */
     protected $casts = [
-        'is_published' => 'boolean'
+        'is_published' => 'boolean',
+        'is_featured'  => 'boolean'
     ];
 
     /**
@@ -37,7 +40,7 @@ class WebPackage extends Model
      */
     public function scopePublished($query)
     {
-        return $query->where('is_published','1');
+        return $query->where('is_published', '1');
     }
 
     /**

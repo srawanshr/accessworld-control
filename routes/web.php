@@ -489,4 +489,6 @@ Route::group(['middleware' => 'auth'], function ()
     })->name('traffic.index');
     Route::get('traffic/daily', 'TrafficController@daily')->name('traffic.daily.index');
     Route::get('traffic/monthly', 'TrafficController@monthly')->name('traffic.monthly.index');
+
+    Route::get('country/{country}/session', ['as' => 'country.session', 'uses' => 'HomeController@setCountry']);
 });

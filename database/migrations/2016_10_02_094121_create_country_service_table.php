@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWebPackagesTable extends Migration
+class CreateCountryServiceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,24 +13,21 @@ class CreateWebPackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('web_packages', function (Blueprint $table) {
+        Schema::create('country_service', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('country_id')->unsigned();
-            $table->string('name');
-            $table->string('slug');
-            $table->string('description');
-            $table->float('disk');
-            $table->float('traffic');
-            $table->integer('domain');
-            $table->float('discount')->default(0);
-            $table->float('price');
-            $table->boolean('is_published')->default(0);
-            $table->boolean('is_featured')->default(0);
+            $table->integer('service_id')->unsigned();
+            $table->text('description')->nullable();
+            $table->boolean('is_published');
             $table->foreign('country_id')
                 ->references('id')
                 ->on('countries')
                 ->onDelete('restrict');
+            $table->foreign('service_id')
+                ->references('id')
+                ->on('services')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -41,6 +39,6 @@ class CreateWebPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('web_packages');
+        Schema::dropIfExists('country_service');
     }
 }

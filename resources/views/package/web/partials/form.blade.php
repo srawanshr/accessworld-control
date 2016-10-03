@@ -2,13 +2,13 @@
     @include('partials.errors')
     <div class="floating-label">
         <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-6">
                 <div class="form-group">
                     {{ Form::text('name', old('name'), ['class'=>'form-control', 'required']) }}
                     <label>Name</label>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="form-group">
                     {{ Form::text('price', old('price'), ['class'=>'form-control', 'min'=>0, 'max'=>999999.99, 'step'=>'any']) }}
                     <label for="price">Price</label>
@@ -16,10 +16,26 @@
             </div>
             <div class="col-sm-2">
                 <div class="form-group">
+                    {{ Form::text('discount', old('discount'), ['class'=>'form-control', 'min'=>0, 'max'=>999999.99, 'step'=>'any']) }}
+                    <label for="discount">Discount</label>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="form-group">
                     <div class="checkbox checkbox-styled">
                         <label>
                             {{ Form::checkbox("is_published", 1, old('is_published'), ['class' => 'form-control']) }}
                             <span>Publish</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="form-group">
+                    <div class="checkbox checkbox-styled">
+                        <label>
+                            {{ Form::checkbox("is_featured", 1, old('is_featured'), ['class' => 'form-control']) }}
+                            <span>Feature</span>
                         </label>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
     <td>{{ $webPackage->name }}</td>
     <td>{{ ($webPackage->is_published)? 'Yes' : 'No' }}</td>
     <td class="text-right">{{ '$ '.$webPackage->price }}</td>
+    <td class="text-right">{{ $webPackage->discount }}</td>
     <td class="text-right">
         @if(auth()->user()->canOne(['save.content', 'delete.content']))
             @if(auth()->user()->can('save.content'))

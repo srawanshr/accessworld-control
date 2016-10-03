@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Certificate;
 use App\Models\Client;
+use App\Models\Country;
 use App\Models\Customer;
 use App\Models\EsewaDeposit;
 use App\Models\ManualDeposit;
@@ -45,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
             'setting'          => Setting::class,
             'esewa_deposit'    => EsewaDeposit::class,
             'manual_deposit'   => ManualDeposit::class,
+            'country'          => Country::class,
         ]);
 
         Validator::extend('old_password', function ($attribute, $value, $parameters, $validator)

@@ -20,7 +20,9 @@ class VpsPackage extends Model
         'disk',
         'traffic',
         'price',
-        'is_published'
+        'discount',
+        'is_published',
+        'is_featured'
     ];
 
     /**
@@ -29,7 +31,8 @@ class VpsPackage extends Model
      * @var array
      */
     protected $casts = [
-        'is_published' => 'boolean'
+        'is_published' => 'boolean',
+        'is_featured'  => 'boolean'
     ];
 
     /**

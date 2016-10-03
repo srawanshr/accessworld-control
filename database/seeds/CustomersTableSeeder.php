@@ -23,7 +23,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4445765,9851016916',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-02-07'
             ],
             [
@@ -37,7 +37,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9841582561',
                 'password'   => '6f5c71237d8a89174cb3664730d0ef29',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-09-24'
             ],
             [
@@ -51,7 +51,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851083635',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-03'
             ],
             [
@@ -65,7 +65,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9801292910',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-11-18'
             ],
             [
@@ -79,7 +79,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '',
                 'password'   => '4330129d2ef7a19f2c807e91acbdbb9a',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-07-22'
             ],
             [
@@ -93,7 +93,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '6680105,9841109461',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-10-18'
             ],
             [
@@ -107,7 +107,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9841267744',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-12-08'
             ],
             [
@@ -121,7 +121,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5533609,9818713476',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-08-14'
             ],
             [
@@ -135,7 +135,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9841852889',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-08-31'
             ],
             [
@@ -149,7 +149,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4411687',
                 'password'   => 'a21cf9b21d85a0e9ad42e842f5cde4d6',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-09-13'
             ],
             [
@@ -163,7 +163,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9802024051',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-09-13'
             ],
             [
@@ -177,7 +177,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9841567626',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-09-15'
             ],
             [
@@ -191,7 +191,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5546470,9851068982',
                 'password'   => '$2y$10$2K.NT1Xz3c6uN/otHZevN.WMvh423jzddtJ4roNAE53LBg2KMygsO',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-09-21'
             ],
             [
@@ -205,7 +205,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '19167566334',
                 'password'   => 'b22383e3f54bb0065213d0d05a0266d6',
                 'status'     => '0',
-                'country'    => 'United States',
+                'country_id' => 227,
                 'created_at' => '2015-10-28'
             ],
             [
@@ -219,7 +219,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9841046796',
                 'password'   => '$2y$10$vJJt9zG8fjSBDDrN5zKBnuK.cFelEDW35anh3N90MQd4EFsHMA1x6',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-06-11'
             ],
             [
@@ -233,7 +233,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9860810151',
                 'password'   => '1309c03689fa15ef5a91a30cdc599991',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-06-11'
             ],
             [
@@ -247,7 +247,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4101544,9851052800',
                 'password'   => '$2y$10$D3G3IuVLF4Ys1tFxbjp4hOFNFUwt.gOe/osfYbQ/0CW4VBhC0FG9G',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-11-15'
             ],
             [
@@ -261,7 +261,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851033634,9840070083',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-11-30'
             ],
             [
@@ -275,7 +275,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4248930,9851063194',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2015-11-12'
             ],
             [
@@ -289,7 +289,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851210480',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-02'
             ],
             [
@@ -303,7 +303,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-02-21'
             ],
             [
@@ -317,7 +317,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '917289095272',
                 'password'   => 'c7be16d1b16ed822672a064a686a9de7',
                 'status'     => '0',
-                'country'    => 'India',
+                'country_id' => 98,
                 'created_at' => '2016-02-18'
             ],
             [
@@ -331,7 +331,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4720329,4720304 ',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-04-03'
             ],
             [
@@ -345,7 +345,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4100107,9801107937',
                 'password'   => '$2y$10$bAQWq3EMAAH/aCth6MSySe21krZCOU4LcKdQ/iXqIQkUVP1GsFCBO',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-03-18'
             ],
             [
@@ -359,7 +359,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4417952,9803167159',
                 'password'   => '$2y$10$/dL41JF6Dl0t623C0Q1HdOJ9xmX89G3v4RTYtog2.j6Wy2tebUC1W',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-03-24'
             ],
             [
@@ -373,7 +373,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4811888',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-03-27'
             ],
             [
@@ -387,7 +387,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9801001892',
                 'password'   => 'e3b03bda34847ec7fb53550e749b473c',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-03-28'
             ],
             [
@@ -401,7 +401,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851092983',
                 'password'   => '7d9a589241ac193af39fd073cf501577',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-04-04'
             ],
             [
@@ -415,7 +415,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4350572,9841219864',
                 'password'   => '$2y$10$EtQZleNaj9bBFweSbbyAnuB1G5U0JtLCLhDrPQOT/6ZVlGL6x1OkO',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-04-10'
             ],
             [
@@ -429,7 +429,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5531131,9803048051',
                 'password'   => '5fd12ab367e6e7170d9d214c285e1191',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-04-21'
             ],
             [
@@ -443,7 +443,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851196943,9849220335',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-04-24'
             ],
             [
@@ -457,7 +457,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4001114,9851153111',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-04-25'
             ],
             [
@@ -471,7 +471,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4483088',
                 'password'   => '$2y$10$3qmpw4zUWWrXHYoTS2.2/ebNnNKR57Tg4Y5iyLK6ITZBYLs9QBl1C',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-03'
             ],
             [
@@ -485,7 +485,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '703-317-7822,703-893-0325',
                 'password'   => '030bda040ca4652e479ffdd5d37ced3d',
                 'status'     => '0',
-                'country'    => 'United States',
+                'country_id' => 227,
                 'created_at' => '2016-05-04'
             ],
             [
@@ -499,7 +499,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5522539',
                 'password'   => '82421c94ef1c7f51122094d1d7a98d2d',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-06'
             ],
             [
@@ -513,7 +513,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851116164',
                 'password'   => '86adcbdcb53211c5a0f495c797437e03',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-09'
             ],
             [
@@ -527,7 +527,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851040042',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-10'
             ],
             [
@@ -541,7 +541,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5541949',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-10'
             ],
             [
@@ -555,7 +555,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9801194914,9851049431',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-11'
             ],
             [
@@ -569,7 +569,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '',
                 'password'   => '9b23cc8c171e10499eeb0c65f3092704',
                 'status'     => '0',
-                'country'    => 'Thailand',
+                'country_id' => 212,
                 'created_at' => '2016-05-12'
             ],
             [
@@ -583,7 +583,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5521333',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-15'
             ],
             [
@@ -597,7 +597,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9841140403',
                 'password'   => '80ae35797a18a7b236798d5f963715e8',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-17'
             ],
             [
@@ -611,7 +611,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4416311,9851098933',
                 'password'   => '$2y$10$tE0d6n7zMIIhAO.eiVZHbu2lzhoC5g4EujlxqPRDa0jQ6hS5AhNfq',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-17'
             ],
             [
@@ -625,7 +625,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4242523,4242967',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-05-20'
             ],
             [
@@ -639,7 +639,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851220207',
                 'password'   => 'a7389e9d075e19054d921f331df3791b',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-06-01'
             ],
             [
@@ -653,7 +653,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9801242029',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-06-02'
             ],
             [
@@ -667,7 +667,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4478845',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-06-16'
             ],
             [
@@ -681,7 +681,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4262682,9851089243',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-06-20'
             ],
             [
@@ -695,7 +695,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4280956,4274833',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-06-22'
             ],
             [
@@ -709,7 +709,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4219999,9801034288',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-06-22'
             ],
             [
@@ -723,7 +723,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851220365',
                 'password'   => '$2y$10$A5dj4EkWGYmcNEXR4a0um.TEP2JEFrH7jEfjPIUt5MjFE5oRiqRqm',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-06-28'
             ],
             [
@@ -737,7 +737,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5000737,9856027232',
                 'password'   => '25106ad0bc09da66912b7aa2287495a1',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-06-29'
             ],
             [
@@ -751,7 +751,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4233900',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-06-29'
             ],
             [
@@ -765,7 +765,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4104603,4104602',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-22'
             ],
             [
@@ -779,7 +779,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851016455',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-08'
             ],
             [
@@ -793,7 +793,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5003060,5521032',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-14'
             ],
             [
@@ -807,7 +807,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9841342249',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-18'
             ],
             [
@@ -821,7 +821,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4910010,6203678',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-21'
             ],
             [
@@ -835,7 +835,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-22'
             ],
             [
@@ -849,7 +849,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5009087,9841358015',
                 'password'   => 'ed1c8a912a1f65d3ce3c75065f17d85f',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-24'
             ],
             [
@@ -863,7 +863,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5533950,9851174737',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-26'
             ],
             [
@@ -877,7 +877,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-26'
             ],
             [
@@ -891,7 +891,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-27'
             ],
             [
@@ -905,7 +905,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4620354',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-07-29'
             ],
             [
@@ -919,7 +919,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4012599,9851130472',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-03'
             ],
             [
@@ -933,7 +933,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9801900011',
                 'password'   => '$2y$10$wwsUoV5M8Rpii9a0pO1Bb.Q0O1ok3zHwMG6jbaoQ17GmDQdgXVfpO',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-04'
             ],
             [
@@ -947,7 +947,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4620354',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-04'
             ],
             [
@@ -961,7 +961,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9843786657',
                 'password'   => '$2y$10$r4IRSVGVpXoLsYbElA9QSucvP46fzm5oKTOnPRToXzGIC8N7f.8eK',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-09'
             ],
             [
@@ -975,7 +975,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851082139',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-11'
             ],
             [
@@ -989,7 +989,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '',
                 'password'   => '$2y$10$j3qUdk96xSPkuYQqkpMf1uImbjPPEOzuEW3NfLWIJVhKz5l9AxP0G',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-11'
             ],
             [
@@ -1003,7 +1003,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '5547841,5535158',
                 'password'   => '$2y$10$3QvdNsHkYmjHh3aRmhMSKu4kJRhG.Y1G.CoNSr3NulbA8y6pPQx4e',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-12'
             ],
             [
@@ -1017,7 +1017,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9848755636',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-14'
             ],
             [
@@ -1031,7 +1031,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-14'
             ],
             [
@@ -1045,7 +1045,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9802006846,9851106346',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-17'
             ],
             [
@@ -1059,7 +1059,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4244727,9851148454',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-21'
             ],
             [
@@ -1073,7 +1073,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851000044',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-22'
             ],
             [
@@ -1087,7 +1087,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851144910',
                 'password'   => '$2y$10$IPFo48lPTBsMUtWBwyG.N.AXFMEuOdFxqxIJ48Nrs7u4iCeHgTMNG',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-26'
             ],
             [
@@ -1101,7 +1101,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9842287342',
                 'password'   => '$2y$10$Fs3fs8zovaZCTO9RQiXrZuyaBHJs35VsXvWIT/4xhG2i/0D5lwcJu',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-26'
             ],
             [
@@ -1115,7 +1115,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851083679',
                 'password'   => '$2y$10$GKoMdZoaKvc3iq5JG.kg/Ol4lNQolIbb.s6ybn5py8/78O1lSAIsS',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-28'
             ],
             [
@@ -1129,7 +1129,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4249042,9851042407',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-29'
             ],
             [
@@ -1143,7 +1143,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-30'
             ],
             [
@@ -1157,7 +1157,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9801044533',
                 'password'   => 'e7155b0852e08c88a06c3f0dfe120336',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-04-20'
             ],
             [
@@ -1171,7 +1171,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '4422804',
                 'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
                 'status'     => '0',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-09-05'
             ],
             [
@@ -1185,7 +1185,7 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9801164703',
                 'password'   => '$2y$10$4GcKJNyuk/ORaEtXnPcZ7u8Ch8IjZBOKvF7G5XMVTS4fZNPZZRZ0C',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-08-23'
             ],
             [
@@ -1199,21 +1199,22 @@ class CustomersTableSeeder extends Seeder
                 'phone'      => '9851188320',
                 'password'   => '$2y$10$od5Pn/epBfYK5XqvWKY81uFePCwxsK1J8QMkCXcMCZwVMcgsARIDO',
                 'status'     => '1',
-                'country'    => 'Nepal',
+                'country_id' => 147,
                 'created_at' => '2016-09-05'
             ],
-            [ 'id'         => '86',
-              'username'   => 'pradeep',
-              'first_name' => 'Pradeep',
-              'last_name'  => 'Mondal',
-              'email'      => 'pradeep.modal@cncnepal.com',
-              'company'    => 'CNC Pvt. Ltd.',
-              'address'    => 'Thirbum Sadak, Dillibazar',
-              'phone'      => '4416530,4445997,9851035839',
-              'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
-              'status'     => '0',
-              'country'    => 'Nepal',
-              'created_at' => '2016-09-07'
+            [
+                'id'         => '86',
+                'username'   => 'pradeep',
+                'first_name' => 'Pradeep',
+                'last_name'  => 'Mondal',
+                'email'      => 'pradeep.modal@cncnepal.com',
+                'company'    => 'CNC Pvt. Ltd.',
+                'address'    => 'Thirbum Sadak, Dillibazar',
+                'phone'      => '4416530,4445997,9851035839',
+                'password'   => '$2y$10$oIGIXLczde0yvjNYYEdv3.qTiH19LNAIHntYyuZeOgHoj6O59kuWe',
+                'status'     => '0',
+                'country_id' => 147,
+                'created_at' => '2016-09-07'
             ]
         ];
 

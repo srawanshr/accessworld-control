@@ -24,7 +24,7 @@ class CreateVpsPackagesTable extends Migration
             $table->float('disk');
             $table->float('traffic');
             $table->float('price');
-            $table->float('discount_percent');
+            $table->float('discount')->default(0);
             $table->boolean('is_published')->default(0);
             $table->boolean('is_featured')->default(0);
             $table->foreign('country_id')

@@ -19,7 +19,7 @@ class WebPackageController extends Controller
      */
     public function index()
     {
-        $webPackages = WebPackage::all();
+        $webPackages = country()->webPackages;
 
         return view('package.web.index', compact('webPackages'));
     }
@@ -35,26 +35,21 @@ class WebPackageController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param WebPackageRequest|StoreWebPackage $request
-     * @return \Illuminate\Http\Response
+     * @param StoreWebPackage $request
+     * @return mixed
      */
     public function store(StoreWebPackage $request)
     {
         DB::transaction(function () use ($request) {
-            WebPackage::create($request->data());
+            country()->webPackages()->create($request->data());
         });
 
         return redirect()->route('webPackage.index')->withSuccess('Package created!');
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param WebPackage $package
-     * @return \Illuminate\Http\Response
-     * @internal param int $id
+     * @param WebPackage $webPackage
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(WebPackage $webPackage)
     {
@@ -62,13 +57,9 @@ class WebPackageController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param WebPackageRequest|UpdateWebPackage $request
+     * @param UpdateWebPackage $request
      * @param WebPackage $webPackage
-     * @return \Illuminate\Http\Response
-     * @internal param WebPackage $package
-     * @internal param int $id
+     * @return mixed
      */
     public function update(UpdateWebPackage $request, WebPackage $webPackage)
     {

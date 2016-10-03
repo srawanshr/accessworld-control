@@ -38,7 +38,7 @@ class ClientController extends Controller {
     {
         DB::transaction(function () use ($request)
         {
-            $client = Client::create($request->data());
+            $client = country()->Clients()->create($request->data());
 
             $this->uploadRequestImage($request, $client);
         });

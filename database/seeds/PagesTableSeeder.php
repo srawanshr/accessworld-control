@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
-class PagesTableSeeder extends Seeder {
+class PagesTableSeeder extends Seeder
+{
 
     /**
      * Run the database seeds.
@@ -29,6 +30,7 @@ class PagesTableSeeder extends Seeder {
                 'view'             => 'index',
                 'is_published'     => true,
                 'is_primary'       => true,
+                'country_id'       => 147,
                 'created_at'       => \Carbon\Carbon::now(),
                 'updated_at'       => \Carbon\Carbon::now()
             ],
@@ -45,6 +47,7 @@ class PagesTableSeeder extends Seeder {
                 'view'             => 'service.index',
                 'is_published'     => true,
                 'is_primary'       => true,
+                'country_id'       => 147,
                 'created_at'       => \Carbon\Carbon::now(),
                 'updated_at'       => \Carbon\Carbon::now()
             ],
@@ -61,6 +64,7 @@ class PagesTableSeeder extends Seeder {
                 'view'             => 'page.show',
                 'is_published'     => true,
                 'is_primary'       => true,
+                'country_id'       => 147,
                 'created_at'       => \Carbon\Carbon::now(),
                 'updated_at'       => \Carbon\Carbon::now()
             ],
@@ -77,6 +81,7 @@ class PagesTableSeeder extends Seeder {
                 'view'             => 'contact.index',
                 'is_published'     => true,
                 'is_primary'       => true,
+                'country_id'       => 147,
                 'created_at'       => \Carbon\Carbon::now(),
                 'updated_at'       => \Carbon\Carbon::now()
             ],
@@ -93,6 +98,7 @@ class PagesTableSeeder extends Seeder {
                 'view'             => 'page.show',
                 'is_published'     => true,
                 'is_primary'       => false,
+                'country_id'       => 147,
                 'created_at'       => \Carbon\Carbon::now(),
                 'updated_at'       => \Carbon\Carbon::now()
             ],
@@ -109,6 +115,7 @@ class PagesTableSeeder extends Seeder {
                 'view'             => 'page.show',
                 'is_published'     => true,
                 'is_primary'       => false,
+                'country_id'       => 147,
                 'created_at'       => \Carbon\Carbon::now(),
                 'updated_at'       => \Carbon\Carbon::now()
             ]

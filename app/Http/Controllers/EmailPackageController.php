@@ -20,7 +20,7 @@ class EmailPackageController extends Controller
      */
     public function index()
     {
-        $emailPackages = EmailPackage::all();
+        $emailPackages = country()->emailPackages;
 
         return view('package.email.index', compact('emailPackages'));
     }
@@ -45,7 +45,7 @@ class EmailPackageController extends Controller
     {
         DB::transaction(function () use ($request)
         {
-            EmailPackage::create($request->data());
+            country()->emailPackages()->create($request->data());
         });
 
         return redirect()->route('emailPackage.index')->withSuccess('Package created!');

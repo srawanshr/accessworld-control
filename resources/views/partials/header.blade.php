@@ -17,6 +17,9 @@
             </ul>
         </div>
         <div class="headerbar-right">
+            <ul class="header-nav header-nav-options">
+                @include('common.countries')
+            </ul><!--end .header-nav-options -->
             <ul class="header-nav header-nav-profile">
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">

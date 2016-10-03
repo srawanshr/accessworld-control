@@ -19,7 +19,7 @@ class VpsPackageController extends Controller
      */
     public function index()
     {
-        $vpsPackages = VpsPackage::all();
+        $vpsPackages = country()->vpsPackages;
 
         return view('package.vps.index', compact('vpsPackages'));
     }
@@ -35,13 +35,13 @@ class VpsPackageController extends Controller
     }
 
     /**
-     * @param VpsPackageRequest $request
+     * @param StoreVpsPackage $request
      * @return mixed
      */
     public function store(StoreVpsPackage $request)
     {
         DB::transaction(function () use ($request) {
-            VpsPackage::create($request->data());
+            country()->vpsPackages()->create($request->data());
         });
 
         return redirect()->route('vpsPackage.index')->withSuccess('Package created!');

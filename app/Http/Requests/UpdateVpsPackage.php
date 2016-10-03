@@ -30,7 +30,8 @@ class UpdateVpsPackage extends FormRequest
             "ram"         => "required|min:1",
             "traffic"     => "required|min:1",
             "disk"        => "required|min:1",
-            'price'       => 'required|min:0'
+            'price'       => 'required|min:0',
+            'discount'    => 'required|min:0'
         ];
     }
 
@@ -46,14 +47,20 @@ class UpdateVpsPackage extends FormRequest
             'ram'         => $this->get('ram'),
             'traffic'     => $this->get('traffic'),
             'disk'        => $this->get('disk'),
-            'price'       => $this->get('price')
+            'price'       => $this->get('price'),
+            'discount'    => $this->get('discount')
         ];
 
-        if ($this->has('is_published'))
-        {
+        if ($this->has('is_published')) {
             $inputs['is_published'] = true;
         } else {
             $inputs['is_published'] = false;
+        }
+
+        if ($this->has('is_featured')) {
+            $inputs['is_featured'] = true;
+        } else {
+            $inputs['is_featured'] = false;
         }
 
         return $inputs;

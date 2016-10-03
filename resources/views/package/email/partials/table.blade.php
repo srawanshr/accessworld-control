@@ -3,6 +3,7 @@
     <td>{{ $emailPackage->name }}</td>
     <td>{{ ($emailPackage->is_published)? 'Yes' : 'No' }}</td>
     <td class="text-right">{{ $emailPackage->price }}</td>
+    <td class="text-right">{{ $emailPackage->discount }}</td>
     <td class="text-right">
         @if(auth()->user()->canOne(['save.content', 'delete.content']))
             @if(auth()->user()->can('save.content'))

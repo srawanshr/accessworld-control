@@ -170,6 +170,7 @@ return [
         Bican\Roles\RolesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
 
         /*
          * Application Service Providers...

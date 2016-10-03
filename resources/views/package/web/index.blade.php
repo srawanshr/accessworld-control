@@ -26,7 +26,8 @@
                                     <th width="5%">#</th>
                                     <th width="40%">Name</th>
                                     <th width="10%">Published</th>
-                                    <th width="35%" class="text-right">Price&nbsp;</th>
+                                    <th width="20%" class="text-right">Price&nbsp;</th>
+                                    <th width="15%" class="text-right">Discount</th>
                                     <th width="10%" class="text-right">Actions</th>
                                 </tr>
                                 </thead>

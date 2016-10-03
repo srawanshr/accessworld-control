@@ -19,7 +19,9 @@ class EmailPackage extends Model
         'traffic',
         'domain',
         'price',
-        'is_published'
+        'discount',
+        'is_published',
+        'is_featured'
     ];
 
     /**
@@ -28,7 +30,8 @@ class EmailPackage extends Model
      * @var array
      */
     protected $casts = [
-        'is_published' => 'boolean'
+        'is_published' => 'boolean',
+        'is_featured'  => 'boolean'
     ];
 
     /**
