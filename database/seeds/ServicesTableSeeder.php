@@ -12,8 +12,6 @@ class ServicesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
         DB::table('services')->truncate();
 
         DB::table('services')->insert([
@@ -114,7 +112,5 @@ class ServicesTableSeeder extends Seeder
                 'updated_at'        => \Carbon\Carbon::now()
             ]
         ]);
-
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

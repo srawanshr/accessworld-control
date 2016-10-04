@@ -149,8 +149,8 @@ Route::group(['middleware' => 'auth'], function ()
         */
         Route::group(['as' => 'deposit.', 'prefix' => '{customer}/deposit'], function ()
         {
-            Route::get('', 'DepositController@index')->name('index');
-            Route::post('', 'DepositController@store')->name('store');
+            Route::get('', 'DepositController@index')->name('index')->middleware('permission:read.customer');
+            Route::post('', 'DepositController@store')->name('store')->middleware('permission:save.customer');
         });
     });
 

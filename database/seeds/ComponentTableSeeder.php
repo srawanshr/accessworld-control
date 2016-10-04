@@ -16,31 +16,36 @@ class ComponentTableSeeder extends Seeder
             [
                 "name" => "CPU",
                 "slug" => "cpu",
-                "price" => 10,
+                "price_usd" => 10,
+                "price_npr" => 1070,
                 "unit" => "per Core"
             ],
             [
                 "name" => "RAM",
                 "slug" => "ram",
-                "price" => 3,
+                "price_usd" => 3,
+                "price_npr" => 321,
                 "unit" => "per GB"
             ],
             [
                 "name" => "Traffic",
                 "slug" => "traffic",
-                "price" => 0.5,
+                "price_usd" => 0.5,
+                "price_npr" => 53.5,
                 "unit" => "per GB"
             ],
             [
                 "name" => "Disk",
                 "slug" => "disk",
-                "price" => 0.02,
+                "price_usd" => 0.02,
+                "price_npr" => 2.14,
                 "unit" => "per GB"
             ],
             [
                 "name" => "Managed",
                 "slug" => "is-managed",
-                "price" => 0,
+                "price_npr" => 0,
+                "price_usd" => 0,
                 "unit" => NULL,
             ]
         ];
@@ -53,25 +58,29 @@ class ComponentTableSeeder extends Seeder
             [
                 "name" => "Traffic",
                 "slug" => "traffic",
-                "price" => 0.5,
+                "price_usd" => 0.5,
+                "price_npr" => 53.5,
                 "unit" => "per GB"
             ],
             [
                 "name" => "Disk",
                 "slug" => "disk",
-                "price" => 0.02,
+                "price_usd" => 0.02,
+                "price_npr" => 2.14,
                 "unit" => "per GB"
             ],
             [
                 "name" => "Domain",
                 "slug" => "domain",
-                "price" => 0,
+                "price_usd" => 0,
+                "price_npr" => 0,
                 "unit" => "per domain"
             ],
             [
                 "name" => "Compute",
                 "slug" => "compute",
-                "price" => 1.1856,
+                "price_usd" => 1.1856,
+                "price_npr" => 126.8592,
                 "unit" => "per domain"
             ]
         ];
@@ -84,19 +93,22 @@ class ComponentTableSeeder extends Seeder
             [
                 "name" => "Traffic",
                 "slug" => "traffic",
-                "price" => 0.5,
+                "price_usd" => 0.5,
+                "price_npr" => 53.5,
                 "unit" => "per GB"
             ],
             [
                 "name" => "Disk",
                 "slug" => "disk",
-                "price" => 0.02,
+                "price_usd" => 0.02,
+                "price_npr" => 2.14,
                 "unit" => "per GB"
             ],
             [
                 "name" => "Domain",
                 "slug" => "domain",
-                "price" => 0,
+                "price_usd" => 0,
+                "price_npr" => 0,
                 "unit" => "per domain"
             ]
         ];

@@ -12,8 +12,6 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
         DB::table('pages')->truncate();
 
         DB::table('pages')->insert([

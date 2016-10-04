@@ -2,25 +2,31 @@
     @include('partials.errors')
     <div class="floating-label">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::text('name', old('name'), ['class'=>'form-control', 'required']) }}
                     <label>Name</label>
                 </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="form-group">
-                    {{ Form::text('price', old('price'), ['class'=>'form-control', 'min'=>0, 'max'=>999999.99, 'step'=>'any']) }}
-                    <label for="price">Price</label>
+                    {{ Form::text('price_npr', old('price_npr'), ['class'=>'form-control', 'min'=>0, 'max'=>999999.99, 'step'=>'any']) }}
+                    <label for="price">Price (NRS)</label>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    {{ Form::text('price_usd', old('price_usd'), ['class'=>'form-control', 'min'=>0, 'max'=>999999.99, 'step'=>'any']) }}
+                    <label for="price">Price (USD)</label>
                 </div>
             </div>
             <div class="col-sm-2">
                 <div class="form-group">
-                    {{ Form::text('discount', old('discount'), ['class'=>'form-control', 'min'=>0, 'max'=>999999.99, 'step'=>'any']) }}
-                    <label for="discount">Discount</label>
+                    {{ Form::text('discount', old('discount'), ['class'=>'form-control', 'min'=>0, 'max'=>100, 'step'=>'any']) }}
+                    <label for="discount">Discount (0-100)</label>
                 </div>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <div class="form-group">
                     <div class="checkbox checkbox-styled">
                         <label>
@@ -30,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <div class="form-group">
                     <div class="checkbox checkbox-styled">
                         <label>

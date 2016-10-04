@@ -232,12 +232,8 @@ class PermissionsTableSeeder extends Seeder {
             ],
         ];
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
         DB::table('permissions')->truncate();
 
         DB::table('permissions')->insert($permissions);
-
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

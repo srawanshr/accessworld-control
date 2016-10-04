@@ -1218,9 +1218,7 @@ class CustomersTableSeeder extends Seeder
             ]
         ];
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('customers')->truncate();
         DB::table('customers')->insert($customers);
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

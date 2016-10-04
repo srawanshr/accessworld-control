@@ -18,7 +18,8 @@ class WebPackage extends Model
         'disk',
         'traffic',
         'domain',
-        'price',
+        'price_npr',
+        'price_usd',
         'discount',
         'is_published',
         'is_featured'

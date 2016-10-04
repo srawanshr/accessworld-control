@@ -17,7 +17,8 @@ class DataCentersTableSeeder extends Seeder {
                 'slug'       => 'krishna-galli',
                 'name'       => 'Krishna Galli',
                 'prefix'     => 'K',
-                'price'      => 0.0000,
+                'price_usd'      => 0.0000,
+                'price_npr'      => 0.0000,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ],
@@ -26,16 +27,14 @@ class DataCentersTableSeeder extends Seeder {
                 'slug'       => 'putalisadak',
                 'name'       => 'Putalisadak',
                 'prefix'     => 'P',
-                'price'      => 0.0000,
+                'price_usd'      => 0.0000,
+                'price_npr'      => 0.0000,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ]
         ];
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('data_centers')->truncate();
         DB::table('data_centers')->insert($data_centers);
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
     }
 }

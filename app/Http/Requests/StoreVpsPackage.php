@@ -30,7 +30,8 @@ class StoreVpsPackage extends FormRequest
             "ram"         => "required|min:1",
             "traffic"     => "required|min:1",
             "disk"        => "required|min:1",
-            'price'       => 'required|min:0',
+            'price_usd'   => 'required|min:0',
+            'price_npr'   => 'required|min:0',
             'discount'    => 'required|min:0'
         ];
     }
@@ -48,7 +49,8 @@ class StoreVpsPackage extends FormRequest
             'ram'         => $this->get('ram'),
             'traffic'     => $this->get('traffic'),
             'disk'        => $this->get('disk'),
-            'price'       => $this->get('price'),
+            'price_npr'   => $this->get('price_npr'),
+            'price_usd'   => $this->get('price_usd'),
             'discount'    => $this->get('discount')
         ];
 

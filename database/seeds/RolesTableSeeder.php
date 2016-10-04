@@ -20,8 +20,6 @@ class RolesTableSeeder extends Seeder {
             'updated_at'  => \Carbon\Carbon::now()
         ];
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
         DB::table('roles')->truncate();
 
         DB::table('roles')->insert($roles);
@@ -29,7 +27,5 @@ class RolesTableSeeder extends Seeder {
         $super = \Bican\Roles\Models\Role::first();
 
         $super->attachPermission(\Bican\Roles\Models\Permission::all()->pluck('id')->toArray());
-
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

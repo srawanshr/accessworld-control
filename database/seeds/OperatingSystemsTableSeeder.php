@@ -46,10 +46,7 @@ class OperatingSystemsTableSeeder extends Seeder {
             ],
         ];
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('operating_systems')->truncate();
         DB::table('operating_systems')->insert($operating_systems);
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
     }
 }

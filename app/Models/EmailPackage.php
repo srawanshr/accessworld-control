@@ -18,7 +18,8 @@ class EmailPackage extends Model
         'disk',
         'traffic',
         'domain',
-        'price',
+        'price_usd',
+        'price_npr',
         'discount',
         'is_published',
         'is_featured'

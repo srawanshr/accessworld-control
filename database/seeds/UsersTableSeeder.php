@@ -15,13 +15,13 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->truncate();
         // create user
-        $user = User::firstOrCreate([
+        $user = User::create([
             'username' => 'super_admin',
             'email'    => 'super@accessworld.net',
+            'password' => bcrypt('admin@awt')
         ]);
-        $user->password = bcrypt('admin@awt');
-        $user->save();
         //adding permissions to super user
         $superRole = Role::first();
 
