@@ -14,7 +14,7 @@ class PageController extends Controller {
      */
     public function index()
     {
-        $pages = Page::latest()->get(['slug', 'title', 'is_published']);
+        $pages = country()->page()->latest()->get(['slug', 'title', 'is_published']);
 
         return view('page.index', compact('pages'));
     }
@@ -27,11 +27,15 @@ class PageController extends Controller {
         return view('page.create');
     }
 
+    /**
+     * @param StorePage $request
+     * @return mixed
+     */
     public function store(StorePage $request)
     {
         DB::transaction(function () use ($request)
         {
-            $page = Page::create($request->pageFillData());
+            $page = country()->page()->create($request->pageFillData());
 
             $this->uploadRequestImage($request, $page);
         });

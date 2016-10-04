@@ -18,7 +18,7 @@ class TestimonialController extends Controller {
      */
     public function index()
     {
-        $testimonials = Testimonial::all();
+        $testimonials = country()->testimonials;
 
         return view('testimonial.index', compact('testimonials'));
     }
@@ -39,7 +39,7 @@ class TestimonialController extends Controller {
      */
     public function store(StoreTestimonial $request)
     {
-        Testimonial::create($request->data());
+        country()->testimonials()->create($request->data());
 
         return redirect()->route('testimonial.index')->withSuccess(trans('messages.create_success', ['entity' => 'Testimonial']));
     }
