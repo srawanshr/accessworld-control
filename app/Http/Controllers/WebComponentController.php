@@ -6,8 +6,6 @@ use App\Models\WebComponent;
 use DB;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-
 class WebComponentController extends Controller
 {
     /**
@@ -34,7 +32,10 @@ class WebComponentController extends Controller
             {
                 $webComponent = WebComponent::find($id);
 
-                $webComponent->update([ "price" => $price ]);
+                $webComponent->update([
+                    "price_npr" => $price['npr'],
+                    "price_usd" => $price['usd']
+                ]);
             }
         });
 

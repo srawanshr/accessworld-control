@@ -34,7 +34,10 @@ class EmailComponentController extends Controller
             {
                 $emailComponent = EmailComponent::find($id);
 
-                $emailComponent->update([ "price" => $price ]);
+                $emailComponent->update([
+                    "price_npr" => $price['npr'],
+                    "price_usd" => $price['usd']
+                ]);
             }
         });
 

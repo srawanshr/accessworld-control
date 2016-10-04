@@ -5,7 +5,10 @@
                 <div class="col-sm-8">
                     {{ Form::label("", "Name", ["class" => "text-primary"]) }}
                 </div>
-                <div class="col-sm-4 text-right">
+                <div class="col-sm-2 text-right">
+                    {{ Form::label("price", "Price (in NPR)", ["class" => "text-primary"]) }}
+                </div>
+                <div class="col-sm-2 text-right">
                     {{ Form::label("price", "Price (in USD)", ["class" => "text-primary"]) }}
                 </div>
             </div>
@@ -18,9 +21,14 @@
                             <span>{{ empty($emailComponent->unit) ? "" : "Unit: " }}{{ ucwords(display($emailComponent->unit, " ")) }}</span></em>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <div class="form-group">
-                            {{ Form::number("price[$emailComponent->id]", $emailComponent->price, ["class" => "form-control text-right", "required", "min" => 0, "step" => "any"]) }}
+                            {{ Form::number("price[$emailComponent->id][npr]", $emailComponent->price_npr, ["class" => "form-control text-right", "required", "min" => 0, "step" => "any"]) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            {{ Form::number("price[$emailComponent->id][usd]", $emailComponent->price_usd, ["class" => "form-control text-right", "required", "min" => 0, "step" => "any"]) }}
                         </div>
                     </div>
                 </div>

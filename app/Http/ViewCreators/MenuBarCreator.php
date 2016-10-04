@@ -154,6 +154,17 @@ class MenuBarCreator {
                     ]
                 ],
                 [
+                    'class' => 'gui-folder',
+                    'route' => 'javascript:void(0);',
+                    'icon'  => 'md md-settings-input-composite',
+                    'title' => 'Component',
+                    'items' => [
+                        ['route' => route('component.vps.index'), 'title' => 'VPS'],
+                        ['route' => route('component.web.index'), 'title' => 'Web'],
+                        ['route' => route('component.email.index'), 'title' => 'Email'],
+                    ]
+                ],
+                [
                     'class' => false,
                     'route' => route('page.index'),
                     'icon'  => 'md md-pages',

@@ -29,7 +29,10 @@ class VpsComponentController extends Controller
             {
                 $vpsComponent = VpsComponent::find($id);
 
-                $vpsComponent->update(["price" => $price]);
+                $vpsComponent->update([
+                    "price_npr" => $price['npr'],
+                    "price_usd" => $price['usd']
+                ]);
             }
         });
 
