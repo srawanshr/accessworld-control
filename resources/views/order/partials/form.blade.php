@@ -73,29 +73,29 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">{{ currency() }}</span>
-                                <div class="input-group-content">
-                                    <input type="number" :name=" 'vps[' + item.id + '][price]' " class="form-control" min="0" step="any" v-model="item.price" :disabled="item.is_trial" :required="!item.is_trial">
-                                    <label>Price</label>
-                                </div>
-                            </div>
+                            <select :name=" 'vps[' + item.id + '][currency]' " class="form-control" v-model="item.currency" :disabled="item.is_trial" :required="!item.is_trial">
+                                <option value="" selected>Select a Currency</option>
+                                <option value="NPR">NPR</option>
+                                <option value="USD">USD</option>
+                            </select>
+                            <label>Currency</label>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">{{ currency() }}</span>
-                                <div class="input-group-content">
-                                    <input type="number" :name=" 'vps[' + item.id + '][discount]' " class="form-control" min="0" step="any" v-model="item.discount" :disabled="item.is_trial">
-                                    <label>Discount</label>
-                                </div>
-                            </div>
+                            <input type="number" :name=" 'vps[' + item.id + '][price]' " class="form-control" min="0" step="any" v-model="item.price" :disabled="item.is_trial" :required="!item.is_trial">
+                            <label>Price</label>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <input type="number" :name=" 'vps[' + item.id + '][discount]' " class="form-control" min="0" step="any" v-model="item.discount" :disabled="item.is_trial">
+                            <label>Discount</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
                         <div class="form-group">
                             <input type="number" :name=" 'vps[' + item.id + '][additional_ip]' " class="form-control" v-model="item.additional_ip">
                             <label>Additional IP</label>
@@ -151,39 +151,39 @@
             </div>
             <div v-if=" item.type == 'web' ">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <input type="text" :name=" 'web[' + item.id + '][name]' " class="form-control" v-model="item.name" required>
                             <input type="hidden" :name=" 'web[' + item.id + '][type]' " v-model="item.type">
                             <label>Name</label>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <input type="number" :name=" 'web[' + item.id + '][term]' " class="form-control" min="1" required v-model="item.term" required>
                             <label>Term (in months)</label>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">{{ currency() }}</span>
-                                <div class="input-group-content">
-                                    <input type="number" :name=" 'web[' + item.id + '][price]' " min="0" step="any" class="form-control" required v-model="item.price" required>
-                                    <label>Price</label>
-                                </div>
-                            </div>
+                            <select :name=" 'web[' + item.id + '][currency]' " class="form-control" v-model="item.currency" :disabled="item.is_trial" :required="!item.is_trial">
+                                <option value="" selected>Select a Currency</option>
+                                <option value="NPR">NPR</option>
+                                <option value="USD">USD</option>
+                            </select>
+                            <label>Currency</label>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">{{ currency() }}</span>
-                                <div class="input-group-content">
-                                    <input type="number" :name=" 'web[' + item.id + '][discount]' " min="0" step="any" class="form-control" v-model="item.discount" required>
-                                    <label>Discount</label>
-                                </div>
-                            </div>
+                            <input type="number" :name=" 'web[' + item.id + '][price]' " min="0" step="any" class="form-control" required v-model="item.price" required>
+                            <label>Price</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <input type="number" :name=" 'web[' + item.id + '][discount]' " min="0" step="any" class="form-control" v-model="item.discount" required>
+                            <label>Discount</label>
                         </div>
                     </div>
                 </div>
@@ -225,39 +225,39 @@
             </div>
             <div v-if=" item.type == 'email' ">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <input type="text" :name=" 'email[' + item.id + '][name]' " class="form-control" v-model="item.name" required>
                             <input type="hidden" :name=" 'email[' + item.id + '][type]' " v-model="item.type">
                             <label>Name</label>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <input type="number" :name=" 'email[' + item.id + '][term]' " class="form-control" min="1" v-model="item.term" required>
                             <label>Term (in months)</label>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">{{ currency() }}</span>
-                                <div class="input-group-content">
-                                    <input type="number" :name=" 'email[' + item.id + '][price]' " class="form-control" min="0" step="any" v-model="item.price" required>
-                                    <label>Price</label>
-                                </div>
-                            </div>
+                            <select :name=" 'email[' + item.id + '][currency]' " class="form-control" v-model="item.currency" :disabled="item.is_trial" :required="!item.is_trial">
+                                <option value="" selected>Select a Currency</option>
+                                <option value="NPR">NPR</option>
+                                <option value="USD">USD</option>
+                            </select>
+                            <label>Currency</label>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">{{ currency() }}</span>
-                                <div class="input-group-content">
-                                    <input type="number" :name=" 'email[' + item.id + '][discount]' " class="form-control" min="0" step="any" v-model="item.discount">
-                                    <label>Discount</label>
-                                </div>
-                            </div>
+                            <input type="number" :name=" 'email[' + item.id + '][price]' " class="form-control" min="0" step="any" v-model="item.price" required>
+                            <label>Price</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <input type="number" :name=" 'email[' + item.id + '][discount]' " class="form-control" min="0" step="any" v-model="item.discount">
+                            <label>Discount</label>
                         </div>
                     </div>
                 </div>
