@@ -22,6 +22,7 @@ class VpsOrder extends Model {
         'disk',
         'traffic',
         'price',
+        'currency',
         'discount',
         'is_trial',
         'is_managed',

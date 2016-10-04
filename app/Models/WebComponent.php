@@ -12,6 +12,6 @@ class WebComponent extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'price', 'unit'
+        'name', 'slug', 'price_npr', 'price_usd', 'unit'
     ];
 }

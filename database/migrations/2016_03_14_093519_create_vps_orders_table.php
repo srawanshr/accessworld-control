@@ -26,6 +26,7 @@ class CreateVpsOrdersTable extends Migration {
             $table->float('disk');
             $table->float('traffic');
             $table->double('price', 15, 4);
+            $table->string('currency');
             $table->float('discount')->default(0);
             $table->boolean('is_trial')->default(0);
             $table->boolean('is_managed')->default(0);

@@ -22,6 +22,7 @@ class CreateWebOrdersTable extends Migration
             $table->float('disk');
             $table->float('traffic');
             $table->double('price', 15, 4);
+            $table->string('currency');
             $table->float('discount')->default(0);
             $table->boolean('is_provisioned')->default(0);
             $table->foreign('order_id')

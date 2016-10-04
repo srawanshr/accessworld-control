@@ -23,7 +23,8 @@ class CreateWebPackagesTable extends Migration
             $table->float('traffic');
             $table->integer('domain');
             $table->float('discount')->default(0);
-            $table->float('price');
+            $table->float('price_npr');
+            $table->float('price_usd');
             $table->boolean('is_published')->default(0);
             $table->boolean('is_featured')->default(0);
             $table->foreign('country_id')

@@ -9,7 +9,7 @@
         @foreach(supported_countries() as $key => $country)
             <li class="">
                 <a class="alert alert-callout alert-warning" href="{{ route('country.session', $country->iso_alpha2) }}" rel="alternate">
-                    <img class="pull-right dropdown-avatar" src="{{ $country->image->path }}" alt="">
+                    <img class="pull-right dropdown-avatar" src="{{ asset($country->image->path) }}" alt="">
                     <strong>{{ $country->name }}</strong><br>
                 </a>
             </li>

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateDepositsTable extends Migration
 {
@@ -13,18 +13,17 @@ class CreateDepositsTable extends Migration
      */
     public function up()
     {
-        Schema::create('deposits', function (Blueprint $table) {
+        Schema::create('deposits', function (Blueprint $table)
+        {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->string('code')->unique();
             $table->double('amount', 12, 4);
+            $table->string('currency');
             $table->string('depositable_type');
             $table->integer('depositable_id')->unsigned();
-            $table->foreign('customer_id')
-                ->references('id')
-                ->on('customers')
-                ->onDelete('restrict');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('restrict');
             $table->timestamps();
         });
     }

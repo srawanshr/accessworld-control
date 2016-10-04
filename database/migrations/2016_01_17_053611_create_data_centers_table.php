@@ -19,7 +19,8 @@ class CreateDataCentersTable extends Migration
             $table->string('slug');
             $table->string('name');
             $table->string('prefix');
-            $table->float('price');
+            $table->float('price_npr');
+            $table->float('price_usd');
             $table->boolean('is_active')->default(0);
             $table->foreign('country_id')
                 ->references('id')

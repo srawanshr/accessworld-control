@@ -12,7 +12,7 @@ class DataCenter extends Model {
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'prefix', 'price', 'country'
+        'name', 'slug', 'prefix', 'price_usd', 'price_npr', 'country'
     ];
 
     /**

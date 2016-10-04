@@ -18,7 +18,8 @@ class CreateWebComponentsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-            $table->double('price', 10, 4);
+            $table->double('price_npr', 10, 4);
+            $table->double('price_usd', 10, 4);
             $table->string('unit')->nullable();
             $table->timestamps();
         });

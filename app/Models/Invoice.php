@@ -17,6 +17,7 @@ class Invoice extends Model
         'discount',
         'vat',
         'total',
+        'currency',
         'payable_id',
         'payable_type'
     ];

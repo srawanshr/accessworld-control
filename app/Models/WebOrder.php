@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WebOrder extends Model {
+class WebOrder extends Model
+{
 
     /**
      * The attributes that are mass assignable.
@@ -12,7 +13,16 @@ class WebOrder extends Model {
      * @var array
      */
     protected $fillable = [
-        'order_id', 'name', 'term', 'domain', 'disk', 'traffic', 'price', 'discount', 'is_provisioned'
+        'order_id',
+        'name',
+        'term',
+        'domain',
+        'disk',
+        'traffic',
+        'price',
+        'currency',
+        'discount',
+        'is_provisioned'
     ];
 
     /**

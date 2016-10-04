@@ -23,7 +23,8 @@ class CreateVpsPackagesTable extends Migration
             $table->float('ram');
             $table->float('disk');
             $table->float('traffic');
-            $table->float('price');
+            $table->float('price_npr');
+            $table->float('price_usd');
             $table->float('discount')->default(0);
             $table->boolean('is_published')->default(0);
             $table->boolean('is_featured')->default(0);

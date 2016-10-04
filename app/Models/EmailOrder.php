@@ -12,7 +12,7 @@ class EmailOrder extends Model {
      * @var array
      */
     protected $fillable = [
-        'order_id', 'name', 'term', 'domain', 'disk', 'traffic', 'price', 'discount', 'is_provisioned'
+        'order_id', 'name', 'term', 'domain', 'disk', 'traffic', 'price', 'currency', 'discount', 'is_provisioned'
     ];
 
     /**

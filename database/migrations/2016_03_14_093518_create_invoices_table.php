@@ -23,6 +23,7 @@ class CreateInvoicesTable extends Migration
             $table->double('discount', 10, 4);
             $table->double('vat', 10, 4);
             $table->double('total', 15, 4);
+            $table->string('currency');
             $table->integer('payable_id')->unsigned()->index();
             $table->string('payable_type');
             $table->foreign('customer_id')

@@ -12,6 +12,6 @@ class EmailComponent extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'price', 'unit'
+        'name', 'slug', 'price_usd', 'price_npr', 'unit'
     ];
 }

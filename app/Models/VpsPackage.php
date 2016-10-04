@@ -19,7 +19,8 @@ class VpsPackage extends Model
         'ram',
         'disk',
         'traffic',
-        'price',
+        'price_npr',
+        'price_usd',
         'discount',
         'is_published',
         'is_featured'
