@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/material-design-iconic-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/libs/toastr/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/libs/flags/flags.min.css') }}">
     <!-- END STYLESHEETS -->
     @stack('styles')
 

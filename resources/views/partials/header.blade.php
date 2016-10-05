@@ -18,7 +18,7 @@
         </div>
         <div class="headerbar-right">
             <ul class="header-nav header-nav-options">
-                @include('common.countries')
+                @include('partials.countries')
             </ul><!--end .header-nav-options -->
             <ul class="header-nav header-nav-profile">
                 <li class="dropdown">

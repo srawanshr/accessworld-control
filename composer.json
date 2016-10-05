@@ -7,10 +7,16 @@
   ],
   "license": "MIT",
   "type": "project",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/nikolaynesov/roles.git"
+    }
+  ],
   "require": {
     "php": ">=5.6.4",
     "laravel/framework": "5.3.*",
-    "bican/roles": "2.1.*",
+    "bican/roles": "dev-master",
     "intervention/image": "^2.3",
     "yajra/laravel-datatables-oracle": "~6.0",
     "phpseclib/phpseclib": "2.0",
