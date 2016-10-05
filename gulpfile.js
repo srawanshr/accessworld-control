@@ -47,5 +47,5 @@ elixir(function (mix) {
 
     mix.scripts([
         'node_modules/vue/dist/vue.js'
-    ], 'public/assets/js/vue.js', './')
+    ], 'public/js/vue.js', './')
 });

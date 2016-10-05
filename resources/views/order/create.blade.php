@@ -3,7 +3,7 @@
 @section('title', 'Order')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/libs/bootstrap-datepicker/datepicker3.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/libs/bootstrap-datepicker/datepicker3.css') }}"/>
 @endpush
 
 @section('content')
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            <br />
+            <br/>
             <div id="service-orders">
                 <div v-for="item in order.items">
                     <order-item :item.sync="item"></order-item>
@@ -70,11 +70,9 @@
                         </div>
                         <div class="col-sm-3">
                             <button type="button" @click="addItemInOrder" class="btn btn-lg btn-primary ink-reaction"
-                                                        :class="{ 'disabled' : !type_selected }" data-url=
-                                                        "{{ route('component.order.form') }}">
+                            :class="{ 'disabled' : !type_selected }" data-url="{{ route('component.order.form') }}">
                             <i class="md md-add"></i>
-                                                        Add Service
-                            </button>
+                            Add Service</button>
                         </div>
                     </div>
                 </div>
@@ -88,7 +86,7 @@
 <script src="{{ asset('js/libs/jquery-validation/dist/additional-methods.min.js') }}"></script>
 <script src="{{ asset('js/libs/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
 <script src="{{ asset('js/pages/form_order.min.js') }}"></script>
-<script src="{{ asset('assets/js/vue.js') }}"></script>
+<script src="{{ asset('js/vue.js') }}"></script>
 <script>
     var vm = new Vue({
         el: '#order-app',
