@@ -47,19 +47,19 @@
                         </div>
                         <div class="col-sm-12">
                             <table id="dt_traffic" class="table order-column hover" data-source="{{ route('traffic.daily.list') }}">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>UUID</th>
-                            <th>Date</th>
-                            <th>Upload</th>
-                            <th>Download</th>
-                            <th>Total</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>UUID</th>
+                                    <th>Date</th>
+                                    <th>Upload</th>
+                                    <th>Download</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

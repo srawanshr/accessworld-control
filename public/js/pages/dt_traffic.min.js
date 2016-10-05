@@ -59,10 +59,14 @@
             ],
             "buttons": [
                 'pageLength', 'excel', 'pdf', 'print', 'colvis'
-            ]
+            ],
+            "initComplete" : function () {
+                //To hide double header
+                $('.dataTables_scrollBody thead tr').addClass('hidden');
+            }
         });
 
-        $('.query').change( function() {
+        $('.query').change(function () {
             var val = $.fn.dataTable.util.escapeRegex(
                 $(this).val()
             );
@@ -70,7 +74,12 @@
             table.column($(this).data('col'))
                 .search(val ? '^' + val + '$' : '', true, false)
                 .draw();
-        } );
+        });
+
+        //To hide double header
+        table.on('draw.dt', function () {
+            $('.dataTables_scrollBody thead tr').addClass('hidden')
+        });
     };
 
     window.materialadmin.TrafficDataTable = new TrafficDataTable;
