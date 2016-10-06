@@ -4,7 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomer extends FormRequest {
+class StoreCustomer extends FormRequest
+{
 
     /**
      * Determine if the user is authorized to make this request.
@@ -46,7 +47,7 @@ class StoreCustomer extends FormRequest {
             'last_name'       => $this->has('last_name') ? trim($this->get('last_name')) : null,
             'address'         => $this->has('address') ? trim($this->get('address')) : null,
             'phone'           => $this->has('phone') ? trim($this->get('phone')) : null,
-            'country'         => $this->has('country') ? trim($this->get('country')) : null,
+            'country_id'      => $this->has('country_id') ? $this->get('country_id') : null,
             'company'         => $this->has('company') ? trim($this->get('company')) : null,
             'activation_code' => str_random(60)
         ];

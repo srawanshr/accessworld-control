@@ -65,7 +65,8 @@ class CustomerController extends Controller {
      */
     public function create()
     {
-        return view('customer.create');
+        $countries = Country::all()->pluck('name', 'id');
+        return view('customer.create', compact('countries'));
     }
 
     /**

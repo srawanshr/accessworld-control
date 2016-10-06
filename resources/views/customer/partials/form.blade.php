@@ -44,8 +44,8 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::text('country', old('country'),['class' => 'form-control', 'id' => 'country-selector', 'data-source' => asset('data/countries.json'), 'required']) }}
-                {{ Form::label('country', 'Country') }}
+                {{ Form::select('country_id', $countries ,old('country_id'),['class' => 'form-control', 'id' => 'country-selector', 'required']) }}
+                {{ Form::label('country_id', 'Country') }}
             </div>
         </div>
     </div>

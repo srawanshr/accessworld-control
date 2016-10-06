@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Certificate extends Model {
+class Certificate extends Model
+{
 
     /**
      * The attributes that are mass assignable.
@@ -12,7 +13,10 @@ class Certificate extends Model {
      * @var array
      */
     protected $fillable = [
-        'slug', 'title', 'description', 'is_published'
+        'slug',
+        'title',
+        'description',
+        'is_published'
     ];
 
     /**
@@ -29,7 +33,7 @@ class Certificate extends Model {
      */
     public function image()
     {
-        return $this->morphOne('App\Models\Image', 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     /**
@@ -56,7 +60,7 @@ class Certificate extends Model {
      * @return bool|null|void
      * @throws \Exception
      */
-    public function delete(array $options = array())
+    public function delete(array $options = [])
     {
         $this->image->delete();
 

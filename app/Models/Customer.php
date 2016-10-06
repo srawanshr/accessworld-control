@@ -26,7 +26,7 @@ class Customer extends Model
         'email',
         'password',
         'activation_code',
-        'country',
+        'country_id',
         'first_name',
         'last_name',
         'phone',
@@ -150,6 +150,11 @@ class Customer extends Model
     public function getBalance()
     {
         return $this->deposits->sum('amount') - $this->invoices->sum('total');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 
     //    /**
