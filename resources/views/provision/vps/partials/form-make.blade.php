@@ -270,7 +270,7 @@
 <script src="{{ asset('js/libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('js/libs/jquery-validation/dist/additional-methods.min.js') }}"></script>
 <script src="{{ asset('js/libs/select2/select2.min.js') }}"></script>
-<script src="{{ asset('assets/js/vue.js') }}"></script>
+<script src="{{ asset('js/vue.js') }}"></script>
 <script>
     var vm = new Vue({
         el: '#provision-app',

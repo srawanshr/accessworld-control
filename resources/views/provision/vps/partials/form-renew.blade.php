@@ -71,7 +71,7 @@
 </div>
 
 @push('scripts')
-    <script src="{{ asset('assets/js/vue.js') }}"></script>
+    <script src="{{ asset('js/vue.js') }}"></script>
     <script>
         var vm = new Vue({
             el: '#renew-app',

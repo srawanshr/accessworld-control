@@ -182,7 +182,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <input type="number" :name=" 'web[' + item.id + '][discount]' " min="0" step="any" class="form-control" v-model="item.discount" required>
+                            <input type="number" :name=" 'web[' + item.id + '][discount]' " min="0" step="any" class="form-control" v-model="item.discount">
                             <label>Discount</label>
                         </div>
                     </div>

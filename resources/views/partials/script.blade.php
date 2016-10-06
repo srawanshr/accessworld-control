@@ -68,4 +68,22 @@
                 });
         });
     });
+
+    $(document).ready(function () {
+        $(".search").on("keyup", function () {
+            var $search = $(this);
+            $(".menu").each(function() {
+                var $menu = $(this);
+                $(this).find('.title').each(function () {
+                    if(~$(this).html().toLowerCase().indexOf($search.val().toLowerCase()))
+                    {
+                        $menu.show();
+                        return false;
+                    } else {
+                        $menu.hide();
+                    }
+                });
+            });
+        })
+    })
 </script>

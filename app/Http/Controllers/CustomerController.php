@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCustomer;
-use App\Http\Requests\UpdateCustomer;
-use App\Models\Customer;
 use DB;
 use Form;
+use App\Models\Country;
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCustomer;
+use App\Http\Requests\UpdateCustomer;
 use Yajra\Datatables\Facades\Datatables;
 
 class CustomerController extends Controller {
