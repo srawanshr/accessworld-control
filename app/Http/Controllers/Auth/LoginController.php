@@ -58,7 +58,7 @@ class LoginController extends Controller {
         $request->merge([$field => $request->get('login')]);
         $this->username = $field;
 
-        $user = User::where('email', $request->get('email'))->first();
+        $user = User::where($field, $request->get('login'))->first();
 
         if ($user && $user->status == 0)
         {
