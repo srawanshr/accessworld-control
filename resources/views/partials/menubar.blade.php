@@ -15,7 +15,7 @@
     <div class="menubar-scroll-panel">
         <!-- BEGIN MAIN MENU -->
         <ul id="main-menu" class="gui-controls">
-            <li>
+            <li style="padding: 0 20px;">
                 <form class="navbar-search expanded" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control search" placeholder="Enter your keyword">

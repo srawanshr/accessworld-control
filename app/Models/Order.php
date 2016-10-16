@@ -83,6 +83,22 @@ class Order extends Model {
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function emailOrder()
+    {
+        return $this->hasMany(EmailOrder::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function endpointSecurityOrder()
+    {
+        return $this->hasMany(EndpointSecurityOrder::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function invoice()
@@ -133,13 +149,5 @@ class Order extends Model {
         $total = $subTotal + $vat;
 
         return $total;
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function emailOrder()
-    {
-        return $this->hasMany(EmailOrder::class);
     }
 }

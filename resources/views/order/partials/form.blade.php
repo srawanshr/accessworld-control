@@ -297,6 +297,47 @@
                     </div>
                 </div>
             </div>
+            <div v-if=" item.type == 'endpoint-security' ">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="number" :name=" 'endpoint-security[' + item.id + '][user_count]' " class="form-control" v-model="item.user_count" min="1" required>
+                            <input type="hidden" :name=" 'endpoint-security[' + item.id + '][type]' " v-model="item.type">
+                            <label>User Count</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="number" :name=" 'endpoint-security[' + item.id +'][term]' " class="form-control" min="1" v-model="item.term" required>
+                            <label>Term (in months)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select :name=" 'endpoint-security[' + item.id + '][currency]' " class="form-control" v-model="item.currency" required>
+                                <option value="" selected>Select a Currency</option>
+                                <option value="NPR">NPR</option>
+                                <option value="USD">USD</option>
+                            </select>
+                            <label>Currency</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="number" :name=" 'endpoint-security[' + item.id + '][price]' " class="form-control" min="0" step="any" v-model="item.price" required>
+                            <label>Price</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="number" :name=" 'endpoint-security[' + item.id + '][discount]' " class="form-control" value="0" min="0" step="any" v-model="item.discount">
+                            <label>Discount</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

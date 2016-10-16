@@ -7,7 +7,7 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">all orders</header>
+                    <header class="text-capitalize">all web orders</header>
                     <div class="tools">
                         @if(auth()->user()->can('save.order'))
                             <a class="btn btn-primary ink-reaction" href="{{ route('order.create') }}">

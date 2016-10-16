@@ -4,6 +4,7 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/libs/bootstrap-datepicker/datepicker3.css') }}"/>
+<link href="{{ asset('css/libs/select2/select2.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -29,7 +30,7 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="form-group">
-                                {{ Form::select('customer_id',$customers,null,['id'=>'order_customer_id','class'=>'form-control','placeholder'=>'Select a customer', 'v-model' => 'order.customer_id']) }}
+                                {{ Form::select('customer_id',$customers,null,['id'=>'order_customer_id','class'=>'form-control select2-list','placeholder'=>'Select a customer', 'v-model' => 'order.customer_id', 'required']) }}
                                 <label for="order_customer_id">Customer</label>
                             </div>
                         </div>
@@ -85,6 +86,7 @@
 <script src="{{ asset('js/libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('js/libs/jquery-validation/dist/additional-methods.min.js') }}"></script>
 <script src="{{ asset('js/libs/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('js/libs/select2/select2.min.js') }}"></script>
 <script src="{{ asset('js/pages/form_order.min.js') }}"></script>
 <script src="{{ asset('js/vue.js') }}"></script>
 <script>
@@ -110,6 +112,10 @@
                     type: ''
                 }
             }
+        },
+
+        ready: function () {
+            $(".select2-list").select2();
         },
 
         computed: {

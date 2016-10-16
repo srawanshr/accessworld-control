@@ -48,6 +48,7 @@ class MenuBarCreator {
                     ['route' => route('order.vps.index'), 'title' => 'VPS'],
                     ['route' => route('order.web.index'), 'title' => 'Web'],
                     ['route' => route('order.email.index'), 'title' => 'Email'],
+                    ['route' => route('order.endpointSecurity.index'), 'title' => 'Endpoint Security'],
                 ]
             ]);
         }

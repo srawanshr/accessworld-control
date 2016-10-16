@@ -12,9 +12,7 @@ class ServicesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('services')->truncate();
-
-        DB::table('services')->insert([
+        $services = [
             /*
             |--------------------------------------------------------------------------
             | VPS
@@ -65,6 +63,22 @@ class ServicesTableSeeder extends Seeder
             ],
             /*
             |--------------------------------------------------------------------------
+            | Endpoint Security
+            |--------------------------------------------------------------------------
+            */
+            [
+                'name'              => 'Endpoint Security',
+                'slug'              => 'endpoint-security',
+                'short_description' => '',
+                'description'       => '',
+                'view'              => 'service.show',
+                'order'             => 3,
+                'is_published'      => true,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
+            ],
+            /*
+            |--------------------------------------------------------------------------
             | Domain
             |--------------------------------------------------------------------------
             */
@@ -74,7 +88,7 @@ class ServicesTableSeeder extends Seeder
                 'short_description' => 'Domain registration is the process of registering a domain name, which identifies one or more IP addresses with a name that is easier to remember and use in URLs to identify particular Web pages.',
                 'description'       => '<h2><span style="font-weight: bold;">Most Popular TLDs</span></h2><h2><span style="color: rgb(57, 132, 198);">.com&nbsp; &nbsp; .net&nbsp; &nbsp; .org&nbsp; &nbsp; .ngo&nbsp; &nbsp; .info &nbsp;.biz &nbsp;.online</span></h2>',
                 'view'              => 'service.show',
-                'order'             => 3,
+                'order'             => 4,
                 'is_published'      => true,
                 'created_at'        => \Carbon\Carbon::now(),
                 'updated_at'        => \Carbon\Carbon::now()
@@ -90,7 +104,7 @@ class ServicesTableSeeder extends Seeder
                 'short_description' => 'SSL stands for Secure Sockets Layer, its a technology that enables encryption between web server and web browser.',
                 'description'       => '<p><span style="font-family: \'Helvetica Neue\';">It is utilized by millions of online businesses and individuals to decrease the risk of sensitive information (e.g., credit card numbers, usernames, passwords, emails, etc.) from being stolen or tampered with by hackers and identity thieves. In essence, SSL allows for a private “conversation” just between the two intended parties.</span></p><p><span style="font-family: \'Helvetica Neue\';">To create this secure connection, an&nbsp;SSL certificate&nbsp;(also referred to as a “digital certificate”) is installed on a web server and serves two functions:&nbsp;&nbsp;&nbsp;&nbsp;</span></p><ul><li style="margin: 0px; line-height: 1.5;" class="ms-hover"><span style="font-family: \'Helvetica Neue\';">It authenticates the identity of the website (this guarantees visitors that they’re not on a bogus site)</span></li></ul><ul><li style="margin: 0px; line-height: 1.5;" class="ms-hover"><span style="font-family: \'Helvetica Neue\';">It encrypts the data that’s being transmitted</span></li></ul><p></p><p style="box-sizing: inherit; margin-bottom: 24px; line-height: 1.5;"></p>',
                 'view'              => 'service.show',
-                'order'             => 3,
+                'order'             => 5,
                 'is_published'      => true,
                 'created_at'        => \Carbon\Carbon::now(),
                 'updated_at'        => \Carbon\Carbon::now()
@@ -106,11 +120,18 @@ class ServicesTableSeeder extends Seeder
                 'short_description' => 'AWT, with its state-of-art data centers, has become one of the most advanced Co-location service provider in the country.',
                 'description'       => '<p><span style="color: rgb(84, 84, 84); font-family: \'Open Sans\', sans-serif; font-size: 14px;">Co-location of IT infrastructure is an investment in keeping the company alive in the event of a severe outage. It’s an insurance policy, and like any other insurance, you pay upfront so that you don’t suffer severe losses later. Significant equipment failure, fire and earthquakes are just some of the disasters that can occur with little or no warning. They’re all facts of life, though we wish they weren’t, and their consequences can be devastating. Most businesses today are heavily automated and damage to equipment or data can not only disrupt business continuity and inflict financial losses but also threaten the very survival of a company.</span><br style="color: rgb(84, 84, 84); font-family: \'Open Sans\', sans-serif; font-size: 14px;"><span style="color: rgb(84, 84, 84); font-family: \'Open Sans\', sans-serif; font-size: 14px;">AWT, with its state-of-art data centers, has become one of the most advanced Colocation service provider in the country. You can have ultimate peace of mind with AWT Colocation housed in a highly secure data center by placing your data and equipment within its facilities and feel safe as the AWT Colocation has a 99.95% Up-time Guarantee. Co-locating with us ensures that your IT infrastructure and critical applications will be housed in the highest quality data center facility. As a colocation specialist, we supply the security, connectivity, electricity, air conditioning,</span><br style="color: rgb(84, 84, 84); font-family: \'Open Sans\', sans-serif; font-size: 14px;"><span style="color: rgb(84, 84, 84); font-family: \'Open Sans\', sans-serif; font-size: 14px;">fire suppression and backup power. We supply 24 x 7 x 365 engineering resource to ensure that we maintain our guaranteed uptime record. Our data center provides your organization with a highly secure environment for all your needs.</span></p><p><span style="color: rgb(84, 84, 84); font-family: \'Open Sans\', sans-serif; font-size: 14px;"><br></span></p><h3 style="margin: 0px 0px 9px; font-family: \'Open Sans\', sans-serif; font-weight: 700; line-height: 33px; color: rgb(84, 84, 84); text-rendering: optimizelegibility; font-size: 22px; padding: 0px; word-wrap: break-word;">AWT Co-location Service Features:</h3><p style="margin-bottom: 21px; font-family: \'Open Sans\', sans-serif; font-size: 14px; line-height: 21px; padding: 0px; color: rgb(84, 84, 84); word-wrap: break-word; letter-spacing: normal;">• N+1 UPS redundancy.<br>• Multiple Diesel Generator backup.<br>• Fully-redundant and conditioned power, mechanical systems &amp; electrical distribution, and &nbsp;comprehensive&nbsp;suppression with fully controlled physical and logical access.<br>• On-site 24×7 support provides quick request responses at any conditions.<br>• High-availability network and system environment with access to high speed local network.<br>• Multiple levels of electrical and mechanical redundancy protects the system during any event.<br>• Static transfer switches to protect power load during emergencies.<br>• 100% power availability Service Level Agreement (SLA).<br>• Connectivity options with access to high speed local and international network.<br>• Interconnectivity between multiple service providers.<br>• Multiple, diverse carriers available.<br>• Connected to NPIX with high speed local network.</p>',
                 'view'              => 'service.show',
-                'order'             => 3,
+                'order'             => 6,
                 'is_published'      => true,
                 'created_at'        => \Carbon\Carbon::now(),
                 'updated_at'        => \Carbon\Carbon::now()
             ]
-        ]);
+        ];
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        DB::table('services')->truncate();
+
+        DB::table('services')->insert($services);
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

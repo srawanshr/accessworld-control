@@ -347,6 +347,18 @@ Route::group(['middleware' => 'auth'], function ()
 
     /*
     |--------------------------------------------------------------------------
+    | Endpoint Security CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as' => 'order.endpointSecurity.', 'prefix' => 'order/endpoint-security'], function ()
+    {
+        Route::get('', 'EndpointSecurityOrderController@index')->name('index')->middleware('permission:read.order');
+        Route::put('{endpoint_security_order}', 'EndpointSecurityOrderController@update')->name('update')->middleware('permission:save.order');
+        Route::delete('{endpoint_security_order}', 'EndpointSecurityOrderController@destroy')->name('destroy')->middleware('permission:delete.order');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | VPS Provision CRUD Routes
     |--------------------------------------------------------------------------
     */
@@ -473,6 +485,7 @@ Route::group(['middleware' => 'auth'], function ()
         Route::post('order/vps/details', 'VpsOrderController@details')->name('order.vps.details');
         Route::post('order/web/details', 'WebOrderController@details')->name('order.web.details');
         Route::post('order/email/details', 'EmailOrderController@details')->name('order.email.details');
+        Route::post('order/endpoint-security/details', 'EndpointSecurityOrderController@details')->name('order.endpointSecurity.details');
 
         Route::post('provision/vps/details', 'VpsProvisionController@details')->name('provision.vps.details');
         Route::post('provision/web/details', 'WebProvisionController@details')->name('provision.web.details');

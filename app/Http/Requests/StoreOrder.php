@@ -5,8 +5,7 @@ namespace App\Http\Requests;
 use App\Models\Order;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOrder extends FormRequest
-{
+class StoreOrder extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -32,36 +31,43 @@ class StoreOrder extends FormRequest
 
         if ($this->has('vps'))
         {
-            $rules['vps.*.name']                = 'required';
+            $rules['vps.*.name'] = 'required';
             $rules['vps.*.operating_system_id'] = 'required';
-            $rules['vps.*.data_center_id']      = 'required';
-            $rules['vps.*.term']                = 'required_unless:vps.*.is_trial,1';
-            $rules['vps.*.price']               = 'required_unless:vps.*.is_trial,1';
-            $rules['vps.*.currency']            = 'required|in:NPR,USD';
-            $rules['vps.*.cpu']                 = 'required';
-            $rules['vps.*.ram']                 = 'required';
-            $rules['vps.*.disk']                = 'required';
-            $rules['vps.*.traffic']             = 'required';
+            $rules['vps.*.data_center_id'] = 'required';
+            $rules['vps.*.term'] = 'required_unless:vps.*.is_trial,1';
+            $rules['vps.*.price'] = 'required_unless:vps.*.is_trial,1';
+            $rules['vps.*.currency'] = 'required|in:NPR,USD';
+            $rules['vps.*.cpu'] = 'required';
+            $rules['vps.*.ram'] = 'required';
+            $rules['vps.*.disk'] = 'required';
+            $rules['vps.*.traffic'] = 'required';
         }
 
         if ($this->has('web'))
         {
-            $rules['web.*.name']    = 'required';
-            $rules['web.*.term']    = 'required';
-            $rules['web.*.price']   = 'required';
-            $rules['web.*.domain']  = 'required';
-            $rules['web.*.disk']    = 'required';
+            $rules['web.*.name'] = 'required';
+            $rules['web.*.term'] = 'required';
+            $rules['web.*.price'] = 'required';
+            $rules['web.*.domain'] = 'required';
+            $rules['web.*.disk'] = 'required';
             $rules['web.*.traffic'] = 'required';
         }
 
         if ($this->has('email'))
         {
-            $rules['email.*.name']    = 'required';
-            $rules['email.*.term']    = 'required';
-            $rules['email.*.price']   = 'required';
-            $rules['email.*.domain']  = 'required';
-            $rules['email.*.disk']    = 'required';
+            $rules['email.*.name'] = 'required';
+            $rules['email.*.term'] = 'required';
+            $rules['email.*.price'] = 'required';
+            $rules['email.*.domain'] = 'required';
+            $rules['email.*.disk'] = 'required';
             $rules['email.*.traffic'] = 'required';
+        }
+
+        if ($this->has('endpoint-security'))
+        {
+            $rules['endpoint-security.*.term'] = 'required';
+            $rules['endpoint-security.*.price'] = 'required';
+            $rules['endpoint-security.*.user_count'] = 'required';
         }
 
         return $rules;
@@ -86,7 +92,7 @@ class StoreOrder extends FormRequest
     {
         foreach ($this->get('vps') as $key => $values)
         {
-            $term     = $this->input('vps.' . $key . '.term');
+            $term = $this->input('vps.' . $key . '.term');
             $is_trial = $this->input('vps.' . $key . '.trial');
 
             $data = [
@@ -151,6 +157,25 @@ class StoreOrder extends FormRequest
             ];
 
             $order->emailOrder()->create($data);
+        }
+    }
+
+    /**
+     * @param $order
+     */
+    public function createEndPointSecurityOrder($order)
+    {
+        foreach ($this->get('endpoint-security') as $key => $values)
+        {
+            $data = [
+                'user_count' => $this->input('endpoint-security.' . $key . '.user_count'),
+                'term'       => $this->input('endpoint-security.' . $key . '.term', null),
+                'price'      => $this->input('endpoint-security.' . $key . '.price', null),
+                'currency'   => $this->input('endpoint-security.' . $key . '.currency', null),
+                'discount'   => $this->input('endpoint-security.' . $key . '.discount', 0)
+            ];
+
+            $order->endpointSecurityOrder()->create($data);
         }
     }
 }

@@ -28,7 +28,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $services = Service::orderBy('order')->limit(3)->pluck('name', 'slug');
+        $services = Service::orderBy('order')->limit(4)->pluck('name', 'slug');
 
         $customers = Customer::all()->pluck('name', 'id');
 
@@ -50,6 +50,8 @@ class OrderController extends Controller
             if ($request->has('web')) $request->createWebOrder($order);
 
             if ($request->has('email')) $request->createEmailOrder($order);
+
+            if ($request->has('endpoint-security')) $request->createEndPointSecurityOrder($order);
         });
 
         return redirect()->route('order.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Order' ]));
