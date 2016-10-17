@@ -62,7 +62,7 @@ class LoginController extends Controller {
 
         if ($user && $user->status == 0)
         {
-            return redirect('login')->with('status', trans('activation.email', ['url' => url('/activate/email/' . $user->slug)]));
+            return redirect('login')->with('status', trans('activation.email', ['url' => url('/activate/email/' . $user->username)]));
         }
 
         return $this->traitLogin($request);

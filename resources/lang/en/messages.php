@@ -18,7 +18,7 @@ return [
     'delete_success'     => ':entity has been deleted.',
     'upload_success'     => 'New :entity has been uploaded.',
     'renew_success'     => ':entity has been renewed.',
-    'activation_success' => 'Your account is activated',
+    'activation_success' => 'Your account is activated.',
     'create_error'       => 'An error occurred creating :entity.',
     'delete_error'       => 'An error occurred deleting :entity',
     'update_error'       => 'An error occurred updating :entity',
